@@ -1,0 +1,5 @@
+@value mainGreen from "../../../common/color.css";
+
+.title {
+  color: mainGreen;
+}
