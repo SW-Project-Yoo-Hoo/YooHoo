@@ -1,5 +1,9 @@
 @value mainGreen from "../../../common/color.css";
+@value marginLeftRight from "../../../common/size.css";
 
 .title {
+  background-color: black;
   color: mainGreen;
+  margin-left: marginLeftRight;
+  margin-right: marginLeftRight;
 }
