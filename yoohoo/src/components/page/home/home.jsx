@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./home.module.css";
 
-
 const Home = (props) => {
-  return <h1 className={styles.title}>Home</h1>;
+  return <img src="/Images/home/background.png"></img>;
+  //<img src="/ImageName.jpg">
 };
 
 export default Home;
