@@ -3,7 +3,11 @@ import "./app.module.css";
 import Home from "./components/page/home/home";
 
 function App() {
-  return <Home />;
+  return (
+    <>
+      <Home />
+    </>
+  );
 }
 
 export default App;
