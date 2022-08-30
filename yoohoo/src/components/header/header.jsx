@@ -1,16 +1,21 @@
 import React from "react";
 import styles from "./header.module.css";
-import Logo from "./logo/logo.jsx";
-import Page from "./pages/page.jsx";
-import User from "./user/user.jsx";
+import Logo from "./leftLogo/leftLogo.jsx";
+import RightComponent from "./rightComponent/rightComponent.jsx";
 
 const Header = (props) => {
   return (
-    <>
-      <Logo />
-      <Page />
-      <User />
-    </>
+    <header className={styles.header}>
+      {/* left component */}
+      <div className={styles.logo}>
+        <Logo />
+      </div>
+
+      {/* rigth component */}
+      <div className={styles.rightComponent}>
+        <RightComponent />
+      </div>
+    </header>
   );
 };
 

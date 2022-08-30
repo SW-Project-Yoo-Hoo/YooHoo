@@ -1,0 +1,26 @@
+@value marginLeftRight from "../../../common/size.css";
+@value highlight1,background2,line from '../../../common/color.css';
+
+@font-face {
+  font-family: "Medium";
+  src: url("../../../common/font/NotoSansKR-Medium.otf");
+}
+
+.rightComponent {
+  background-color: background2;
+  border-bottom: 1px solid;
+  border-color: line;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  /* margin-left: marginLeftRight; */
+}
+
+.page {
+}
+
+.user {
+  /* margin-right: marginLeftRight; */
+}
