@@ -1,5 +1,11 @@
 @value marginLeftRight from "../../common/size.css";
-@value background2, highlight1, highlight3 from "../../common/color.css";
+@value background2, highlight1, highlight3, line from "../../common/color.css";
+
+.footerLine {
+  width: 100%;
+  background-color: line;
+  margin: 0;
+}
 
 .footer {
   display: grid;
