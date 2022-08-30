@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./user.module.css";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+// import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 const User = (props) => {
   return (
@@ -8,7 +8,7 @@ const User = (props) => {
       <img src="/Images/header/profile.png"></img>
       <img src="/Images/header/alert.png"></img>
       <img src="/Images/header/search.png"></img>
-      <PersonOutlineOutlinedIcon />
+      {/* <PersonOutlineOutlinedIcon /> */}
     </user>
   );
 };
