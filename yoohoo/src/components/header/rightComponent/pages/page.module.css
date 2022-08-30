@@ -1,0 +1,7 @@
+/* @value marginLeftRight from "../../../common/size.css";
+@value highlight1,background2,line from '../../../common/color.css'; */
+
+@font-face {
+  font-family: "Medium";
+  src: url("../../../../common/font/NotoSansKR-Medium.otf");
+}
