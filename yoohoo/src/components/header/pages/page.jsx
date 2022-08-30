@@ -1,6 +1,13 @@
 import React from "react";
 import styles from "./page.module.css";
 
-const Header = (props) => <h1>Header</h1>;
+const Page = (props) => {
+  return (
+    <>
+      page
+      {/* home,shop,post,about */}
+    </>
+  );
+};
 
-export default Header;
+export default Page;

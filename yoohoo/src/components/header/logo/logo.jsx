@@ -1,6 +1,13 @@
 import React from "react";
 import styles from "./logo.module.css";
 
-const Header = (props) => <h1>Header</h1>;
+const Logo = (props) => {
+  return (
+    <>
+      logo
+      {/* yoohooLogo */}
+    </>
+  );
+};
 
-export default Header;
+export default Logo;
