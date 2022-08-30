@@ -1,0 +1,28 @@
+@value background2, highlight1 from "../../../common/color.css";
+
+.list {
+  display: inline-block;
+  list-style: none;
+  margin-top: 2.25em;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: highlight1;
+  font-size: 1em;
+  font-family: "Regular";
+}
+
+.item {
+  margin: 0 0 1.125em 0;
+  color: highlight1;
+  font-size: 1em;
+  font-family: "Regular";
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("../../../common/font/NotoSansKR-Regular.otf");
+}
