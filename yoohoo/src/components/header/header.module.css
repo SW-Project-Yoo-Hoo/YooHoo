@@ -7,12 +7,21 @@
   border-color: line;
   display: flex;
   justify-content: space-between;
+  height: 6.1875rem;
+  width: 100%;
+  align-items: center;
 }
 
 .logo {
   margin-left: marginLeftRight;
 }
 
+.logoStyle {
+  width: 100px;
+  height: 30px;
+}
 .rightComponent {
   margin-right: marginLeftRight;
+  display: flex;
+  /* justify-content: space-between; */
 }

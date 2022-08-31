@@ -1,6 +1,0 @@
-/* @value marginLeftRight from "../../../common/size.css"; */
-/* @value highlight1,background2,line from '../../../common/color.css'; */
-
-.rightComponent {
-  display: flex;
-}

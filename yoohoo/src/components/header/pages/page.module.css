@@ -1,0 +1,18 @@
+/* @value marginLeftRight from "../../../common/size.css";
+@value highlight1,background2,line from '../../../common/color.css'; */
+
+@font-face {
+  font-family: "Medium";
+  src: url("../../../common/font/NotoSansKR-Medium.otf");
+}
+
+.page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pageStyle {
+  padding-left: 0.625rem;
+  padding-right: 2.5rem;
+  font-family: "Medium";
+}
