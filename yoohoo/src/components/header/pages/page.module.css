@@ -12,14 +12,9 @@
 }
 
 .pageStyle {
-  padding-left: 0.625rem;
-  padding-right: 2.5rem;
+  padding-left: 0.52vw;
+  padding-right: 2.083vw;
   list-style-type: none;
-}
-
-.navLinkStyle {
-  /* color: highlight1; */
-  font-size: 18;
 }
 
 .active {
@@ -36,7 +31,7 @@
 }
 
 .inactive {
-  font-size: 18px;
+  font-size: 0.9375vw;
   color: highlight1;
   font-family: "Medium";
   text-decoration: none;

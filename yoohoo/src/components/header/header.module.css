@@ -7,7 +7,8 @@
   border-color: line;
   display: flex;
   justify-content: space-between;
-  height: 6.1875rem;
+  /* height: 6.1875rem; */
+  height: 8.928vh;
   width: 100%;
   align-items: center;
 }
@@ -17,8 +18,9 @@
 }
 
 .logoStyle {
-  width: 100px;
-  height: 30px;
+  width: 5.2083vw;
+  /* height: 2.678vh; */
+  height: 1.5625vw;
 }
 .rightComponent {
   margin-right: marginLeftRight;

@@ -1,11 +1,19 @@
-@value mainGreen from "../../../common/color.css";
+@value mainGreen,highlight1,shadow from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
-.title {
-  background-color: black;
-  color: mainGreen;
-  margin-left: marginLeftRight;
-  margin-right: marginLeftRight;
+@font-face {
+  font-family: "Bold";
+  src: url("../../../common/font/NotoSansKR-Bold.otf");
+}
+
+@font-face {
+  font-family: "Medium";
+  src: url("../../../common/font/NotoSansKR-Medium.otf");
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("../../../common/font/NotoSansKR-Regular.otf");
 }
 
 .backGroundIamge {
@@ -13,3 +21,149 @@
   width: 100%;
   height: 4080px;
 }
+
+/* part.1 */
+.intro {
+  display: flex;
+  margin-right: 9.739vw;
+  margin-left: marginLeftRight;
+  /* padding-top: 8.928vh; */
+  /* padding-top: 12.857vh; */
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.introText {
+  padding-bottom: 2.6785vh;
+}
+
+.introTextButton {
+  position: relative;
+  top: 7.5vw;
+}
+
+.introMainBigText {
+  color: highlight1;
+  font-family: "bold";
+  /* font-size: 4.5rem; */
+  font-size: 3.645833333333333vw;
+  text-shadow: 0.1875rem 0.1875rem 0.125rem shadow;
+  line-height: 4.875rem;
+}
+
+.introMainSmallText {
+  color: highlight1;
+  font-family: "Medium";
+  /* font-size: 2.4375rem; */
+  font-size: 2.03125vw;
+  text-shadow: 0.1875rem 0.1875rem 0.125rem shadow;
+  padding-left: 1.354vw;
+}
+
+.introMainSmallTextBottom {
+  color: highlight1;
+  font-family: "Medium";
+  font-size: 2.03125vw;
+  text-shadow: 0.1875rem 0.1875rem 0.125rem shadow;
+  padding-right: 1.354vw;
+}
+
+.introSubText {
+  display: block;
+  color: highlight1;
+  font-family: "Regular";
+  font-size: 1.041666666666667vw;
+}
+
+.buttonStyle {
+  font-family: "Bold";
+  font-size: 0.9375vw;
+  color: white;
+  background-color: mainGreen;
+  padding-top: 1.6vh;
+  padding-bottom: 1.6vh;
+  padding-left: 2.1875vw;
+  padding-right: 2.1875vw;
+  border-radius: 32px;
+  border-style: none;
+  margin-top: 8.0357vh;
+}
+.mainIllu1 {
+  position: relative;
+  top: -6.1875rem;
+
+  /*right: 9.739vw; */
+}
+.mainIlluImage {
+  width: 41.458vw;
+  height: 41.458vw;
+}
+
+/* part.2 */
+.content {
+  /* display: flex; */
+  border: 0.1px solid;
+  margin-right: marginLeftRight;
+  margin-left: marginLeftRight;
+}
+
+/* part.2 shopNow */
+.shopNow {
+  display: flex;
+  width: 100%;
+  border: 0.1px solid;
+}
+
+.shopNowLeft {
+}
+
+.shopNowRight {
+}
+
+/* part.2 postNow */
+.postNow {
+  display: flex;
+  width: 100%;
+  border: 0.1px solid;
+}
+
+.postNowLeft {
+}
+
+.postNowRight {
+}
+
+/* part.2 profileNow */
+.profileNow {
+  display: flex;
+  width: 100%;
+  border: 0.1px solid;
+}
+
+.profileNowLeft {
+}
+
+.profileNowRight {
+}
+
+/* part.3 */
+.wrapUp {
+  border: 0.1px solid;
+  margin-right: marginLeftRight;
+  margin-left: marginLeftRight;
+}
+
+.wrapUpText {
+  border: 0.1px solid;
+}
+
+.wrapUpImg {
+  border: 0.1px solid;
+}
+
+/*
+viewport 높이 : 1121px
+1vh = 102.1px
+사진 크기 : 4080
+height: 399.6vh -> height : 4080px랑 같음
+*/
