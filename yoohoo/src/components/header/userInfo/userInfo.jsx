@@ -1,16 +1,16 @@
 import React from "react";
-import styles from "./user.module.css";
+import styles from "./userInfo.module.css";
 import { MdSearch, MdPersonOutline } from "react-icons/md";
 import { TbBell } from "react-icons/tb";
 
-const User = (props) => {
+const UserInfo = (props) => {
   return (
-    <user>
+    <userInfo>
       <MdSearch className={styles.icon} />
       <TbBell className={styles.icon} />
       <MdPersonOutline className={styles.icon} />
-    </user>
+    </userInfo>
   );
 };
 
-export default User;
+export default UserInfo;

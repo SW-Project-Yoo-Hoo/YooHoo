@@ -4,22 +4,51 @@ import { Link, NavLink } from "react-router-dom";
 
 //pageComponent
 const PageComponent = (props) => {
-  // const handClick = (e) => {
-  //   window.location.href = <Home />;
-  // };
   return (
     <ul className={styles.page}>
       <li className={styles.pageStyle}>
-        <NavLink to="/Home">Home</NavLink>
+        <NavLink
+          to="/Home"
+          // className={({ isActive }) =>
+          //   isActive ? styles.active : styles.inactive
+          // }
+          className={styles.inactive}
+        >
+          HOME
+        </NavLink>
       </li>
       <li className={styles.pageStyle}>
-        <Link to="/Shop">Shop</Link>
+        <Link
+          to="/Shop"
+          // className={({ isActive }) =>
+          //   isActive ? styles.active : styles.inactive
+          // }
+          className={styles.inactive}
+        >
+          SHOP
+        </Link>
       </li>
       <li className={styles.pageStyle}>
-        <Link to="/Post">Post</Link>
+        <Link
+          to="/Post"
+          // className={({ isActive }) =>
+          //   isActive ? styles.active : styles.inactive
+          // }
+          className={styles.inactive}
+        >
+          POST
+        </Link>
       </li>
       <li className={styles.pageStyle}>
-        <Link to="/About">About</Link>
+        <Link
+          to="/About"
+          // className={({ isActive }) =>
+          //   isActive ? styles.active : styles.inactive
+          // }
+          className={styles.inactive}
+        >
+          ABOUT
+        </Link>
       </li>
     </ul>
   );

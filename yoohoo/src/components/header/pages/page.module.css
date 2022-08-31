@@ -1,5 +1,5 @@
-/* @value marginLeftRight from "../../../common/size.css";
-@value highlight1,background2,line from '../../../common/color.css'; */
+/* @value mainGreen from "../../../common/size.css"; */
+@value highlight1,mainGreen from '../../../common/color.css';
 
 @font-face {
   font-family: "Medium";
@@ -14,5 +14,31 @@
 .pageStyle {
   padding-left: 0.625rem;
   padding-right: 2.5rem;
+  list-style-type: none;
+}
+
+.navLinkStyle {
+  /* color: highlight1; */
+  font-size: 18;
+}
+
+.active {
+  font-size: 18px;
+  color: mainGreen;
   font-family: "Medium";
+  /* textDecoration: 'none' */
+  text-decoration: none;
+}
+
+.inactive:hover {
+  font-size: 18px;
+  color: mainGreen;
+  font-family: "Medium";
+}
+
+.inactive {
+  font-size: 18px;
+  color: highlight1;
+  font-family: "Medium";
+  text-decoration: none;
 }

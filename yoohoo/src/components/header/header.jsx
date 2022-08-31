@@ -1,18 +1,21 @@
 import React from "react";
 import styles from "./header.module.css";
 import Page from "./pages/page";
-import User from "./user/user";
+import UserInfo from "./userInfo/userInfo";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   return (
     <header className={styles.header}>
       {/* left component : logo */}
       <div className={styles.logo}>
-        <img
-          className={styles.logoStyle}
-          src="/Images/header/logo.png"
-          alt="logo"
-        ></img>
+        <Link to="/" exact="true">
+          <img
+            className={styles.logoStyle}
+            src="/Images/header/logo.png"
+            alt="logo"
+          ></img>
+        </Link>
       </div>
 
       {/* rigth component : pages, search, alram, profile */}
@@ -21,7 +24,7 @@ const Header = (props) => {
           <Page />
         </div>
         <div>
-          <User />
+          <UserInfo />
         </div>
       </div>
     </header>

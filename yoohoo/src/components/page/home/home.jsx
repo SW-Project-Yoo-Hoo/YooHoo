@@ -5,8 +5,12 @@ import Header from "../../header/header";
 const Home = (props) => {
   return (
     <>
-      {/* <Header /> */}
-      <img src="/Images/home/background.png" alt="background img"></img>
+      <Header />
+      <div className={styles.backGroundIamge}>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+      </div>
     </>
   );
 };

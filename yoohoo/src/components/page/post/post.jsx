@@ -1,13 +1,15 @@
 import React from "react";
 import styles from "./post.module.css";
+import { Link, NavLink } from "react-router-dom";
+import Header from "../../header/header";
 
-const Home = (props) => {
+const Post = (props) => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <h1>post</h1>
     </>
   );
 };
 
-export default Home;
+export default Post;
