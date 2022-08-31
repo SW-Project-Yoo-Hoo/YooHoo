@@ -6,8 +6,13 @@ import { TbBell } from "react-icons/tb";
 const UserInfo = (props) => {
   return (
     <userInfo>
+      {/* searchIcon */}
       <MdSearch className={styles.icon} />
+
+      {/* alarmIcon */}
       <TbBell className={styles.icon} />
+
+      {/* profileIcon */}
       <MdPersonOutline className={styles.icon} />
     </userInfo>
   );
