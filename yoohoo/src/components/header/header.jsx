@@ -8,7 +8,11 @@ const Header = (props) => {
     <header className={styles.header}>
       {/* left component : logo */}
       <div className={styles.logo}>
-        <img className={styles.logoStyle} src="/Images/header/logo.png"></img>
+        <img
+          className={styles.logoStyle}
+          src="/Images/header/logo.png"
+          alt="logo"
+        ></img>
       </div>
 
       {/* rigth component : pages, search, alram, profile */}

@@ -25,3 +25,14 @@
   display: flex;
   /* justify-content: space-between; */
 }
+
+.page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pageStyle {
+  padding-left: 0.625rem;
+  padding-right: 2.5rem;
+  font-family: "Medium";
+}

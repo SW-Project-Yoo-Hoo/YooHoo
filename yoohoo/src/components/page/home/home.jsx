@@ -5,8 +5,8 @@ import Header from "../../header/header";
 const Home = (props) => {
   return (
     <>
-      <Header />
-      <img src="/Images/home/background.png"></img>
+      {/* <Header /> */}
+      <img src="/Images/home/background.png" alt="background img"></img>
     </>
   );
 };
