@@ -18,27 +18,23 @@ const Home = (props) => {
           <div className={styles.introTextButton}>
             {/* text */}
             <div>
-              <p>
-                {/* mainTitle */}
-                <div>
-                  <span className={styles.introMainBigText}>Resource</span>
-                  <span className={styles.introMainSmallText}>Exchange</span>
-                </div>
-                <div className={styles.introText}>
-                  <span className={styles.introMainSmallTextBottom}>
-                    For The
-                  </span>
-                  <span className={styles.introMainBigText}>Resourceful</span>
-                </div>
+              {/* mainTitle */}
+              <div>
+                <span className={styles.introMainBigText}>Resource</span>
+                <span className={styles.introMainSmallText}>Exchange</span>
+              </div>
+              <div className={styles.introText}>
+                <span className={styles.introMainSmallTextBottom}>For The</span>
+                <span className={styles.introMainBigText}>Resourceful</span>
+              </div>
 
-                {/* subTitle */}
-                <span className={styles.introSubText}>
-                  Transform how you source, procure, and
-                </span>
-                <span className={styles.introSubText}>
-                  use resources with YooHoo.
-                </span>
-              </p>
+              {/* subTitle */}
+              <span className={styles.introSubText}>
+                Transform how you source, procure, and
+              </span>
+              <span className={styles.introSubText}>
+                use resources with YooHoo.
+              </span>
             </div>
 
             {/* button */}

@@ -29,8 +29,11 @@
   margin-left: marginLeftRight;
   /* padding-top: 8.928vh; */
   /* padding-top: 12.857vh; */
+  /* top: -6.1875rem; */
+  position: relative;
+  /* top: -5.208333333333333vw; */
   justify-content: space-between;
-  align-items: flex-start;
+  /* align-items: center; */
 }
 
 .introText {
@@ -39,16 +42,22 @@
 
 .introTextButton {
   position: relative;
-  top: 7.5vw;
+  top: 5.208333333333333vw;
+}
+
+.mainTitle {
+  width: 31.25vw;
+}
+
+.subTitle {
+  width: 19.895833333333333vw;
 }
 
 .introMainBigText {
   color: highlight1;
   font-family: "bold";
-  /* font-size: 4.5rem; */
   font-size: 3.645833333333333vw;
   text-shadow: 0.1875rem 0.1875rem 0.125rem shadow;
-  line-height: 4.875rem;
 }
 
 .introMainSmallText {
@@ -80,17 +89,17 @@
   font-size: 0.9375vw;
   color: white;
   background-color: mainGreen;
-  padding-top: 1.6vh;
-  padding-bottom: 1.6vh;
+  padding-top: 0.9375vw;
+  padding-bottom: 0.9375vw;
   padding-left: 2.1875vw;
   padding-right: 2.1875vw;
   border-radius: 32px;
   border-style: none;
-  margin-top: 8.0357vh;
+  margin-top: 4.6875vw;
 }
 .mainIllu1 {
   position: relative;
-  top: -6.1875rem;
+  /* top: -6.1875rem; */
 
   /*right: 9.739vw; */
 }
