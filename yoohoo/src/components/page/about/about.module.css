@@ -7,16 +7,19 @@
   background-image: url("../../../../public/images/about/background.png");
 }
 
+/* ------------------------ */
+/* 헤더 추가시 삭제 */
 .wrapHeader {
   min-height: 100%;
   padding-top: 100px;
 }
+/* ------------------------ */
 
 /* 맨 위 타이틀 */
 
 .title {
   width: 100%;
-  height: 1.5694vh;
+  height: 1.3801vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,14 +37,14 @@
 
 .topic1 {
   /* height: 925px; */
-  height: 29.0333vh;
+  height: 25.5313vh;
   display: flex;
   margin: 0 marginLeftRight 0 marginLeftRight;
 }
 
 .topic1_span {
   width: 22.6vw;
-  margin-top: 3.2957vh;
+  margin-top: 2.8982vh;
 }
 
 .topic1_Title {
@@ -50,7 +53,7 @@
   font-size: 4.1667vw;
   text-shadow: 0.1563vw 0.1563vw 0.1042vw shadow;
   line-height: 5.2083vw;
-  margin-bottom: 1.0358vh;
+  margin-bottom: 0.9108vh;
   /* text-shadow: 0.1875rem 0.1875rem 0.125rem black; */
   /* line-height: 6.25rem; */
   /* font-size: 5rem; */
@@ -60,7 +63,7 @@
   font-family: "medium";
   color: highlight3;
   font-size: 1.1458vw;
-  margin: 0 0 0.6591vh 0;
+  margin: 0 0 0.5796vh 0;
   /* font-size: 1.375rem; */
 }
 
@@ -68,7 +71,7 @@
   font-family: "medium";
   color: highlight3;
   font-size: 1.1458vw;
-  margin: 0 0 2.6365vh 0;
+  margin: 0 0 2.3185vh 0;
 }
 
 .topic1_Btn {
@@ -90,13 +93,13 @@
 .shoppingPNG {
   width: 28.85vw;
   height: 28.85vw;
-  margin: 1.5694vh 15.8854vw 0 15.9375vw;
+  margin: 1.3801vh 15.8854vw 0 15.9375vw;
 }
 
 /* Topic 2 */
 
 .topic2 {
-  height: 33.5844vh;
+  height: 29.5335vh;
   display: flex;
   margin-left: marginLeftRight;
   margin-right: marginLeftRight;
@@ -104,7 +107,7 @@
 }
 
 .topic2_span {
-  margin-top: 4.4884vh;
+  margin-top: 3.947vh;
   margin-left: 7.7083vw;
 }
 
@@ -112,7 +115,7 @@
   font-family: "black";
   color: highlight1;
   font-size: 4.1667vw;
-  margin-bottom: 1.5694vh;
+  margin-bottom: 1.3801vh;
   /* font-size: 5rem; */
 }
 
@@ -127,13 +130,13 @@
 .earthPNG {
   width: 28.85vw;
   height: 28.85vw;
-  margin: 7.0308vh 0 5.2731vh 0;
+  margin: 6.1827vh 0 4.637vh 0;
 }
 
 /* Topic 3 */
 
 .topic3 {
-  height: 35.7188vh;
+  height: 31.4104vh;
   /* height: 1138px; */
 }
 
@@ -148,7 +151,7 @@
 .memberGroup {
   display: flex;
   flex-direction: row;
-  margin: 3.3584vh marginLeftRight 0 marginLeftRight;
+  margin: 2.9534vh marginLeftRight 0 marginLeftRight;
 }
 
 .member {
@@ -166,7 +169,7 @@
   font-family: "bold";
   font-size: 1.3021vw;
   color: highlight2;
-  margin: 1.946vh 0 0.4394vh 0;
+  margin: 1.7113vh 0 0.3864vh 0;
   /* margin: 3.875rem 0 0.875rem 0; */
   /* font-size: 1.5625rem; */
 }
@@ -175,7 +178,7 @@
   font-family: "medium";
   color: highlight3;
   font-size: 1.1979vw;
-  margin: 0 0 0.7533vh 0;
+  margin: 0 0 0.6624vh 0;
   /* margin: 0 0 1.5rem 0; */
   /* font-size: 1.4375rem; */
 }
@@ -194,8 +197,8 @@
 .wrapfooter {
   position: relative;
   min-height: 100%;
-
-  padding-bottom: 337px;
+  padding-bottom: 9.3017vh;
+  /* padding-bottom: 337px; */
 }
 
 .footer {
