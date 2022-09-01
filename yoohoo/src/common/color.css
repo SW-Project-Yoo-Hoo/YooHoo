@@ -10,7 +10,7 @@
 /* 배경 */
 /* background1 < background2 */
 @value background1: #FEFBF1;
-@value background1: #FAF5E7;
+@value background2: #FAF5E7;
 
 /* 글자 */
 /* highlight3 < highlight2 < highlight1 */
@@ -20,6 +20,7 @@
 @value highlight1: #431E10;
 @value highlight2: #3B2F48;
 @value highlight3: #725F59;
+@value shadow: #D6D6D6;
 
 /* 기타 */
 @value iconLightGrey: #E6E6E6;

@@ -1,0 +1,227 @@
+@value marginLeftRight from "../../../common/size.css";
+@value highlight1, highlight2, highlight3, mainGreen, shadow from "../../../common/color.css";
+
+.background {
+  width: 100%;
+  height: 3186px;
+  background-image: url("../../../../public/images/about/background.png");
+}
+
+/* ------------------------ */
+/* 헤더 추가시 삭제 */
+.wrapHeader {
+  min-height: 100%;
+  padding-top: 100px;
+}
+/* ------------------------ */
+
+/* 맨 위 타이틀 */
+
+.title {
+  width: 100%;
+  height: 1.3801vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8d8a9;
+  /* height: 3.125em; */
+}
+
+.content {
+  font-family: "bold";
+  font-size: 1.0417vw;
+  /* font-size: 1.25em; */
+}
+
+/* Topic 1 */
+
+.topic1 {
+  /* height: 925px; */
+  height: 25.5313vh;
+  display: flex;
+  margin: 0 marginLeftRight 0 marginLeftRight;
+}
+
+.topic1_span {
+  width: 22.6vw;
+  margin-top: 2.8982vh;
+}
+
+.topic1_Title {
+  font-family: "black";
+  color: highlight1;
+  font-size: 4.1667vw;
+  text-shadow: 0.1563vw 0.1563vw 0.1042vw shadow;
+  line-height: 5.2083vw;
+  margin-bottom: 0.9108vh;
+  /* text-shadow: 0.1875rem 0.1875rem 0.125rem black; */
+  /* line-height: 6.25rem; */
+  /* font-size: 5rem; */
+}
+
+.topic1_Content {
+  font-family: "medium";
+  color: highlight3;
+  font-size: 1.1458vw;
+  margin: 0 0 0.5796vh 0;
+  /* font-size: 1.375rem; */
+}
+
+.topic1_Content2 {
+  font-family: "medium";
+  color: highlight3;
+  font-size: 1.1458vw;
+  margin: 0 0 2.3185vh 0;
+}
+
+.topic1_Btn {
+  width: 9.21vw;
+  height: 3.28vw;
+  background-color: mainGreen;
+  font-family: "bold";
+  font-size: 0.9375vw;
+  color: white;
+  border-radius: 1.6667vw;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+
+  /* font-size: 1.125rem; */
+  /* border-radius: 2rem; */
+}
+
+.shoppingPNG {
+  width: 28.85vw;
+  height: 28.85vw;
+  margin: 1.3801vh 15.8854vw 0 15.9375vw;
+}
+
+/* Topic 2 */
+
+.topic2 {
+  height: 29.5335vh;
+  display: flex;
+  margin-left: marginLeftRight;
+  margin-right: marginLeftRight;
+  /* height: 1070px; */
+}
+
+.topic2_span {
+  margin-top: 3.947vh;
+  margin-left: 7.7083vw;
+}
+
+.topic2_Title {
+  font-family: "black";
+  color: highlight1;
+  font-size: 4.1667vw;
+  margin-bottom: 1.3801vh;
+  /* font-size: 5rem; */
+}
+
+.topic2_Content {
+  font-family: "regular";
+  color: highlight3;
+  font-size: 1.0417vw;
+  margin: 0;
+  /* font-size: 1.25rem; */
+}
+
+.earthPNG {
+  width: 28.85vw;
+  height: 28.85vw;
+  margin: 6.1827vh 0 4.637vh 0;
+}
+
+/* Topic 3 */
+
+.topic3 {
+  height: 31.4104vh;
+  /* height: 1138px; */
+}
+
+.topic3_Title {
+  margin-left: marginLeftRight;
+  font-family: "black";
+  color: highlight1;
+  font-size: 4.1667vw;
+  /* font-size: 5rem; */
+}
+
+.memberGroup {
+  display: flex;
+  flex-direction: row;
+  margin: 2.9534vh marginLeftRight 0 marginLeftRight;
+}
+
+.member {
+  margin-right: 10.5vw;
+  text-align: center;
+  justify-content: center;
+}
+
+.memberImg {
+  width: 14.58vw;
+  height: 14.58vw;
+}
+
+.memberName {
+  font-family: "bold";
+  font-size: 1.3021vw;
+  color: highlight2;
+  margin: 1.7113vh 0 0.3864vh 0;
+  /* margin: 3.875rem 0 0.875rem 0; */
+  /* font-size: 1.5625rem; */
+}
+
+.memberRole {
+  font-family: "medium";
+  color: highlight3;
+  font-size: 1.1979vw;
+  margin: 0 0 0.6624vh 0;
+  /* margin: 0 0 1.5rem 0; */
+  /* font-size: 1.4375rem; */
+}
+
+.githubIcon,
+.instaIcon {
+  width: 1.875vw;
+  height: 1.875vw;
+  margin-right: 0.7292vw;
+  color: highlight3;
+  /* margin-right: 0.875rem; */
+}
+
+/* Footer */
+
+.wrapfooter {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 9.3017vh;
+  /* padding-bottom: 337px; */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+@font-face {
+  font-family: "bold";
+  src: url("../../../common/font/NotoSansKR-Bold.otf");
+}
+
+@font-face {
+  font-family: "black";
+  src: url("../../../common/font/NotoSansKR-Black.otf");
+}
+
+@font-face {
+  font-family: "medium";
+  src: url("../../../common/font/NotoSansKR-Medium.otf");
+}
+
+@font-face {
+  font-family: "regular";
+  src: url("../../../common/font/NotoSansKR-Regular.otf");
+}
