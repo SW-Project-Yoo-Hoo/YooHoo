@@ -13,53 +13,53 @@ const Home = (props) => {
   return (
     <div>
       <Header />
-      <div className={styles.backGroundIamge}>
-        <div className={styles.container}>
-          {/* part.1 */}
-          <div className={styles.intro}>
-            {/* text,button */}
-            <div className={styles.introTextButton}>
-              {/* text */}
-              <div>
-                {/* mainTitle */}
-                <div>
-                  <span className={styles.introMainBigText}>Resource</span>
-                  <span className={styles.introMainSmallText}>Exchange</span>
-                </div>
-                <div className={styles.introText}>
-                  <span className={styles.introMainSmallTextBottom}>
-                    For The
-                  </span>
-                  <span className={styles.introMainBigText}>Resourceful</span>
-                </div>
 
-                {/* subTitle */}
-                <span className={styles.introSubText}>
-                  Transform how you source, procure, and
-                </span>
-                <span className={styles.introSubText}>
-                  use resources with YooHoo.
-                </span>
+      {/* <div className={styles.backGroundIamge}> */}
+      <div className={styles.container}>
+        {/* part.1 */}
+        <div className={styles.intro}>
+          {/* text,button */}
+          <div className={styles.introTextButton}>
+            {/* text */}
+            <div>
+              {/* mainTitle */}
+              <div>
+                <span className={styles.introMainBigText}>Resource</span>
+                <span className={styles.introMainSmallText}>Exchange</span>
+              </div>
+              <div className={styles.introText}>
+                <span className={styles.introMainSmallTextBottom}>For The</span>
+                <span className={styles.introMainBigText}>Resourceful</span>
               </div>
 
-              {/* button */}
-              <button className={styles.buttonStyle} onClick={pageTransform}>
-                Read More
-              </button>
+              {/* subTitle */}
+              <span className={styles.introSubText}>
+                Transform how you source, procure, and
+              </span>
+              <span className={styles.introSubText}>
+                use resources with YooHoo.
+              </span>
             </div>
 
-            {/* img */}
-            <div className={styles.mainIllu1}>
-              <img
-                className={styles.mainIlluImage}
-                src="/Images/home/computerWoman.svg"
-                alt="illu"
-              ></img>
-            </div>
+            {/* button */}
+            <button className={styles.buttonStyle} onClick={pageTransform}>
+              Read More
+            </button>
           </div>
 
-          {/* part.2 */}
-          <div className={styles.content}>
+          {/* img */}
+          <div className={styles.mainIllu1}>
+            <img
+              className={styles.mainIlluImage}
+              src="/Images/home/computerWoman.svg"
+              alt="illu"
+            ></img>
+          </div>
+        </div>
+        {/* part.2 */}
+        <div className={styles.content}>
+          <div className={styles.backGroundIamgeTop} />
+          <div className={styles.contentMain}>
             {/* shopNow */}
             <div className={styles.shopNow}>
               {/* leftIllu */}
@@ -110,9 +110,12 @@ const Home = (props) => {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* part.3 */}
-          <div className={styles.wrapUp}>
+        {/* part.3 */}
+        <div className={styles.wrapUp}>
+          <div className={styles.backGroundIamgeBottom} />
+          <div className={styles.wrapUpMain}>
             {/* topText */}
             <div className={styles.wrapUpText}>
               <span>text</span>
@@ -132,6 +135,7 @@ const Home = (props) => {
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 
