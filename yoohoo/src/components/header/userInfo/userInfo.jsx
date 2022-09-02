@@ -5,16 +5,22 @@ import { TbBell } from "react-icons/tb";
 
 const UserInfo = (props) => {
   return (
-    <userInfo>
+    <ul className={styles.userInfo}>
       {/* searchIcon */}
-      <MdSearch className={styles.icon} />
+      <li className={styles.liStyle}>
+        <MdSearch className={styles.icon} />
+      </li>
 
       {/* alarmIcon */}
-      <TbBell className={styles.icon} />
+      <li className={styles.liStyle}>
+        <TbBell className={styles.icon} />
+      </li>
 
       {/* profileIcon */}
-      <MdPersonOutline className={styles.icon} />
-    </userInfo>
+      <li className={styles.liStyle}>
+        <MdPersonOutline className={styles.icon} />
+      </li>
+    </ul>
   );
 };
 

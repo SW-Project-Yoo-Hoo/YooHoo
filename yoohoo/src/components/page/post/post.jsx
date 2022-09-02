@@ -7,7 +7,7 @@ const Post = (props) => {
   return (
     <>
       <Header />
-      <h1>post</h1>
+      <div className={styles.backGroundIamge} />
     </>
   );
 };

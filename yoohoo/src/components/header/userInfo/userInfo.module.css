@@ -8,3 +8,11 @@
   color: highlight1;
   padding-left: 1.041666666666667vw;
 }
+
+.userInfo {
+  display: flex;
+  padding-left: 0;
+}
+.liStyle {
+  list-style-type: none;
+}

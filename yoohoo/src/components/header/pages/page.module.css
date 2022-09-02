@@ -18,21 +18,26 @@
 }
 
 .active {
-  font-size: 18px;
+  font-size: 0.9375vw;
   color: mainGreen;
   font-family: "Medium";
   text-decoration: none;
 }
 
 .inactive:hover {
-  font-size: 18px;
+  font-size: 0.9375vw;
   color: mainGreen;
   font-family: "Medium";
 }
 
 .inactive {
-  font-size: 0.9375vw;
+  /* font-size: 0.9375vw; */
+  font-size: clamp(0.3125vw, 0.9375vw, 60vw);
   color: highlight1;
   font-family: "Medium";
   text-decoration: none;
+  -webkit-text-size-adjust: none; /* 크롬, 사파리, 오페라(신) */
+  -ms-text-size-adjust: none; /* IE */
+  -moz-text-size-adjust: none; /* 파이어폭스 */
+  -o-text-size-adjust: none; /* 오페라(구)*/
 }

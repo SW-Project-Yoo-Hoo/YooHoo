@@ -16,10 +16,22 @@
   src: url("../../../common/font/NotoSansKR-Regular.otf");
 }
 
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows:
+    calc(100vmax * 19.39% / 100)
+    calc(100vmax * 49.71% / 100)
+    calc(100vmax * 30.9% / 100);
+}
+
 .backGroundIamge {
   background-image: url("../../../../public/images/home/background.png");
   width: 100%;
-  height: 4080px;
+  padding-bottom: 154.114583333333333vw;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* part.1 */
@@ -27,30 +39,20 @@
   display: flex;
   margin-right: 9.739vw;
   margin-left: marginLeftRight;
-  /* padding-top: 8.928vh; */
-  /* padding-top: 12.857vh; */
-  /* top: -6.1875rem; */
-  position: relative;
-  /* top: -5.208333333333333vw; */
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: flex-start;
+  position: relative;
+  top: -5.208333333333333vw;
+  border: 0.1px solid;
 }
 
 .introText {
-  padding-bottom: 2.6785vh;
+  padding-bottom: 1.5625vw;
 }
 
 .introTextButton {
   position: relative;
-  top: 5.208333333333333vw;
-}
-
-.mainTitle {
-  width: 31.25vw;
-}
-
-.subTitle {
-  width: 19.895833333333333vw;
+  top: 12.5vw; /*헤더 + 여백 */
 }
 
 .introMainBigText {
@@ -63,7 +65,6 @@
 .introMainSmallText {
   color: highlight1;
   font-family: "Medium";
-  /* font-size: 2.4375rem; */
   font-size: 2.03125vw;
   text-shadow: 0.1875rem 0.1875rem 0.125rem shadow;
   padding-left: 1.354vw;
@@ -99,21 +100,26 @@
 }
 .mainIllu1 {
   position: relative;
-  /* top: -6.1875rem; */
-
-  /*right: 9.739vw; */
+  z-index: 0;
 }
 .mainIlluImage {
   width: 41.458vw;
   height: 41.458vw;
+  z-index: -1;
 }
 
 /* part.2 */
 .content {
-  /* display: flex; */
   border: 0.1px solid;
   margin-right: marginLeftRight;
   margin-left: marginLeftRight;
+  /* height: 100vh;
+  width: 100vw; */
+  display: grid;
+  grid-template-rows:
+    calc(100vmax * 33.28% / 100)
+    calc(100vmax * 21.75% / 100)
+    calc(100vmax * 55.03% / 100);
 }
 
 /* part.2 shopNow */
@@ -124,6 +130,8 @@
 }
 
 .shopNowLeft {
+  width: 35.15625vw;
+  height: 35.15625vw;
 }
 
 .shopNowRight {
@@ -140,6 +148,8 @@
 }
 
 .postNowRight {
+  width: 29.6875vw;
+  height: 29.6875vw;
 }
 
 /* part.2 profileNow */
@@ -150,6 +160,8 @@
 }
 
 .profileNowLeft {
+  width: 26.041666666666667vw;
+  height: 26.041666666666667vw;
 }
 
 .profileNowRight {
@@ -168,6 +180,8 @@
 
 .wrapUpImg {
   border: 0.1px solid;
+  width: 46.09375vw;
+  height: 46.09375vw;
 }
 
 /*
