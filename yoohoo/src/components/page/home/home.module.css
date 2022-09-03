@@ -37,9 +37,9 @@
 /* part.1 */
 .intro {
   display: flex;
-  padding-right: 9.739vw;
-  padding-left: marginLeftRight;
-  justify-parttwo: space-between;
+  margin-right: 9.739vw;
+  margin-left: marginLeftRight;
+  justify-content: space-between;
   align-items: flex-start;
   position: relative;
   top: -5.208333333333333vw;

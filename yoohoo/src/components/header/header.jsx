@@ -8,18 +8,16 @@ const Header = (props) => {
   return (
     <header className={styles.header}>
       {/* left component : logo */}
-      <div className={styles.logo}>
-        <Link to="/" exact="true">
-          <img
-            className={styles.logoStyle}
-            src="/Images/header/logo.png"
-            alt="logo"
-          ></img>
-        </Link>
-      </div>
+      <Link to="/" exact="true">
+        <img
+          className={styles.logoStyle}
+          src="/Images/header/logo.png"
+          alt="logo"
+        ></img>
+      </Link>
 
       {/* rigth component : pages, search, alram, profile */}
-      <div className={styles.rightComponent}>
+      <div className={styles.headerComponent}>
         <div>
           <Page />
         </div>

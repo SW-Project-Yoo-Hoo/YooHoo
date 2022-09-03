@@ -7,7 +7,6 @@
   border-color: line;
   display: flex;
   justify-content: space-between;
-  /* height: 6.1875rem; */
   height: 5.208333333333333vw;
   width: 100%;
   align-items: center;
@@ -15,16 +14,12 @@
   z-index: 1;
 }
 
-.logo {
-  margin-left: marginLeftRight;
-}
-
 .logoStyle {
-  width: 5.2083vw;
-  /* height: 2.678vh; */
-  height: 1.5625vw;
+  margin-left: marginLeftRight;
+  width: 100px;
+  height: 30px;
 }
-.rightComponent {
+.headerComponent {
   margin-right: marginLeftRight;
   display: flex;
   align-items: center;

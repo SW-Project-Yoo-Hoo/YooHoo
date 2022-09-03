@@ -1,10 +1,10 @@
 @value highlight1 from '../../../common/color.css';
 
 .icon {
-  /* width: 28px;
-  height: 28px; */
-  width: 1.458333333333333vw;
-  height: 1.458333333333333vw;
+  width: 28px;
+  height: 28px;
+  /* width: 1.458333333333333vw;
+  height: 1.458333333333333vw; */
   color: highlight1;
   padding-left: 1.041666666666667vw;
 }

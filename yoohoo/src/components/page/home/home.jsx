@@ -23,10 +23,9 @@ const Home = (props) => {
               <div>
                 {/* mainTitle */}
                 <div>
-                  <div>
-                    <span className={styles.introMainBigText}>Resource</span>
-                    <span className={styles.introMainSmallText}>Exchange</span>
-                  </div>
+                  <span className={styles.introMainBigText}>Resource</span>
+                  <span className={styles.introMainSmallText}>Exchange</span>
+
                   <div className={styles.introText}>
                     <span className={styles.introMainSmallTextBottom}>
                       For The
@@ -60,7 +59,7 @@ const Home = (props) => {
                 className={styles.introImage}
                 src="/Images/home/computerWoman.svg"
                 alt="illu"
-              ></img>
+              />
             </div>
           </div>
 

@@ -1,61 +1,32 @@
 import React from "react";
 import styles from "./page.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-//pageComponent
-const PageComponent = (props) => {
+const Page = () => {
   return (
-    <ul className={styles.page}>
+    <ul className={styles.container}>
       <li className={styles.pageStyle}>
-        <NavLink
-          to="/Home"
-          // className={({ isActive }) =>
-          //   isActive ? styles.active : styles.inactive
-          // }
-          className={styles.inactive}
-        >
+        <Link to="/Home" className={styles.active}>
           HOME
-        </NavLink>
+        </Link>
       </li>
       <li className={styles.pageStyle}>
-        <Link
-          to="/Shop"
-          // className={({ isActive }) =>
-          //   isActive ? styles.active : styles.inactive
-          // }
-          className={styles.inactive}
-        >
+        <Link to="/Shop" className={styles.active}>
           SHOP
         </Link>
       </li>
       <li className={styles.pageStyle}>
-        <Link
-          to="/Post"
-          // className={({ isActive }) =>
-          //   isActive ? styles.active : styles.inactive
-          // }
-          className={styles.inactive}
-        >
+        <Link to="/Post" className={styles.active}>
           POST
         </Link>
       </li>
       <li className={styles.pageStyle}>
-        <Link
-          to="/About"
-          // className={({ isActive }) =>
-          //   isActive ? styles.active : styles.inactive
-          // }
-          className={styles.inactive}
-        >
+        <Link to="/About" className={styles.active}>
           ABOUT
         </Link>
       </li>
     </ul>
   );
-};
-
-const Page = () => {
-  return <PageComponent />;
 };
 
 export default Page;
