@@ -19,7 +19,6 @@
 .backGroundImage {
   background-image: url("../../../../public/images/home/background.png");
   width: 100%;
-  /* padding-bottom: 154.114583333333333vw; */
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 212.5vw;
@@ -182,10 +181,3 @@
   width: 46.09375vw;
   height: 46.09375vw;
 }
-
-/*
-viewport 높이 : 1121px
-1vh = 102.1px
-사진 크기 : 4080
-height: 399.6vh -> height : 4080px랑 같음
-*/
