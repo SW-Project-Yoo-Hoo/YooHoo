@@ -13,80 +13,86 @@ const Home = (props) => {
   return (
     <div>
       <Header />
-
-      {/* <div className={styles.backGroundIamge}> */}
-      <div className={styles.container}>
-        {/* part.1 */}
-        <div className={styles.intro}>
-          {/* text,button */}
-          <div className={styles.introTextButton}>
-            {/* text */}
-            <div>
-              {/* mainTitle */}
+      <div className={styles.backGroundImage}>
+        <div className={styles.container}>
+          {/* part.1 */}
+          <div className={styles.intro}>
+            {/* text,button */}
+            <div className={styles.introTextButton}>
+              {/* text */}
               <div>
-                <span className={styles.introMainBigText}>Resource</span>
-                <span className={styles.introMainSmallText}>Exchange</span>
-              </div>
-              <div className={styles.introText}>
-                <span className={styles.introMainSmallTextBottom}>For The</span>
-                <span className={styles.introMainBigText}>Resourceful</span>
+                {/* mainTitle */}
+                <div>
+                  <div>
+                    <span className={styles.introMainBigText}>Resource</span>
+                    <span className={styles.introMainSmallText}>Exchange</span>
+                  </div>
+                  <div className={styles.introText}>
+                    <span className={styles.introMainSmallTextBottom}>
+                      For The
+                    </span>
+                    <span className={styles.introMainBigText}>Resourceful</span>
+                  </div>
+                </div>
+
+                {/* subTitle */}
+                <div>
+                  <span className={styles.introSubText}>
+                    Transform how you source, procure, and
+                  </span>
+                  <span className={styles.introSubText}>
+                    use resources with YooHoo.
+                  </span>
+                </div>
               </div>
 
-              {/* subTitle */}
-              <span className={styles.introSubText}>
-                Transform how you source, procure, and
-              </span>
-              <span className={styles.introSubText}>
-                use resources with YooHoo.
-              </span>
+              {/* button */}
+              <div>
+                <button className={styles.buttonStyle} onClick={pageTransform}>
+                  Read More
+                </button>
+              </div>
             </div>
 
-            {/* button */}
-            <button className={styles.buttonStyle} onClick={pageTransform}>
-              Read More
-            </button>
+            {/* img */}
+            <div>
+              <img
+                className={styles.introImage}
+                src="/Images/home/computerWoman.svg"
+                alt="illu"
+              ></img>
+            </div>
           </div>
 
-          {/* img */}
-          <div className={styles.mainIllu1}>
-            <img
-              className={styles.mainIlluImage}
-              src="/Images/home/computerWoman.svg"
-              alt="illu"
-            ></img>
-          </div>
-        </div>
-        {/* part.2 */}
-        <div className={styles.content}>
-          <div className={styles.backGroundIamgeTop} />
-          <div className={styles.contentMain}>
+          {/* part.2 */}
+          <div className={styles.partTwo}>
             {/* shopNow */}
             <div className={styles.shopNow}>
-              {/* leftIllu */}
+              {/* Img */}
               <div>
                 <img
-                  className={styles.shopNowLeft}
+                  className={styles.shopNowImg}
                   src="/Images/home/resourceVisibility.svg"
                   alt="illu"
                 ></img>
               </div>
 
-              {/* rightText */}
-              <div className={styles.shopNowRight}>
+              {/* Text */}
+              <div className={styles.shopNowText}>
                 <span>2text</span>
               </div>
             </div>
 
             {/* postNow */}
             <div className={styles.postNow}>
-              {/* leftText */}
-              <div className={styles.postNowLeft}>
+              {/* Text */}
+              <div className={styles.postNowText}>
                 <span>2text</span>
               </div>
-              {/* rightIllu */}
+              {/* Img */}
               <div>
                 <img
-                  className={styles.postNowRight}
+                  className={styles.postNowImg}
                   src="/Images/home/resourceShare.svg"
                   alt="illu"
                 ></img>
@@ -95,29 +101,26 @@ const Home = (props) => {
 
             {/* profiletNow */}
             <div className={styles.profileNow}>
-              {/* leftIllu */}
+              {/* img */}
               <div>
                 <img
-                  className={styles.profileNowLeft}
+                  className={styles.profileNowImg}
                   src="/Images/home/profile.svg"
                   alt="illu"
                 ></img>
               </div>
 
-              {/* rightText */}
-              <div className={styles.profileNowRight}>
+              {/* Text */}
+              <div className={styles.profileNowText}>
                 <span>2text</span>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* part.3 */}
-        <div className={styles.wrapUp}>
-          <div className={styles.backGroundIamgeBottom} />
-          <div className={styles.wrapUpMain}>
+          {/* part.3 */}
+          <div className={styles.partThree}>
             {/* topText */}
-            <div className={styles.wrapUpText}>
+            <div className={styles.partThreeText}>
               <span>text</span>
               <br />
               <span>text</span>
@@ -126,7 +129,7 @@ const Home = (props) => {
             {/* bottomIllu */}
             <div>
               <img
-                className={styles.wrapUpImg}
+                className={styles.partThreeImg}
                 src="/Images/home/earth.svg"
                 alt="illu"
               ></img>
@@ -135,7 +138,6 @@ const Home = (props) => {
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 
