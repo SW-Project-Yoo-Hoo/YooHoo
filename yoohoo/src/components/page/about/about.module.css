@@ -58,14 +58,11 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f8d8a9;
-  /* height: 1.3801vh; */
-  /* height: 3.125em; */
 }
 
 .content {
   font-family: "bold";
-  font-size: 14px;
-  /* font-size: 1.25em; */
+  font-size: 0.9722vw;
 }
 
 .continer {
@@ -96,37 +93,36 @@ body {
   font-family: "black";
   color: highlight1;
 
-  font-size: 60px;
-  text-shadow: 3px 3px 2px shadow;
-  line-height: 74px;
+  font-size: 4.1667vw;
+  text-shadow: 0.2083vw 0.2083vw 0.1389vw shadow;
+  line-height: 5.1389vw;
 }
 
 .topic1_Content {
   margin: 1.944vw 0 1.3194vw 0;
   font-family: "medium";
   color: highlight3;
-  font-size: 15px;
+  font-size: 1.0417vw;
 }
 
 .topic1_Content2 {
   margin: 0 0 4.8611vw 0;
   font-family: "medium";
   color: highlight3;
-  font-size: 15px;
+  font-size: 1.0417vw;
 }
 
 .topic1_Btn {
-  width: 9.2361vw;
+  width: 9.3055vw;
   height: 3.2638vw;
   background-color: mainGreen;
+  font-size: 0.90277vw;
   font-family: "bold";
   color: white;
   border: 0;
   outline: 0;
   cursor: pointer;
-
-  font-size: 12px;
-  border-radius: 1.667vw;
+  border-radius: 32px;
 }
 
 .shoppingPNG {
@@ -141,17 +137,18 @@ body {
   width: calc(100vw - (marginLeftRight * 2));
   display: flex;
   margin: 0 marginLeftRight 0 marginLeftRight;
+  place-items: center;
 }
 
 .topic2_span {
-  margin-top: 10.416vw;
+  margin-top: 0;
   margin-left: 7.7083vw;
 }
 
 .topic2_Title {
   font-family: "black";
   color: highlight1;
-  font-size: 60px;
+  font-size: 4.1667vw;
 }
 
 .content_Group {
@@ -163,13 +160,13 @@ body {
   margin: 0;
   font-family: "regular";
   color: highlight3;
-  font-size: 14px;
+  font-size: 0.9722vw;
 }
 
 .earthPNG {
   width: 33.888vw;
   height: 35.416vw;
-  margin: 13.611vw 0 6.458vw 0;
+  margin: 13.611vw 0 0 0;
 }
 
 /* Topic 3 */
@@ -185,7 +182,7 @@ body {
   margin-left: marginLeftRight;
   font-family: "black";
   color: highlight1;
-  font-size: 58px;
+  font-size: 4.0278vw;
 }
 
 .memberGroup {
@@ -206,14 +203,14 @@ body {
   font-family: "bold";
   color: highlight2;
   margin: 3.2638vw 0 0.9027vw 0;
-  font-size: 17px;
+  font-size: 1.1806vw;
 }
 
 .memberRole {
   font-family: "medium";
   color: highlight3;
   margin: 0 0 1.388vw 0;
-  font-size: 16px;
+  font-size: 1.1111vw;
 }
 
 .githubIcon,
@@ -277,11 +274,9 @@ body {
   }
 
   .topic1_Btn {
-    width: 177px;
+    width: 179px;
     height: 63px;
-
     font-size: 18px;
-    border-radius: 1.66vw;
   }
 
   .shoppingPNG {
@@ -291,8 +286,8 @@ body {
   }
 
   /* topic2 */
+
   .topic2_span {
-    margin-top: 0;
     margin-left: 148px;
   }
 
@@ -308,7 +303,7 @@ body {
   .earthPNG {
     width: 650px;
     height: 678px;
-    margin: 0;
+    margin: 260px 0 0 0;
   }
 
   /* topic3 */
