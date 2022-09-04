@@ -5,7 +5,7 @@ import styles from "./notice.module.css";
 
 const Notice = (props) => {
   return (
-    <div>
+    <div className={styles.container}>
       <ul className={styles.list}>
         <Link to="/faq">
           <li className={styles.item}>FAQ</li>
