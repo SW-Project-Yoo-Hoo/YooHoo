@@ -21,7 +21,7 @@
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 212.5vw;
+  min-height: 212.4652vw;
 }
 
 .container {
@@ -29,90 +29,87 @@
   width: 100vw;
   display: grid;
   grid-template-rows:
-    calc(100vmax * 19.39% / 100)
-    calc(100vmax * 49.71% / 100)
-    calc(100vmax * 30.9% / 100);
+    calc(100vmax * 16.34% / 100)
+    calc(100vmax * 52.74% / 100)
+    calc(100vmax * 30.92% / 100);
 }
 
 /* part.1 */
 .intro {
   display: flex;
-  margin-right: 9.739vw;
+  margin-right: 9.5833vw;
   margin-left: marginLeftRight;
   justify-content: space-between;
   align-items: flex-start;
-  position: relative;
-  top: -5.208333333333333vw;
-  border: 0.1px solid;
 }
 
 .introText {
-  padding-bottom: 1.5625vw;
+  margin-bottom: 1.8055vw;
+  margin-right: 1.7361vw;
 }
 
 .introTextButton {
-  position: relative;
-  top: 5.5vw;
-  /*헤더 + 여백 */
+  padding-top: 7.5vw;
 }
 
 .introMainBigText {
   color: highlight1;
   font-family: "bold";
-  font-size: 52px;
-  text-shadow: 0.15625vw 0.15625vw 0.104166666666667vw shadow;
+  font-size: 3.6111vw;
+  text-shadow: 0.1562vw 0.1562vw 0.1041vw shadow;
 }
 
 .introMainSmallText {
   color: highlight1;
   font-family: "Medium";
-  font-size: 27px;
-  text-shadow: 0.15625vw 0.15625vw 0.104166666666667vw shadow;
-  padding-left: 1.354vw;
+  font-size: 1.9444vw;
+  text-shadow: 0.1562vw 0.1562vw 0.1041vw shadow;
+  padding-left: 1.3888vw;
 }
 
 .introMainSmallTextBottom {
   color: highlight1;
   font-family: "Medium";
-  font-size: 2.03125vw;
-  text-shadow: 0.15625vw 0.15625vw 0.104166666666667vw shadow;
-  padding-right: 1.354vw;
+  font-size: 1.9444vw;
+  text-shadow: 0.1562vw 0.1562vw 0.1041vw shadow;
+  padding-right: 1.3888vw;
 }
 
 .introSubText {
   display: block;
   color: highlight1;
   font-family: "Regular";
-  font-size: 13px;
+  font-size: 0.9722vw;
 }
 
 .buttonStyle {
   font-family: "Bold";
-  font-size: 12px;
+  font-size: 0.90277vw;
   color: white;
   background-color: mainGreen;
-  padding-top: 0.9375vw;
-  padding-bottom: 0.9375vw;
-  padding-left: 2.1875vw;
-  padding-right: 2.1875vw;
-  border-radius: 1.666666666666667vw;
+  width: 9.3055vw;
+  height: 3.2638vw;
+  border-radius: 32px;
   border-style: none;
-  margin-top: 4.6875vw;
+  margin-top: 5.1388vw;
 }
 
 .introImage {
-  width: 31.770833333333333vw;
-  height: 31.770833333333333vw;
-  z-index: -1;
+  width: 41.4583vw;
+  height: 41.4583vw;
+  z-index: 0;
+  position: relative;
+  top: -75px;
 }
 
 /* part.2 */
 .partTwo {
   border: 0.1px solid;
   position: relative;
-  top: -5.208333333333333vw;
+  /* top: -5.208333333333333vw; */
   margin-right: marginLeftRight;
   margin-left: marginLeftRight;
+  margin-bottom: 19.7916vw;
 }
 
 /* part.2 shopNow */
@@ -124,9 +121,9 @@
 }
 
 .shopNowImg {
-  width: 35.15625vw;
-  height: 35.15625vw;
-  margin-right: 2.239583333333333vw;
+  width: 35.1388vw;
+  height: 35.1388vw;
+  margin-right: 2.2vw;
 }
 
 .shopNowText {
@@ -145,9 +142,9 @@
 }
 
 .postNowImg {
-  width: 29.6875vw;
-  height: 29.6875vw;
-  margin-left: 6.40625vw;
+  width: 29.7222vw;
+  height: 29.7222vw;
+  margin-left: 9.8611vw;
 }
 
 /* part.2 profileNow */
@@ -159,9 +156,9 @@
 }
 
 .profileNowImg {
-  margin-right: 6.71875vw;
-  width: 26.041666666666667vw;
-  height: 26.041666666666667vw;
+  margin-right: 6.7361vw;
+  width: 27.6388vw;
+  height: 27.6388vw;
 }
 
 .profileNowText {
@@ -170,9 +167,9 @@
 /* part.3 */
 .partThree {
   border: 0.1px solid;
-  position: relative;
-  top: -5.208333333333333vw;
-  padding-bottom: 9.427083333333333vw;
+  /* position: relative; */
+  /* top: -5.208333333333333vw; */
+  padding-bottom: 9.427vw;
   margin-right: marginLeftRight;
   margin-left: marginLeftRight;
 }
@@ -183,8 +180,8 @@
 
 .partThreeImg {
   border: 0.1px solid;
-  width: 46.09375vw;
-  height: 46.09375vw;
+  width: 46.0937vw;
+  height: 46.0937vw;
 }
 
 .partThreemainTitle {

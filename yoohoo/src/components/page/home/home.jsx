@@ -54,13 +54,11 @@ const Home = (props) => {
             </div>
 
             {/* img */}
-            <div>
-              <img
-                className={styles.introImage}
-                src="/Images/home/computerWoman.svg"
-                alt="illu"
-              />
-            </div>
+            <img
+              className={styles.introImage}
+              src="/Images/home/computerWoman.svg"
+              alt="illu"
+            />
           </div>
 
           {/* part.2 */}
@@ -76,7 +74,9 @@ const Home = (props) => {
 
               {/* Text */}
               <div className={styles.shopNowText}>
-                <span>2text</span>
+                <p>title</p>
+                <p>sub title</p>
+                <div>shopNow</div>
               </div>
             </div>
 
