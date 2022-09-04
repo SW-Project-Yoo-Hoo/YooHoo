@@ -235,6 +235,10 @@ body {
     height: 50px;
   }
 
+  .content {
+    font-size: 20px;
+  }
+
   .topic2 {
     place-items: center;
   }
