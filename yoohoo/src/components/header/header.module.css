@@ -7,17 +7,19 @@
   border-color: line;
   display: flex;
   justify-content: space-between;
-  height: 5.208333333333333vw;
+  /* height: 5.208333333333333vw; */
+  height: 75px;
   width: 100%;
   align-items: center;
+  align-content: center;
   position: relative;
   z-index: 1;
 }
 
 .logoStyle {
   margin-left: marginLeftRight;
-  width: 100px;
-  height: 30px;
+  width: 76px;
+  height: 23px;
 }
 .headerComponent {
   margin-right: marginLeftRight;

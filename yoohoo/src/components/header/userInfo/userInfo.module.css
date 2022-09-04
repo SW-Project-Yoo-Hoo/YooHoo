@@ -1,8 +1,8 @@
 @value highlight1 from '../../../common/color.css';
 
 .icon {
-  width: 28px;
-  height: 28px;
+  width: 23px;
+  height: 23px;
   /* width: 1.458333333333333vw;
   height: 1.458333333333333vw; */
   color: highlight1;

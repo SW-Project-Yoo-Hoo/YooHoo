@@ -52,21 +52,22 @@
 
 .introTextButton {
   position: relative;
-  top: 12.5vw; /*헤더 + 여백 */
+  top: 5.5vw;
+  /*헤더 + 여백 */
 }
 
 .introMainBigText {
   color: highlight1;
   font-family: "bold";
-  font-size: 3.645833333333333vw;
-  text-shadow: 0.1875rem 0.1875rem 0.125rem shadow;
+  font-size: 52px;
+  text-shadow: 0.15625vw 0.15625vw 0.104166666666667vw shadow;
 }
 
 .introMainSmallText {
   color: highlight1;
   font-family: "Medium";
-  font-size: 2.03125vw;
-  text-shadow: 0.1875rem 0.1875rem 0.125rem shadow;
+  font-size: 27px;
+  text-shadow: 0.15625vw 0.15625vw 0.104166666666667vw shadow;
   padding-left: 1.354vw;
 }
 
@@ -74,7 +75,7 @@
   color: highlight1;
   font-family: "Medium";
   font-size: 2.03125vw;
-  text-shadow: 0.1875rem 0.1875rem 0.125rem shadow;
+  text-shadow: 0.15625vw 0.15625vw 0.104166666666667vw shadow;
   padding-right: 1.354vw;
 }
 
@@ -82,26 +83,26 @@
   display: block;
   color: highlight1;
   font-family: "Regular";
-  font-size: 1.041666666666667vw;
+  font-size: 13px;
 }
 
 .buttonStyle {
   font-family: "Bold";
-  font-size: 0.9375vw;
+  font-size: 12px;
   color: white;
   background-color: mainGreen;
   padding-top: 0.9375vw;
   padding-bottom: 0.9375vw;
   padding-left: 2.1875vw;
   padding-right: 2.1875vw;
-  border-radius: 32px;
+  border-radius: 1.666666666666667vw;
   border-style: none;
   margin-top: 4.6875vw;
 }
 
 .introImage {
-  width: 41.458vw;
-  height: 41.458vw;
+  width: 31.770833333333333vw;
+  height: 31.770833333333333vw;
   z-index: -1;
 }
 
@@ -125,6 +126,7 @@
 .shopNowImg {
   width: 35.15625vw;
   height: 35.15625vw;
+  margin-right: 2.239583333333333vw;
 }
 
 .shopNowText {
@@ -136,6 +138,7 @@
   width: 100%;
   border: 0.1px solid;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .postNowText {
@@ -144,6 +147,7 @@
 .postNowImg {
   width: 29.6875vw;
   height: 29.6875vw;
+  margin-left: 6.40625vw;
 }
 
 /* part.2 profileNow */
@@ -155,6 +159,7 @@
 }
 
 .profileNowImg {
+  margin-right: 6.71875vw;
   width: 26.041666666666667vw;
   height: 26.041666666666667vw;
 }
@@ -180,4 +185,8 @@
   border: 0.1px solid;
   width: 46.09375vw;
   height: 46.09375vw;
+}
+
+.partThreemainTitle {
+  font-size: 36px;
 }

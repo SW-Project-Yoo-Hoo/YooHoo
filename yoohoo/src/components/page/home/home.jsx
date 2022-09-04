@@ -68,13 +68,11 @@ const Home = (props) => {
             {/* shopNow */}
             <div className={styles.shopNow}>
               {/* Img */}
-              <div>
-                <img
-                  className={styles.shopNowImg}
-                  src="/Images/home/resourceVisibility.svg"
-                  alt="illu"
-                ></img>
-              </div>
+              <img
+                className={styles.shopNowImg}
+                src="/Images/home/resourceVisibility.svg"
+                alt="illu"
+              ></img>
 
               {/* Text */}
               <div className={styles.shopNowText}>
@@ -89,25 +87,22 @@ const Home = (props) => {
                 <span>2text</span>
               </div>
               {/* Img */}
-              <div>
-                <img
-                  className={styles.postNowImg}
-                  src="/Images/home/resourceShare.svg"
-                  alt="illu"
-                ></img>
-              </div>
+
+              <img
+                className={styles.postNowImg}
+                src="/Images/home/resourceShare.svg"
+                alt="illu"
+              ></img>
             </div>
 
             {/* profiletNow */}
             <div className={styles.profileNow}>
               {/* img */}
-              <div>
-                <img
-                  className={styles.profileNowImg}
-                  src="/Images/home/profile.svg"
-                  alt="illu"
-                ></img>
-              </div>
+              <img
+                className={styles.profileNowImg}
+                src="/Images/home/profile.svg"
+                alt="illu"
+              ></img>
 
               {/* Text */}
               <div className={styles.profileNowText}>
@@ -118,14 +113,24 @@ const Home = (props) => {
 
           {/* part.3 */}
           <div className={styles.partThree}>
-            {/* topText */}
+            {/* Text */}
             <div className={styles.partThreeText}>
-              <span>text</span>
-              <br />
-              <span>text</span>
+              <h1 className={styles.partThreemainTitle}>
+                Connect to a larger world of resources
+              </h1>
+
+              <div>
+                <span>
+                  재사용 및 유휴 자원 공유를 통해 자원의 지속적인 순환을
+                  촉진합니다.
+                </span>
+                <span>
+                  방치 혹은 폐기되는 유휴 자원이 없는 미래를 만들어갑니다.
+                </span>
+              </div>
             </div>
 
-            {/* bottomIllu */}
+            {/* Img */}
             <div>
               <img
                 className={styles.partThreeImg}

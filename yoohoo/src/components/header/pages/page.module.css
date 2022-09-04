@@ -18,13 +18,13 @@
 }
 
 .active:hover {
-  font-size: 18px;
+  font-size: 16px;
   color: mainGreen;
   font-family: "Medium";
 }
 
 .active {
-  font-size: 18px;
+  font-size: 16px;
   color: highlight1;
   font-family: "Medium";
   text-decoration: none;
