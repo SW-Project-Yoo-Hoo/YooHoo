@@ -1,61 +1,6 @@
 @value marginLeftRight from "../../common/size.css";
 @value background2, highlight1, highlight3, line from "../../common/color.css";
 
-.footerLine {
-  width: 100%;
-  background-color: line;
-  margin: 0;
-}
-
-.footer {
-  display: grid;
-  grid-template-columns: 42.7vw 31vw 26.3vw;
-  background-color: background2;
-  width: 100%;
-  height: 260px;
-  color: highlight1;
-  padding-top: 2.5rem;
-  padding-bottom: 2.3125em;
-}
-
-.notice {
-  margin-left: marginLeftRight;
-}
-
-.noticeTitle {
-  color: highlight1;
-  font-size: 1.125em;
-  font-family: "Medium";
-}
-
-.logo {
-  margin-top: 16.8125rem;
-  color: highlight3;
-  font-size: 1em;
-  font-family: "Regular";
-}
-
-.infoTitle {
-  margin: 0 0 0 3.3125rem;
-  font-size: 1.125em;
-  font-family: "Medium";
-}
-
-.dept {
-  margin-top: 2.375em;
-  font-size: 1em;
-  font-family: "Regular";
-}
-
-.about {
-  margin-right: marginLeftRight;
-}
-
-.aboutTitle {
-  font-size: 1.125em;
-  font-family: "Medium";
-}
-
 @font-face {
   font-family: "Medium";
   src: url("../../common/font/NotoSansKR-Medium.otf");
@@ -64,4 +9,98 @@
 @font-face {
   font-family: "Regular";
   src: url("../../common/font/NotoSansKR-Regular.otf");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  height: 254px;
+  background-color: background2;
+}
+
+.footerLine {
+  width: 100%;
+  background-color: line;
+  margin: 0;
+}
+
+.footer {
+  width: calc(100vw - (marginLeftRight * 2));
+  height: 225px;
+  padding-top: 30px;
+  margin: 0 marginLeftRight 0 marginLeftRight;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: highlight1;
+}
+
+.notice {
+  position: relative;
+}
+
+.noticeTitle,
+.infoTitle,
+.aboutTitle {
+  color: highlight1;
+  font-size: 16px;
+  font-family: "Medium";
+}
+
+.infoTitle {
+  text-align: center;
+  margin: 0;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  color: highlight3;
+  font-size: 14px;
+  font-family: "Regular";
+  margin: 0;
+}
+
+.dept {
+  margin-top: 29px;
+  font-size: 14px;
+  font-family: "Regular";
+}
+
+/* 그 이상 */
+@media (min-width: 1920px) {
+  .container {
+    height: 337px;
+  }
+
+  .footer {
+    height: 300px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .noticeTitle,
+  .infoTitle,
+  .aboutTitle {
+    font-size: 20px;
+  }
+
+  .infoTitle {
+    text-align: center;
+    margin: 0;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .dept {
+    margin-top: 34px;
+    font-size: 18px;
+  }
 }
