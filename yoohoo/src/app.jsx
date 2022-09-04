@@ -5,6 +5,8 @@ import About from "./components/page/about/about";
 import Home from "./components/page/home/home";
 import Shop from "./components/page/shop/shop";
 import Post from "./components/page/post/post";
+import Alarm from "./components/user/alarm/alarm";
+import Login from "./components/user/login/login";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/Shop" element={<Shop />} />
         <Route path="/Post" element={<Post />} />
         <Route path="/About" element={<About />} />
+        <Route path="/Alarm" element={<Alarm />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

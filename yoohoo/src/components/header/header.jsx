@@ -8,7 +8,7 @@ const Header = (props) => {
   return (
     <header className={styles.header}>
       {/* left component : logo */}
-      <Link to="/" exact="true">
+      <Link to="/">
         <img
           className={styles.logoStyle}
           src="/Images/header/logo.png"

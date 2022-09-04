@@ -1,5 +1,16 @@
 import React from "react";
+import styles from "./login.module.css";
+import { Link, NavLink } from "react-router-dom";
+import Header from "../../header/header";
 
-const Login = (props) => <h1>Login</h1>;
+const Post = (props) => {
+  return (
+    <>
+      <Header />
+      <div className={styles.backGroundIamge} alt="img" />
+      <h1>로그인</h1>
+    </>
+  );
+};
 
-export default Login;
+export default Post;
