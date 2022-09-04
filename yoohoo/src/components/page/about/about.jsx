@@ -14,15 +14,15 @@ const About = (props) => {
 
   return (
     <>
+      <div className={styles.wrapHeader}></div>
+
+      {/* Title */}
+      <div className={styles.title}>
+        <span className={styles.content}>LET'S TALK ABOUT US</span>
+      </div>
+
       <div className={styles.background}>
-        <Header />
-
         <div className={styles.continer}>
-          {/* Title */}
-          <div className={styles.title}>
-            <span className={styles.content}>LET'S TALK ABOUT US</span>
-          </div>
-
           {/* Topic1 */}
           <div className={styles.topic1}>
             <div className={styles.topic1_span}>
