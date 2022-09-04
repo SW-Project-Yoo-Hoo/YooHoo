@@ -18,12 +18,8 @@ const Header = (props) => {
 
       {/* rigth component : pages, search, alram, profile */}
       <div className={styles.headerComponent}>
-        <div>
-          <Page />
-        </div>
-        <div>
-          <UserInfo />
-        </div>
+        <Page />
+        <UserInfo />
       </div>
     </header>
   );
