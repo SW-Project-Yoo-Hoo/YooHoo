@@ -152,23 +152,28 @@ const Home = (props) => {
           <div className={styles.partThree}>
             {/* Text */}
             <div className={styles.partThreeText}>
-              <h1 className={styles.partThreemainTitle}>
-                Connect to a larger world of resources
-              </h1>
+              <div className={styles.partThreeMainTitle}>
+                <span>Connect to a larger world of resources</span>
+              </div>
 
-              <div>
-                <span>
-                  재사용 및 유휴 자원 공유를 통해 자원의 지속적인 순환을
-                  촉진합니다.
-                </span>
-                <span>
-                  방치 혹은 폐기되는 유휴 자원이 없는 미래를 만들어갑니다.
-                </span>
+              <div className={styles.partThreeSubTitleWrap}>
+                <div>
+                  <span className={styles.partThreeSubTitle}>
+                    재사용 및 유휴 자원 공유를 통해
+                  </span>
+                  <span>자원의 지속적인 순환을 촉진합니다.</span>
+                </div>
+                <div>
+                  <span className={styles.partThreeSubTitle}>
+                    방치 혹은 폐기되는 유휴 자원이 없는
+                  </span>
+                  <span>미래를 만들어갑니다.</span>
+                </div>
               </div>
             </div>
 
             {/* Img */}
-            <div>
+            <div className={styles.partThreeImgWrap}>
               <img
                 className={styles.partThreeImg}
                 src="/Images/home/earth.svg"

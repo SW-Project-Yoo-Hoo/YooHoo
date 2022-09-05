@@ -38,8 +38,8 @@ body {
   display: grid;
   grid-template-rows:
     calc(100vmax * 15.36% / 100)
-    calc(100vmax * 53.72% / 100)
-    calc(100vmax * 30.92% / 100);
+    calc(100vmax * 56.73% / 100)
+    calc(100vmax * 27.91% / 100);
 }
 
 /* part.1 */
@@ -207,26 +207,47 @@ body {
 
 /* part.3 */
 .partThree {
-  border: 0.1px solid;
-  /* position: relative; */
-  /* top: -5.208333333333333vw; */
-  padding-bottom: 9.427vw;
-  margin-right: marginLeftRight;
-  margin-left: marginLeftRight;
+  margin-right: marginLeftRight + 8.2638vw;
+  margin-left: marginLeftRight + 8.2638vw;
+  display: grid;
+  justify-content: center;
 }
 
 .partThreeText {
-  border: 0.1px solid;
+  margin-bottom: 0.625vw;
+}
+
+.partThreeMainTitle {
+  font-size: 1.8055vw;
+  color: highlight1;
+  font-family: "Bold";
+  padding-bottom: 3.9583vw;
+  text-align: center;
+}
+
+.partThreeSubTitleWrap {
+  font-size: 0.9722vw;
+  color: highlight3;
+  font-family: "Mdium";
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.partThreeSubTitle {
+  display: block;
+}
+
+.partThreeImgWrap {
+  display: flex;
+  justify-content: center;
 }
 
 .partThreeImg {
-  border: 0.1px solid;
   width: 46.0937vw;
   height: 46.0937vw;
-}
-
-.partThreemainTitle {
-  font-size: 36px;
+  margin-bottom: 9.4444vw;
+  justify-content: center;
 }
 
 /* 그 이상 */
