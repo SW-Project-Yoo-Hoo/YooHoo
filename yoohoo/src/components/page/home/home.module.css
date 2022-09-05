@@ -316,4 +316,69 @@ body {
     width: 590px;
     height: 590px;
   }
+
+  /* part.2 */
+  .partTwo {
+    position: relative;
+    margin-bottom: 381px;
+    margin-top: 164px;
+    width: 1280px;
+    justify-content: center;
+  }
+
+  /* part.2 shopNow */
+  .shopNowImg {
+    width: 675px;
+    height: 564px;
+    margin-right: 43px;
+  }
+
+  .shopNowText {
+    margin-bottom: 91px;
+  }
+
+  .partTwoMainText {
+    font-size: 39px;
+    margin-bottom: 30px;
+  }
+
+  .partTwoSubText {
+    font-size: 18px;
+  }
+
+  .partTwoButton {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  .linkGo {
+    margin-top: 26px;
+  }
+
+  .arrowIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* part.2 postNow */
+  .postNowText {
+    margin-bottom: 185px;
+  }
+
+  .postNowImg {
+    width: 580px;
+    height: 580px;
+    margin-left: 123px;
+  }
+
+  /* part.2 profileNow */
+  .profileNowImg {
+    margin-right: 129px;
+    width: 531px;
+    height: 514px;
+  }
+
+  .profileNowText {
+    margin-top: 148px;
+  }
 }
