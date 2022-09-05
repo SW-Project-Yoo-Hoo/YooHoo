@@ -37,8 +37,8 @@ body {
   width: 100vw;
   display: grid;
   grid-template-rows:
-    calc(100vmax * 16.34% / 100)
-    calc(100vmax * 52.74% / 100)
+    calc(100vmax * 15.36% / 100)
+    calc(100vmax * 53.72% / 100)
     calc(100vmax * 30.92% / 100);
 }
 
@@ -109,73 +109,90 @@ body {
 
 /* part.2 */
 .partTwo {
-  border: 0.1px solid;
   position: relative;
-  /* top: -5.208333333333333vw; */
   margin-right: marginLeftRight;
   margin-left: marginLeftRight;
   margin-bottom: 19.7916vw;
+  margin-top: 8.5416vw;
 }
 
 /* part.2 shopNow */
 .shopNow {
   display: flex;
   width: 100%;
-  border: 0.1px solid;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .shopNowImg {
   width: 35.1388vw;
-  height: 35.1388vw;
+  height: 29.3055vw;
   margin-right: 2.2vw;
 }
 
-.shopNowMainText {
+.shopNowText {
+  margin-bottom: 4.9305vw;
+}
+
+.partTwoMainText {
   font-family: "Medium";
   color: highlight1;
   display: block;
   font-size: 1.875vw;
-  padding-bottom: 1.7361vw;
+  margin-bottom: 1.666vw;
 }
 
-.shopNowSubText {
+.partTwoSubText {
   font-family: "Medium";
   color: highlight3;
   display: block;
-  font-size: 0.7638vw;
+  font-size: 0.8333vw;
 }
 
-.shopNowbutton {
+.partTwoButton {
   font-family: "Bold";
   color: mainGreen;
   font-size: 0.7638vw;
+  margin-right: 0.69444vw;
+}
+
+.link {
+  text-decoration-line: none;
+}
+
+.linkGo {
+  margin-top: 1.9444vw;
+  display: flex;
+}
+
+.arrowIcon {
+  color: mainGreen;
+  width: 1.5625vw;
+  height: 1.5625vw;
 }
 
 /* part.2 postNow */
 .postNow {
   display: flex;
   width: 100%;
-  border: 0.1px solid;
-  align-items: center;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .postNowText {
+  margin-bottom: 9.8611vw;
 }
 
 .postNowImg {
-  width: 29.7222vw;
-  height: 29.7222vw;
-  margin-left: 9.8611vw;
+  width: 27.6388vw;
+  height: 26.7361vw;
+  margin-left: 5.34722vw;
 }
 
 /* part.2 profileNow */
 .profileNow {
   display: flex;
   width: 100%;
-  border: 0.1px solid;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .profileNowImg {
@@ -185,6 +202,7 @@ body {
 }
 
 .profileNowText {
+  margin-top: 7.7083vw;
 }
 
 /* part.3 */

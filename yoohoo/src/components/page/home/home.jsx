@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./home.module.css";
 import Header from "../../header/header";
 import { Link } from "react-router-dom";
+import { MdOutlineTrendingFlat } from "react-icons/md";
 
 const Home = (props) => {
   const pageTransform = () => {
@@ -75,18 +76,18 @@ const Home = (props) => {
               ></img>
 
               {/* Text */}
-              <div>
-                <span className={styles.shopNowMainText}>물품 가시성 확보</span>
-                <span className={styles.shopNowSubText}>
+              <div className={styles.shopNowText}>
+                <span className={styles.partTwoMainText}>물품 가시성 확보</span>
+                <span className={styles.partTwoSubText}>
                   유후를 이용해 하나의 플랫폼에서 빠르고 효율적으로
                 </span>
-                <span className={styles.shopNowSubText}>
+                <span className={styles.partTwoSubText}>
                   게시물 업로드, 물품 확인 및 거래를 할 수 있습니다.
                 </span>
-                <Link to="/Shop">
-                  <div>
-                    <span className={styles.shopNowbutton}>shopNow</span>
-                    <span>img</span>
+                <Link to="/Shop" className={styles.link}>
+                  <div className={styles.linkGo}>
+                    <span className={styles.partTwoButton}>Shop Now</span>
+                    <MdOutlineTrendingFlat className={styles.arrowIcon} />
                   </div>
                 </Link>
               </div>
@@ -96,7 +97,19 @@ const Home = (props) => {
             <div className={styles.postNow}>
               {/* Text */}
               <div className={styles.postNowText}>
-                <span>2text</span>
+                <span className={styles.partTwoMainText}>자원 공유</span>
+                <span className={styles.partTwoSubText}>
+                  기업 내 유휴자원을 공유하고
+                </span>
+                <span className={styles.partTwoSubText}>
+                  연결된 기업들을 통해 재고 가치를 극대화하세요.
+                </span>
+                <Link to="/Post" className={styles.link}>
+                  <div className={styles.linkGo}>
+                    <span className={styles.partTwoButton}>Post Now</span>
+                    <MdOutlineTrendingFlat className={styles.arrowIcon} />
+                  </div>
+                </Link>
               </div>
               {/* Img */}
 
@@ -118,7 +131,19 @@ const Home = (props) => {
 
               {/* Text */}
               <div className={styles.profileNowText}>
-                <span>2text</span>
+                <span className={styles.partTwoMainText}>마이 유후</span>
+                <span className={styles.partTwoSubText}>
+                  공유 현황 및 물품 정보, 대여 기간 등
+                </span>
+                <span className={styles.partTwoSubText}>
+                  모든 정보를 확인하세요.
+                </span>
+                <Link to="/Login" className={styles.link}>
+                  <div className={styles.linkGo}>
+                    <span className={styles.partTwoButton}>Profile Now</span>
+                    <MdOutlineTrendingFlat className={styles.arrowIcon} />
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
