@@ -16,6 +16,14 @@
   src: url("../../../common/font/NotoSansKR-Regular.otf");
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: background2;
+}
+
 .backGroundImage {
   background-image: url("../../../../public/images/home/background.png");
   width: 100%;
@@ -186,4 +194,8 @@
 
 .partThreemainTitle {
   font-size: 36px;
+}
+
+/* 그 이상 */
+@media (min-width: 1920px) {
 }

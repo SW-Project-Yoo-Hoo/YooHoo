@@ -3,8 +3,6 @@
 .icon {
   width: 23px;
   height: 23px;
-  /* width: 1.458333333333333vw;
-  height: 1.458333333333333vw; */
   color: highlight1;
   padding-left: 1.5277vw;
 }
@@ -15,4 +13,13 @@
 }
 .liStyle {
   list-style-type: none;
+}
+
+/* 그 이상 */
+@media (min-width: 1920px) {
+  .icon {
+    width: 30px;
+    height: 30px;
+    padding-left: 30px;
+  }
 }

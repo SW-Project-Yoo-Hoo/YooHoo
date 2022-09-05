@@ -6,20 +6,22 @@ import { Link } from "react-router-dom";
 
 const Header = (props) => {
   return (
-    <header className={styles.header}>
+    <header className={styles.wrapHeader}>
       {/* left component : logo */}
-      <Link to="/">
-        <img
-          className={styles.logoStyle}
-          src="/Images/header/logo.png"
-          alt="logo"
-        ></img>
-      </Link>
+      <div className={styles.header}>
+        <Link to="/">
+          <img
+            className={styles.logoStyle}
+            src="/Images/header/logo.png"
+            alt="logo"
+          ></img>
+        </Link>
 
-      {/* rigth component : pages, search, alram, profile */}
-      <div className={styles.headerComponent}>
-        <Page />
-        <UserInfo />
+        {/* rigth component : pages, search, alram, profile */}
+        <div className={styles.headerComponent}>
+          <Page />
+          <UserInfo />
+        </div>
       </div>
     </header>
   );

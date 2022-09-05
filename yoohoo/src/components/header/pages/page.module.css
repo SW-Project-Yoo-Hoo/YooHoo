@@ -29,3 +29,17 @@
   font-family: "Medium";
   text-decoration: none;
 }
+
+/* 그 이상 */
+@media (min-width: 1920px) {
+  .pageStyle {
+    padding-left: 16px;
+    padding-right: 34px;
+    list-style-type: none;
+  }
+
+  .active,
+  .active:hover {
+    font-size: 18px;
+  }
+}
