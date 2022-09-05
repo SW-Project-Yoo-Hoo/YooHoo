@@ -380,4 +380,31 @@ body {
   .profileNowText {
     margin-top: 148px;
   }
+
+  /* part.3 */
+  .partThree {
+    margin-right: 0px;
+    margin-left: 0px;
+    justify-content: center;
+  }
+
+  .partThreeText {
+    margin-bottom: 0px;
+    width: 1013px;
+  }
+
+  .partThreeMainTitle {
+    font-size: 36px;
+    padding-bottom: 72px;
+  }
+
+  .partThreeSubTitleWrap {
+    font-size: 22px;
+  }
+
+  .partThreeImg {
+    width: 885px;
+    height: 885px;
+    margin-bottom: 181px;
+  }
 }
