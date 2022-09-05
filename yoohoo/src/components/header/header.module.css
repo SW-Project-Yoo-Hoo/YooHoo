@@ -9,6 +9,7 @@
   align-content: center;
   justify-content: center;
   display: flex;
+  background-color: background2;
 }
 .header {
   background-color: background2;
