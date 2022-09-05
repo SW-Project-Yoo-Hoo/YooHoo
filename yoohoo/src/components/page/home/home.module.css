@@ -1,4 +1,4 @@
-@value mainGreen,highlight1,shadow,background1,background2 from "../../../common/color.css";
+@value mainGreen,highlight1,highlight3,shadow,background1,background2 from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 @font-face {
@@ -45,14 +45,14 @@ body {
 /* part.1 */
 .partOne {
   display: flex;
-  margin-right: 9.5833vw;
+  margin-right: marginLeftRight;
   margin-left: marginLeftRight;
   justify-content: space-between;
 }
 
 .partOneText {
   margin-bottom: 1.8055vw;
-  margin-right: 1.7361vw;
+  margin-right: 4.8611vw;
 }
 
 .partOneTextButton {
@@ -84,7 +84,7 @@ body {
 
 .partOneSubText {
   display: block;
-  color: highlight1;
+  color: highlight3;
   font-family: "Regular";
   font-size: 0.9722vw;
 }
@@ -102,11 +102,9 @@ body {
 }
 
 .partOneImage {
-  width: 41.4583vw;
-  height: 41.4583vw;
-  z-index: 0;
-  position: relative;
-  top: -75px;
+  width: 31.3888vw;
+  height: 31.3888vw;
+  padding-top: 1.25vw;
 }
 
 /* part.2 */
@@ -133,7 +131,25 @@ body {
   margin-right: 2.2vw;
 }
 
-.shopNowText {
+.shopNowMainText {
+  font-family: "Medium";
+  color: highlight1;
+  display: block;
+  font-size: 1.875vw;
+  padding-bottom: 1.7361vw;
+}
+
+.shopNowSubText {
+  font-family: "Medium";
+  color: highlight3;
+  display: block;
+  font-size: 0.7638vw;
+}
+
+.shopNowbutton {
+  font-family: "Bold";
+  color: mainGreen;
+  font-size: 0.7638vw;
 }
 
 /* part.2 postNow */
@@ -210,24 +226,22 @@ body {
       calc(100vmax * 19.5% / 100)
       calc(100vmax * 49.6% / 100)
       calc(100vmax * 30.9% / 100);
+    justify-content: center;
   }
   /* part.1 */
   .partOne {
     margin-right: 0px;
     margin-left: 0px;
     justify-content: center;
-    position: relative;
-    left: 85px;
   }
 
   .partOneText {
     margin-bottom: 30px;
-    /* margin-right: 1.7361vw; */
+    margin-right: 90px;
   }
 
   .partOneTextButton {
     padding-top: 144px;
-    margin-right: 17px;
   }
 
   .partOneMainBigText {
@@ -260,8 +274,7 @@ body {
   }
 
   .partOneImage {
-    width: 796px;
-    height: 796px;
-    top: -100px;
+    width: 590px;
+    height: 590px;
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./home.module.css";
 import Header from "../../header/header";
+import { Link } from "react-router-dom";
 
 const Home = (props) => {
   const pageTransform = () => {
@@ -21,7 +22,7 @@ const Home = (props) => {
             <div className={styles.partOneTextButton}>
               {/* text */}
               <div>
-                {/* mainTitle */}s
+                {/* mainTitle */}
                 <div>
                   <span className={styles.partOneMainBigText}>Resource</span>
                   <span className={styles.partOneMainSmallText}>Exchange</span>
@@ -74,10 +75,20 @@ const Home = (props) => {
               ></img>
 
               {/* Text */}
-              <div className={styles.shopNowText}>
-                <p>title</p>
-                <p>sub title</p>
-                <div>shopNow</div>
+              <div>
+                <span className={styles.shopNowMainText}>물품 가시성 확보</span>
+                <span className={styles.shopNowSubText}>
+                  유후를 이용해 하나의 플랫폼에서 빠르고 효율적으로
+                </span>
+                <span className={styles.shopNowSubText}>
+                  게시물 업로드, 물품 확인 및 거래를 할 수 있습니다.
+                </span>
+                <Link to="/Shop">
+                  <div>
+                    <span className={styles.shopNowbutton}>shopNow</span>
+                    <span>img</span>
+                  </div>
+                </Link>
               </div>
             </div>
 
