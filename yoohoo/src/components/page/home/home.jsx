@@ -16,30 +16,31 @@ const Home = (props) => {
       <div className={styles.backGroundImage}>
         <div className={styles.container}>
           {/* part.1 */}
-          <div className={styles.intro}>
+          <div className={styles.partOne}>
             {/* text,button */}
-            <div className={styles.introTextButton}>
+            <div className={styles.partOneTextButton}>
               {/* text */}
               <div>
-                {/* mainTitle */}
+                {/* mainTitle */}s
                 <div>
-                  <span className={styles.introMainBigText}>Resource</span>
-                  <span className={styles.introMainSmallText}>Exchange</span>
+                  <span className={styles.partOneMainBigText}>Resource</span>
+                  <span className={styles.partOneMainSmallText}>Exchange</span>
 
-                  <div className={styles.introText}>
-                    <span className={styles.introMainSmallTextBottom}>
+                  <div className={styles.partOneText}>
+                    <span className={styles.partOneMainSmallTextBottom}>
                       For The
                     </span>
-                    <span className={styles.introMainBigText}>Resourceful</span>
+                    <span className={styles.partOneMainBigText}>
+                      Resourceful
+                    </span>
                   </div>
                 </div>
-
                 {/* subTitle */}
                 <div>
-                  <span className={styles.introSubText}>
+                  <span className={styles.partOneSubText}>
                     Transform how you source, procure, and
                   </span>
-                  <span className={styles.introSubText}>
+                  <span className={styles.partOneSubText}>
                     use resources with YooHoo.
                   </span>
                 </div>
@@ -55,7 +56,7 @@ const Home = (props) => {
 
             {/* img */}
             <img
-              className={styles.introImage}
+              className={styles.partOneImage}
               src="/Images/home/computerWoman.svg"
               alt="illu"
             />

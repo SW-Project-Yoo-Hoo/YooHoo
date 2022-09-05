@@ -43,31 +43,30 @@ body {
 }
 
 /* part.1 */
-.intro {
+.partOne {
   display: flex;
   margin-right: 9.5833vw;
   margin-left: marginLeftRight;
   justify-content: space-between;
-  align-items: flex-start;
 }
 
-.introText {
+.partOneText {
   margin-bottom: 1.8055vw;
   margin-right: 1.7361vw;
 }
 
-.introTextButton {
+.partOneTextButton {
   padding-top: 7.5vw;
 }
 
-.introMainBigText {
+.partOneMainBigText {
   color: highlight1;
   font-family: "bold";
   font-size: 3.6111vw;
   text-shadow: 0.1562vw 0.1562vw 0.1041vw shadow;
 }
 
-.introMainSmallText {
+.partOneMainSmallText {
   color: highlight1;
   font-family: "Medium";
   font-size: 1.9444vw;
@@ -75,7 +74,7 @@ body {
   padding-left: 1.3888vw;
 }
 
-.introMainSmallTextBottom {
+.partOneMainSmallTextBottom {
   color: highlight1;
   font-family: "Medium";
   font-size: 1.9444vw;
@@ -83,7 +82,7 @@ body {
   padding-right: 1.3888vw;
 }
 
-.introSubText {
+.partOneSubText {
   display: block;
   color: highlight1;
   font-family: "Regular";
@@ -102,7 +101,7 @@ body {
   margin-top: 5.1388vw;
 }
 
-.introImage {
+.partOneImage {
   width: 41.4583vw;
   height: 41.4583vw;
   z-index: 0;
@@ -198,4 +197,74 @@ body {
 
 /* 그 이상 */
 @media (min-width: 1920px) {
+  .backGroundImage {
+    /* background-image: url("../../../../public/images/home/background.png"); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-height: 4080px;
+    /* width: 100vw; */
+  }
+
+  /*.container {
+    height: 4080px;
+    width: 100vw;
+    display: grid;
+    grid-template-rows:
+      calc(100vmax * 19.5% / 100)
+      calc(100vmax * 49.6% / 100)
+      calc(100vmax * 30.9% / 100);
+  } */
+  /* part.1 */
+  .partOne {
+    margin-right: 0px;
+    margin-left: 0px;
+    justify-content: center;
+    position: relative;
+    left: 85px;
+  }
+
+  .partOneText {
+    margin-bottom: 30px;
+    /* margin-right: 1.7361vw; */
+  }
+
+  .partOneTextButton {
+    padding-top: 144px;
+    margin-right: 17px;
+  }
+
+  .partOneMainBigText {
+    font-size: 72px;
+    text-shadow: 3px 3px 2px shadow;
+  }
+
+  .partOneMainSmallText {
+    font-size: 39px;
+    text-shadow: 3px 3px 2px shadow;
+    padding-left: 26px;
+  }
+
+  .partOneMainSmallTextBottom {
+    font-size: 39px;
+    text-shadow: 3px 3px 2px shadow;
+    padding-right: 26px;
+  }
+
+  .partOneSubText {
+    font-size: 20px;
+  }
+
+  .buttonStyle {
+    font-size: 18px;
+    width: 179px;
+    height: 63px;
+    border-radius: 100px;
+    margin-top: 90px;
+  }
+
+  .partOneImage {
+    width: 796px;
+    height: 796px;
+    top: -100px;
+  }
 }
