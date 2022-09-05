@@ -198,14 +198,11 @@ body {
 /* 그 이상 */
 @media (min-width: 1920px) {
   .backGroundImage {
-    /* background-image: url("../../../../public/images/home/background.png"); */
     background-repeat: no-repeat;
-    background-size: contain;
-    max-height: 4080px;
-    /* width: 100vw; */
+    background-size: 100vw 4080px;
   }
 
-  /*.container {
+  .container {
     height: 4080px;
     width: 100vw;
     display: grid;
@@ -213,7 +210,7 @@ body {
       calc(100vmax * 19.5% / 100)
       calc(100vmax * 49.6% / 100)
       calc(100vmax * 30.9% / 100);
-  } */
+  }
   /* part.1 */
   .partOne {
     margin-right: 0px;
