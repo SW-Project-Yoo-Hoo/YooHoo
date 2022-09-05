@@ -3,7 +3,6 @@ import Footer from "../../footer/footer";
 import styles from "./about.module.css";
 import { VscGithub } from "react-icons/vsc";
 import { FaInstagram } from "react-icons/fa";
-import Header from "../../header/header";
 
 const About = (props) => {
   const moveArea = document.querySelector("#topic2");
@@ -16,12 +15,12 @@ const About = (props) => {
     <>
       <div className={styles.wrapHeader}></div>
 
-      {/* Title */}
-      <div className={styles.title}>
-        <span className={styles.content}>LET'S TALK ABOUT US</span>
-      </div>
-
       <div className={styles.background}>
+        {/* Title */}
+        <div className={styles.title}>
+          <span className={styles.content}>LET'S TALK ABOUT US</span>
+        </div>
+
         <div className={styles.continer}>
           {/* Topic1 */}
           <div className={styles.topic1}>
@@ -41,7 +40,7 @@ const About = (props) => {
 
             <img
               className={styles.shoppingPNG}
-              src={process.env.PUBLIC_URL + "images/about/shopping.png"}
+              src={process.env.PUBLIC_URL + "images/about/shopping.svg"}
               alt="Shopping"
             />
           </div>
@@ -50,7 +49,7 @@ const About = (props) => {
           <div className={styles.topic2} id="topic2">
             <img
               className={styles.earthPNG}
-              src={process.env.PUBLIC_URL + "images/about/earth.png"}
+              src={process.env.PUBLIC_URL + "images/about/earth.svg"}
               alt="Earth"
             />
 
@@ -91,7 +90,7 @@ const About = (props) => {
               <div className={styles.member}>
                 <img
                   className={styles.memberImg}
-                  src={process.env.PUBLIC_URL + "images/about/hj.png"}
+                  src={process.env.PUBLIC_URL + "images/about/hj.svg"}
                   alt="HJ"
                 />
                 <p className={styles.memberName}>Oh Hyeon-ju</p>
@@ -107,7 +106,7 @@ const About = (props) => {
               <div className={styles.member}>
                 <img
                   className={styles.memberImg}
-                  src={process.env.PUBLIC_URL + "images/about/ys.png"}
+                  src={process.env.PUBLIC_URL + "images/about/ys.svg"}
                   alt="YS"
                 />
                 <p className={styles.memberName}>Yoo Yeong-seo</p>
@@ -123,7 +122,7 @@ const About = (props) => {
               <div className={styles.member}>
                 <img
                   className={styles.memberImg}
-                  src={process.env.PUBLIC_URL + "images/about/ys.png"}
+                  src={process.env.PUBLIC_URL + "images/about/ys.svg"}
                   alt="HY"
                 />
                 <p className={styles.memberName}>Ju Hyer-yeon</p>
