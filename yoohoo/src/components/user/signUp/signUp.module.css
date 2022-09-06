@@ -25,9 +25,8 @@
   position: relative;
   margin-left: marginLeftRight;
   margin-right: marginLeftRight;
-  margin-top: 5.7291vw;
+  margin-top: 5.0694vw;
   display: flex;
-  justify-content: flex-start;
   align-items: flex-end;
 }
 
@@ -35,12 +34,11 @@
   width: 20.3472vw;
   height: 20.3472vw;
   margin-right: 13.0555vw;
+  padding-bottom: 4.5138vw;
 }
 
 .signUpForm {
   width: 20.8333vw;
-  background-color: white;
-  height: 37.6388vw;
 }
 
 .title {
