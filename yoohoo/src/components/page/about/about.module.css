@@ -231,6 +231,10 @@ body {
 
 /* 그 이상 */
 @media (min-width: 1920px) {
+  body {
+    background-color: background2;
+  }
+
   /* 헤더 추가시 삭제 */
   .wrapHeader {
     padding-top: 100px;
@@ -240,7 +244,6 @@ body {
     width: 100vw;
     height: 3186px;
     background-size: 100vw 3186px;
-    background-color: background2;
   }
 
   .title {
