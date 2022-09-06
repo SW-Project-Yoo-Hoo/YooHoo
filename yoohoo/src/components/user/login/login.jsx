@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./login.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
@@ -10,6 +10,21 @@ import SignUp from "../signUp/signUp";
 // 현재 로그인이 안되어 있으면 -> 로그인 페이지 렌더링
 
 const Login = (props) => {
+  const [inputs, setInputs] = useState({
+    id: "",
+    pw: "",
+  });
+
+  const { id, pw } = inputs;
+
+  const changeHandling = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
   const loginHandling = () => {
     console.log("로그인 버튼 눌렀다!!");
     //백엔드랑 통신 해서 로그인 정보가 올바르면 원래 있던 페이지로 돌아가기
@@ -45,6 +60,8 @@ const Login = (props) => {
               <input
                 type="text"
                 name="id"
+                onChange={changeHandling}
+                value={id}
                 placeholder="아이디를 입력해주세요"
                 className={styles.input}
               />
@@ -58,6 +75,8 @@ const Login = (props) => {
               <input
                 type="text"
                 name="pw"
+                onChange={changeHandling}
+                value={pw}
                 placeholder="비밀번호를 입력해주세요"
                 className={styles.input}
               />
