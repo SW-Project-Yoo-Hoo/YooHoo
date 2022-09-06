@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./signUp.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
 
 const SignUp = (props) => {
+  const [inputs, setInputs] = useState({
+    id: "",
+    pw: "",
+    companyName: "",
+    adress: "",
+    phone: "",
+  });
+
+  const { id, pw, companyName, adress, phone } = inputs;
+
+  const changeHandling = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
   const signUpHandling = () => {
     window.location.href = "/SignUp";
   };
@@ -34,6 +52,8 @@ const SignUp = (props) => {
               <input
                 type="text"
                 name="id"
+                onChange={changeHandling}
+                value={id}
                 placeholder="영대/소문자, 숫자를 모두 포함한 6~12자리"
                 className={styles.input}
               />
@@ -48,20 +68,24 @@ const SignUp = (props) => {
               <input
                 type="text"
                 name="pw"
+                onChange={changeHandling}
+                value={pw}
                 placeholder="영대/소문자, 숫자, 특수문자를 모두 포함한 6~14자리"
                 className={styles.input}
               />
             </label>
           </div>
 
-          {/* name */}
+          {/* Company Name */}
           <div className={styles.form}>
             <label className={styles.label}>
               <sapn>회사명</sapn>
               <span className={styles.labelSpan}> *</span>
               <input
                 type="text"
-                name="name"
+                name="companyName"
+                onChange={changeHandling}
+                value={companyName}
                 placeholder="회사명을 입력해주세요"
                 className={styles.input}
               />
@@ -76,6 +100,8 @@ const SignUp = (props) => {
               <input
                 type="text"
                 name="adress"
+                onChange={changeHandling}
+                value={adress}
                 placeholder="회사 주소를 입력해주세요"
                 className={styles.input}
               />
@@ -90,6 +116,8 @@ const SignUp = (props) => {
               <input
                 type="text"
                 name="phone"
+                onChange={changeHandling}
+                value={phone}
                 placeholder="거래에 사용될 연락처를 입력해주세요"
                 className={styles.input}
               />
