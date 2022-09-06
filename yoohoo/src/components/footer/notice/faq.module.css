@@ -1,4 +1,4 @@
-@value background1, highlight2 from "../../../common/color.css";
+@value background1, background2, highlight2 from "../../../common/color.css";
 
 @font-face {
   font-family: "bold";
@@ -146,4 +146,108 @@ body {
 
 .p {
   margin: 0;
+}
+
+/* 그 이상 */
+@media (min-width: 1920px) {
+  /* ================================= */
+  /* 헤더, 배경, 푸터 CSS */
+
+  .wrapHeader {
+    padding-top: 100px;
+  }
+
+  .background {
+    height: 100%;
+  }
+
+  .headerImg {
+    height: 235px;
+  }
+
+  .faqPNG {
+    width: 654px;
+    height: 654px;
+    margin: 0;
+    left: calc((100vw - 654px) * 0.5);
+  }
+
+  /* Footer */
+
+  .wrapfooter {
+    position: static;
+    bottom: 0;
+  }
+
+  .footerImg {
+    height: 300px;
+    background-color: none;
+  }
+
+  .footer {
+    padding-bottom: 100vh;
+    background-color: background2;
+  }
+
+  /* ================================= */
+  /* FAQ - QnA container CSS */
+
+  .faqGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 330px 0 0 0;
+  }
+
+  .showFAQ,
+  .closeFAQ {
+    width: 1130px;
+    margin: 0 394px 64px 395px;
+    border-radius: 34px;
+  }
+
+  .showFAQ {
+    height: 270px;
+  }
+
+  .closeFAQ {
+    height: 108px;
+  }
+
+  .closeFAQ_question {
+    margin-left: 74px;
+  }
+
+  /* ================================= */
+  /* QnA 1개 CSS*/
+
+  .plusIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 30px;
+  }
+
+  .minusIcon {
+    width: 20px;
+    height: 4px;
+    margin-right: 30px;
+  }
+
+  .Q {
+    margin-top: 40px;
+  }
+
+  .question {
+    font-size: 20px;
+  }
+
+  .A {
+    margin: 30px 0 0 50px;
+  }
+
+  .answer {
+    font-size: 18px;
+    line-height: 27px;
+  }
 }
