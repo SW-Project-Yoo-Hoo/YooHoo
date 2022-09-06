@@ -17,6 +17,11 @@ input::placeholder {
   font-size: 0.625vw;
 }
 
+@font-face {
+  font-family: "Regular";
+  src: url("./common/font/NotoSansKR-Regular.otf");
+}
+
 .App {
   text-align: center;
 }

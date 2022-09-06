@@ -39,7 +39,7 @@ const Login = (props) => {
           <sapn className={styles.title}>로그인</sapn>
 
           {/* id */}
-          <div className={styles.id}>
+          <div className={styles.form}>
             <label className={styles.label}>
               아이디
               <input
@@ -52,7 +52,7 @@ const Login = (props) => {
           </div>
 
           {/* pw */}
-          <div className={styles.pw}>
+          <div className={styles.form}>
             <label className={styles.label}>
               비밀번호
               <input

@@ -16,14 +16,6 @@
   src: url("../../../common/font/NotoSansKR-Regular.otf");
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: background1;
-}
-
 .backGroundImage {
   background-image: url("../../../../public/images/home/background.png");
   width: 100%;
