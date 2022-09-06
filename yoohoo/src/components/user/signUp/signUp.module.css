@@ -97,4 +97,52 @@
 
 /* 1920px 이상 */
 @media (min-width: 1920px) {
+  .container {
+    width: 100vw;
+    justify-content: center;
+    margin: 110px 0 0 0;
+  }
+
+  .loginImg {
+    width: 390px;
+    height: 390px;
+    margin-right: 250px;
+    padding-bottom: 86px;
+  }
+
+  .signUpForm {
+    width: 400px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .form {
+    height: 80px;
+    margin-top: 44px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+  .input {
+    height: 48px;
+    border-radius: 12px;
+    font-size: 14px;
+    padding-left: 16px;
+    margin-top: 12px;
+  }
+
+  .signUpButton {
+    height: 56px;
+    margin-top: 86px;
+  }
+
+  .signUpButtonStyle {
+    font-size: 18px;
+    width: 240px;
+    border-radius: 22px;
+  }
 }
