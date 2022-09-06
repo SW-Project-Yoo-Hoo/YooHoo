@@ -1,4 +1,4 @@
-@value mainGreen,highlight1, background1,textInput,textInputPlace from "../../../common/color.css";
+@value mainGreen,highlight1, background1,textInput,textInputPlace,lightWhite from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 @font-face {
@@ -73,6 +73,7 @@
   padding-left: 0.8333vw;
   margin-top: 0.625vw;
   font-family: "Medium";
+  background: lightWhite;
   color: highlight1;
 }
 .loginButton {

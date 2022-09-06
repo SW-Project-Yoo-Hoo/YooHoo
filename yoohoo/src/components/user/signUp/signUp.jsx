@@ -15,6 +15,7 @@ const SignUp = (props) => {
 
   const { id, pw, companyName, adress, phone } = inputs;
 
+  //회원 정보 입력 핸들링
   const changeHandling = (e) => {
     const { value, name } = e.target;
     setInputs({
@@ -22,6 +23,12 @@ const SignUp = (props) => {
       [name]: value,
     });
   };
+
+  //아이디 정규표현식
+  const idRegex = () => {};
+
+  //비밀번호 정규표현식
+  const pwRegex = () => {};
 
   const signUpHandling = () => {
     //백엔드로 회원 정보 전송하기

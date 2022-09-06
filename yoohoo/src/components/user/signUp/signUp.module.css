@@ -1,4 +1,4 @@
-@value mainGreen,highlight1,background1,textInput,textInputPlace from "../../../common/color.css";
+@value mainGreen,highlight1,background1,textInput,textInputPlace,lightWhite from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 @font-face {
@@ -70,6 +70,7 @@
   width: 100%;
   border: 1px solid textInput;
   border-radius: 0.8333vw;
+  background: lightWhite;
   box-sizing: border-box;
   margin: 0;
   font-size: 0.625vw;

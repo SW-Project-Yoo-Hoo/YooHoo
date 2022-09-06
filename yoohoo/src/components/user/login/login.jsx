@@ -73,7 +73,7 @@ const Login = (props) => {
             <label className={styles.label}>
               비밀번호
               <input
-                type="text"
+                type="password"
                 name="pw"
                 onChange={changeHandling}
                 value={pw}
