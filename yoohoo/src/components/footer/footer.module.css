@@ -1,16 +1,6 @@
 @value marginLeftRight from "../../common/size.css";
 @value background2, highlight1, highlight3, line from "../../common/color.css";
 
-@font-face {
-  font-family: "Medium";
-  src: url("../../common/font/NotoSansKR-Medium.otf");
-}
-
-@font-face {
-  font-family: "Regular";
-  src: url("../../common/font/NotoSansKR-Regular.otf");
-}
-
 * {
   box-sizing: border-box;
 }

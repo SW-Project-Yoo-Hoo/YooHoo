@@ -1,35 +1,8 @@
 @value marginLeftRight from "../../../common/size.css";
 @value background2, highlight1, highlight2, highlight3, mainGreen, shadow from "../../../common/color.css";
 
-@font-face {
-  font-family: "bold";
-  src: url("../../../common/font/NotoSansKR-Bold.otf");
-}
-
-@font-face {
-  font-family: "black";
-  src: url("../../../common/font/NotoSansKR-Black.otf");
-}
-
-@font-face {
-  font-family: "medium";
-  src: url("../../../common/font/NotoSansKR-Medium.otf");
-}
-
-@font-face {
-  font-family: "regular";
-  src: url("../../../common/font/NotoSansKR-Regular.otf");
-}
-
 * {
   box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
 }
 
 .background {
@@ -61,7 +34,7 @@ body {
 }
 
 .content {
-  font-family: "bold";
+  font-family: "Bold";
   font-size: 0.9722vw;
 }
 
@@ -90,7 +63,7 @@ body {
 }
 
 .topic1_Title {
-  font-family: "black";
+  font-family: "Black";
   color: highlight1;
 
   font-size: 4.1667vw;
@@ -100,14 +73,14 @@ body {
 
 .topic1_Content {
   margin: 1.944vw 0 1.3194vw 0;
-  font-family: "medium";
+  font-family: "Medium";
   color: highlight3;
   font-size: 1.0417vw;
 }
 
 .topic1_Content2 {
   margin: 0 0 4.8611vw 0;
-  font-family: "medium";
+  font-family: "Medium";
   color: highlight3;
   font-size: 1.0417vw;
 }
@@ -117,7 +90,7 @@ body {
   height: 3.2638vw;
   background-color: mainGreen;
   font-size: 0.90277vw;
-  font-family: "bold";
+  font-family: "Bold";
   color: white;
   border: 0;
   outline: 0;
@@ -146,7 +119,7 @@ body {
 }
 
 .topic2_Title {
-  font-family: "black";
+  font-family: "Black";
   color: highlight1;
   font-size: 4.1667vw;
 }
@@ -158,7 +131,7 @@ body {
 .topic2_Content {
   width: 23.819vw;
   margin: 0;
-  font-family: "regular";
+  font-family: "Regular";
   color: highlight3;
   font-size: 0.9722vw;
 }
@@ -180,7 +153,7 @@ body {
 
 .topic3_Title {
   margin-left: marginLeftRight;
-  font-family: "black";
+  font-family: "Black";
   color: highlight1;
   font-size: 4.0278vw;
 }
@@ -200,14 +173,14 @@ body {
 }
 
 .memberName {
-  font-family: "bold";
+  font-family: "Bold";
   color: highlight2;
   margin: 3.2638vw 0 0.9027vw 0;
   font-size: 1.1806vw;
 }
 
 .memberRole {
-  font-family: "medium";
+  font-family: "Medium";
   color: highlight3;
   margin: 0 0 1.388vw 0;
   font-size: 1.1111vw;
@@ -231,9 +204,9 @@ body {
 
 /* 그 이상 */
 @media (min-width: 1920px) {
-  body {
+  /* body {
     background-color: background2;
-  }
+  } */
 
   /* 헤더 추가시 삭제 */
   .wrapHeader {

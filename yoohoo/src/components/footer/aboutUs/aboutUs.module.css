@@ -1,9 +1,4 @@
-@value background2, highlight1 from "../../../common/color.css";
-
-@font-face {
-  font-family: "Regular";
-  src: url("../../../common/font/NotoSansKR-Regular.otf");
-}
+@value highlight1 from "../../../common/color.css";
 
 .menu {
   height: 74px;

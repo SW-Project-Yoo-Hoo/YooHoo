@@ -1,20 +1,5 @@
 @value background1, background2, highlight2 from "../../../common/color.css";
 
-@font-face {
-  font-family: "bold";
-  src: url("../../../common/font/NotoSansKR-Bold.otf");
-}
-
-@font-face {
-  font-family: "regular";
-  src: url("../../../common/font/NotoSansKR-Regular.otf");
-}
-
-html,
-body {
-  width: 100vw;
-  height: 100%;
-}
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
@@ -120,7 +105,7 @@ body {
 }
 
 .question {
-  font-family: "bold";
+  font-family: "Bold";
   font-size: 0.9722vw;
   color: highlight2;
 }
@@ -133,7 +118,7 @@ body {
 
 .answer {
   white-space: pre-wrap;
-  font-family: "regular";
+  font-family: "Regular";
   font-size: 0.9028vw;
   line-height: 1.3194vw;
   margin: 0;

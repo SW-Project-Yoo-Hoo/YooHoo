@@ -1,10 +1,5 @@
 @value background2, highlight1 from "../../../common/color.css";
 
-@font-face {
-  font-family: "Regular";
-  src: url("../../../common/font/NotoSansKR-Regular.otf");
-}
-
 .container {
   height: 142px;
 }
