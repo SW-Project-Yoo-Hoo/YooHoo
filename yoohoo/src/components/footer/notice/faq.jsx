@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Header from "../../header/header";
 import Footer from "../footer";
 import styles from "./faq.module.css";
-import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 
 const FAQ = (props) => {
   const [qnaList, setQnaList] = useState([
@@ -71,56 +70,54 @@ const FAQ = (props) => {
         </div>
 
         <div className={styles.faqGroup}>
-          <div className={styles.faqList}>
-            {qnaList.map((item, id) => (
-              <div className={item.show ? styles.showFAQ : styles.closeFAQ}>
-                <div
-                  className={styles.faqListQ}
-                  onClick={() => {
-                    onClick(id);
-                  }}
-                >
-                  {item.show ? (
-                    <img
-                      className={styles.minusIcon}
-                      src={process.env.PUBLIC_URL + "images/faq/minus.png"}
-                      alt="Minus"
-                    />
-                  ) : (
-                    <img
-                      className={styles.plusIcon}
-                      src={process.env.PUBLIC_URL + "images/faq/plus.png"}
-                      alt="plus"
-                    />
-                  )}
-                  <div className={styles.content}>
-                    <span className={styles.faq_Q}>{item.question}</span>
+          {qnaList.map((item, id) => (
+            <div className={item.show ? styles.showFAQ : styles.closeFAQ}>
+              <div
+                className={styles.closeFAQ_question}
+                onClick={() => {
+                  onClick(id);
+                }}
+              >
+                <div className={styles.faqList}>
+                  <div className={styles.Q}>
+                    {item.show ? (
+                      <img
+                        className={styles.minusIcon}
+                        src={process.env.PUBLIC_URL + "images/faq/minus.png"}
+                        alt="Minus"
+                      />
+                    ) : (
+                      <img
+                        className={styles.plusIcon}
+                        src={process.env.PUBLIC_URL + "images/faq/plus.png"}
+                        alt="plus"
+                      />
+                    )}
+                    <span className={styles.question}>{item.question}</span>
+                  </div>
+
+                  <div className={styles.A}>
                     <div
-                      className={
-                        item.show ? styles.faq_answer : styles.faq_answer_none
-                      }
+                      className={item.show ? styles.answer : styles.answer_none}
                     >
-                      <div className={styles.faq_A}>
-                        <p className={styles.faq_A_Content}>{item.answer}</p>
-                      </div>
+                      <p className={styles.p}>{item.answer}</p>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
+          {/* Footer */}
+          <div className={styles.wrapfooter}>
+            <img
+              className={styles.footerImg}
+              src={process.env.PUBLIC_URL + "images/footBackground.png"}
+              alt="Footer"
+            />
+            <footer className={styles.footer}>
+              <Footer />
+            </footer>
           </div>
-          <img
-            className={styles.footerImg}
-            src={process.env.PUBLIC_URL + "images/footBackground.png"}
-            alt="Footer"
-          />
-        </div>
-
-        {/* Footer */}
-        <div className={styles.wrapfooter}>
-          <footer className={styles.footer}>
-            <Footer />
-          </footer>
         </div>
       </div>
     </>

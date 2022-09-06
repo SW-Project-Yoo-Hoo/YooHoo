@@ -10,14 +10,20 @@
   src: url("../../../common/font/NotoSansKR-Regular.otf");
 }
 
+html,
+body {
+  width: 100vw;
+  height: 100%;
+}
+/* ================================= */
+/* 헤더, 배경, 푸터 CSS */
+
 .wrapHeader {
   padding-top: 75px;
 }
 
 .background {
   width: 100vw;
-  height: 2000px;
-  /* min-height: 100%; */
   background-color: background1;
   position: relative;
 }
@@ -44,39 +50,35 @@
   top: 0;
 }
 
+/* Footer */
+
 .footerImg {
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* Footer */
-
 .wrapfooter {
-  position: absolute;
+  position: static;
   bottom: 0;
 }
 
 /* ================================= */
+/* FAQ - QnA container CSS */
 
 .faqGroup {
-  display: flex;
-  padding: 0;
   margin: 12.2222vw 0 0 0;
 }
 
 .showFAQ,
 .closeFAQ {
-  display: flex;
-  flex-direction: row;
   width: 58.8542vw;
   margin: 0 20.5556vw 3.2639vw 20.5556vw;
   border-radius: 26px;
-  padding-top: 2.0833vw;
 }
 
 .showFAQ {
-  height: 15.0694vw;
+  height: 14vw;
   background-color: #f3eddc;
 }
 
@@ -85,11 +87,14 @@
   background-color: #fbeed1;
 }
 
-.faqListQ {
+.closeFAQ_question {
   display: flex;
   margin-left: 3.8194vw;
   cursor: pointer;
 }
+
+/* ================================= */
+/* QnA 1개 CSS*/
 
 .plusIcon {
   width: 1.0417vw;
@@ -97,33 +102,48 @@
   margin-right: 1.5972vw;
 }
 
-.content {
-  margin: 0;
+.minusIcon {
+  width: 1.3889vw;
+  height: 0.2778vw;
+  margin-right: 1.3889vw;
+}
+
+.faqList {
   display: flex;
   flex-direction: column;
 }
 
-.faq_Q {
+.Q {
+  display: flex;
+  align-items: center;
+  margin-top: 2.0139vw;
+}
+
+.question {
   font-family: "bold";
   font-size: 0.9722vw;
   color: highlight2;
 }
 
-.minusIcon {
-  width: 1.3889vw;
-  height: 0.2083vw;
-  margin-right: 1.5972vw;
+.A {
+  justify-content: center;
+  align-items: center;
+  margin: 1.6667vw 0 0 2.7778vw;
 }
 
-.faq_A_Content {
+.answer {
   white-space: pre-wrap;
-  position: relative;
   font-family: "regular";
   font-size: 0.9028vw;
   line-height: 1.3194vw;
+  margin: 0;
   color: highlight2;
 }
 
-.faq_answer_none {
+.answer_none {
   display: none;
+}
+
+.p {
+  margin: 0;
 }
