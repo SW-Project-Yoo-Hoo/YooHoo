@@ -7,6 +7,7 @@ import Shop from "./components/page/shop/shop";
 import Post from "./components/page/post/post";
 import Alarm from "./components/user/alarm/alarm";
 import Login from "./components/user/login/login";
+import SignUp from "./components/user/signUp/signUp";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Alarm" element={<Alarm />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/SignUp" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
