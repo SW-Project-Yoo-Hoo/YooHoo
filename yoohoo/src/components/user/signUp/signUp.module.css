@@ -1,7 +1,131 @@
+@value mainGreen,highlight1, background1,textInput,textInputPlace from "../../../common/color.css";
+@value marginLeftRight from "../../../common/size.css";
+
+@font-face {
+  font-family: "Medium";
+  src: url("../../../common/font/NotoSansKR-Medium.otf");
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("../../../common/font/NotoSansKR-Regular.otf");
+}
+
 .backGroundIamge {
   background-image: url("../../../../public/images/headerBackground.png");
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   height: 12.34375vw;
+  position: absolute;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  margin-left: marginLeftRight;
+  margin-right: marginLeftRight;
+  margin-top: 5.7291vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.loginImg {
+  width: 20.3472vw;
+  height: 20.3472vw;
+  margin-right: 13.0555vw;
+  margin-bottom: -2.0833vw;
+}
+
+.signUpForm {
+  width: 20.8333vw;
+  background-color: white;
+  height: 37.6388vw;
+}
+
+.title {
+  color: highlight1;
+  font-size: 1.1111vw;
+  font-family: "Medium";
+}
+
+.id {
+  height: 4.1666vw;
+  width: 100%;
+  margin-top: 2.2916vw;
+  display: flex;
+}
+
+.label {
+  width: 100%;
+  font-size: 0.6944vw;
+  color: highlight1;
+  font-family: "Regular";
+}
+
+.labelSpan {
+  color: mainGreen;
+}
+
+input::placeholder {
+  color: textInput;
+  font-size: 0.625vw;
+}
+
+.input {
+  display: flex;
+  height: 2.5vw;
+  width: 100%;
+  border: 1px solid textInput;
+  border-radius: 0.8333vw;
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 0.625vw;
+  padding-left: 0.8333vw;
+  margin-top: 0.625vw;
+  font-family: "Medium";
+}
+
+.pw {
+  height: 4.1666vw;
+  margin-top: 1.5625vw;
+}
+
+.loginButton {
+  height: 2.9166vw;
+  margin-bottom: 1.5625vw;
+  display: flex;
+  justify-content: center;
+}
+
+.loginButtonStyle {
+  font-family: "Medium";
+  font-size: 0.8333vw;
+  color: white;
+  background-color: mainGreen;
+  width: 12.5vw;
+  border-radius: 1.1111vw;
+  border-style: none;
+}
+
+.signUpButton {
+  height: 2.9166vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 2.0833vw;
+}
+
+.signUpButtonStyle {
+  font-family: "Medium";
+  font-size: 0.8333vw;
+  color: white;
+  background-color: mainGreen;
+  width: 12.5vw;
+  border-radius: 1.1111vw;
+  border-style: none;
+}
+
+/* 1920px 이상 */
+@media (min-width: 1920px) {
 }

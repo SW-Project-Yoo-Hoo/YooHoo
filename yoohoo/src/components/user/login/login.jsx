@@ -12,8 +12,8 @@ import SignUp from "../signUp/signUp";
 const Login = (props) => {
   const loginHandling = () => {
     console.log("로그인 버튼 눌렀다!!");
-    //백엔드랑 통신 해서 로그인 정보가 올바르면
-    window.location.href = "/Home";
+    //백엔드랑 통신 해서 로그인 정보가 올바르면 원래 있던 페이지로 돌아가기
+    window.history.back();
     //로그인 정보가 올바르지 않으면
   };
 
