@@ -24,7 +24,12 @@ const SignUp = (props) => {
   };
 
   const signUpHandling = () => {
-    window.location.href = "/SignUp";
+    //백엔드로 회원 정보 전송하기
+    //만약 회원가입이 제대로 됐다면 로그인 페이지로 이동
+    window.location.href = "/Login";
+
+    //만약 회원가입이 제대로 안됐다면 알람
+    // alert("예기치 못한 오류가 발생하였습니다.");
   };
 
   return (
@@ -102,7 +107,7 @@ const SignUp = (props) => {
                 name="adress"
                 onChange={changeHandling}
                 value={adress}
-                placeholder="회사 주소를 입력해주세요"
+                placeholder="회사 주소를 상세히 입력해주세요"
                 className={styles.input}
               />
             </label>
@@ -118,7 +123,7 @@ const SignUp = (props) => {
                 name="phone"
                 onChange={changeHandling}
                 value={phone}
-                placeholder="거래에 사용될 연락처를 입력해주세요"
+                placeholder="연락처를 '-' 포함하여 입력해주세요"
                 className={styles.input}
               />
             </label>
