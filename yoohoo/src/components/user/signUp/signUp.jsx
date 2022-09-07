@@ -40,11 +40,11 @@ const SignUp = (props) => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <Header />
       <div className={styles.backGroundIamge} />
 
-      <div className={styles.container}>
+      <div className={styles.signUpContainer}>
         {/* Img */}
         <img
           className={styles.loginImg}
@@ -147,7 +147,7 @@ const SignUp = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

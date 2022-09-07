@@ -37,11 +37,11 @@ const Login = (props) => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <Header />
       <div className={styles.backGroundIamge} />
 
-      <div className={styles.container}>
+      <div className={styles.loginContainer}>
         {/* loginImg */}
         <img
           className={styles.loginImg}
@@ -101,7 +101,7 @@ const Login = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

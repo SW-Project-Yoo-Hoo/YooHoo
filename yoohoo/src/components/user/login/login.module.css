@@ -11,6 +11,11 @@
   src: url("../../../common/font/NotoSansKR-Regular.otf");
 }
 
+.container {
+  background-color: background1;
+  padding-bottom: 14.3055vw;
+}
+
 .backGroundIamge {
   background-image: url("../../../../public/images/headerBackground.png");
   width: 100%;
@@ -21,7 +26,7 @@
   z-index: 0;
 }
 
-.container {
+.loginContainer {
   position: relative;
   margin-left: marginLeftRight;
   margin-right: marginLeftRight;
@@ -113,7 +118,7 @@
 
 /* 1920px 이상 */
 @media (min-width: 1920px) {
-  .container {
+  .loginContainer {
     width: 100vw;
     margin-left: 0;
     margin-right: 0;
