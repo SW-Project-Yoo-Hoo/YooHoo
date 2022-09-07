@@ -10,6 +10,7 @@ import SignUp from "../signUp/signUp";
 // 현재 로그인이 안되어 있으면 -> 로그인 페이지 렌더링
 
 const Login = (props) => {
+  //회원정보 상태
   const [inputs, setInputs] = useState({
     id: "",
     pw: "",
@@ -25,11 +26,14 @@ const Login = (props) => {
     });
   };
 
+  const [incorrect, setIncorrect] = useState(true);
+
   const loginHandling = () => {
     console.log("로그인 버튼 눌렀다!!");
     //백엔드랑 통신 해서 로그인 정보가 올바르면 원래 있던 페이지로 돌아가기
-    window.history.back();
-    //로그인 정보가 올바르지 않으면
+    //window.history.back();
+    //로그인 정보가 올바르지 않으면 알림 띄우기
+    setIncorrect(false);
   };
 
   const signUpHandling = () => {
@@ -81,6 +85,13 @@ const Login = (props) => {
                 className={styles.input}
               />
             </label>
+          </div>
+
+          {/* lingAlert */}
+          <div className={styles.alertInfo}>
+            <spna className={styles.alertSpan}>
+              로그인 정보가 올바르지 않습니다.
+            </spna>
           </div>
 
           {/* loginButton */}

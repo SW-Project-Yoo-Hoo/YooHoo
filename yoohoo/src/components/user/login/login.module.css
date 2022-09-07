@@ -1,4 +1,4 @@
-@value mainGreen,highlight1, background1,textInput,textInputPlace,lightWhite from "../../../common/color.css";
+@value mainGreen,highlight1, background1,textInput,textInputPlace,lightWhite,mainOrange from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 @font-face {
@@ -81,12 +81,26 @@
   background: lightWhite;
   color: highlight1;
 }
+
+.alertInfo {
+  margin-top: 2.9166vw;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.alertSpan {
+  font-family: "Medium";
+  font-size: 0.625vw;
+  color: mainOrange;
+}
+
 .loginButton {
   height: 2.9166vw;
   margin-bottom: 1.5625vw;
   display: flex;
   justify-content: center;
-  margin-top: 6.3194vw;
+  margin-top: 1.302vw;
 }
 
 .loginButtonStyle {
@@ -158,10 +172,20 @@
     margin-top: 12px;
   }
 
+  .alertInfo {
+    margin-top: 56px;
+    /* -30px */
+  }
+
+  .alertSpan {
+    font-size: 14px;
+  }
+
   .loginButton {
     height: 56px;
     margin-bottom: 30px;
-    margin-top: 107px;
+    margin-top: 25px;
+    /* -10px */
   }
 
   .loginButtonStyle {
