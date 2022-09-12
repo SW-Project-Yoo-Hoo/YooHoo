@@ -14,56 +14,64 @@ const Shop = (props) => {
           alt="Header"
         />
 
-        <div className={styles.container}>
-          <div>
-            <span className={styles.title}>SHOP</span>
-            <span className={styles.order}>⬇⬆ 최신순</span>
-            <hr className={styles.hr}></hr>
-            <span className={styles.subTitle}>All Products</span>
-          </div>
+        <div>
+          <span className={styles.title}>SHOP</span>
+          <span className={styles.order}>⬇⬆ 최신순</span>
+          <hr className={styles.hr}></hr>
+          <span className={styles.subTitle}>All Products</span>
+        </div>
 
-          <div clssName={styles.productGroup}>
+        <div clssName={styles.container}>
+          <div className={styles.productGroup}>
             <div className={styles.product}>
+              <img
+                className={styles.productImg}
+                src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
+                alt="Product"
+              />
               <div className={styles.info}>
-                <img
-                  className={styles.productImg}
-                  src={process.env.PUBLIC_URL + "images/about/ys.svg"}
-                  alt="Product"
-                />
-                <p className={styles.productTitle}>Title</p>
+                <p className={styles.productTitle}>
+                  일이삼사오육칠팔구십일이삼사오육칠팔구십
+                </p>
                 <div className={styles.info2}>
                   <p className={styles.productPrice}>Price</p>
-                  <AiOutlineHeart className={styles.productHeart} />
+                  <AiOutlineHeart className={styles.wishIcon} />
                 </div>
               </div>
+            </div>
 
+            <div className={styles.product}>
+              <img
+                className={styles.productImg}
+                src={process.env.PUBLIC_URL + "images/about/hj.svg"}
+                alt="Product"
+              />
               <div className={styles.info}>
-                <img
-                  className={styles.productImg}
-                  src={process.env.PUBLIC_URL + "images/about/hj.svg"}
-                  alt="Product"
-                />
-                <p className={styles.productTitle}>Title</p>
+                <p className={styles.productTitle2}>
+                  일이삼사오육칠팔구십일이삼사오육칠팔구십
+                </p>
                 <div className={styles.info2}>
                   <p className={styles.productPrice}>Price</p>
-                  <AiOutlineHeart className={styles.productHeart} />
+                  <AiOutlineHeart className={styles.wishIcon} />
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         {/* Footer */}
-        <div className={styles.wrapfooter}>
-          <div className={styles.imgGroup}>
-            <img
-              className={styles.footerImg}
-              src={process.env.PUBLIC_URL + "images/footBackground.png"}
-              alt="Footer"
-            />
-          </div>
-          <footer className={styles.footer}>
-            <Footer />
-          </footer>
+        <div>
+          <img
+            className={styles.footerImg}
+            src={process.env.PUBLIC_URL + "images/footBackground.png"}
+            alt="Footer"
+          />
+          <img
+            className={styles.footerImg2}
+            src={process.env.PUBLIC_URL + "images/shop/bottomIllu.png"}
+            alt="Illu"
+          />
+          <Footer />
         </div>
       </div>
     </>

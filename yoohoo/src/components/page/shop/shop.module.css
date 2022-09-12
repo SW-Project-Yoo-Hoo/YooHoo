@@ -1,17 +1,18 @@
-@value background1, background2, highlight1, line from "../../../common/color.css";
+@value background1, background2, highlight1, line, unselect from "../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
 .wrapHeader {
   padding-top: 75px;
-  background-color: black;
+  background-color: aliceblue;
 }
 
 .background {
   width: 100vw;
   background-color: background1;
   position: relative;
+  min-height: 80vw;
 }
 
 .headerImg {
@@ -25,32 +26,23 @@
 
 /* Footer */
 
-.imgGroup {
-}
 .footerImg {
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
+  position: absolute;
+  bottom: 0;
 }
 
 .footerImg2 {
   width: 23.125vw;
   height: 23.125vw;
-  position: static;
-  bottom: 0;
-}
-
-.wrapfooter {
-  position: static;
+  margin: 0 0 -40px 17.6389vw;
+  position: absolute;
   bottom: 0;
 }
 
 /* ================================= */
-
-.container {
-  position: relative;
-  min-height: 55vw; /* 수정 필요*/
-}
 
 .title {
   position: absolute;
@@ -72,63 +64,91 @@
 }
 
 .hr {
-  position: absolute;
-  margin-top: 6.9444vw;
-  margin-left: 17.7778vw;
   width: 10.4167vw;
-  color: line;
+  position: absolute;
+  background-color: line;
+  margin: 5.7639vw 0 0 17.7778vw;
 }
 
 .subTitle {
   position: absolute;
-  margin-top: 8.3333vw;
-  margin-left: 17.7778vw;
+  margin: 7.0139vw 0 0 17.7778vw;
   font-family: "Medium";
-  font-size: 0.8333vw;
+  font-size: 0.9028vw;
   color: highlight1;
 }
 
-.productGroup {
+/* ================================= */
+
+.container {
   width: 100vw;
   position: relative;
 }
-.product {
+
+.productGroup {
   width: 54.1667vw;
   height: 50.8333vw;
   position: absolute;
-  margin-top: 6.9444vw;
+  margin-top: 4.3056vw;
   margin-left: 29.1667vw;
   display: grid;
   grid-template-columns: 13.9583vw 13.9583vw 13.9583vw 12.2917vw;
   grid-template-rows: 17.8472vw 17.8472vw 15.2083vw;
 }
 
+.info {
+  width: 11.25vw;
+  margin: 0.625vw 0 0 0.5556vw;
+  font-size: 0.6944vw;
+  font-family: "Regular";
+  line-height: 1.0417vw;
+}
+
 .info2 {
   display: flex;
   position: relative;
   align-items: center;
+  margin-top: 0.2083vw;
 }
 
-.productHeart {
-  width: 1vw;
-  height: 1vw;
-  position: absolute;
-  right: 0;
-  margin-right: 1.6667vw;
-}
 .productImg {
   width: 12.2917vw;
   height: 12.2917vw;
+  border-radius: 1.6667vw;
+  object-fit: cover;
 }
 
 .productTitle {
-  margin: 0.625vw 0 0.2083vw 0;
-  font-size: 0.6944vw;
-  font-family: "Regular";
+  margin: 0;
+}
+
+.productTitle2 {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .productPrice {
   font-size: 0.6944vw;
   font-family: "Regular";
   margin: 0;
+  color: unselect;
+}
+
+.wishIcon {
+  width: 0.8333vw;
+  height: 0.8333vw;
+  position: absolute;
+  right: 0;
+}
+
+/* ================================= */
+/* 그 이상 */
+@media (min-width: 1920px) {
+  .footerImg2 {
+    width: 444px;
+    height: 444px;
+    margin: 0 0 -40px 321px;
+  }
 }
