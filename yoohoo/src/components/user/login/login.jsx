@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import styles from "./login.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
+import classnames from "classnames/bind";
 import Header from "../../header/header";
 import SignUp from "../signUp/signUp";
+
+const cx = classnames.bind(styles);
 
 // 프로필 클릭 -> 로그인 창으로 넘어옴 -> 페이지 렌더링 전(*생명 주기 참고)에 현재 로그인 상태인지 확인
 // 현재 로그인이 되어 있으면 -> 프로필 페이지로 바로 연결
@@ -26,14 +29,14 @@ const Login = (props) => {
     });
   };
 
-  const [incorrect, setIncorrect] = useState(true);
+  const [incorrect, setIncorrect] = useState(false);
 
   const loginHandling = () => {
     console.log("로그인 버튼 눌렀다!!");
     //백엔드랑 통신 해서 로그인 정보가 올바르면 원래 있던 페이지로 돌아가기
     //window.history.back();
     //로그인 정보가 올바르지 않으면 알림 띄우기
-    setIncorrect(false);
+    setIncorrect(true);
   };
 
   const signUpHandling = () => {
@@ -87,15 +90,18 @@ const Login = (props) => {
             </label>
           </div>
 
-          {/* lingAlert */}
-          <div className={styles.alertInfo}>
+          <div className={incorrect ? styles.alertInfo : styles.alertInfoNone}>
             <spna className={styles.alertSpan}>
               로그인 정보가 올바르지 않습니다.
             </spna>
           </div>
 
           {/* loginButton */}
-          <div className={styles.loginButton}>
+          <div
+            className={
+              incorrect ? styles.loginButton : styles.loginButtonDefault
+            }
+          >
             <button className={styles.loginButtonStyle} onClick={loginHandling}>
               로그인
             </button>

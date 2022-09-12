@@ -82,8 +82,12 @@
   color: highlight1;
 }
 
+.alertInfoNone {
+  display: none;
+}
+
 .alertInfo {
-  margin-top: 2.9166vw;
+  margin-top: 4.5833vw;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -93,6 +97,14 @@
   font-family: "Medium";
   font-size: 0.625vw;
   color: mainOrange;
+}
+
+.loginButtonDefault {
+  height: 2.9166vw;
+  margin-bottom: 1.5625vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 4.5833vw;
 }
 
 .loginButton {
