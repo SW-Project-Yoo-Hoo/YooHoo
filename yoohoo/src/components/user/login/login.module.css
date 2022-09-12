@@ -32,8 +32,7 @@
   margin-right: marginLeftRight;
   margin-top: 9.9305vw;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .loginImg {
