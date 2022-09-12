@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import styles from "./login.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
@@ -123,4 +123,9 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+const MyPage = (props) => {
+  let test = 0;
+  return test ? (window.location.href = "/Profile") : Login();
+};
+
+export default MyPage;
