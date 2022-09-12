@@ -130,7 +130,7 @@ const About = (props) => {
                 <a href="https://github.com/object1997428" target="_blank">
                   <VscGithub className={styles.githubIcon} />
                 </a>
-                <a href="https://www.instagram.com/_yeong__s2/" target="_blank">
+                <a href="https://www.instagram.com/qqq_9797/" target="_blank">
                   <FaInstagram className={styles.instaIcon} />
                 </a>
               </div>
@@ -138,10 +138,7 @@ const About = (props) => {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className={styles.wrapfooter}>
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </>
   );

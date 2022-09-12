@@ -49,6 +49,14 @@
   min-height: 188.69vw;
 }
 
+/* Footer */
+
+.wrapfooter {
+  width: 100vw;
+  height: 254px;
+  position: absolute;
+}
+
 /* Topic 1 */
 
 .topic1 {
@@ -194,14 +202,6 @@
   color: highlight3;
 }
 
-/* Footer */
-
-.wrapfooter {
-  width: 100vw;
-  height: 254px;
-  position: absolute;
-}
-
 /* 그 이상 */
 @media (min-width: 1920px) {
   /* body {
@@ -217,6 +217,7 @@
     width: 100vw;
     height: 3186px;
     background-size: 100vw 3186px;
+    min-height: 3186px;
   }
 
   .title {
@@ -233,6 +234,10 @@
     grid-template-rows: 975px 1070px 1138px;
 
     min-height: 337px;
+  }
+
+  .wrapfooter {
+    height: 337px;
   }
 
   .topic2 {
@@ -348,9 +353,5 @@
     width: 36px;
     height: 36px;
     margin-right: 14px;
-  }
-
-  .wrapfooter {
-    height: 337px;
   }
 }

@@ -9,6 +9,8 @@
   width: 100vw;
   height: 254px;
   background-color: background2;
+  position: absolute;
+  bottom: -254px;
 }
 
 .footerLine {
@@ -64,6 +66,7 @@
 @media (min-width: 1920px) {
   .container {
     height: 337px;
+    bottom: -337px;
   }
 
   .footer {
