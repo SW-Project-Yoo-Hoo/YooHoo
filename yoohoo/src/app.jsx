@@ -8,6 +8,7 @@ import Post from "./components/page/post/post";
 import Alarm from "./components/user/alarm/alarm";
 import Login from "./components/user/login/login";
 import SignUp from "./components/user/signUp/signUp";
+import Profile from "./components/page/profile/profile";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Alarm" element={<Alarm />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/Profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
