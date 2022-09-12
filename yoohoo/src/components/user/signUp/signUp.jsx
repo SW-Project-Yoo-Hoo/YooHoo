@@ -24,6 +24,8 @@ const SignUp = (props) => {
     });
   };
 
+  const [incorrect, setIncorrect] = useState(false);
+
   //아이디 정규표현식
   const idRegex = () => {};
 
@@ -33,10 +35,10 @@ const SignUp = (props) => {
   const signUpHandling = () => {
     //백엔드로 회원 정보 전송하기
     //만약 회원가입이 제대로 됐다면 로그인 페이지로 이동
-    window.location.href = "/Login";
+    // window.location.href = "/Login";
 
-    //만약 회원가입이 제대로 안됐다면 알람
-    // alert("예기치 못한 오류가 발생하였습니다.");
+    //만약 회원가입이 제대로 안됐다면(중복된 아이디) 알림 띄우기
+    setIncorrect(true);
   };
 
   return (
@@ -136,8 +138,17 @@ const SignUp = (props) => {
             </label>
           </div>
 
+          {/* loginAlert */}
+          <div className={incorrect ? styles.alertInfo : styles.alertInfoNone}>
+            <spna className={styles.alertSpan}>중복된 아이디입니다.</spna>
+          </div>
+
           {/* signUpButton */}
-          <div className={styles.signUpButton}>
+          <div
+            className={
+              incorrect ? styles.signUpButton : styles.signUpButtonDefault
+            }
+          >
             <button
               className={styles.signUpButtonStyle}
               onClick={signUpHandling}
