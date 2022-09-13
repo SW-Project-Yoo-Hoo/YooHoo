@@ -71,7 +71,7 @@ const Shop = (props) => {
           />
           <img
             className={styles.footerImg2}
-            src={process.env.PUBLIC_URL + "images/shop/bottomIllu.png"}
+            src={process.env.PUBLIC_URL + "images/shop/bottomIllu.svg"}
             alt="Illu"
           />
           <Footer />

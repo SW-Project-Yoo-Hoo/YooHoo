@@ -123,7 +123,7 @@ const About = (props) => {
               <div className={styles.member}>
                 <img
                   className={styles.memberImg}
-                  src={process.env.PUBLIC_URL + "images/about/ys.svg"}
+                  src={process.env.PUBLIC_URL + "images/about/hy.svg"}
                   alt="HY"
                 />
                 <p className={styles.memberName}>Ju Hyer-yeon</p>
