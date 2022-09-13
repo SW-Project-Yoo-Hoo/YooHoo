@@ -20,7 +20,6 @@
 @value highlight1: #431E10;
 @value highlight2: #3B2F48;
 @value highlight3: #725F59;
-@value shadow: #D6D6D6;
 
 /* 기타 */
 @value iconLightGrey: #E6E6E6;
@@ -28,3 +27,4 @@
 @value boldWhite: #FDFBF6;
 @value lightWhite: #FFFEFA;
 @value line: #F4E6BC;
+@value shadow: #D6D6D6;
