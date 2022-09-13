@@ -13,6 +13,7 @@
   background-color: background1;
   position: relative;
   min-height: 111.1111vw;
+  overflow-x: hidden;
 }
 
 .headerImg {
