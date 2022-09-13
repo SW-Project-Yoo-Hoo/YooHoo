@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../footer/footer";
 import styles from "./shopDetail.module.css";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import Header from "../../header/header";
 
@@ -88,7 +88,7 @@ const ShopDetail = (props) => {
                     </p>
                     <div className={styles.info2}>
                       <p className={styles.otherProductsPrice}>Price</p>
-                      <AiOutlineHeart className={styles.wishIcon} />
+                      <MdFavoriteBorder className={styles.wishIcon} />
                     </div>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ const ShopDetail = (props) => {
                     </p>
                     <div className={styles.info2}>
                       <p className={styles.otherProductsPrice}>Price</p>
-                      <AiOutlineHeart className={styles.wishIcon} />
+                      <MdFavoriteBorder className={styles.wishIcon} />
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@ const ShopDetail = (props) => {
                     </p>
                     <div className={styles.info2}>
                       <p className={styles.otherProductsPrice}>Price</p>
-                      <AiOutlineHeart className={styles.wishIcon} />
+                      <MdFavoriteBorder className={styles.wishIcon} />
                     </div>
                   </div>
                 </div>
@@ -188,7 +188,7 @@ const ShopDetail = (props) => {
               <button className={styles.tradeBtn}>거래하기</button>
               <button className={styles.wishBtn}>
                 <div className={styles.wishContent}>
-                  <AiOutlineHeart className={styles.wishIcon2} />
+                  <MdFavoriteBorder className={styles.wishIcon2} />
                   <span>찜하기</span>
                 </div>
               </button>
@@ -203,7 +203,6 @@ const ShopDetail = (props) => {
             src={process.env.PUBLIC_URL + "images/footBackground.png"}
             alt="Footer"
           />
-          {/* footer사진 1 or 2 ?? */}
           <Footer />
         </div>
       </div>

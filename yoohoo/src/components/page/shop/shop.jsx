@@ -1,8 +1,7 @@
 import React from "react";
 import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
-import { MdSwapVert } from "react-icons/md";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import Header from "../../header/header";
 
 const Shop = (props) => {
@@ -38,7 +37,7 @@ const Shop = (props) => {
                 </p>
                 <div className={styles.info2}>
                   <p className={styles.productPrice}>Price</p>
-                  <AiOutlineHeart className={styles.wishIcon} />
+                  <MdFavoriteBorder className={styles.wishIcon} />
                 </div>
               </div>
             </div>
@@ -55,7 +54,7 @@ const Shop = (props) => {
                 </p>
                 <div className={styles.info2}>
                   <p className={styles.productPrice}>Price</p>
-                  <AiOutlineHeart className={styles.wishIcon} />
+                  <MdFavoriteBorder className={styles.wishIcon} />
                 </div>
               </div>
             </div>
