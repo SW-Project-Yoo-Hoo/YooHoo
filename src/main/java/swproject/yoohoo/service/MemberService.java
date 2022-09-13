@@ -45,13 +45,14 @@ public class MemberService {
 
     /** 회원 수정 */
     @Transactional //변경
-    public void updateMember(Long memberid, MemberForm form){
+    public Long updateMember(Long memberid, MemberForm form){
         Member member= memberRepository.findOne(memberid);
         member.setEmail(form.getEmail());
         member.setPassword(form.getPassword());
         member.setCompany(form.getCompany());
         member.setAddress(form.getAddress());
         member.setContact(form.getContact());
+        return memberid;
     }
 
     /**

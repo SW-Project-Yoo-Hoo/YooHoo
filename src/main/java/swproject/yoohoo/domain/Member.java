@@ -3,6 +3,7 @@ package swproject.yoohoo.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Role;
 import swproject.yoohoo.controller.MemberForm;
 
 
@@ -29,6 +30,8 @@ public class Member {
     private String contact;
 
     private String photo_dir;
+
+
 
     //==비즈니스 로직==//
     /** 회원 수정 **/
