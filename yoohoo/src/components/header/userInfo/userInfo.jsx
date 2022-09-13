@@ -9,20 +9,20 @@ const UserInfo = (props) => {
     <ul className={styles.userInfo}>
       {/* searchIcon */}
       <li className={styles.liStyle}>
-        <MdSearch className={styles.iconStyle} />
+        <MdSearch className={styles.icon} />
       </li>
 
       {/* alarmIcon */}
       <li className={styles.liStyle}>
         <Link to="/Alarm">
-          <TbBell className={styles.iconStyle} />
+          <TbBell className={styles.icon} />
         </Link>
       </li>
 
       {/* profileIcon */}
       <li className={styles.liStyle}>
         <Link to="/Login">
-          <MdPersonOutline className={styles.iconStyle} />
+          <MdPersonOutline className={styles.icon} />
         </Link>
       </li>
     </ul>
