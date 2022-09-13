@@ -14,7 +14,7 @@ const Home = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles.home}>
       <Header />
       <div className={styles.backGroundImage}>
         <div className={styles.container}>

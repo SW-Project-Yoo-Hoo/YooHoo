@@ -24,6 +24,10 @@
   min-height: 212.4652vw;
 }
 
+.home {
+  position: relative;
+}
+
 .container {
   height: 100vh;
   width: 100vw;
