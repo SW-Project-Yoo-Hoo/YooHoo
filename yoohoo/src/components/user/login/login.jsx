@@ -123,17 +123,14 @@ const Login = (props) => {
   );
 };
 
-const checkLogin = () => {
-  return 0;
-};
-
 const MyPage = (props) => {
+  let test = 1;
   // useEffect(() => {
   //   test ? (window.location.href = "/Profile") : <Login />;
   // }, []);
-  // return test ? <Link to="/Profile"></Link> : <Login />;
+  return test ? <Link to="/Profile"></Link> : <Login />;
   // return test ? (window.location.href = "/Profile") : <Login />;
-  return checkLogin() ? (window.location.href = "/Profile") : <Login />;
+  // return checkLogin() ? (window.location.href = "/Profile") : <Login />;
 };
 
 export default MyPage;
