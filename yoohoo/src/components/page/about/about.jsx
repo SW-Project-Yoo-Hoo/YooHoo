@@ -4,12 +4,13 @@ import styles from "./about.module.css";
 import { VscGithub } from "react-icons/vsc";
 import { FaInstagram } from "react-icons/fa";
 import Header from "../../header/header";
+import { useRef } from "react";
 
 const About = (props) => {
-  const moveArea = document.querySelector("#topic2");
+  const moveArea = useRef();
 
   const onClick = () => {
-    moveArea.scrollIntoView({ behavior: "smooth", block: "center" });
+    moveArea.current.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   return (
@@ -46,7 +47,7 @@ const About = (props) => {
           </div>
 
           {/* Topic2 */}
-          <div className={styles.topic2} id="topic2">
+          <div ref={moveArea} className={styles.topic2}>
             <img
               className={styles.earthPNG}
               src={process.env.PUBLIC_URL + "images/about/earth.svg"}
