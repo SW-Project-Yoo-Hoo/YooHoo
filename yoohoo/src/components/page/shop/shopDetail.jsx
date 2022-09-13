@@ -3,11 +3,12 @@ import Footer from "../../footer/footer";
 import styles from "./shopDetail.module.css";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiPlus, BiMinus } from "react-icons/bi";
+import Header from "../../header/header";
 
 const ShopDetail = (props) => {
   return (
     <>
-      <div className={styles.wrapHeader}></div>
+      <Header />
       <div className={styles.background}>
         <img
           className={styles.headerImg}
@@ -53,7 +54,7 @@ const ShopDetail = (props) => {
               </div>
             </div>
 
-            <hr className={styles.line1}></hr>
+            <div className={styles.hr}></div>
 
             <div>
               <p className={styles.descriptionTitle}>물품 소개</p>
@@ -68,7 +69,7 @@ const ShopDetail = (props) => {
               </div>
             </div>
 
-            <hr className={styles.line1}></hr>
+            <div className={styles.hr}></div>
 
             <div>
               <p className={styles.lookTitle}>살펴보기</p>
@@ -101,7 +102,7 @@ const ShopDetail = (props) => {
                     />
                   </button>
                   <div className={styles.info}>
-                    <p className={styles.otherProductsTitle2}>
+                    <p className={styles.otherProductsTitle}>
                       일이삼사오육칠팔구십일이삼사오육칠팔구십
                     </p>
                     <div className={styles.info2}>
@@ -140,7 +141,7 @@ const ShopDetail = (props) => {
               <div className={styles.category}>#책상</div>
               <div className={styles.category}>#의자</div>
             </div>
-            <hr className={styles.line2}></hr>
+            <div className={styles.hr2}></div>
             <p className={styles.price}>가격</p>
 
             <div>
@@ -171,7 +172,7 @@ const ShopDetail = (props) => {
                 </button>
               </div>
             </div>
-            <hr className={styles.line2}></hr>
+            <div className={styles.hr2}></div>
 
             <div className={styles.totalCountInfo}>
               <span className={styles.totalCountTitle}>주문 수량</span>

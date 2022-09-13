@@ -3,23 +3,21 @@
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
-.wrapHeader {
-  padding-top: 75px;
-  background-color: aliceblue;
-}
-
 .background {
   width: 100vw;
   background-color: background1;
   position: relative;
   min-height: 111.1111vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .headerImg {
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* Footer */
@@ -110,9 +108,9 @@
   font-family: "Regular";
 }
 
-.line1 {
+.hr {
   width: 41.6667vw;
-  background-color: line;
+  border-top: 1px solid line;
   margin: 0;
 }
 
@@ -186,11 +184,6 @@
 
 .otherProductsTitle {
   margin: 0;
-  white-space: normal;
-}
-
-.otherProductsTitle2 {
-  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -245,9 +238,9 @@
   margin: 0 0.625vw 1.5972vw 0;
 }
 
-.line2 {
+.hr2 {
   width: 20.8333vw;
-  background-color: line;
+  border-top: 1px solid line;
   margin: 0 0 1.5972vw 0;
 }
 

@@ -3,6 +3,7 @@ import Footer from "../../footer/footer";
 import styles from "./about.module.css";
 import { VscGithub } from "react-icons/vsc";
 import { FaInstagram } from "react-icons/fa";
+import Header from "../../header/header";
 
 const About = (props) => {
   const moveArea = document.querySelector("#topic2");
@@ -13,8 +14,7 @@ const About = (props) => {
 
   return (
     <>
-      <div className={styles.wrapHeader}></div>
-
+      <Header />
       <div className={styles.background}>
         {/* Title */}
         <div className={styles.title}>

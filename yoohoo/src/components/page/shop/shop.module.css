@@ -3,11 +3,6 @@
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
-.wrapHeader {
-  padding-top: 75px;
-  background-color: aliceblue;
-}
-
 .background {
   width: 100vw;
   background-color: background1;
@@ -53,7 +48,7 @@
   color: highlight1;
 }
 
-.order {
+.orderDiv {
   position: absolute;
   right: 0;
   margin-top: 2.5vw;
@@ -61,12 +56,22 @@
   font-size: 0.8333vw;
   color: highlight1;
   font-family: "Regular";
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderIcon {
+  width: 1vw;
+  height: 1vw;
+  margin: 0 0.3167vw 0 0;
 }
 
 .hr {
   width: 10.4167vw;
   position: absolute;
-  background-color: line;
+  border-top: 1px solid line;
   margin: 5.7639vw 0 0 17.7778vw;
 }
 
@@ -119,10 +124,6 @@
 }
 
 .productTitle {
-  margin: 0;
-}
-
-.productTitle2 {
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;

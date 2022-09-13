@@ -17,7 +17,7 @@ const FAQ = (props) => {
 
   return (
     <>
-      <div className={styles.wrapHeader}></div>
+      <Header />
       <div className={styles.background}>
         <div className={styles.imgGroup}>
           <img
@@ -70,15 +70,14 @@ const FAQ = (props) => {
               </div>
             </div>
           ))}
+
           {/* Footer */}
-          <div className={styles.wrapfooter}>
-            <img
-              className={styles.footerImg}
-              src={process.env.PUBLIC_URL + "images/footBackground.png"}
-              alt="Footer"
-            />
-            <Footer />
-          </div>
+          <img
+            className={styles.footerImg}
+            src={process.env.PUBLIC_URL + "images/footBackground.png"}
+            alt="Footer"
+          />
+          <Footer />
         </div>
       </div>
     </>

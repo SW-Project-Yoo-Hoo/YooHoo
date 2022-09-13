@@ -1,12 +1,14 @@
 import React from "react";
 import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
+import { MdSwapVert } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import Header from "../../header/header";
 
 const Shop = (props) => {
   return (
     <>
-      <div className={styles.wrapHeader}></div>
+      <Header />
       <div className={styles.background}>
         <img
           className={styles.headerImg}
@@ -14,14 +16,15 @@ const Shop = (props) => {
           alt="Header"
         />
 
-        <div>
-          <span className={styles.title}>SHOP</span>
-          <span className={styles.order}>⬇⬆ 최신순</span>
-          <hr className={styles.hr}></hr>
-          <span className={styles.subTitle}>All Products</span>
+        <span className={styles.title}>SHOP</span>
+        <div className={styles.orderDiv}>
+          <MdSwapVert className={styles.orderIcon} />
+          <span>최신순</span>
         </div>
+        <div className={styles.hr}></div>
+        <span className={styles.subTitle}>All Products</span>
 
-        <div clssName={styles.container}>
+        <div className={styles.container}>
           <div className={styles.productGroup}>
             <div className={styles.product}>
               <img
@@ -47,7 +50,7 @@ const Shop = (props) => {
                 alt="Product"
               />
               <div className={styles.info}>
-                <p className={styles.productTitle2}>
+                <p className={styles.productTitle}>
                   일이삼사오육칠팔구십일이삼사오육칠팔구십
                 </p>
                 <div className={styles.info2}>
