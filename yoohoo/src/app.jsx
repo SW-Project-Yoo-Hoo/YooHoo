@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./app.module.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./components/page/about/about";
@@ -9,6 +10,7 @@ import Alarm from "./components/user/alarm/alarm";
 import Login from "./components/user/login/login";
 import SignUp from "./components/user/signUp/signUp";
 import Profile from "./components/page/profile/profile";
+import FAQ from "./components/footer/notice/faq";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/Faq" element={<FAQ />} />
       </Routes>
     </BrowserRouter>
   );
