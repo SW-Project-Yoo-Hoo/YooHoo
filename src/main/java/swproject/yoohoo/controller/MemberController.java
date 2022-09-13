@@ -5,11 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 import swproject.yoohoo.domain.Member;
+import swproject.yoohoo.domain.ResultVO;
 import swproject.yoohoo.domain.SessionConst;
 import swproject.yoohoo.service.MemberService;
 
@@ -23,8 +21,8 @@ public class MemberController {
     private final MemberService memberService;
 
 
-    @PostMapping("/members/joinForm")
-    public ResponseEntity<?> create(MemberForm form){
+    @PostMapping("/sign_up")
+    public ResultVO create(@RequestBody MemberForm form){
         Member member = new Member();
         member.setEmail(form.getEmail());
         member.setPassword(form.getPassword());
@@ -35,28 +33,28 @@ public class MemberController {
 
         memberService.join(member);
 
-        return ResponseEntity.status(HttpStatus.OK).body(true);
+        return new ResultVO("OK","true");
     }
 
-    @PostMapping("/members/loginForm")
-    public ResponseEntity<?> login(LoginForm form, HttpServletRequest request){//검증 생략
+    @PostMapping("/sign_in")
+    public ResultVO login(@RequestBody LoginForm form, HttpServletRequest request){//검증 생략
         Member loginMember= memberService.login(form.getEmail(),form.getPassword());
-        if(loginMember==null) return ResponseEntity.status(HttpStatus.OK).body(false);
+        if(loginMember==null) return new ResultVO("BAD","아이디와 비밀번호가 일치하지 않습니다.");
         //로그인 성공
 
         HttpSession session=request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER,loginMember.getId());
         //세션 생성, 세션에 회원 정보 보관
 
-        return ResponseEntity.status(HttpStatus.OK).body(true);
+        return new ResultVO("OK","true");
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<?> logout(HttpServletRequest request){
+    public ResultVO logout(HttpServletRequest request){
         HttpSession session=request.getSession(false);
         if(session!=null) session.invalidate();
 
-        return ResponseEntity.status(HttpStatus.OK).body(true);
+        return new ResultVO("OK","true");
     }
 
     @GetMapping("/member/edit")
@@ -66,7 +64,7 @@ public class MemberController {
     }
 
     @PostMapping("/member/edit")
-    public Member edit(MemberForm form, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
+    public Member edit(@RequestBody MemberForm form, @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false)
                             Long loginId){
         memberService.updateMember(loginId, form);
         return memberService.findOne(loginId);
