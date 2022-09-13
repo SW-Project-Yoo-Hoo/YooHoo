@@ -6,13 +6,6 @@ import { Link } from "react-router-dom";
 import { MdOutlineTrendingFlat } from "react-icons/md";
 
 const Home = (props) => {
-  const pageTransform = () => {
-    console.log("페이지이동하기!");
-    // console.log(window.innerWidth);
-    // console.log(window.innerHeight);
-    window.location.href = "/About";
-  };
-
   return (
     <div className={styles.home}>
       <Header />
@@ -51,9 +44,9 @@ const Home = (props) => {
 
               {/* button */}
               <div>
-                <button className={styles.buttonStyle} onClick={pageTransform}>
-                  Read More
-                </button>
+                <Link to="./about">
+                  <div className={styles.buttonStyle}>Read More</div>
+                </Link>
               </div>
             </div>
 

@@ -95,6 +95,9 @@
   border-radius: 32px;
   border-style: none;
   margin-top: 5.1388vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .partOneImage {
