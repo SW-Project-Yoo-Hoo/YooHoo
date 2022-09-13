@@ -3,6 +3,7 @@ import styles from "./signUp.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
+import Footer from "../../footer/footer";
 
 const SignUp = (props) => {
   const [inputs, setInputs] = useState({
@@ -198,6 +199,8 @@ const SignUp = (props) => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import styles from "./login.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
+import Footer from "../../footer/footer";
 import SignUp from "../signUp/signUp";
 import Profile from "../../page/profile/profile";
 
@@ -117,18 +118,22 @@ const Login = (props) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
 
+const checkLogin = () => {
+  return 0;
+};
+
 const MyPage = (props) => {
-  let test = 0;
-  useEffect(() => {
-    test ? (window.location.href = "/Profile") : <Login />;
-  }, []);
+  // useEffect(() => {
+  //   test ? (window.location.href = "/Profile") : <Login />;
+  // }, []);
   // return test ? <Link to="/Profile"></Link> : <Login />;
   // return test ? (window.location.href = "/Profile") : <Login />;
-  return <Login />;
+  return checkLogin() ? (window.location.href = "/Profile") : <Login />;
 };
 
 export default MyPage;

@@ -13,6 +13,7 @@
 
 .container {
   background-color: background1;
+  position: relative;
   padding-bottom: 7.6388vw;
 }
 
