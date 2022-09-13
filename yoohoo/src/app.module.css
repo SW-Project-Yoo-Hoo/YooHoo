@@ -1,4 +1,25 @@
-@value background2 from "./common/color.css";
+@value background2, textInputPlace from "./common/color.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: background2;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: textInputPlace;
+  font-size: 0.625vw;
+}
+
+.App {
+  text-align: center;
+}
 
 @font-face {
   font-family: "Bold";
@@ -18,12 +39,4 @@
 @font-face {
   font-family: "Black";
   src: url("./common/font/NotoSansKR-Black.otf");
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100%;
-  background-color: background2;
 }
