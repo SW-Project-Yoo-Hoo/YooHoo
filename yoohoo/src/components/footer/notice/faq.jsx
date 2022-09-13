@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../header/header";
 import Footer from "../footer";
 import styles from "./faq.module.css";
 import QnA from "./qna.js";
 
 const FAQ = (props) => {
+  /* 페이지 이동 시 스크롤 상단으로 */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [qnaList, setQnaList] = useState(QnA);
 
   const onClick = (id) => {
