@@ -1,10 +1,11 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./login.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import classnames from "classnames/bind";
 import Header from "../../header/header";
 import SignUp from "../signUp/signUp";
+import Profile from "../../page/profile/profile";
 
 const cx = classnames.bind(styles);
 
@@ -125,7 +126,12 @@ const Login = (props) => {
 
 const MyPage = (props) => {
   let test = 0;
-  return test ? (window.location.href = "/Profile") : Login();
+  useEffect(() => {
+    test ? (window.location.href = "/Profile") : <Login />;
+  }, []);
+  // return test ? <Link to="/Profile"></Link> : <Login />;
+  // return test ? (window.location.href = "/Profile") : <Login />;
+  return <Login />;
 };
 
 export default MyPage;
