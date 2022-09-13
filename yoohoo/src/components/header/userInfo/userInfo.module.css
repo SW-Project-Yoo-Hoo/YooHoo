@@ -1,6 +1,6 @@
 @value highlight1 from '../../../common/color.css';
 
-.icon {
+.iconStyle {
   width: 23px;
   height: 23px;
   color: highlight1;

@@ -2,12 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./login.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
-import classnames from "classnames/bind";
 import Header from "../../header/header";
 import SignUp from "../signUp/signUp";
 import Profile from "../../page/profile/profile";
-
-const cx = classnames.bind(styles);
 
 // 프로필 클릭 -> 로그인 창으로 넘어옴 -> 페이지 렌더링 전(*생명 주기 참고)에 현재 로그인 상태인지 확인
 // 현재 로그인이 되어 있으면 -> 프로필 페이지로 바로 연결

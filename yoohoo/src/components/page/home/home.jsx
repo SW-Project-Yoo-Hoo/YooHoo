@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./home.module.css";
 import Header from "../../header/header";
+import Footer from "../../footer/footer";
 import { Link } from "react-router-dom";
 import { MdOutlineTrendingFlat } from "react-icons/md";
 
@@ -183,6 +184,7 @@ const Home = (props) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
