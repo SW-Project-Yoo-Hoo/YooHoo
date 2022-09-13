@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import swproject.yoohoo.domain.ErrorResult;
+import swproject.yoohoo.domain.ResultVO;
 
 @Slf4j
 @RestControllerAdvice
@@ -21,16 +21,23 @@ public class ApiExceptionController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST) //400기본
     @ExceptionHandler(IllegalArgumentException.class)
-    public ErrorResult illegalExHandle(IllegalArgumentException e) {
+    public ResultVO illegalExHandle(IllegalArgumentException e) {
         log.error("[exceptionHandle] ex", e);
-        return new ErrorResult("BAD", e.getMessage());
+        return new ResultVO("BAD", e.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST) //400기본
+    @ExceptionHandler(IllegalStateException.class)
+    public ResultVO illegalExHandle(IllegalStateException e) {
+        log.error("[exceptionHandle] ex", e);
+        return new ResultVO("BAD", e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) //500기본
     @ExceptionHandler
-    public ErrorResult exHandle(Exception e) {
+    public ResultVO exHandle(Exception e) {
         log.error("[exceptionHandle] ex", e);
-        return new ErrorResult("EX", "내부 오류");
+        return new ResultVO("EX", "내부 오류");
     }
 
 
