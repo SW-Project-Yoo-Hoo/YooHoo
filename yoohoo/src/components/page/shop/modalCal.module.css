@@ -1,0 +1,116 @@
+@value textInputPlace, textInput, mainGreen from "../../../common/color.css";
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  width: 51.5972vw;
+  height: 30.4167vw;
+  border-radius: 2.0833vw;
+  background-color: white;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.modalBtn {
+  position: relative;
+  left: 47.4306vw;
+  top: 2.2917vw;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  cursor: pointer;
+}
+
+.modalBtnIcon {
+  width: 1.0417vw;
+  height: 1.0417vw;
+}
+
+.calendar {
+  width: 23.8194vw;
+  height: 17.2917vw;
+  position: relative;
+  top: 4.1667vw;
+  left: 4.7222vw;
+}
+
+.selectDate {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 6.1111vw 3.125vw 0 0;
+  font-family: "Regular";
+}
+
+.title {
+  font-size: 0.9028vw;
+  margin: 0 0 0.9028vw 0;
+  padding: 0;
+}
+
+.end {
+  margin-top: 1.5972vw;
+}
+
+.selectBtns {
+  margin-top: 0.8333vw;
+}
+
+.dateContainer {
+  width: 15.9722vw;
+  height: 2.6389vw;
+  background-color: white;
+  border: 0.0694vw solid textInput;
+  border-radius: 0.6944vw;
+}
+
+.mean {
+  align-items: center;
+  font-size: 0.7639vw;
+  color: textInputPlace;
+  margin: 0.6944vw 0 0 0.8333vw;
+  padding: 0;
+}
+
+.plusBtn,
+.minusBtn {
+  width: 3.3333vw;
+  height: 1.4583vw;
+  background-color: white;
+  border: 0.0694vw solid textInput;
+  border-radius: 0.5556vw;
+  font-family: "Regular";
+  font-size: 0.6944vw;
+  color: textInputPlace;
+  padding: 0;
+  margin: 0 0.8333vw 0.625vw 0;
+}
+
+.finishBtn {
+  position: absolute;
+  bottom: 0;
+  margin: 0 0 3.125vw 20.9722vw;
+  padding: 0;
+  width: 9.7222vw;
+  height: 2.6389vw;
+  color: white;
+  font-size: 0.7639vw;
+  font-family: "Medium";
+  background-color: mainGreen;
+  border: 0.0694vw solid textInput;
+  border-radius: 1.0417vw;
+  cursor: pointer;
+}

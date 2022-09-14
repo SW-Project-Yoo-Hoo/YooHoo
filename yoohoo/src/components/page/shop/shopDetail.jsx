@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../footer/footer";
 import styles from "./shopDetail.module.css";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import Header from "../../header/header";
+import ModalCal from "./modalCal";
 
 const ShopDetail = (props) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const modalClose = () => {
+    setModalOpen(!modalOpen);
+  };
+
   return (
     <>
       <Header />
@@ -162,9 +169,10 @@ const ShopDetail = (props) => {
                 </div>
               </div>
 
-              <button className={styles.periodBtn}>
+              <button className={styles.periodBtn} onClick={modalClose}>
                 대여 시작 날짜와 반납 날짜를 선택해주세요.
               </button>
+              {modalOpen && <ModalCal modalClose={modalClose} />}
             </div>
             <div>
               <p className={styles.countTitle}>수량</p>
