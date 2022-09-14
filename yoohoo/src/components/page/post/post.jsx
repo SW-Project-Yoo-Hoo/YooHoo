@@ -39,6 +39,11 @@ const Post = (props) => {
     setShowImages(imageUrlLists);
   };
 
+  // X버튼 클릭 시 이미지 삭제
+  const handleDeleteImage = (id) => {
+    setShowImages(showImages.filter((_, index) => index !== id));
+  };
+
   return (
     <div className={styles.container}>
       {/* header */}
@@ -77,6 +82,7 @@ const Post = (props) => {
             <div className={styles.imagePicked}>
               {showImages.map((image, id) => (
                 <div className={styles.imagePickedBord} key={id}>
+                  <button onClick={() => handleDeleteImage(id)}>삭제</button>
                   <img
                     className={styles.imagePickedStyle}
                     src={image}
