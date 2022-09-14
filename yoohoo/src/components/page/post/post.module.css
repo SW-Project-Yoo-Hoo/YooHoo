@@ -1,0 +1,224 @@
+@value mainGreen,highlight1,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey from "../../../common/color.css";
+@value marginLeftRight from "../../../common/size.css";
+
+.colorHighlight1 {
+  color: highlight1;
+}
+
+.colorMainGreen {
+  color: mainGreen;
+}
+
+.container {
+  background-color: background1;
+  position: relative;
+  padding-bottom: 8.8888vw;
+}
+
+/* header */
+.backGroundIamgeHeader {
+  background-image: url("../../../../public/images/headerBackground.png");
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 12.34375vw;
+  position: absolute;
+  z-index: 0;
+}
+
+/* foot */
+.bottomContainer {
+  position: relative;
+}
+
+.backGroundIamgeFoot {
+  background-image: url("../../../../public/images/footBackground.png");
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 20.7638vw;
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* contents */
+.postContainer {
+  position: relative;
+  margin: 2.5694vw marginLeftRight 8.8888vw marginLeftRight;
+  z-index: 1;
+}
+
+.title {
+  height: 3.6458vw;
+  margin-bottom: 2.0833vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightWhite;
+  border-radius: 0.8333vw;
+  /* box-sizing: border-box; */
+  box-shadow: 0 0.0694vw 6px shadow;
+  align-items: center;
+}
+
+.titleText {
+  font-family: "Medium";
+  font-size: 0.9722vw;
+  color: highlight1;
+  padding-left: 2.0833vw;
+}
+
+.titleInput {
+  margin-right: 3.8194vw;
+  width: 50%;
+  text-align: right;
+  border: none;
+  background: lightWhite;
+  color: mainGreen;
+  font-family: "Medium";
+  font-size: 0.9722vw;
+}
+
+.titleInput::placeholder {
+  color: textInput;
+  font-size: 0.9722vw;
+}
+
+.imageEnroll {
+  height: 9.6354vw;
+  margin-bottom: 2.6041vw;
+  display: grid;
+  align-content: space-between;
+}
+
+.imageEnrollText {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.textMain {
+  font-size: 0.9722vw;
+  font-family: "Medium";
+}
+
+.textSub {
+  font-size: 0.6944vw;
+  font-family: "Regular";
+  color: mainGreen;
+}
+
+.imageEnrollPick {
+  height: 7.2916vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.imagePicked {
+  width: 52.7083vw;
+  height: 7.2916vw;
+  border-radius: 0.8333vw;
+  background-color: lightWhite;
+  box-shadow: 0 0.0694vw 6px shadow;
+}
+
+.buttonSytle {
+  width: 11.3888vw;
+  height: 2.9166vw;
+  border-radius: 1.0416vw;
+  background-color: mainGreen;
+  font-family: "Medium";
+  font-size: 0.9375vw;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.stuff {
+  height: 5.9895vw;
+  margin-bottom: 3.125vw;
+  display: grid;
+  align-content: space-between;
+}
+
+.stuffPick {
+  height: 3.6458vw;
+  background-color: lightWhite;
+  border-radius: 0.8333vw;
+  box-shadow: 0 0.0694vw 6px shadow;
+}
+
+.deal {
+  height: 6.4062vw;
+  margin-bottom: 3.125vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.unit {
+  width: 38.8888vw;
+  display: grid;
+  align-content: space-between;
+}
+
+.line {
+  width: 100%;
+  border: 1px solid #f3f4f5;
+}
+
+.unitPick {
+  width: 100%;
+  height: 3.6458vw;
+  background-color: lightWhite;
+  border-radius: 0.8333vw;
+  box-shadow: 0 0.0694vw 6px shadow;
+}
+
+.priceQuantity {
+  width: 25.2083vw;
+  display: grid;
+  align-content: space-between;
+}
+
+.priceQuantityPick {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  width: 13.5416vw;
+  height: 3.6458vw;
+  background-color: lightWhite;
+  border-radius: 0.8333vw;
+  box-shadow: 0 0.0694vw 6px shadow;
+}
+
+.quantity {
+  width: 9.0625vw;
+  height: 3.6458vw;
+  background-color: lightWhite;
+  border-radius: 0.8333vw;
+  box-shadow: 0 0.0694vw 6px shadow;
+}
+
+.detailText {
+  height: 14.3229vw;
+  margin-bottom: 6.25vw;
+  display: grid;
+  align-content: space-between;
+}
+
+.detailTextFild {
+  height: 11.9791vw;
+  background-color: lightWhite;
+  border-radius: 0.8333vw;
+  box-shadow: 0 0.0694vw 6px shadow;
+}
+
+.enrollButton {
+  height: 2.9166vw;
+  display: flex;
+  justify-content: center;
+}
