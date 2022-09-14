@@ -121,6 +121,29 @@
   border-radius: 0.8333vw;
   background-color: lightWhite;
   box-shadow: 0 0.0694vw 6px shadow;
+  display: flex;
+  align-items: center;
+}
+
+.imagePickedBord {
+  width: 5.2083vw;
+  height: 5.2083vw;
+  box-shadow: 0 0 0 5px red inset;
+  display: flex;
+  margin-left: 1.0416vw;
+  border-radius: 0.7638vw;
+}
+
+.imagePickedStyle {
+  /* width: 5.2083vw;
+  height: 5.2083vw; */
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.imagePicker {
+  display: none;
 }
 
 .buttonSytle {
@@ -135,6 +158,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border-style: none;
 }
 
 .stuff {

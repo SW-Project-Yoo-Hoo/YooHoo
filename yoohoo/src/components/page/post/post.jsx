@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import styles from "./post.module.css";
 import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
@@ -18,6 +18,25 @@ const Post = (props) => {
       ...inputs,
       [name]: value,
     });
+  };
+
+  const [showImages, setShowImages] = useState([]);
+
+  // 이미지 상대경로 저장
+  const imageAddHandling = (e) => {
+    const imageLists = e.target.files;
+    let imageUrlLists = [...showImages];
+
+    for (let i = 0; i < imageLists.length; i++) {
+      const currentImageUrl = URL.createObjectURL(imageLists[i]);
+      imageUrlLists.push(currentImageUrl);
+    }
+
+    if (imageUrlLists.length > 5) {
+      imageUrlLists = imageUrlLists.slice(0, 5);
+    }
+
+    setShowImages(imageUrlLists);
   };
 
   return (
@@ -55,8 +74,28 @@ const Post = (props) => {
 
           {/* 보더 */}
           <div className={styles.imageEnrollPick}>
-            <div className={styles.imagePicked}></div>
-            <div className={styles.buttonSytle}>첨부하기</div>
+            <div className={styles.imagePicked}>
+              {showImages.map((image, id) => (
+                <div className={styles.imagePickedBord} key={id}>
+                  <img
+                    className={styles.imagePickedStyle}
+                    src={image}
+                    alt={`${image}-${id}`}
+                  />
+                  {/* <Delete onClick={() => handleDeleteImage(id)} /> */}
+                </div>
+              ))}
+            </div>
+            <label className={styles.buttonSytle} onChange={imageAddHandling}>
+              첨부하기
+              <input
+                type="file"
+                id="imgFile"
+                multiple
+                accept="image/*"
+                className={styles.imagePicker}
+              />
+            </label>
           </div>
         </div>
 
