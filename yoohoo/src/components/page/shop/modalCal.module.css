@@ -1,4 +1,4 @@
-@value textInputPlace, textInput, mainGreen from "../../../common/color.css";
+@value highlight2, calender, unselect, textInputPlace, textInput, mainGreen from "../../../common/color.css";
 
 .container {
   width: 100vw;
@@ -77,12 +77,18 @@
   border-radius: 0.6944vw;
 }
 
-.mean {
+.mean,
+.selected {
   align-items: center;
   font-size: 0.7639vw;
   color: textInputPlace;
   margin: 0.6944vw 0 0 0.8333vw;
   padding: 0;
+}
+
+.selected {
+  font-size: 0.8333;
+  color: unselect;
 }
 
 .plusBtn,
@@ -97,6 +103,13 @@
   color: textInputPlace;
   padding: 0;
   margin: 0 0.8333vw 0.625vw 0;
+  cursor: pointer;
+}
+
+.plusBtn:hover,
+.minusBtn:hover {
+  background-color: calender;
+  color: highlight2;
 }
 
 .finishBtn {
