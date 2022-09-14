@@ -1,4 +1,4 @@
-@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, unselect, lightWhite, textInput, textInputPlace from "../../../common/color.css";
+@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, shadow, unselect, lightWhite, textInput, textInputPlace from "../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
@@ -216,6 +216,7 @@
   font-family: "Regular";
   line-height: 2.0833vw;
   margin: 0 0 1.6667vw 0;
+  color: highlight1;
 }
 
 .categoryGroup {
@@ -248,6 +249,7 @@
   margin: 0 0 2.2222vw 0;
   font-size: 0.9722vw;
   font-family: "Medium";
+  color: highlight1;
 }
 
 .period {
@@ -262,7 +264,9 @@
   margin: 0 0 0.8333vw 0;
 }
 
-.help {
+.helpImg {
+  width: 1.0417vw;
+  height: 1.0417vw;
   position: absolute;
   right: 0;
   border: 0;
@@ -271,9 +275,28 @@
   cursor: pointer;
 }
 
-.helpImg {
-  width: 1.0417vw;
-  height: 1.0417vw;
+.helpContainer {
+  display: none;
+}
+
+.helpContent {
+  margin: 0 0 0 1.25vw;
+  font-size: 0.6944vw;
+  line-height: 1.0417vw;
+  font-family: "Regular";
+}
+
+.helpImg:hover .helpContainer {
+  width: 9.8611vw;
+  height: 3.5417vw;
+  background-color: white;
+  border: 0.0694vw solid iconLightGrey;
+  border-radius: 0.9722vw;
+  box-shadow: 0 0.2083vw 0.4167vw shadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translate(-9.375vw, -4.0973vw);
 }
 
 .periodBtn {

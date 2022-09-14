@@ -18,7 +18,7 @@ const ShopDetail = (props) => {
 
         <div className={styles.container}>
           <div className={styles.productInfo}>
-            {/* 사진, 회사 소개, 물품 소개 */}
+            {/* 사진, 회사 소개, 물품 소개, 살펴보기 */}
             <div className={styles.imgGroup}>
               <img
                 className={styles.img1}
@@ -147,13 +147,19 @@ const ShopDetail = (props) => {
             <div>
               <div className={styles.period}>
                 <p className={styles.periodTitle}>대여 기간</p>
-                <button className={styles.help}>
+                <div className={styles.helpImg}>
                   <img
                     className={styles.helpImg}
                     src={process.env.PUBLIC_URL + "images/shopDetail/info.png"}
                     alt="Help"
                   />
-                </button>
+                  <div className={styles.helpContainer}>
+                    <p className={styles.helpContent}>
+                      대여 기간은 주 단위로만
+                    </p>
+                    <p className={styles.helpContent}>설정할 수 있습니다.</p>
+                  </div>
+                </div>
               </div>
 
               <button className={styles.periodBtn}>
