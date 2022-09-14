@@ -20,6 +20,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         {/* <Route path="/Home" render={() => <Home />} /> */}
         <Route path="/shop" element={<Shop />} />
+        <Route path="/detail" element={<ShopDetail />} />
         <Route path="/post" element={<Post />} />
         <Route path="/about" element={<About />} />
         <Route path="/alarm" element={<Alarm />} />
@@ -27,7 +28,6 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/faq" element={<FAQ />} />
-        <Route path="/shopDetail" element={<ShopDetail />} />
       </Routes>
     </BrowserRouter>
   );
