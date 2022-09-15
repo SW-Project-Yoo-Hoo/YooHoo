@@ -17,6 +17,10 @@
   color: iconLightGrey;
 }
 
+.displayNone {
+  display: none;
+}
+
 .container {
   background-color: background1;
   position: relative;
@@ -133,6 +137,23 @@
   align-items: center;
 }
 
+.imageUnPick {
+  background-color: iconLightGrey;
+  width: 5.2083vw;
+  height: 5.2083vw;
+  display: flex;
+  margin-left: calc(1.0416vw + 0.9722vw);
+  border-radius: 0.7638vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageUnPickIcon {
+  width: 2.0833vw;
+  height: 2.0833vw;
+  color: textInputPlace;
+}
+
 .imagePickedBord {
   width: 5.2083vw;
   height: 5.2083vw;
@@ -146,10 +167,6 @@
   height: 100%;
   object-fit: cover;
   border-radius: 0.7638vw;
-}
-
-.imagePicker {
-  display: none;
 }
 
 .deleteButton {
@@ -226,12 +243,6 @@
   align-items: center;
   border-left: 1px solid iconLightGrey;
   height: 100%;
-}
-
-.line {
-  width: 1px;
-  border-left: 1px;
-  height: 3.6458vw;
 }
 
 .deal {

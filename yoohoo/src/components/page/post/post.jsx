@@ -3,7 +3,7 @@ import styles from "./post.module.css";
 import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
-import { MdCancel, MdCheck } from "react-icons/md";
+import { MdCancel, MdCheck, MdPhotoCamera } from "react-icons/md";
 
 const Post = (props) => {
   //제목, 상세내용
@@ -114,14 +114,29 @@ const Post = (props) => {
           <div className={styles.imageEnrollPick}>
             {/* 이미지 미리보기 및 삭제 */}
             <div className={styles.imagePicked}>
+              {/* 이미지 선택 전  */}
+              <div
+                className={
+                  showImages.length > 0
+                    ? styles.displayNone
+                    : styles.imageUnPick
+                }
+              >
+                <MdPhotoCamera className={styles.imageUnPickIcon} />
+              </div>
+
+              {/* 이미지 선택 후 */}
               {showImages.map((image, id) => (
                 <div className={styles.imagePickedBord} key={id}>
+                  {/* 삭제버튼 */}
                   <div
                     className={styles.deleteButton}
                     onClick={() => imageDeleteHandling(id)}
                   >
                     <MdCancel className={styles.deleteButtonStyle} />
                   </div>
+
+                  {/* 이미지 미리보기 */}
                   <img
                     className={styles.imagePickedStyle}
                     src={image}
@@ -139,7 +154,7 @@ const Post = (props) => {
                 id="imgFile"
                 multiple
                 accept="image/*"
-                className={styles.imagePicker}
+                className={styles.displayNone}
               />
             </label>
           </div>
