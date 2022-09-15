@@ -6,6 +6,10 @@ import Footer from "../../footer/footer";
 import { MdCancel, MdCheck, MdPhotoCamera } from "react-icons/md";
 
 const Post = (props) => {
+  //입력 데이터 확인
+  const [incorrect, setIncorrect] = useState(false);
+  const [alertText, setAlertText] = useState("test");
+
   //제목, 상세내용
   const [inputs, setInputs] = useState({
     title: "",
@@ -86,11 +90,28 @@ const Post = (props) => {
   // 등록하기 버튼 클릭 핸들링
   const postClickHandling = () => {
     //데이터 입력 확인
-    //백엔드로 데이터 전송
-    //게시물 상세보기로 이동
-    console.log("등록!");
-    console.log(title);
-    console.log(contents);
+    if (title === "") {
+      setAlertText("제목을 입력해주세요");
+      setIncorrect(true);
+    } else if (showImages.length < 1) {
+      setAlertText("이미지를 첨부해주세요");
+      setIncorrect(true);
+    } else if (price === "") {
+      setAlertText("가격을 입력해주세요");
+      setIncorrect(true);
+    } else if (quantity === "") {
+      setAlertText("수량을 입력해주세요");
+      setIncorrect(true);
+    } else if (contents === "") {
+      setAlertText("상세 내용을 입력해주세요");
+      setIncorrect(true);
+    } else {
+      setIncorrect(false);
+      //데이터 입력이 모두 되어 있다면
+      //백엔드로 데이터 전송
+      //게시물 상세보기로 이동
+      console.log("등록!");
+    }
   };
 
   return (
@@ -640,6 +661,10 @@ const Post = (props) => {
 
         {/* 등록하기 버튼 */}
         <div className={styles.enrollButton}>
+          <span className={incorrect ? styles.alertText : styles.displayNone}>
+            {alertText}
+          </span>
+
           <div
             className={styles.buttonStyle}
             onClick={() => postClickHandling()}

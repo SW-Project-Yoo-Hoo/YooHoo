@@ -1,4 +1,4 @@
-@value mainGreen,highlight1,highlight3,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey,unselect from "../../../common/color.css";
+@value mainGreen,mainOrange,highlight1,highlight3,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey,unselect from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 .colorHighlight1 {
@@ -372,7 +372,14 @@
 }
 
 .enrollButton {
-  height: 2.9166vw;
-  display: flex;
+  place-items: center;
+  display: grid;
   justify-content: center;
+}
+
+.alertText {
+  font-family: "Medium";
+  font-size: 0.8333vw;
+  color: mainOrange;
+  padding-bottom: 0.8333vw;
 }
