@@ -21,6 +21,11 @@
   display: none;
 }
 
+.displayFlex {
+  display: flex;
+  align-items: center;
+}
+
 .container {
   background-color: background1;
   position: relative;
@@ -288,6 +293,36 @@
   background-color: lightWhite;
   border-radius: 0.8333vw;
   box-shadow: 0 0.0694vw 6px shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5972vw 0 1.5972vw;
+  color: highlight1;
+}
+
+.priceQuantityTitle {
+  font-size: 0.7638vw;
+  font-family: "Medium";
+}
+
+.priceInput {
+  margin-right: 0.243vw;
+  width: 5.9722vw;
+  text-align: right;
+  border: none;
+  background: lightWhite;
+  color: mainGreen;
+  font-family: "Medium";
+  font-size: 0.9027vw;
+}
+
+.quantityInput {
+  width: 3.0555vw;
+}
+
+.priceQuantityUnit {
+  font-size: 0.8333vw;
+  font-family: "Regular";
 }
 
 .quantity {
@@ -296,6 +331,11 @@
   background-color: lightWhite;
   border-radius: 0.8333vw;
   box-shadow: 0 0.0694vw 6px shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5972vw 0 1.5972vw;
+  color: highlight1;
 }
 
 .detailText {

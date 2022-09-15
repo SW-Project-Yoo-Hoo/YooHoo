@@ -10,9 +10,11 @@ const Post = (props) => {
   const [inputs, setInputs] = useState({
     title: "",
     contents: "",
+    price: "",
+    quantity: "",
   });
 
-  const { title, contents } = inputs;
+  const { title, contents, price, quantity } = inputs;
 
   //제목, 상세내용 상태 업데이트
   const changeHandling = (e) => {
@@ -21,6 +23,31 @@ const Post = (props) => {
       ...inputs,
       [name]: value,
     });
+  };
+
+  //이미지
+  const [showImages, setShowImages] = useState([]);
+
+  // 이미지 상대경로 저장
+  const imageAddHandling = (e) => {
+    const imageLists = e.target.files;
+    let imageUrlLists = [...showImages];
+
+    for (let i = 0; i < imageLists.length; i++) {
+      const currentImageUrl = URL.createObjectURL(imageLists[i]);
+      imageUrlLists.push(currentImageUrl);
+    }
+
+    if (imageUrlLists.length > 8) {
+      imageUrlLists = imageUrlLists.slice(0, 8);
+    }
+
+    setShowImages(imageUrlLists);
+  };
+
+  // X버튼 클릭 시 이미지 삭제
+  const imageDeleteHandling = (id) => {
+    setShowImages(showImages.filter((_, index) => index !== id));
   };
 
   //대여 물품 선택
@@ -53,32 +80,12 @@ const Post = (props) => {
     });
   };
 
-  const [showImages, setShowImages] = useState([]);
-
-  // 이미지 상대경로 저장
-  const imageAddHandling = (e) => {
-    const imageLists = e.target.files;
-    let imageUrlLists = [...showImages];
-
-    for (let i = 0; i < imageLists.length; i++) {
-      const currentImageUrl = URL.createObjectURL(imageLists[i]);
-      imageUrlLists.push(currentImageUrl);
-    }
-
-    if (imageUrlLists.length > 8) {
-      imageUrlLists = imageUrlLists.slice(0, 8);
-    }
-
-    setShowImages(imageUrlLists);
-  };
-
-  // X버튼 클릭 시 이미지 삭제
-  const imageDeleteHandling = (id) => {
-    setShowImages(showImages.filter((_, index) => index !== id));
-  };
+  //대여단위
+  const [dealUnit, setDealUnit] = useState("일");
 
   // 등록하기 버튼 클릭 핸들링
   const postClickHandling = () => {
+    //데이터 입력 확인
     //백엔드로 데이터 전송
     //게시물 상세보기로 이동
     console.log("등록!");
@@ -414,7 +421,7 @@ const Post = (props) => {
             {/* 선 */}
             <div className={styles.line}></div>
 
-            {/* 보더 */}
+            {/* 단위 선택 */}
             <div className={styles.unitPick}></div>
           </div>
 
@@ -429,10 +436,47 @@ const Post = (props) => {
             {/* 선 */}
             <div className={styles.line}></div>
 
-            {/* 보더 */}
+            {/* 입력창 */}
             <div className={styles.priceQuantityPick}>
-              <div className={styles.price}></div>
-              <div className={styles.quantity}></div>
+              {/* 가격 */}
+              <div className={styles.price}>
+                {/* 제목 */}
+                <span className={styles.priceQuantityTitle}>가격</span>
+
+                {/* 단위 */}
+                <div className={styles.displayFlex}>
+                  <input
+                    type="number"
+                    name="price"
+                    onChange={changeHandling}
+                    value={price}
+                    className={styles.priceInput}
+                  />
+                  <span className={styles.priceQuantityUnit}>
+                    원/1{dealUnit}
+                  </span>
+                </div>
+              </div>
+
+              {/* 수량 */}
+              <div className={styles.quantity}>
+                {/* 제목 */}
+                <span className={styles.priceQuantityTitle}>수량</span>
+
+                {/* 단위 */}
+                <div className={styles.displayFlex}>
+                  <input
+                    type="number"
+                    name="quantity"
+                    onChange={changeHandling}
+                    value={quantity}
+                    className={[styles.priceInput, styles.quantityInput].join(
+                      " "
+                    )}
+                  />
+                  <span className={styles.priceQuantityUnit}>개</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
