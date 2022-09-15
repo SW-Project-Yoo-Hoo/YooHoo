@@ -1,4 +1,4 @@
-@value mainGreen,highlight1,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey from "../../../common/color.css";
+@value mainGreen,highlight1,highlight3,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 .colorHighlight1 {
@@ -144,7 +144,26 @@
   display: none;
 }
 
-.buttonSytle {
+.deleteButton {
+  border-radius: 0.7638vw;
+  width: 0.9722vw;
+  height: 0.9722vw;
+  position: relative;
+  background-color: lightWhite;
+  top: -0.2777vw;
+  left: 5.4861vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteButtonStyle {
+  color: textInput;
+  width: 0.9722vw;
+  height: 0.9722vw;
+}
+
+.buttonStyle {
   width: 11.3888vw;
   height: 2.9166vw;
   border-radius: 1.0416vw;

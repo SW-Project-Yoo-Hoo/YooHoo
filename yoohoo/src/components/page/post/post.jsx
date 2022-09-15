@@ -3,6 +3,7 @@ import styles from "./post.module.css";
 import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
+import { MdCancel } from "react-icons/md";
 
 const Post = (props) => {
   const [inputs, setInputs] = useState({
@@ -32,15 +33,15 @@ const Post = (props) => {
       imageUrlLists.push(currentImageUrl);
     }
 
-    if (imageUrlLists.length > 5) {
-      imageUrlLists = imageUrlLists.slice(0, 5);
+    if (imageUrlLists.length > 8) {
+      imageUrlLists = imageUrlLists.slice(0, 8);
     }
 
     setShowImages(imageUrlLists);
   };
 
   // X버튼 클릭 시 이미지 삭제
-  const handleDeleteImage = (id) => {
+  const imageDeleteHandling = (id) => {
     setShowImages(showImages.filter((_, index) => index !== id));
   };
 
@@ -77,22 +78,29 @@ const Post = (props) => {
             <span className={styles.textSub}>최대 5장 첨부 가능</span>
           </div>
 
-          {/* 보더 */}
+          {/* 이미지 첨부 */}
           <div className={styles.imageEnrollPick}>
+            {/* 이미지 미리보기 및 삭제 */}
             <div className={styles.imagePicked}>
               {showImages.map((image, id) => (
                 <div className={styles.imagePickedBord} key={id}>
-                  <button onClick={() => handleDeleteImage(id)}>삭제</button>
+                  <div
+                    className={styles.deleteButton}
+                    onClick={() => imageDeleteHandling(id)}
+                  >
+                    <MdCancel className={styles.deleteButtonStyle} />
+                  </div>
                   <img
                     className={styles.imagePickedStyle}
                     src={image}
                     alt={`${image}-${id}`}
                   />
-                  {/* <Delete onClick={() => handleDeleteImage(id)} /> */}
                 </div>
               ))}
             </div>
-            <label className={styles.buttonSytle} onChange={imageAddHandling}>
+
+            {/* 이미지 첨부하기 */}
+            <label className={styles.buttonStyle} onChange={imageAddHandling}>
               첨부하기
               <input
                 type="file"
@@ -163,7 +171,7 @@ const Post = (props) => {
 
         {/* 등록하기 버튼 */}
         <div className={styles.enrollButton}>
-          <div className={styles.buttonSytle}>등록하기</div>
+          <div className={styles.buttonStyle}>등록하기</div>
         </div>
       </div>
 
