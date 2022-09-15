@@ -77,6 +77,15 @@ const Post = (props) => {
     setShowImages(showImages.filter((_, index) => index !== id));
   };
 
+  // 등록하기 버튼 클릭 핸들링
+  const postClickHandling = () => {
+    //백엔드로 데이터 전송
+    //게시물 상세보기로 이동
+    console.log("등록!");
+    console.log(title);
+    console.log(contents);
+  };
+
   return (
     <div className={styles.container}>
       {/* header */}
@@ -430,16 +439,35 @@ const Post = (props) => {
 
         {/* 상세 내용 */}
         <div className={styles.detailText}>
+          {/* 제목 */}
           <div className={styles.textMain}>
             <span className={styles.colorHighlight1}>상세내용</span>
             <span className={styles.colorMainGreen}> *</span>
           </div>
-          <div className={styles.detailTextFild}></div>
+
+          {/* 입력창 */}
+          <div className={styles.detailTextFild}>
+            <textarea
+              // type="text"
+              name="contents"
+              maxlength="499"
+              onChange={changeHandling}
+              value={contents}
+              rows={6}
+              placeholder="제품 사용 이력, 제품 사용법, 대여 시 주의점, 가격과 대여기간에 대한 설명 등 제품과 관련된 내용을 자유롭게 작성해주세요.(최대 500자)"
+              className={styles.detailTextFildInput}
+            />
+          </div>
         </div>
 
         {/* 등록하기 버튼 */}
         <div className={styles.enrollButton}>
-          <div className={styles.buttonStyle}>등록하기</div>
+          <div
+            className={styles.buttonStyle}
+            onClick={() => postClickHandling()}
+          >
+            등록하기
+          </div>
         </div>
       </div>
 

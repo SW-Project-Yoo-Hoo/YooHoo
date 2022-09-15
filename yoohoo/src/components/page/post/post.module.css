@@ -312,6 +312,24 @@
   box-shadow: 0 0.0694vw 6px shadow;
 }
 
+.detailTextFildInput {
+  margin: 1.5972vw;
+  width: calc(100% - 1.5972vw - 1.5972vw);
+  text-align: left;
+  border: none;
+  background: lightWhite;
+  color: highlight2;
+  font-family: "Regular";
+  font-size: 0.9027vw;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.detailTextFildInput::placeholder {
+  color: textInput;
+  font-size: 0.9027vw;
+}
+
 .enrollButton {
   height: 2.9166vw;
   display: flex;
