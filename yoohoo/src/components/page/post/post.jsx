@@ -3,7 +3,7 @@ import styles from "./post.module.css";
 import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
-import { MdCancel } from "react-icons/md";
+import { MdCancel, MdCheck } from "react-icons/md";
 
 const Post = (props) => {
   const [inputs, setInputs] = useState({
@@ -18,6 +18,21 @@ const Post = (props) => {
     setInputs({
       ...inputs,
       [name]: value,
+    });
+  };
+
+  const [stuffs, setStuffs] = useState({
+    desk: false,
+    chair: false,
+  });
+
+  const { desk, chair } = stuffs;
+
+  const changeStuffHandling = (objects, id, value) => {
+    const name = objects[id];
+    setStuffs({
+      ...stuffs,
+      [name]: !value,
     });
   };
 
@@ -115,13 +130,75 @@ const Post = (props) => {
 
         {/* 대여 물품 선택 */}
         <div className={styles.stuff}>
+          {/* 제목 */}
           <div className={styles.imageEnrollText}>
             <div className={styles.textMain}>
               <span className={styles.colorHighlight1}>대여물품</span>
             </div>
             <span className={styles.textSub}>복수 선택 가능</span>
           </div>
-          <div className={styles.stuffPick}></div>
+
+          {/* 물품 선택 */}
+          <div className={styles.stuffPick}>
+            {/* 책상 */}
+            <div
+              className={styles.stuffChoice}
+              onClick={() => {
+                changeStuffHandling(Object.keys(stuffs), 0, desk);
+              }}
+            >
+              {/* text */}
+              <div
+                className={[
+                  styles.stuffName,
+                  desk ? styles.colorHighlight1 : styles.colorUnselect,
+                ].join(" ")}
+              >
+                책상
+              </div>
+
+              {/* check */}
+              <div>
+                <MdCheck
+                  className={[
+                    styles.stuffIcon,
+                    desk ? styles.colorMainGreen : styles.colorIconLightGrey,
+                  ].join(" ")}
+                />
+              </div>
+            </div>
+
+            {/* 의자 */}
+            <div
+              className={styles.stuffChoice}
+              onClick={() => {
+                changeStuffHandling(Object.keys(stuffs), 1, chair);
+              }}
+            >
+              {/* text */}
+              <div className={styles.stuffLineName}>
+                <div className={styles.line}></div>
+                <span
+                  className={[
+                    styles.stuffName,
+                    chair ? styles.colorHighlight1 : styles.colorUnselect,
+                  ].join(" ")}
+                >
+                  의자ㅇㅇㅇㅇㅇ
+                </span>
+              </div>
+
+              {/* check */}
+              <div>
+                <MdCheck
+                  className={[
+                    styles.stuffIcon,
+                    chair ? styles.colorMainGreen : styles.colorIconLightGrey,
+                  ].join(" ")}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 대여 단위, 가격 및 수량 */}

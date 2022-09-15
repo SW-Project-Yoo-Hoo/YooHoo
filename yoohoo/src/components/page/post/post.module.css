@@ -1,4 +1,4 @@
-@value mainGreen,highlight1,highlight3,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey from "../../../common/color.css";
+@value mainGreen,highlight1,highlight3,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey,unselect from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 .colorHighlight1 {
@@ -7,6 +7,14 @@
 
 .colorMainGreen {
   color: mainGreen;
+}
+
+.colorUnselect {
+  color: unselect;
+}
+
+.colorIconLightGrey {
+  color: iconLightGrey;
 }
 
 .container {
@@ -190,6 +198,37 @@
   background-color: lightWhite;
   border-radius: 0.8333vw;
   box-shadow: 0 0.0694vw 6px shadow;
+  display: flex;
+}
+
+.stuffChoice {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stuffName {
+  padding-left: 1.5625vw;
+  font-family: "Regular";
+  font-size: 0.8333vw;
+}
+
+.stuffIcon {
+  margin-right: 1.0416vw;
+  width: 1.1111vw;
+  height: 1.1111vw;
+}
+
+.stuffLineName {
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  width: 1px;
+  border-left: 1px;
+  height: 3.6458vw;
 }
 
 .deal {
