@@ -31,7 +31,17 @@ public class Member {
 
     private String photo_dir;
 
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    List<Post> posts=new ArrayList<>();
 
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    List<Request> requests=new ArrayList<>();
+
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    List<Deal> deals=new ArrayList<>();
+
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    List<Alarm> alarms=new ArrayList<>();
 
     //==비즈니스 로직==//
     /** 회원 수정 **/

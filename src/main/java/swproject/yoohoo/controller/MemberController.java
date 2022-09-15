@@ -55,12 +55,12 @@ public class MemberController {
         return new ResultVO("OK","true");
     }
 
-    @GetMapping("/user/edit")
+    @GetMapping("/member/edit")
     public Member editForm(@Login Member loginMember){
         return loginMember;
     }
 
-    @PostMapping("/user/edit")
+    @PutMapping("/member/edit")
     public Member edit(@RequestBody MemberForm form, @Login Member loginMember,HttpServletRequest request){
         Member member=memberService.findOne(memberService.updateMember(loginMember.getId(), form));
 
