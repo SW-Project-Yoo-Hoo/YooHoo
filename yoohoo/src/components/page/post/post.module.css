@@ -274,6 +274,7 @@
   background-color: lightWhite;
   border-radius: 0.8333vw;
   box-shadow: 0 0.0694vw 6px shadow;
+  display: flex;
 }
 
 .priceQuantity {

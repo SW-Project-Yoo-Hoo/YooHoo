@@ -181,7 +181,7 @@ const Post = (props) => {
           {/* 제목 */}
           <div className={styles.imageEnrollText}>
             <div className={styles.textMain}>
-              <span className={styles.colorHighlight1}>대여물품</span>
+              <span className={styles.colorHighlight1}>대여 물품</span>
             </div>
             <span className={styles.textSub}>복수 선택 가능</span>
           </div>
@@ -414,7 +414,7 @@ const Post = (props) => {
           <div className={styles.unit}>
             {/* 제목 */}
             <div className={styles.textMain}>
-              <span className={styles.colorHighlight1}>대여단위</span>
+              <span className={styles.colorHighlight1}>대여 단위</span>
               <span className={styles.colorMainGreen}> *</span>
             </div>
 
@@ -422,7 +422,141 @@ const Post = (props) => {
             <div className={styles.line}></div>
 
             {/* 단위 선택 */}
-            <div className={styles.unitPick}></div>
+            <div className={styles.unitPick}>
+              {/* 일 */}
+              <div
+                className={styles.stuffChoice}
+                onClick={() => {
+                  setDealUnit("일");
+                }}
+              >
+                {/* text */}
+                <div
+                  className={[
+                    styles.stuffName,
+                    dealUnit === "일"
+                      ? styles.colorHighlight1
+                      : styles.colorUnselect,
+                  ].join(" ")}
+                >
+                  일 단위
+                </div>
+
+                {/* check */}
+                <div>
+                  <MdCheck
+                    className={[
+                      styles.stuffIcon,
+                      dealUnit === "일"
+                        ? styles.colorMainGreen
+                        : styles.colorIconLightGrey,
+                    ].join(" ")}
+                  />
+                </div>
+              </div>
+
+              {/* 주 */}
+              <div
+                className={styles.stuffChoice}
+                onClick={() => {
+                  setDealUnit("주");
+                }}
+              >
+                {/* text */}
+                <div className={styles.stuffLineName}>
+                  <span
+                    className={[
+                      styles.stuffName,
+                      dealUnit === "주"
+                        ? styles.colorHighlight1
+                        : styles.colorUnselect,
+                    ].join(" ")}
+                  >
+                    주 단위
+                  </span>
+                </div>
+
+                {/* check */}
+                <div>
+                  <MdCheck
+                    className={[
+                      styles.stuffIcon,
+                      dealUnit === "주"
+                        ? styles.colorMainGreen
+                        : styles.colorIconLightGrey,
+                    ].join(" ")}
+                  />
+                </div>
+              </div>
+
+              {/* 월 */}
+              <div
+                className={styles.stuffChoice}
+                onClick={() => {
+                  setDealUnit("월");
+                }}
+              >
+                {/* text */}
+                <div className={styles.stuffLineName}>
+                  <span
+                    className={[
+                      styles.stuffName,
+                      dealUnit === "월"
+                        ? styles.colorHighlight1
+                        : styles.colorUnselect,
+                    ].join(" ")}
+                  >
+                    월 단위
+                  </span>
+                </div>
+
+                {/* check */}
+                <div>
+                  <MdCheck
+                    className={[
+                      styles.stuffIcon,
+                      dealUnit === "월"
+                        ? styles.colorMainGreen
+                        : styles.colorIconLightGrey,
+                    ].join(" ")}
+                  />
+                </div>
+              </div>
+
+              {/* 년 */}
+              <div
+                className={styles.stuffChoice}
+                onClick={() => {
+                  setDealUnit("년");
+                }}
+              >
+                {/* text */}
+                <div className={styles.stuffLineName}>
+                  <span
+                    className={[
+                      styles.stuffName,
+                      dealUnit === "년"
+                        ? styles.colorHighlight1
+                        : styles.colorUnselect,
+                    ].join(" ")}
+                  >
+                    년 단위
+                  </span>
+                </div>
+
+                {/* check */}
+                <div>
+                  <MdCheck
+                    className={[
+                      styles.stuffIcon,
+                      dealUnit === "년"
+                        ? styles.colorMainGreen
+                        : styles.colorIconLightGrey,
+                    ].join(" ")}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* 가격 및 수량 */}
@@ -485,7 +619,7 @@ const Post = (props) => {
         <div className={styles.detailText}>
           {/* 제목 */}
           <div className={styles.textMain}>
-            <span className={styles.colorHighlight1}>상세내용</span>
+            <span className={styles.colorHighlight1}>상세 내용</span>
             <span className={styles.colorMainGreen}> *</span>
           </div>
 
