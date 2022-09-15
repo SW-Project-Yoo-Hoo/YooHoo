@@ -17,6 +17,10 @@ input::placeholder {
   font-size: 0.625vw;
 }
 
+textarea:focus {
+  outline: none;
+}
+
 .App {
   text-align: center;
 }
