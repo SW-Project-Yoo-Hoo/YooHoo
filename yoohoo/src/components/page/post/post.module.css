@@ -206,6 +206,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 
 .stuffName {
@@ -223,6 +224,8 @@
 .stuffLineName {
   display: flex;
   align-items: center;
+  border-left: 1px solid iconLightGrey;
+  height: 100%;
 }
 
 .line {

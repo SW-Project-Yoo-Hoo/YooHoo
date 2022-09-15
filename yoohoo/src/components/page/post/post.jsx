@@ -6,13 +6,15 @@ import Footer from "../../footer/footer";
 import { MdCancel, MdCheck } from "react-icons/md";
 
 const Post = (props) => {
+  //제목, 상세내용
   const [inputs, setInputs] = useState({
     title: "",
-    text: "",
+    contents: "",
   });
 
-  const { title, text } = inputs;
+  const { title, contents } = inputs;
 
+  //제목, 상세내용 상태 업데이트
   const changeHandling = (e) => {
     const { value, name } = e.target;
     setInputs({
@@ -21,13 +23,28 @@ const Post = (props) => {
     });
   };
 
+  //대여 물품 선택
   const [stuffs, setStuffs] = useState({
     desk: false,
     chair: false,
+    faxMachine: false,
+    copyMachine: false,
+    coffeeMachine: false,
+    mouse: false,
+    computer: false,
   });
 
-  const { desk, chair } = stuffs;
+  const {
+    desk,
+    chair,
+    faxMachine,
+    copyMachine,
+    coffeeMachine,
+    mouse,
+    computer,
+  } = stuffs;
 
+  //대여물품 상태 업데이트
   const changeStuffHandling = (objects, id, value) => {
     const name = objects[id];
     setStuffs({
@@ -177,14 +194,13 @@ const Post = (props) => {
             >
               {/* text */}
               <div className={styles.stuffLineName}>
-                <div className={styles.line}></div>
                 <span
                   className={[
                     styles.stuffName,
                     chair ? styles.colorHighlight1 : styles.colorUnselect,
                   ].join(" ")}
                 >
-                  의자ㅇㅇㅇㅇㅇ
+                  의자
                 </span>
               </div>
 
@@ -194,6 +210,166 @@ const Post = (props) => {
                   className={[
                     styles.stuffIcon,
                     chair ? styles.colorMainGreen : styles.colorIconLightGrey,
+                  ].join(" ")}
+                />
+              </div>
+            </div>
+
+            {/* 팩스기 */}
+            <div
+              className={styles.stuffChoice}
+              onClick={() => {
+                changeStuffHandling(Object.keys(stuffs), 2, faxMachine);
+              }}
+            >
+              {/* text */}
+              <div className={styles.stuffLineName}>
+                <span
+                  className={[
+                    styles.stuffName,
+                    faxMachine ? styles.colorHighlight1 : styles.colorUnselect,
+                  ].join(" ")}
+                >
+                  팩스기
+                </span>
+              </div>
+
+              {/* check */}
+              <div>
+                <MdCheck
+                  className={[
+                    styles.stuffIcon,
+                    faxMachine
+                      ? styles.colorMainGreen
+                      : styles.colorIconLightGrey,
+                  ].join(" ")}
+                />
+              </div>
+            </div>
+
+            {/* 복사기 */}
+            <div
+              className={styles.stuffChoice}
+              onClick={() => {
+                changeStuffHandling(Object.keys(stuffs), 3, copyMachine);
+              }}
+            >
+              {/* text */}
+              <div className={styles.stuffLineName}>
+                <span
+                  className={[
+                    styles.stuffName,
+                    copyMachine ? styles.colorHighlight1 : styles.colorUnselect,
+                  ].join(" ")}
+                >
+                  복사기
+                </span>
+              </div>
+
+              {/* check */}
+              <div>
+                <MdCheck
+                  className={[
+                    styles.stuffIcon,
+                    copyMachine
+                      ? styles.colorMainGreen
+                      : styles.colorIconLightGrey,
+                  ].join(" ")}
+                />
+              </div>
+            </div>
+
+            {/* 커피머신 */}
+            <div
+              className={styles.stuffChoice}
+              onClick={() => {
+                changeStuffHandling(Object.keys(stuffs), 4, coffeeMachine);
+              }}
+            >
+              {/* text */}
+              <div className={styles.stuffLineName}>
+                <span
+                  className={[
+                    styles.stuffName,
+                    coffeeMachine
+                      ? styles.colorHighlight1
+                      : styles.colorUnselect,
+                  ].join(" ")}
+                >
+                  커피머신
+                </span>
+              </div>
+
+              {/* check */}
+              <div>
+                <MdCheck
+                  className={[
+                    styles.stuffIcon,
+                    coffeeMachine
+                      ? styles.colorMainGreen
+                      : styles.colorIconLightGrey,
+                  ].join(" ")}
+                />
+              </div>
+            </div>
+
+            {/* 마우스 */}
+            <div
+              className={styles.stuffChoice}
+              onClick={() => {
+                changeStuffHandling(Object.keys(stuffs), 5, mouse);
+              }}
+            >
+              {/* text */}
+              <div className={styles.stuffLineName}>
+                <span
+                  className={[
+                    styles.stuffName,
+                    mouse ? styles.colorHighlight1 : styles.colorUnselect,
+                  ].join(" ")}
+                >
+                  마우스
+                </span>
+              </div>
+
+              {/* check */}
+              <div>
+                <MdCheck
+                  className={[
+                    styles.stuffIcon,
+                    mouse ? styles.colorMainGreen : styles.colorIconLightGrey,
+                  ].join(" ")}
+                />
+              </div>
+            </div>
+
+            {/* 컴퓨터 */}
+            <div
+              className={styles.stuffChoice}
+              onClick={() => {
+                changeStuffHandling(Object.keys(stuffs), 6, computer);
+              }}
+            >
+              {/* text */}
+              <div className={styles.stuffLineName}>
+                <span
+                  className={[
+                    styles.stuffName,
+                    computer ? styles.colorHighlight1 : styles.colorUnselect,
+                  ].join(" ")}
+                >
+                  컴퓨터
+                </span>
+              </div>
+
+              {/* check */}
+              <div>
+                <MdCheck
+                  className={[
+                    styles.stuffIcon,
+                    computer
+                      ? styles.colorMainGreen
+                      : styles.colorIconLightGrey,
                   ].join(" ")}
                 />
               </div>
