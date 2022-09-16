@@ -8,7 +8,7 @@ import Post from "./components/page/post/post";
 import Alarm from "./components/user/alarm/alarm";
 import Login from "./components/user/login/login";
 import SignUp from "./components/user/signUp/signUp";
-import Profile from "./components/page/profile/myPost/mypost";
+import Profile from "./components/page/profile/profile";
 import FAQ from "./components/footer/notice/faq";
 import ShopDetail from "./components/page/shop/shopDetail";
 
