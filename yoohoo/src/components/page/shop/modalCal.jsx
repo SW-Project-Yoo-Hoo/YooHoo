@@ -9,10 +9,50 @@ const ModalCal = ({ modalClose }) => {
   const [date, setDate] = useState(new Date());
 
   const [startDay, setStartDay] = useState(moment().format("YYYY.MM.DD"));
+  const [endDay, setEndDay] = useState(startDay);
 
-  const onClick = (value, event) => {
-    setStartDay(moment(value).format("YYYY.MM.DD"));
-  };
+  /* 버튼 클릭 했는지, 안했는지*/
+  const [btnClick, setBtnClick] = useState(false);
+
+  /* 대여 단위 +, - 버튼 클릭시*/
+  function onClickDayBtn(value, motion) {
+    let newDay = new Date(endDay);
+
+    if (value === "day") {
+      if (motion === "plus") {
+        newDay.setDate(newDay.getDate() + 1);
+      } else {
+        newDay.setDate(newDay.getDate() - 1);
+      }
+    } else if (value === "week") {
+      if (motion === "plus") {
+        newDay.setDate(newDay.getDate() + 7);
+      } else {
+        newDay.setDate(newDay.getDate() - 7);
+      }
+    } else if (value === "month") {
+      if (motion === "plus") {
+        newDay.setMonth(newDay.getMonth() + 1);
+      } else {
+        newDay.setMonth(newDay.getMonth() - 1);
+      }
+    } else {
+      console.log(newDay.getFullYear());
+      if (motion === "plus") {
+        newDay.setFullYear(newDay.getFullYear() + 1);
+      } else {
+        newDay.setFullYear(newDay.getFullYear() - 1);
+      }
+    }
+
+    let start = new Date(startDay);
+    if (newDay <= start) {
+      newDay = startDay;
+    }
+
+    setEndDay(moment(newDay).format("YYYY.MM.DD"));
+    setBtnClick(true);
+  }
 
   return (
     <div className={styles.container}>
@@ -26,15 +66,18 @@ const ModalCal = ({ modalClose }) => {
               <Calendar
                 calendarType="US"
                 locale="en"
-                formatMonthYear={(locale, date) =>
-                  moment(date).format("YYYY년 M월")
-                }
                 showFixedNumberOfWeeks={true}
                 formatDay={(locale, date) => moment(date).format("D")}
                 onChange={setDate}
                 value={date}
-                selectRange={true}
-                onClickDay={(value, event) => onClick}
+                onClickDay={(value, event) =>
+                  setStartDay(moment(value).format("YYYY.MM.DD"))
+                }
+                formatMonthYear={(locale, date) =>
+                  moment(date).format("YYYY년 M월")
+                }
+
+                // selectRange={true}
               />
               {date.length > 0 ? (
                 <p className="text-center">
@@ -66,21 +109,63 @@ const ModalCal = ({ modalClose }) => {
             <div className={styles.end}>
               <p className={styles.title}>반납 날짜</p>
               <div className={styles.dateContainer}>
-                <p className={styles.mean}>반납 날짜를 설정해주세요</p>
+                <p className={styles.mean}>
+                  {btnClick ? endDay : "반납 날짜를 설정해주세요"}
+                </p>
               </div>
               <div className={styles.selectBtns}>
                 <div className={styles.plusBtns}>
-                  <button className={styles.plusBtn}>+1일</button>
-                  <button className={styles.plusBtn}>+1주</button>
-                  <button className={styles.plusBtn}>+1월</button>
-                  <button className={styles.plusBtn}>+1년</button>
+                  <button
+                    className={styles.plusBtn}
+                    onClick={(e) => onClickDayBtn("day", "plus")}
+                  >
+                    +1일
+                  </button>
+                  <button
+                    className={styles.plusBtn}
+                    onClick={(e) => onClickDayBtn("week", "plus")}
+                  >
+                    +1주
+                  </button>
+                  <button
+                    className={styles.plusBtn}
+                    onClick={(e) => onClickDayBtn("month", "plus")}
+                  >
+                    +1월
+                  </button>
+                  <button
+                    className={styles.plusBtn}
+                    onClick={(e) => onClickDayBtn("year", "plus")}
+                  >
+                    +1년
+                  </button>
                 </div>
 
                 <div className={styles.minusBtns}>
-                  <button className={styles.minusBtn}>-1일</button>
-                  <button className={styles.minusBtn}>-1주</button>
-                  <button className={styles.minusBtn}>-1월</button>
-                  <button className={styles.minusBtn}>-1년</button>
+                  <button
+                    className={styles.minusBtn}
+                    onClick={(e) => onClickDayBtn("day", "minus")}
+                  >
+                    -1일
+                  </button>
+                  <button
+                    className={styles.minusBtn}
+                    onClick={(e) => onClickDayBtn("week", "minus")}
+                  >
+                    -1주
+                  </button>
+                  <button
+                    className={styles.minusBtn}
+                    onClick={(e) => onClickDayBtn("month", "minus")}
+                  >
+                    -1월
+                  </button>
+                  <button
+                    className={styles.minusBtn}
+                    onClick={(e) => onClickDayBtn("year", "minus")}
+                  >
+                    -1년
+                  </button>
                 </div>
               </div>
             </div>
@@ -156,18 +241,6 @@ const CalendarContainer = styled.div`
     cursor: pointer;
     font-size: 0.7639vw;
     font-family: "Medium";
-
-    &:hover {
-      /* 캘린더 색깔*/
-      background-color: #cde1d7;
-    }
-
-    /* 눌렀을 때*/
-    &:active {
-      /* 캘린더 색깔*/
-
-      background-color: #cde1d7;
-    }
   }
 
   /* ~~~ day grid styles ~~~ */
@@ -200,11 +273,6 @@ const CalendarContainer = styled.div`
 
   .react-calendar__month-view__days__day--neighboringMonth {
     color: #acacac;
-  }
-
-  /* ~~~ active day styles ~~~ */
-  .react-calendar__tile--range {
-    // box-shadow: 0 0 6px 2px black;
   }
 
   /* ~~~ other view styles ~~~ */
@@ -254,10 +322,10 @@ const CalendarContainer = styled.div`
   }
 
   .react-calendar__tile--rangeEnd {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 0.6944vw;
-    border-bottom-right-radius: 0.6944vw;
     background-color: #cde1d7;
+    // border-top-left-radius: 0;
+    // border-bottom-left-radius: 0;
+    // border-top-right-radius: 0.6944vw;
+    // border-bottom-right-radius: 0.6944vw;
   }
 `;
