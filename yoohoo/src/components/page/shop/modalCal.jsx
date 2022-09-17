@@ -16,6 +16,53 @@ const ModalCal = ({ modalClose }) => {
   const [startDayClick, setStartDayClick] = useState(false);
   const [btnClick, setBtnClick] = useState(false);
 
+  /* 시작 날짜 선택시 해당 날짜에 색깔 추가*/
+  function onClickStartDay(value, event) {
+    let selectDay = moment(value).format("YYYY.MM.D");
+
+    if (startDay !== selectDay) {
+      if (tmpDay.toString().includes("rangeStartEnd")) {
+        tmpDay.remove("rangeStartEnd");
+      }
+    }
+    event.target.classList.add("rangeStartEnd");
+
+    setStartDay(selectDay);
+    setEndDay(selectDay);
+    setTmpDay(event.target.classList);
+    setStartDayClick(true);
+  }
+
+  function addClassName(value, motion, startDay, endDay) {
+    let arr = [...document.getElementsByTagName("abbr")];
+
+    let tmp = new Date(endDay);
+    let end = moment(tmp).format("YYYY.MM.D").split(".");
+    let endIndex = arr.findIndex((e) => e.outerText === end[2]);
+    let startIndex = arr.findIndex((e) => e.outerText === startDay);
+
+    if (value === "day") {
+      if (motion === "plus") {
+        if (arr[startIndex].classList.contains("rangeStartEnd")) {
+          arr[startIndex].classList.remove("rangeStartEnd");
+          arr[startIndex].classList.add("rangeStartDate");
+        }
+        arr[endIndex - 1].classList.add("rangeMidDate");
+        arr[endIndex - 1].classList.remove("rangeEndDate");
+        arr[endIndex].classList.add("rangeEndDate");
+      } else {
+        if (startIndex === endIndex) {
+          arr[endIndex].classList.add("rangeStartEnd");
+        } else {
+          arr[endIndex].classList.remove("rangeMidDate");
+          arr[endIndex].classList.add("rangeEndDate");
+        }
+        arr[endIndex + 1].classList.remove("rangeEndDate");
+      }
+    }
+    console.log(arr);
+  }
+
   /* 대여 단위 +, - 버튼 클릭시*/
   function onClickDayBtn(value, motion) {
     let newDay = new Date(endDay);
@@ -39,7 +86,6 @@ const ModalCal = ({ modalClose }) => {
         newDay.setMonth(newDay.getMonth() - 1);
       }
     } else {
-      console.log(newDay.getFullYear());
       if (motion === "plus") {
         newDay.setFullYear(newDay.getFullYear() + 1);
       } else {
@@ -52,25 +98,12 @@ const ModalCal = ({ modalClose }) => {
       newDay = startDay;
     }
 
-    setEndDay(moment(newDay).format("YYYY.MM.DD"));
+    setEndDay(moment(newDay).format("YYYY.MM.D"));
+    console.log("add", newDay);
+    let first = startDay.split(".");
+    addClassName(value, motion, first[2], newDay);
+
     setBtnClick(true);
-  }
-
-  /* 시작 날짜 선택시 해당 날짜에 색깔 추가*/
-  function onClickStartDay(value, event) {
-    let selectDay = moment(value).format("YYYY.MM.DD");
-
-    if (startDay !== selectDay) {
-      if (tmpDay.toString().includes("rangeStartDate")) {
-        tmpDay.remove("rangeStartDate");
-      }
-    }
-    event.target.classList.add("rangeStartDate");
-
-    setStartDay(selectDay);
-    setEndDay(selectDay);
-    setTmpDay(event.target.classList);
-    setStartDayClick(true);
   }
 
   return (
@@ -300,51 +333,51 @@ const CalendarContainer = styled.div`
 
   /* 추가 */
 
-  .react-calendar__tile--range {
-    // background-color: #cde1d7;
-    // border-radius: 0;
-  }
-
-  .react-calendar__tile--active:enabled:hover,
-  .react-calendar__tile--active:enabled:focus {
-    //background-color: #cde1d7;
-  }
-
-  .react-calendar--selectRange .react-calendar__tile--hover {
-    //background-color: #cde1d7;
-  }
-
-  .react-calendar__tile--range {
-    height: 1.6667vw;
-    // background-color: #cde1d7;
-    // border-radius: 0;
-  }
-
-  .react-calendar__tile--rangeStart {
-    // border-top-right-radius: 0;
-    // border-bottom-right-radius: 0;
-    // border-top-left-radius: 0.6944vw;
-    // border-bottom-left-radius: 0.6944vw;
-    // background-color: #cde1d7;
-  }
-
-  .react-calendar__tile--rangeEnd {
-    //background-color: #cde1d7;
-    // border-top-left-radius: 0;
-    // border-bottom-left-radius: 0;
-    // border-top-right-radius: 0.6944vw;
-    // border-bottom-right-radius: 0.6944vw;
-  }
-
   .rangeStartDate {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-top-left-radius: 0.6944vw;
     border-bottom-left-radius: 0.6944vw;
     background-color: #cde1d7;
-    height:100%;
-    width:100%;
-    display:flex;
-    text-align: center;      
+    height: 1.6667vw;
+    width: 100%;
+    display: flex;
+    text-align: center;
     justify-content: center;
+  }
+
+  .rangeMidDate {
+    background-color: #cde1d7;
+    height: 1.6667vw;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .rangeEndDate {
+    background-color: #cde1d7;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.6944vw;
+    border-bottom-right-radius: 0.6944vw;
+    height: 1.6667vw;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .rangeStartEnd {
+    background-color: #cde1d7;
+    border-top-left-radius: 0.6944vw;
+    border-bottom-left-radius: 0.6944vw;
+    border-top-right-radius: 0.6944vw;
+    border-bottom-right-radius: 0.6944vw;
+    height: 1.6667vw;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
 `;
