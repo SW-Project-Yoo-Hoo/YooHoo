@@ -8,10 +8,12 @@ import moment from "moment";
 const ModalCal = ({ modalClose }) => {
   const [date, setDate] = useState(new Date());
 
-  const [startDay, setStartDay] = useState(moment().format("YYYY.MM.DD"));
-  const [endDay, setEndDay] = useState(startDay);
+  const [startDay, setStartDay] = useState("");
+  const [endDay, setEndDay] = useState("");
+  const [tmpDay, setTmpDay] = useState("");
 
   /* 버튼 클릭 했는지, 안했는지*/
+  const [startDayClick, setStartDayClick] = useState(false);
   const [btnClick, setBtnClick] = useState(false);
 
   /* 대여 단위 +, - 버튼 클릭시*/
@@ -54,6 +56,23 @@ const ModalCal = ({ modalClose }) => {
     setBtnClick(true);
   }
 
+  /* 시작 날짜 선택시 해당 날짜에 색깔 추가*/
+  function onClickStartDay(value, event) {
+    let selectDay = moment(value).format("YYYY.MM.DD");
+
+    if (startDay !== selectDay) {
+      if (tmpDay.toString().includes("rangeStartDate")) {
+        tmpDay.remove("rangeStartDate");
+      }
+    }
+    event.target.classList.add("rangeStartDate");
+
+    setStartDay(selectDay);
+    setEndDay(selectDay);
+    setTmpDay(event.target.classList);
+    setStartDayClick(true);
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
@@ -70,27 +89,13 @@ const ModalCal = ({ modalClose }) => {
                 formatDay={(locale, date) => moment(date).format("D")}
                 onChange={setDate}
                 value={date}
-                onClickDay={(value, event) =>
-                  setStartDay(moment(value).format("YYYY.MM.DD"))
-                }
+                onClickDay={(value, event) => onClickStartDay(value, event)}
                 formatMonthYear={(locale, date) =>
                   moment(date).format("YYYY년 M월")
                 }
 
                 // selectRange={true}
               />
-              {date.length > 0 ? (
-                <p className="text-center">
-                  <span className="bold">Start:</span> {date[0].toDateString()}
-                  &nbsp;|&nbsp;
-                  <span className="bold">End:</span> {date[1].toDateString()}
-                </p>
-              ) : (
-                <p className="text-center">
-                  <span className="bold">Default selected date:</span>{" "}
-                  {date.toDateString()}
-                </p>
-              )}
             </CalendarContainer>
           </div>
 
@@ -98,10 +103,12 @@ const ModalCal = ({ modalClose }) => {
             <div className={styles.start}>
               <p className={styles.title}>시작 날짜</p>
               <div className={styles.dateContainer}>
-                <p className={styles.selected}>
-                  {console.log(startDay)}
-                  {startDay}
-                  {/* {moment(date[0]).format("YYYY.MM.DD")} */}
+                <p
+                  className={
+                    startDayClick ? styles.selected : styles.unselected
+                  }
+                >
+                  {startDayClick ? startDay : "시작 날짜를 설정해주세요"}
                 </p>
               </div>
             </div>
@@ -109,7 +116,7 @@ const ModalCal = ({ modalClose }) => {
             <div className={styles.end}>
               <p className={styles.title}>반납 날짜</p>
               <div className={styles.dateContainer}>
-                <p className={styles.mean}>
+                <p className={btnClick ? styles.mean : styles.unselected}>
                   {btnClick ? endDay : "반납 날짜를 설정해주세요"}
                 </p>
               </div>
@@ -294,38 +301,50 @@ const CalendarContainer = styled.div`
   /* 추가 */
 
   .react-calendar__tile--range {
-    background-color: #cde1d7;
-    border-radius: 0;
+    // background-color: #cde1d7;
+    // border-radius: 0;
   }
 
   .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus {
-    background-color: #cde1d7;
+    //background-color: #cde1d7;
   }
 
   .react-calendar--selectRange .react-calendar__tile--hover {
-    background-color: #cde1d7;
+    //background-color: #cde1d7;
   }
 
   .react-calendar__tile--range {
     height: 1.6667vw;
-    background-color: #cde1d7;
-    border-radius: 0;
+    // background-color: #cde1d7;
+    // border-radius: 0;
   }
 
   .react-calendar__tile--rangeStart {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 0.6944vw;
-    border-bottom-left-radius: 0.6944vw;
-    background-color: #cde1d7;
+    // border-top-right-radius: 0;
+    // border-bottom-right-radius: 0;
+    // border-top-left-radius: 0.6944vw;
+    // border-bottom-left-radius: 0.6944vw;
+    // background-color: #cde1d7;
   }
 
   .react-calendar__tile--rangeEnd {
-    background-color: #cde1d7;
+    //background-color: #cde1d7;
     // border-top-left-radius: 0;
     // border-bottom-left-radius: 0;
     // border-top-right-radius: 0.6944vw;
     // border-bottom-right-radius: 0.6944vw;
   }
+
+  .rangeStartDate {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0.6944vw;
+    border-bottom-left-radius: 0.6944vw;
+    background-color: #cde1d7;
+    height:100%;
+    width:100%;
+    display:flex;
+    text-align: center;      
+    justify-content: center;
 `;
