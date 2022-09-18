@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Footer from "../../footer/footer";
+import React, { useState, useEffect } from "react";
+import Footer from "../../../footer/footer";
 import styles from "./shopDetail.module.css";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import Header from "../../header/header";
-import ModalCal from "./modalCal";
-import { useEffect } from "react";
+import Header from "../../../header/header";
+import ModalCal from "../modalCal";
+import ShowImg from "./showImg";
 
 const ShopDetail = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -76,28 +76,8 @@ const ShopDetail = (props) => {
         <div className={styles.container}>
           <div className={styles.productInfo}>
             {/* 사진, 회사 소개, 물품 소개, 살펴보기 */}
-            <div className={styles.imgGroup}>
-              <img
-                className={styles.img1}
-                src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
-                alt="Product"
-              />
-              <button className={styles.imgBtn}>
-                <img
-                  className={styles.img2}
-                  src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
-                  alt="Product"
-                />
-              </button>
 
-              <button className={styles.imgBtn}>
-                <img
-                  className={styles.img2}
-                  src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
-                  alt="Product"
-                />
-              </button>
-            </div>
+            <ShowImg />
 
             <div className={styles.company}>
               <img
@@ -115,15 +95,7 @@ const ShopDetail = (props) => {
 
             <div>
               <p className={styles.descriptionTitle}>물품 소개</p>
-              <div className={styles.descriptionContent}>
-                안녕하세요 한샘리하우스 부산,경남 1등, 공간사랑입니다. ​ 추석
-                연휴에도 많은 고객님들께서 카카오톡 상담요청을 해주셔서, 바쁘게
-                보내고 있습니다. 이번에 소개해드릴 포스팅은 부산 금정구 구서동에
-                위치한 구서롯데캐슬골드 45평 인테리어 시공현장에 대해서 간략하게
-                소개하는 시간을 가지도록 하겠습니다. [출처] 구서롯데캐슬골드
-                45평 인테리어 시공, 꼼꼼하고 합리적으로|작성자
-                한샘리하우스공간사랑
-              </div>
+              <div className={styles.descriptionContent}> 설명</div>
             </div>
 
             <div className={styles.hr}></div>

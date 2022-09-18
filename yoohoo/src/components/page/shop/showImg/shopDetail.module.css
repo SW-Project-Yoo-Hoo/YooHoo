@@ -1,4 +1,4 @@
-@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, shadow, unselect, lightWhite, textInput, textInputPlace from "../../../common/color.css";
+@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, shadow, unselect, lightWhite, textInput, textInputPlace from "../../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
@@ -63,6 +63,8 @@
   opacity: 60%;
   background-color: background1;
   cursor: pointer;
+  list-style: none;
+  display: flex;
 }
 
 .img1 {
@@ -70,10 +72,26 @@
   height: 24.8611vw;
 }
 
-.img2 {
+.imgBtnList {
   width: 3.3333vw;
   height: 3.3333vw;
   border-radius: 0.4167vw;
+  margin-right: 0.7639vw;
+}
+
+.selectBtn {
+  opacity: 100%;
+  width: 3.3333vw;
+  height: 3.3333vw;
+  outline: 0;
+  border: 0;
+  padding: 0;
+  margin: 1.0417vw 0.7639vw 0 0;
+
+  background-color: background1;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
 }
 
 /* 회사소개 */
