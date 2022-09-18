@@ -9,8 +9,35 @@ import ModalCal from "./modalCal";
 const ShopDetail = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [startDate, setStartDay] = useState("");
+  const [endDate, setEndDay] = useState("");
+  const [count, setCount] = useState(1);
+  const [dateCnt, setDateCnt] = useState(""); //일, 주 , 월, 년 에 따라
+
   const modalClose = () => {
     setModalOpen(!modalOpen);
+  };
+
+  const changeStart = (value) => {
+    setStartDay(value);
+  };
+
+  const changeEnd = (value) => {
+    setEndDay(value);
+  };
+
+  const changeDateCnt = (value) => {
+    setDateCnt(value);
+  };
+
+  const plusBtn = () => {
+    setCount(count + 1);
+  };
+
+  const minusBtn = () => {
+    if (count === 1) {
+      setCount(1);
+    } else setCount(count - 1);
   };
 
   return (
@@ -168,21 +195,29 @@ const ShopDetail = (props) => {
                   </div>
                 </div>
               </div>
-
               <button className={styles.periodBtn} onClick={modalClose}>
-                대여 시작 날짜와 반납 날짜를 선택해주세요.
+                {startDate === ""
+                  ? " 대여 시작 날짜와 반납 날짜를 선택해주세요."
+                  : `${startDate}~${endDate}`}
               </button>
-              {modalOpen && <ModalCal modalClose={modalClose} />}
+              {modalOpen && (
+                <ModalCal
+                  modalClose={modalClose}
+                  changeStart={changeStart}
+                  changeEnd={changeEnd}
+                  changeDateCnt={changeDateCnt}
+                />
+              )}
             </div>
             <div>
               <p className={styles.countTitle}>수량</p>
               <div className={styles.countBtns}>
                 <button className={styles.minusBtn}>
-                  <BiMinus className={styles.btnIcon} />
+                  <BiMinus className={styles.btnIcon} onClick={minusBtn} />
                 </button>
-                <p className={styles.countNum}>1</p>
+                <p className={styles.countNum}>{count}</p>
                 <button className={styles.plusBtn}>
-                  <BiPlus className={styles.btnIcon} />
+                  <BiPlus className={styles.btnIcon} onClick={plusBtn} />
                 </button>
               </div>
             </div>
@@ -190,12 +225,14 @@ const ShopDetail = (props) => {
 
             <div className={styles.totalCountInfo}>
               <span className={styles.totalCountTitle}>주문 수량</span>
-              <p className={styles.totalCount}>개</p>
+              <p className={styles.totalCount}>{count} 개</p>
             </div>
 
             <div className={styles.totalPriceInfo}>
               <span className={styles.totalPriceTitle}>총 금액</span>
-              <p className={styles.totalPrice}>원</p>
+              <p className={styles.totalPrice}>
+                {startDate === "" ? " " : `${dateCnt}` * `${count}`} 원
+              </p>
             </div>
 
             <div className={styles.btns}>
