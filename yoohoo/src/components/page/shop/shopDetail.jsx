@@ -5,6 +5,7 @@ import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import Header from "../../header/header";
 import ModalCal from "./modalCal";
+import { useEffect } from "react";
 
 const ShopDetail = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -12,7 +13,33 @@ const ShopDetail = (props) => {
   const [startDate, setStartDay] = useState("");
   const [endDate, setEndDay] = useState("");
   const [count, setCount] = useState(1);
-  const [dateCnt, setDateCnt] = useState(""); //일, 주 , 월, 년 에 따라
+  const [dateCnt, setDateCnt] = useState(0); //일, 주 , 월, 년 에 따라
+  const [price, setprice] = useState(0);
+
+  useEffect(() => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const diffDate = start.getTime() - end.getTime();
+
+    // 일 차이
+    const val = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24))) + 1;
+
+    // 주 차이
+    const val2 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 7)));
+
+    // 월 차이
+    const val3 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 30)));
+
+    // 연도 차이
+    const val4 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 365)));
+
+    setDateCnt(val);
+  }, [startDate, endDate]);
+
+  useEffect(() => {
+    setprice(dateCnt * count);
+    // setprice(dateCnt * count * price);
+  }, [dateCnt, count]);
 
   const modalClose = () => {
     setModalOpen(!modalOpen);
@@ -24,10 +51,6 @@ const ShopDetail = (props) => {
 
   const changeEnd = (value) => {
     setEndDay(value);
-  };
-
-  const changeDateCnt = (value) => {
-    setDateCnt(value);
   };
 
   const plusBtn = () => {
@@ -205,7 +228,6 @@ const ShopDetail = (props) => {
                   modalClose={modalClose}
                   changeStart={changeStart}
                   changeEnd={changeEnd}
-                  changeDateCnt={changeDateCnt}
                 />
               )}
             </div>
@@ -231,7 +253,8 @@ const ShopDetail = (props) => {
             <div className={styles.totalPriceInfo}>
               <span className={styles.totalPriceTitle}>총 금액</span>
               <p className={styles.totalPrice}>
-                {startDate === "" ? " " : `${dateCnt}` * `${count}`} 원
+                {console.log("price", price)}
+                {isNaN(price) ? " " : `${price}`} 원
               </p>
             </div>
 

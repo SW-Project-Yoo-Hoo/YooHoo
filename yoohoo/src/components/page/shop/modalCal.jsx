@@ -5,7 +5,7 @@ import styles from "./modalCal.module.css";
 import styled from "styled-components";
 import moment from "moment";
 
-const ModalCal = ({ modalClose, changeStart, changeEnd, changeDateCnt }) => {
+const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
   const [date, setDate] = useState(new Date());
 
   const [startDay, setStartDay] = useState("");
@@ -15,8 +15,6 @@ const ModalCal = ({ modalClose, changeStart, changeEnd, changeDateCnt }) => {
   /* 버튼 클릭 했는지, 안했는지*/
   const [startDayClick, setStartDayClick] = useState(false);
   const [btnClick, setBtnClick] = useState(false);
-
-  const [val, setVal] = useState(1); // 일, 주 , 월, 년 에 따라
 
   /* 시작 날짜 선택시 해당 날짜에 색깔 추가*/
   function onClickStartDay(value, event) {
@@ -77,12 +75,8 @@ const ModalCal = ({ modalClose, changeStart, changeEnd, changeDateCnt }) => {
     if (value === "day") {
       if (motion === "plus") {
         newDay.setDate(newDay.getDate() + 1);
-        // setVal(val + 1);
-        // changeDateCnt(val);
       } else {
         newDay.setDate(newDay.getDate() - 1);
-        // setVal(val - 1);
-        // changeDateCnt(val);
       }
       let start = new Date(startDay);
       if (newDay <= start) {
