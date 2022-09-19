@@ -64,6 +64,12 @@ const Profile = (props) => {
     }
   };
 
+  const editProfileHandling = () => {
+    //백엔드로 회원 정보 전송하기
+    //내 게시물 보기로 이동하기
+    setCall("MyPost");
+  };
+
   useEffect(() => {
     //첫 렌더링 할때만 회원정보 불러오기
   }, []);
@@ -263,7 +269,117 @@ const Profile = (props) => {
           </div>
         </div>
         {/* 게시물 보드 */}
-        <div className={styles.posts}>{callComponent(call)}</div>
+        <div className={styles.posts}>
+          {/* 페이지 제목 */}
+          <div className={styles.postsTitle}>
+            {/* 내 게시물 */}
+            <div
+              className={
+                call === "MyPost" || call === "BookMark"
+                  ? ""
+                  : styles.displayNone
+              }
+            >
+              <span
+                className={call === "MyPost" ? styles.titleOn : styles.titleOff}
+                onClick={() => setCall("MyPost")}
+              >
+                내 게시물
+              </span>
+              <span
+                className={
+                  call === "BookMark" ? styles.titleOn : styles.titleOff
+                }
+                onClick={() => setCall("BookMark")}
+              >
+                찜한 게시물
+              </span>
+            </div>
+
+            {/* 거래현황 */}
+            <div
+              className={
+                call === "WaitStatus" ||
+                call === "ProgressStatus" ||
+                call === "CompletStatus"
+                  ? ""
+                  : styles.displayNone
+              }
+            >
+              <span
+                className={
+                  call === "WaitStatus" ? styles.titleOn : styles.titleOff
+                }
+                onClick={() => setCall("WaitStatus")}
+              >
+                거래 대기
+              </span>
+              <span
+                className={
+                  call === "ProgressStatus" ? styles.titleOn : styles.titleOff
+                }
+                onClick={() => setCall("ProgressStatus")}
+              >
+                거래 중
+              </span>
+              <span
+                className={
+                  call === "CompletStatus" ? styles.titleOn : styles.titleOff
+                }
+                onClick={() => setCall("CompletStatus")}
+              >
+                거래 완료
+              </span>
+            </div>
+
+            {/* 요청현황 */}
+            <div
+              className={
+                call === "SentStatus" || call === "ReceivedStatus"
+                  ? ""
+                  : styles.displayNone
+              }
+            >
+              <span
+                className={
+                  call === "SentStatus" ? styles.titleOn : styles.titleOff
+                }
+                onClick={() => setCall("SentStatus")}
+              >
+                대기 요청
+              </span>
+              <span
+                className={
+                  call === "ReceivedStatus" ? styles.titleOn : styles.titleOff
+                }
+                onClick={() => setCall("ReceivedStatus")}
+              >
+                받은 요청
+              </span>
+            </div>
+
+            {/* 프로필 수정 */}
+            <div
+              className={
+                call === "EditProfile"
+                  ? styles.editProfileTitle
+                  : styles.displayNone
+              }
+            >
+              <span className={styles.titleEdit}>프로필 수정</span>
+              <span
+                className={styles.titleEditDone}
+                onClick={() => editProfileHandling()}
+              >
+                완료
+              </span>
+            </div>
+          </div>
+
+          <div className={styles.postsTitleLine}></div>
+
+          {callComponent(call)}
+        </div>
       </div>
 
       {/* footer */}

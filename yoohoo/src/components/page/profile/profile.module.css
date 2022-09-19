@@ -1,4 +1,4 @@
-@value mainGreen,highlight1, highlight3, background1,textInput,textInputPlace,lightWhite,iconLightGrey, shadow from "../../../common/color.css";
+@value mainGreen,highlight1, highlight3, background1,textInput,textInputPlace,lightWhite,iconLightGrey, shadow,boldWhite,unselect from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 .displayFlex {
@@ -189,4 +189,50 @@
   border-radius: 1.5625vw;
   background-color: lightWhite;
   box-shadow: 0 0.2083vw 0.4166vw shadow;
+}
+
+.postsTitle {
+  padding: 1.0416vw 0 1.0416vw 0;
+}
+
+.titleOn {
+  font-family: "Medium";
+  font-size: 0.7638vw;
+  color: mainGreen;
+  margin-left: 2.6041vw;
+  padding-bottom: 1.0416vw;
+  border-bottom: 2px solid mainGreen;
+  cursor: pointer;
+}
+
+.titleOff {
+  font-family: "Regular";
+  font-size: 0.7638vw;
+  color: unselect;
+  margin-left: 2.6041vw;
+  cursor: pointer;
+}
+
+.editProfileTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleEdit {
+  font-family: "Medium";
+  font-size: 0.7638vw;
+  color: unselect;
+  margin-left: 2.6041vw;
+}
+
+.titleEditDone {
+  font-family: "Medium";
+  font-size: 0.7638vw;
+  color: mainGreen;
+  margin-right: 2.6041vw;
+  cursor: pointer;
+}
+
+.postsTitleLine {
+  border: 2px solid boldWhite;
 }
