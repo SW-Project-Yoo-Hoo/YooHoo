@@ -29,7 +29,7 @@
 .container {
   background-color: background1;
   position: relative;
-  padding-bottom: 8.8888vw;
+  padding-bottom: 12.5vw;
 }
 
 /* header */
@@ -62,7 +62,7 @@
 /* contents */
 .postContainer {
   position: relative;
-  margin: 2.5694vw marginLeftRight 8.8888vw marginLeftRight;
+  margin: 2.5694vw marginLeftRight 12.5vw marginLeftRight;
   z-index: 1;
 }
 
