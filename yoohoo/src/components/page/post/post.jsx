@@ -54,6 +54,15 @@ const Post = (props) => {
     setShowImages(showImages.filter((_, index) => index !== id));
   };
 
+  const onChangeImg = (e) => {
+    e.preventDefault();
+
+    if (e.target.files) {
+      const uploadFile = e.target.files;
+      console.log(uploadFile);
+    }
+  };
+
   //대여 물품 선택
   const [stuffs, setStuffs] = useState({
     desk: false,
@@ -192,6 +201,7 @@ const Post = (props) => {
                 multiple
                 accept="image/*"
                 className={styles.displayNone}
+                onChange={onChangeImg}
               />
             </label>
           </div>
