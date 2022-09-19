@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { MdClose } from "react-icons/md";
 import Calendar from "react-calendar";
 import styles from "./modalCal.module.css";
@@ -13,6 +13,8 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
   /* 버튼 클릭 했는지, 안했는지*/
   const [startDayClick, setStartDayClick] = useState(false);
   const [endDayClick, setEndDayClick] = useState(false);
+
+  const [valCheck, setValCheck] = useState("");
 
   function onClickDay(value) {
     /* 시작 날짜 안 눌렀을 때 */
@@ -39,10 +41,53 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
       setDate("");
     }
   }
+
+  useLayoutEffect(() => {
+    const start = new Date(startDay);
+    const end = new Date(endDay);
+    const diffDate = start.getTime() - end.getTime();
+
+    // 일 차이
+    const val = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24))) + 1;
+
+    // 주 차이
+    const val2 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 7)));
+
+    // 월 차이
+    const val3 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 30)));
+
+    // 연도 차이
+    const val4 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 365)));
+
+    if (val % 7 === 0) {
+      // 주 단위 일 때
+      setValCheck("");
+    } else {
+      setValCheck("대여 단위를 확인 해 주세요\n" + val + "일 선택");
+    }
+  }, [startDay, endDay]);
+
+  function closeFunc(kind) {
+    /* 오른쪽 상단 x를 눌렀을 때 */
+    if (kind === "close") {
+      changeStart("");
+      changeEnd("");
+      modalClose();
+    } else if (kind === "finish") {
+      /* 완료 버튼을 눌렀을 때 */
+      changeStart(startDay);
+      changeEnd(endDay);
+
+      if (valCheck === "") {
+        modalClose();
+      }
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
-        <button className={styles.modalBtn} onClick={modalClose}>
+        <button className={styles.modalBtn} onClick={() => closeFunc("close")}>
           <MdClose className={styles.modalBtnIcon} />
         </button>
         <div className={styles.contents}>
@@ -88,14 +133,20 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
                     ? moment(endDay).format("YYYY.MM.DD")
                     : "반납 날짜를 설정해주세요"}
                 </p>
-                {changeStart(startDay)}
-                {changeEnd(endDay)}
               </div>
+            </div>
+            <div className={styles.warning}>
+              <p className={styles.warning}>
+                {valCheck === "" || date.length !== 2 ? "" : valCheck}
+              </p>
             </div>
           </div>
         </div>
 
-        <button className={styles.finishBtn} onClick={modalClose}>
+        <button
+          className={styles.finishBtn}
+          onClick={() => closeFunc("finish")}
+        >
           완료
         </button>
       </div>

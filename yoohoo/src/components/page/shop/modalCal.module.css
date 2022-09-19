@@ -92,33 +92,6 @@
   color: unselect;
 }
 
-.plusBtns,
-.minusBtns {
-  display: flex;
-  margin-left: 0.1389vw;
-}
-
-.plusBtn,
-.minusBtn {
-  width: 3.3333vw;
-  height: 1.4583vw;
-  background-color: white;
-  border: 0.0694vw solid textInput;
-  border-radius: 0.5556vw;
-  font-family: "Regular";
-  font-size: 0.6944vw;
-  color: textInputPlace;
-  padding: 0;
-  margin: 0 0.8333vw 0.6944vw 0;
-  cursor: pointer;
-}
-
-.plusBtn:hover,
-.minusBtn:hover {
-  background-color: calender;
-  color: highlight2;
-}
-
 .finishBtn {
   position: absolute;
   bottom: 0;
@@ -141,4 +114,11 @@
   color: textInputPlace;
   margin: 0.6944vw 0 0 0.8333vw;
   padding: 0;
+}
+
+.warning {
+  font-size: 0.9028vw;
+  margin-bottom: 0.9028vw;
+  padding: 0;
+  white-space: pre-wrap;
 }
