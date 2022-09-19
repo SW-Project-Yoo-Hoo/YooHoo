@@ -6,6 +6,7 @@ import { BiPlus, BiMinus } from "react-icons/bi";
 import Header from "../../header/header";
 import ModalCal from "./modalCal";
 import ShowImg from "./showImg/showImg";
+import moment from "moment";
 
 const ShopDetail = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -191,9 +192,12 @@ const ShopDetail = (props) => {
                 </div>
               </div>
               <button className={styles.periodBtn} onClick={modalClose}>
+                {console.log(startDate)}
                 {startDate === ""
-                  ? " 대여 시작 날짜와 반납 날짜를 선택해주세요."
-                  : `${startDate}~${endDate}`}
+                  ? "대여 시작 날짜와 반납 날짜를 선택해주세요."
+                  : moment(`${startDate}`).format("YYYY.MM.DD") +
+                    "~" +
+                    moment(`${endDate}`).format("YYYY.MM.DD")}
               </button>
               {modalOpen && (
                 <ModalCal
@@ -225,7 +229,6 @@ const ShopDetail = (props) => {
             <div className={styles.totalPriceInfo}>
               <span className={styles.totalPriceTitle}>총 금액</span>
               <p className={styles.totalPrice}>
-                {console.log("price", price)}
                 {isNaN(price) ? " " : `${price}`} 원
               </p>
             </div>

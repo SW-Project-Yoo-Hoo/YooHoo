@@ -6,114 +6,39 @@ import styled from "styled-components";
 import moment from "moment";
 
 const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
-  const [date, setDate] = useState(new Date());
-
+  const [date, setDate] = useState("");
   const [startDay, setStartDay] = useState("");
   const [endDay, setEndDay] = useState("");
-  const [tmpDay, setTmpDay] = useState("");
 
   /* 버튼 클릭 했는지, 안했는지*/
   const [startDayClick, setStartDayClick] = useState(false);
-  const [btnClick, setBtnClick] = useState(false);
+  const [endDayClick, setEndDayClick] = useState(false);
 
-  /* 시작 날짜 선택시 해당 날짜에 색깔 추가*/
-  function onClickStartDay(value, event) {
-    let selectDay = moment(value).format("YYYY.MM.D");
-
-    if (startDay !== selectDay) {
-      if (tmpDay.toString().includes("rangeStartEnd")) {
-        tmpDay.remove("rangeStartEnd");
+  function onClickDay(value) {
+    /* 시작 날짜 안 눌렀을 때 */
+    if (!startDayClick && !endDayClick) {
+      setDate(value);
+      setStartDay(value);
+      setStartDayClick((startDayClick) => !startDayClick);
+    } else if (startDayClick && !endDayClick) {
+      /* 시작 날짜 누르고, 반납 날짜 안 눌렀을 때 */
+      let tmp1 = new Date(value);
+      let tmp2 = new Date(startDay);
+      if (tmp1 >= tmp2) {
+        setEndDay(value);
+      } else {
+        // 시작 날짜보다 더 큰 날짜를 먼저 선택했을 때
+        setStartDay(value);
+        setEndDay(startDay);
       }
+      setStartDayClick((startDayClick) => !startDayClick);
+    } else if (startDayClick && endDayClick) {
+      /* 시작, 반납 둘 다 눌렀을 때 */
+      setStartDayClick((startDayClick) => !startDayClick);
+      setEndDayClick((endDayClick) => !endDayClick);
+      setDate("");
     }
-    event.target.classList.add("rangeStartEnd");
-
-    setStartDay(selectDay);
-    setEndDay(selectDay);
-    setTmpDay(event.target.classList);
-    setStartDayClick(true);
-
-    changeStart(selectDay);
-    changeEnd(selectDay);
   }
-
-  function clickDayBtn(value, motion, startDay, endDay) {
-    let arr = [...document.getElementsByTagName("abbr")];
-
-    let tmp = new Date(endDay);
-    let end = moment(tmp).format("YYYY.MM.D").split(".");
-    let endIndex = arr.findIndex((e) => e.outerText === end[2]);
-    let startIndex = arr.findIndex((e) => e.outerText === startDay);
-
-    if (value === "day") {
-      if (motion === "plus") {
-        if (arr[startIndex].classList.contains("rangeStartEnd")) {
-          arr[startIndex].classList.remove("rangeStartEnd");
-          arr[startIndex].classList.add("rangeStartDate");
-        }
-        arr[endIndex - 1].classList.add("rangeMidDate");
-        arr[endIndex - 1].classList.remove("rangeEndDate");
-        arr[endIndex].classList.add("rangeEndDate");
-      } else {
-        if (startIndex === endIndex) {
-          arr[endIndex].classList.add("rangeStartEnd");
-        } else {
-          arr[endIndex].classList.remove("rangeMidDate");
-          arr[endIndex].classList.add("rangeEndDate");
-        }
-        arr[endIndex + 1].classList.remove("rangeEndDate");
-      }
-    }
-    console.log(arr);
-  }
-
-  /* 대여 단위 +, - 버튼 클릭시*/
-  function onClickDayBtn(value, motion) {
-    let newDay = new Date(endDay);
-
-    let first = startDay.split(".");
-
-    if (value === "day") {
-      if (motion === "plus") {
-        newDay.setDate(newDay.getDate() + 1);
-      } else {
-        newDay.setDate(newDay.getDate() - 1);
-      }
-      let start = new Date(startDay);
-      if (newDay <= start) {
-        newDay = startDay;
-      }
-      clickDayBtn(value, motion, first[2], newDay);
-    } else if (value === "week") {
-      if (motion === "plus") {
-        newDay.setDate(newDay.getDate() + 7);
-      } else {
-        newDay.setDate(newDay.getDate() - 7);
-      }
-    } else if (value === "month") {
-      if (motion === "plus") {
-        newDay.setMonth(newDay.getMonth() + 1);
-      } else {
-        newDay.setMonth(newDay.getMonth() - 1);
-      }
-    } else {
-      if (motion === "plus") {
-        newDay.setFullYear(newDay.getFullYear() + 1);
-      } else {
-        newDay.setFullYear(newDay.getFullYear() - 1);
-      }
-    }
-
-    let start = new Date(startDay);
-    if (newDay <= start) {
-      newDay = startDay;
-    }
-
-    setEndDay(moment(newDay).format("YYYY.MM.D"));
-    changeEnd(moment(newDay).format("YYYY.MM.D"));
-
-    setBtnClick(true);
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
@@ -126,16 +51,16 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
               <Calendar
                 calendarType="US"
                 locale="en"
+                value={date}
+                onChange={(value) => setDate(value)}
                 showFixedNumberOfWeeks={true}
                 formatDay={(locale, date) => moment(date).format("D")}
-                onChange={setDate}
-                value={date}
-                onClickDay={(value, event) => onClickStartDay(value, event)}
                 formatMonthYear={(locale, date) =>
                   moment(date).format("YYYY년 M월")
                 }
-                onViewChange={(action) => alert("ff")}
                 selectRange={true}
+                minDate={new Date()}
+                onClickDay={(value) => onClickDay(value)}
               />
             </CalendarContainer>
           </div>
@@ -146,75 +71,25 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
               <div className={styles.dateContainer}>
                 <p
                   className={
-                    startDayClick ? styles.selected : styles.unselected
+                    startDay !== "" ? styles.selected : styles.unselected
                   }
                 >
-                  {startDayClick ? startDay : "시작 날짜를 설정해주세요"}
+                  {startDay !== ""
+                    ? moment(startDay).format("YYYY.MM.DD")
+                    : "시작 날짜를 설정해주세요"}
                 </p>
               </div>
             </div>
-
             <div className={styles.end}>
               <p className={styles.title}>반납 날짜</p>
               <div className={styles.dateContainer}>
-                <p className={btnClick ? styles.mean : styles.unselected}>
-                  {btnClick ? endDay : "반납 날짜를 설정해주세요"}
+                <p className={endDay !== "" ? styles.mean : styles.unselected}>
+                  {date.length === 2
+                    ? moment(endDay).format("YYYY.MM.DD")
+                    : "반납 날짜를 설정해주세요"}
                 </p>
-              </div>
-              <div className={styles.selectBtns}>
-                <div className={styles.plusBtns}>
-                  <button
-                    className={styles.plusBtn}
-                    onClick={(e) => onClickDayBtn("day", "plus")}
-                  >
-                    +1일
-                  </button>
-                  <button
-                    className={styles.plusBtn}
-                    onClick={(e) => onClickDayBtn("week", "plus")}
-                  >
-                    +1주
-                  </button>
-                  <button
-                    className={styles.plusBtn}
-                    onClick={(e) => onClickDayBtn("month", "plus")}
-                  >
-                    +1월
-                  </button>
-                  <button
-                    className={styles.plusBtn}
-                    onClick={(e) => onClickDayBtn("year", "plus")}
-                  >
-                    +1년
-                  </button>
-                </div>
-
-                <div className={styles.minusBtns}>
-                  <button
-                    className={styles.minusBtn}
-                    onClick={(e) => onClickDayBtn("day", "minus")}
-                  >
-                    -1일
-                  </button>
-                  <button
-                    className={styles.minusBtn}
-                    onClick={(e) => onClickDayBtn("week", "minus")}
-                  >
-                    -1주
-                  </button>
-                  <button
-                    className={styles.minusBtn}
-                    onClick={(e) => onClickDayBtn("month", "minus")}
-                  >
-                    -1월
-                  </button>
-                  <button
-                    className={styles.minusBtn}
-                    onClick={(e) => onClickDayBtn("year", "minus")}
-                  >
-                    -1년
-                  </button>
-                </div>
+                {changeStart(startDay)}
+                {changeEnd(endDay)}
               </div>
             </div>
           </div>
@@ -341,51 +216,27 @@ const CalendarContainer = styled.div`
 
   /* 추가 */
 
-  .rangeStartDate {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  .react-calendar__tile--now {
+    border: 1px solid #cde1d7;
+    border-radius: 0.6944vw;
+    height: 1.6667vw;
+  }
+
+  .react-calendar__tile--range {
+    height: 1.6667vw;
+    background-color: #cde1d7;
+    border-radius: 0;
+  }
+
+  .react-calendar__tile--rangeStart {
     border-top-left-radius: 0.6944vw;
     border-bottom-left-radius: 0.6944vw;
     background-color: #cde1d7;
-    height: 1.6667vw;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
   }
 
-  .rangeMidDate {
-    background-color: #cde1d7;
-    height: 1.6667vw;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .rangeEndDate {
-    background-color: #cde1d7;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+  .react-calendar__tile--rangeEnd {
     border-top-right-radius: 0.6944vw;
     border-bottom-right-radius: 0.6944vw;
-    height: 1.6667vw;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .rangeStartEnd {
     background-color: #cde1d7;
-    border-top-left-radius: 0.6944vw;
-    border-bottom-left-radius: 0.6944vw;
-    border-top-right-radius: 0.6944vw;
-    border-bottom-right-radius: 0.6944vw;
-    height: 1.6667vw;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
   }
 `;
