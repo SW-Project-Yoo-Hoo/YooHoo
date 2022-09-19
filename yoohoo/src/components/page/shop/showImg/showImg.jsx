@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./shopDetail.module.css";
+import styles from "../shopDetail.module.css";
 import img from "./image";
 import PhotoList from "./photoList";
 import { useEffect } from "react";

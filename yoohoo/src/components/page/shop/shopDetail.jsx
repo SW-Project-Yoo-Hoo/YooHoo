@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Footer from "../../../footer/footer";
+import Footer from "../../footer/footer";
 import styles from "./shopDetail.module.css";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import Header from "../../../header/header";
-import ModalCal from "../modalCal";
-import ShowImg from "./showImg";
+import Header from "../../header/header";
+import ModalCal from "./modalCal";
+import ShowImg from "./showImg/showImg";
 
 const ShopDetail = (props) => {
   const [modalOpen, setModalOpen] = useState(false);

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./shopDetail.module.css";
+import styles from "../shopDetail.module.css";
 
 const PhotoItem = ({ item, onView }) => {
   const { id, image, title } = item;

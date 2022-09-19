@@ -1,10 +1,12 @@
 import React from "react";
-import styles from "./shopDetail.module.css";
+import styles from "../shopDetail.module.css";
 import PhotoItem from "./photoItem";
 
 const PhotoList = ({ data, currentItem, onView }) => {
   const { id, image, title } = currentItem;
-
+  {
+    console.log(id);
+  }
   return (
     <article>
       <img className={styles.img1} src={image} alt={title} />

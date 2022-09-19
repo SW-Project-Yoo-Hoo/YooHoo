@@ -10,7 +10,7 @@ import Login from "./components/user/login/login";
 import SignUp from "./components/user/signUp/signUp";
 import Profile from "./components/page/profile/profile";
 import FAQ from "./components/footer/notice/faq";
-import ShopDetail from "./components/page/shop/showImg/shopDetail";
+import ShopDetail from "./components/page/shop/shopDetail";
 
 function App() {
   return (

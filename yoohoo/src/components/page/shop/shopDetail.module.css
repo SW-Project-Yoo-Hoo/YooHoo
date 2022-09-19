@@ -1,4 +1,4 @@
-@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, shadow, unselect, lightWhite, textInput, textInputPlace from "../../../../common/color.css";
+@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, shadow, unselect, lightWhite, textInput, textInputPlace from "../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
@@ -79,7 +79,7 @@
   margin-right: 0.7639vw;
 }
 
-.selectBtn {
+.A {
   opacity: 100%;
   width: 3.3333vw;
   height: 3.3333vw;
