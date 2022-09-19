@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./profile.module.css";
-import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import EditProfile from "./editProfile/editProfile";
@@ -12,12 +11,21 @@ import ProgressStatus from "./tansStatus/progressStatus";
 import CompletStatus from "./tansStatus/completStatus";
 import SentStatus from "./requestStatus/sentStatus";
 import ReceivedStatus from "./requestStatus/receivedStatus";
+import { MdLocationOn, MdPhone } from "react-icons/md";
 
 const Profile = (props) => {
+  const userInfo = {
+    name: "testName",
+    adress: "testAdress",
+    phone: "testPhone",
+    photoSrc: "",
+  };
+
+  //웹 스토리지 저장 커스텀 훅 호출
   const [call, setCall] = useLocalStorage("call", "MyPost");
 
+  //컴포넌트 호출
   const callComponent = (props) => {
-    // 컴포넌트 호출
     switch (props) {
       // 게시물 보기-> 내 게시물
       case "MyPost":
@@ -55,6 +63,11 @@ const Profile = (props) => {
         return <MyPost />;
     }
   };
+
+  useEffect(() => {
+    //첫 렌더링 할때만 회원정보 불러오기
+  }, []);
+
   return (
     <div className={styles.container}>
       {/* header */}
@@ -66,7 +79,33 @@ const Profile = (props) => {
         {/* 회원정보 + 메뉴 */}
         <div className={styles.userKategorie}>
           {/* 회원정보 */}
-          <div className={styles.userInfo}>user</div>
+          <div className={styles.userInfo}>
+            {/* 사진,이름 */}
+            <div className={styles.userInfoTop}>
+              <img
+                className={styles.userPhoto}
+                src="/Images/header/logo.png"
+                alt="logo"
+              ></img>
+              <span className={styles.userName}>{userInfo.name}</span>
+            </div>
+
+            {/* 주소, 전화번호 */}
+
+            <div
+              className={[
+                styles.userInfoBottom,
+                styles.userInfoBottomMargin,
+              ].join(" ")}
+            >
+              <MdLocationOn className={styles.userInfoIcon} />
+              <sapn className={styles.userInfoText}>{userInfo.adress}</sapn>
+            </div>
+            <div className={styles.userInfoBottom}>
+              <MdPhone className={styles.userInfoIcon} />
+              <sapn className={styles.userInfoText}>{userInfo.phone}</sapn>
+            </div>
+          </div>
 
           {/* 선 */}
           <div className={styles.kategorieLine} />
