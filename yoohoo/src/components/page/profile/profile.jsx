@@ -142,7 +142,6 @@ const Profile = (props) => {
                       : styles.displayNone
                   }
                 >
-                  {console.log(call)}
                   <div
                     className={[
                       styles.menuSubMargin,
@@ -236,7 +235,6 @@ const Profile = (props) => {
                       : styles.displayNone
                   }
                 >
-                  {console.log(call)}
                   <div
                     className={[
                       styles.menuSubMargin,
@@ -378,7 +376,11 @@ const Profile = (props) => {
 
           <div className={styles.postsTitleLine}></div>
 
-          {callComponent(call)}
+          <div
+            className={call === "EditProfile" ? styles.postsContentsEdit : ""}
+          >
+            {callComponent(call)}
+          </div>
         </div>
       </div>
 

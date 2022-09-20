@@ -184,7 +184,9 @@
   position: relative;
   margin: 3.6458vw marginLeftRight 26.597vw 2.6041vw;
   z-index: 1;
-  height: 23.5416vw;
+  /* height: 23.5416vw; */
+  /* padding: 2.0833vw 2.1875vw 2.0833vw 2.1875vw; */
+  /* padding : 30px 31.5px 30px 31.5px */
   width: 49.5833vw;
   border-radius: 1.5625vw;
   background-color: lightWhite;
@@ -235,4 +237,8 @@
 
 .postsTitleLine {
   border: 2px solid boldWhite;
+}
+
+.postsContentsEdit {
+  padding: 2.0833vw 2.1875vw 2.0833vw 2.1875vw;
 }
