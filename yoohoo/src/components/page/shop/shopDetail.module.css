@@ -332,7 +332,8 @@
   transform: translate(-9.375vw, -4.0973vw);
 }
 
-.periodBtn {
+.periodBtn,
+.selectPeriodBtn {
   width: 20.8333vw;
   height: 2.2917vw;
   padding: 0;
@@ -343,11 +344,19 @@
   border-radius: 0.6944vw;
   border: 1px solid textInput;
   border-width: 0.0694vw;
-  font-size: 0.9722;
+  font-size: 0.9722vw;
   font-family: "Regular";
-  color: textInputPlace;
+
   cursor: pointer;
   margin-bottom: 1.0417vw;
+}
+
+.periodBtn {
+  color: textInputPlace;
+}
+
+.selectPeriodBtn {
+  color: unselect;
 }
 
 .countTitle {

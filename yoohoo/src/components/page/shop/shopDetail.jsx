@@ -234,7 +234,14 @@ const ShopDetail = (props) => {
                   </div>
                 </div>
               </div>
-              <button className={styles.periodBtn} onClick={modalClose}>
+              <button
+                className={
+                  startDate === "" || endDate === ""
+                    ? styles.periodBtn
+                    : styles.selectPeriodBtn
+                }
+                onClick={modalClose}
+              >
                 {startDate === "" || endDate === ""
                   ? "대여 시작 날짜와 반납 날짜를 선택해주세요."
                   : moment(`${startDate}`).format("YYYY.MM.DD") +
