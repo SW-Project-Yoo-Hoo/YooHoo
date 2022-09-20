@@ -251,6 +251,10 @@
 
 /* 그 이상 */
 @media (min-width: 1920px) {
+  .bottomContainer {
+    position: relative;
+    bottom: 0;
+  }
   .backGroundImage {
     background-repeat: no-repeat;
     background-size: 100vw 4080px;

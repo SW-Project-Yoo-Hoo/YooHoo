@@ -176,8 +176,13 @@ const Home = (props) => {
             </div>
           </div>
         </div>
+        <div className={styles.bottomContainer}>
+          <Footer />
+        </div>
       </div>
-      <Footer />
+      {/* <div className={styles.bottomContainer}>
+        <Footer />
+      </div> */}
     </div>
   );
 };
