@@ -9,7 +9,6 @@
 }
 
 .container {
-  /* box-shadow: 0 0 0 1px black inset; */
   margin: 2.0833vw 0.7291vw 5.243vw 2.1875vw;
   min-height: 13.125vw;
 }
@@ -35,6 +34,7 @@
   margin-right: 1.4583vw;
   font-family: "Regular";
   font-size: 0.6944vw;
+  cursor: pointer;
 }
 
 .postImg {
