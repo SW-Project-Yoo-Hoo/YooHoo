@@ -59,7 +59,7 @@
 /* contents */
 /* 회원정보 + 메뉴 */
 .userKategorie {
-  margin: 3.6458vw 0 0 marginLeftRight;
+  margin: 3.6458vw 0 0 calc(marginLeftRight - 2.1875vw);
   position: relative;
   height: 37.0138vw;
   /* height: 380px; */
