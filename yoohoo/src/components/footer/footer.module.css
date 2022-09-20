@@ -66,11 +66,13 @@
   }
 
   .footer {
+    width: 1280px;
     height: 300px;
     padding-top: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0 auto 0 auto;
   }
 
   .noticeTitle,
