@@ -36,8 +36,12 @@ public class Post {
     private String rental_unit;
     private int rental_price;
     private int quantity;
-    private String explain;
+    private String content;
     private LocalDateTime postDate;
+
+    public Post() {
+
+    }
 
 
     //==연관관계 메서드==//
@@ -67,12 +71,13 @@ public class Post {
 
     //==생성 메서드==//
 
-    public Post(Member member, String title, String rental_unit, int rental_price, int quantity, String explain) {
+    public Post(Member member, String title, String rental_unit, int rental_price, int quantity, String content) {
         this.member = member;
         this.title = title;
         this.rental_unit = rental_unit;
         this.rental_price = rental_price;
         this.quantity = quantity;
-        this.explain = explain;
+        this.content = content;
+        this.postDate=LocalDateTime.now();
     }
 }

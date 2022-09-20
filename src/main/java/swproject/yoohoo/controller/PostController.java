@@ -1,6 +1,7 @@
 package swproject.yoohoo.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import swproject.yoohoo.domain.Member;
@@ -17,7 +18,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
-    private final MemberService memberService;
+
 
     @PostMapping("/post")
     public ResultVO create(PostForm form,@Login Member loginMember) throws IOException {

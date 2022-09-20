@@ -28,12 +28,12 @@ public class ApiExceptionController {
         return new ResultVO(400, e.getMessage(),null);
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST) //400기본
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResultVO illegalExHandle(IOException e) {
-        log.error("[exceptionHandle] ex", e);
-        return new ResultVO(400, e.getMessage(),null);
-    }
+//    @ResponseStatus(HttpStatus.BAD_REQUEST) //400기본
+//    @ExceptionHandler(IllegalArgumentException.class)
+//    public ResultVO illegalExHandle(IOException e) {
+//        log.error("[exceptionHandle] ex", e);
+//        return new ResultVO(400, e.getMessage(),null);
+//    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST) //400기본
     @ExceptionHandler(IllegalStateException.class)

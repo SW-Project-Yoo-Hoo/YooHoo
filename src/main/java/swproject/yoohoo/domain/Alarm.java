@@ -23,6 +23,6 @@ public class Alarm {
 
     private String type;
     private String title;
-    private String explain;
+    private String content;
     private LocalDateTime alarmDate;
 }

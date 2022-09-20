@@ -34,6 +34,11 @@ public class MemberController {
         return new ResultVO(200,"가입 생성",null);
     }
 
+    @GetMapping("/login")
+    public ResultVO login(){
+        return new ResultVO(200,"로그인 리다이렉트 성공",null);
+    }
+
     @PostMapping("/login")
     public ResultVO login(@RequestBody LoginForm form, HttpServletRequest request){//검증 생략
         Member loginMember= memberService.login(form.getEmail(),form.getPassword());
