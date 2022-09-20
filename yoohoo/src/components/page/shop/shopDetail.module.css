@@ -3,12 +3,21 @@
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
+.detailPage {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: background1;
+}
+
 .background {
   width: 100vw;
   background-color: background1;
   position: relative;
   min-height: 111.1111vw;
-  /* overflow-x: hidden; */
+}
+
+.detailPage::-webkit-scrollbar {
+  display: none;
 }
 
 .headerImg {
@@ -60,7 +69,6 @@
   border: 0;
   padding: 0;
   margin: 1.0417vw 0.7639vw 0 0;
-  opacity: 60%;
   background-color: background1;
   cursor: pointer;
   list-style: none;
@@ -70,13 +78,6 @@
 .img1 {
   width: 41.6667vw;
   height: 24.8611vw;
-}
-
-.imgBtnList {
-  width: 3.3333vw;
-  height: 3.3333vw;
-  border-radius: 0.4167vw;
-  margin-right: 0.7639vw;
 }
 
 .A {
@@ -159,21 +160,29 @@
 }
 
 .lookProducts {
+  overflow: hidden;
   width: 45.8333vw;
   height: 23vw;
-  display: flex;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-.lookProducts::-webkit-scrollbar {
-  display: none;
 }
 
 .products1 {
   width: 16.3889vw;
   cursor: pointer;
   margin: 0 2.2222vw 0 0;
+}
+
+.lefttBtn,
+.rightBtn {
+  width: 2.3122vw;
+  height: 23vw; /* 수정 하기*/
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: unselect;
+}
+
+.rightBtn {
+  justify-content: right;
 }
 
 .otherProductsBtn {
@@ -326,7 +335,7 @@
   align-items: center;
   background-color: lightWhite;
   border-radius: 0.6944vw;
-  border-color: textInput;
+  border: 1px solid textInput;
   border-width: 0.0694vw;
   font-size: 0.9722;
   font-family: "Regular";
@@ -419,6 +428,7 @@
   font-size: 0.8333vw;
   cursor: pointer;
   padding: 0;
+  border: 1px solid mainGreen;
 }
 
 .tradeBtn {
@@ -442,4 +452,20 @@
   height: 0.9722vw;
   color: mainGreen;
   margin-right: 0.5556vw;
+}
+
+.imgBtnList {
+  width: 3.3333vw;
+  height: 3.3333vw;
+  border-radius: 0.4167vw;
+  margin-right: 0.7639vw;
+  opacity: 60%;
+}
+
+.nowBtn {
+  width: 3.3333vw;
+  height: 3.3333vw;
+  border-radius: 0.4167vw;
+  margin-right: 0.7639vw;
+  opacity: 100%;
 }

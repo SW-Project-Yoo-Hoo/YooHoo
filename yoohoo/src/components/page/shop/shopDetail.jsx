@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Footer from "../../footer/footer";
-import styles from "./shopDetail.module.css";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
+import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+import styles from "./shopDetail.module.css";
+import styled from "styled-components";
 import Header from "../../header/header";
+import Footer from "../../footer/footer";
 import ModalCal from "./modalCal";
 import ShowImg from "./showImg/showImg";
 import moment from "moment";
@@ -46,6 +49,8 @@ const ShopDetail = (props) => {
     setModalOpen(!modalOpen);
   };
 
+  /* ================================ */
+  /* 캘린더 시작, 반납 날짜 설정*/
   const changeStart = (value) => {
     setStartDay(value);
   };
@@ -54,6 +59,8 @@ const ShopDetail = (props) => {
     setEndDay(value);
   };
 
+  /* ================================ */
+  /* 수량 버튼*/
   const plusBtn = () => {
     setCount(count + 1);
   };
@@ -64,8 +71,67 @@ const ShopDetail = (props) => {
     } else setCount(count - 1);
   };
 
+  /* ================================ */
+  /* 살펴보기 -> 왼쪽, 오른쪽 버튼 */
+
+  function Left({ children, onClick }) {
+    return (
+      <div className={styles.lefttBtn}>
+        <MdArrowBack onClick={onClick}>{children}</MdArrowBack>
+      </div>
+    );
+  }
+
+  function LeftArrow() {
+    const { scrollPrev } = React.useContext(VisibilityContext);
+    return <Left onClick={() => scrollPrev()} />;
+  }
+
+  function Right({ children, onClick }) {
+    return (
+      <div className={styles.rightBtn}>
+        <MdArrowForward onClick={onClick}>{children}</MdArrowForward>
+      </div>
+    );
+  }
+
+  function RightArrow() {
+    const { scrollNext } = React.useContext(VisibilityContext);
+    return <Right onClick={() => scrollNext()} />;
+  }
+
+  /* 살펴보기 아아템들 */
+  const items = [
+    {
+      id: 1,
+      image: process.env.PUBLIC_URL + "images/shop/a.jpg",
+      title: "일이삼사오육칠팔구십일이삼사오육칠팔구십",
+      price: "Price",
+    },
+    {
+      id: 2,
+      image: process.env.PUBLIC_URL + "images/about/ys.svg",
+      title: "물품2",
+      price: "Price",
+    },
+    {
+      id: 3,
+      image: process.env.PUBLIC_URL + "images/about/hj.svg",
+      title: "물품3",
+      price: "Price",
+    },
+    {
+      id: 4,
+      image: process.env.PUBLIC_URL + "images/about/hj.svg",
+      title: "물품3",
+      price: "Price",
+    },
+  ];
+
+  /* ================================ */
+
   return (
-    <>
+    <div className={styles.detailPage}>
       <Header />
       <div className={styles.background}>
         <img
@@ -103,64 +169,38 @@ const ShopDetail = (props) => {
 
             <div>
               <p className={styles.lookTitle}>살펴보기</p>
-              <div className={styles.lookProducts}>
-                <div className={styles.products1}>
-                  <button className={styles.otherProductsBtn}>
-                    <img
-                      className={styles.otherProductsImg}
-                      src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
-                      alt="Product"
-                    />
-                  </button>
-                  <div className={styles.info}>
-                    <p className={styles.otherProductsTitle}>
-                      일이삼사오육칠팔구십일이삼사오육칠팔구십
-                    </p>
-                    <div className={styles.info2}>
-                      <p className={styles.otherProductsPrice}>Price</p>
-                      <MdFavoriteBorder className={styles.wishIcon} />
-                    </div>
-                  </div>
+              <LookProducts>
+                <div className={styles.lookProducts}>
+                  <ScrollMenu
+                    className={styles.a}
+                    LeftArrow={LeftArrow}
+                    RightArrow={RightArrow}
+                  >
+                    {items.map((item) => (
+                      <div id={item.id} className={styles.products1}>
+                        <button className={styles.otherProductsBtn}>
+                          <img
+                            className={styles.otherProductsImg}
+                            src={process.env.PUBLIC_URL + item.image}
+                            alt="Product"
+                          />
+                        </button>
+                        <div className={styles.info}>
+                          <p className={styles.otherProductsTitle}>
+                            {item.title}
+                          </p>
+                          <div className={styles.info2}>
+                            <p className={styles.otherProductsPrice}>
+                              {item.price}
+                            </p>
+                            <MdFavoriteBorder className={styles.wishIcon} />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </ScrollMenu>
                 </div>
-
-                <div className={styles.products1}>
-                  <button className={styles.otherProductsBtn}>
-                    <img
-                      className={styles.otherProductsImg}
-                      src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
-                      alt="Product"
-                    />
-                  </button>
-                  <div className={styles.info}>
-                    <p className={styles.otherProductsTitle}>
-                      일이삼사오육칠팔구십일이삼사오육칠팔구십
-                    </p>
-                    <div className={styles.info2}>
-                      <p className={styles.otherProductsPrice}>Price</p>
-                      <MdFavoriteBorder className={styles.wishIcon} />
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.products1}>
-                  <button className={styles.otherProductsBtn}>
-                    <img
-                      className={styles.otherProductsImg}
-                      src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
-                      alt="Product"
-                    />
-                  </button>
-                  <div className={styles.info}>
-                    <p className={styles.otherProductsTitle}>
-                      일이삼사오육칠팔구십일
-                    </p>
-                    <div className={styles.info2}>
-                      <p className={styles.otherProductsPrice}>Price</p>
-                      <MdFavoriteBorder className={styles.wishIcon} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </LookProducts>
             </div>
           </div>
 
@@ -192,8 +232,7 @@ const ShopDetail = (props) => {
                 </div>
               </div>
               <button className={styles.periodBtn} onClick={modalClose}>
-                {console.log(startDate)}
-                {startDate === ""
+                {startDate === "" || endDate === ""
                   ? "대여 시작 날짜와 반납 날짜를 선택해주세요."
                   : moment(`${startDate}`).format("YYYY.MM.DD") +
                     "~" +
@@ -255,8 +294,14 @@ const ShopDetail = (props) => {
           <Footer />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 export default ShopDetail;
+
+const LookProducts = styled.div`
+  .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+`;
