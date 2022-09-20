@@ -119,7 +119,7 @@ const Profile = (props) => {
           {/* 카테고리 */}
           <div className={styles.kategorie}>
             {/* 메뉴 */}
-            <div className={styles.menu}>
+            <div>
               {/* 게시물 보기 */}
               <div className={styles.menuTitleMargin}>
                 {/* 메인제목 */}
@@ -257,12 +257,12 @@ const Profile = (props) => {
             {/* 정보 수정 및 로그아웃 */}
             <div className={styles.etc}>
               <div
-                className={[styles.edit, styles.cursorPointer].join(" ")}
+                className={styles.cursorPointer}
                 onClick={() => setCall("EditProfile")}
               >
                 프로필 수정
               </div>
-              <div className={styles.logout}>로그아웃</div>
+              <div>로그아웃</div>
             </div>
           </div>
         </div>
