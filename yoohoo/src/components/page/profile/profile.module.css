@@ -88,6 +88,7 @@
   height: 7.2916vw;
   margin-bottom: 0.7291vw;
   border: 1px solid textInput;
+  object-fit: contain;
 }
 
 .userName {
