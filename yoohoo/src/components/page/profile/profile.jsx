@@ -387,11 +387,13 @@ const Profile = (props) => {
       {/* footer */}
       <div className={styles.bottomContainer}>
         <div className={styles.backGroundIamgeFoot} />
-        <img
-          className={styles.footImg}
-          src="/Images/myPage/woman.svg"
-          alt="illu"
-        />
+        <div className={styles.responsive}>
+          <img
+            className={styles.footImg}
+            src="/Images/myPage/woman.svg"
+            alt="illu"
+          />
+        </div>
         <Footer />
       </div>
     </div>

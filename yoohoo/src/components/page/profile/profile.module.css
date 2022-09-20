@@ -251,6 +251,15 @@
     width: 360px;
     height: 195px;
     bottom: -20px;
+    margin: 0;
+    right: 0;
+  }
+
+  .responsive {
+    box-shadow: 0 0 0 100px black inset;
+    width: 1280px;
+    position: relative;
+    margin: auto;
   }
 
   /* contents */
