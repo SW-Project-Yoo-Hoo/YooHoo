@@ -29,9 +29,14 @@ const MyPost = (props) => {
     // console.log(post);
   };
 
+  const pageNaviHandling = (props) => {
+    //해당 페이지 상세보기로 이동하기
+    console.log("이동하기!");
+  };
+
   const ShowPost = (props) => {
     return (
-      <div className={styles.post}>
+      <div className={styles.post} onClick={() => pageNaviHandling(props)}>
         {/* 게시물 사진 */}
         <img className={styles.postImg} src={props.img} alt="img" />
 
@@ -48,16 +53,6 @@ const MyPost = (props) => {
         </div>
       </div>
     );
-  };
-
-  const postPrint = (len, callback) => {
-    console.log(len);
-    if (len > 0) {
-      ShowPost(post[len - 1]);
-      callback(len - 1, postPrint());
-    } else {
-      console.log("객체 끝");
-    }
   };
 
   return (
