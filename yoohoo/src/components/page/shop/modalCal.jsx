@@ -80,6 +80,9 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
 
       if (valCheck === "") {
         modalClose();
+      } else {
+        changeStart("");
+        changeEnd("");
       }
     }
   }
