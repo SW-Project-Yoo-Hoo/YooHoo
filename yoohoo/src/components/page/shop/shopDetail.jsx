@@ -19,6 +19,7 @@ const ShopDetail = (props) => {
   const [count, setCount] = useState(1);
   const [dateCnt, setDateCnt] = useState(0); //일, 주 , 월, 년 에 따라
   const [price, setprice] = useState(0);
+  const [wish, setWish] = useState(false);
 
   useEffect(() => {
     const start = new Date(startDate);
@@ -129,6 +130,12 @@ const ShopDetail = (props) => {
   ];
 
   /* ================================ */
+  /* 찜하기 버튼 */
+  const onClickWishBtn = () => {
+    setWish((wish) => !wish);
+  };
+
+  /* ================================ */
 
   return (
     <div className={styles.detailPage}>
@@ -171,11 +178,7 @@ const ShopDetail = (props) => {
               <p className={styles.lookTitle}>살펴보기</p>
               <LookProducts>
                 <div className={styles.lookProducts}>
-                  <ScrollMenu
-                    className={styles.a}
-                    LeftArrow={LeftArrow}
-                    RightArrow={RightArrow}
-                  >
+                  <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
                     {items.map((item) => (
                       <div id={item.id} className={styles.products1}>
                         <button className={styles.otherProductsBtn}>
@@ -274,9 +277,13 @@ const ShopDetail = (props) => {
 
             <div className={styles.btns}>
               <button className={styles.tradeBtn}>거래하기</button>
-              <button className={styles.wishBtn}>
+              <button className={styles.wishBtn} onClick={onClickWishBtn}>
                 <div className={styles.wishContent}>
-                  <MdFavoriteBorder className={styles.wishIcon2} />
+                  {wish ? (
+                    <MdFavorite className={styles.wishIcon2} />
+                  ) : (
+                    <MdFavoriteBorder className={styles.wishIcon2} />
+                  )}
                   <span>찜하기</span>
                 </div>
               </button>
