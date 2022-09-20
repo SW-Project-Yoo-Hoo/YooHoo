@@ -9,7 +9,7 @@ const MyPost = (props) => {
     img: "/Images/test.jpeg",
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
     unit: "월",
-    price: "500000",
+    price: 500000,
   };
 
   const postInfo2 = {
@@ -17,7 +17,7 @@ const MyPost = (props) => {
     img: "/Images/home/earth.svg",
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
     unit: "일",
-    price: "500000",
+    price: 50000,
   };
 
   const getpost = () => {
@@ -43,7 +43,7 @@ const MyPost = (props) => {
         {/* 게시물 가격/단위 */}
         <div>
           <span className={styles.colorUnselcet}>
-            {props.price}원/{props.unit}
+            {props.price.toLocaleString("ko-KR")}원/{props.unit}
           </span>
         </div>
       </div>
