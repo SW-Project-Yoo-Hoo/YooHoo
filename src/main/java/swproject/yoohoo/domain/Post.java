@@ -45,4 +45,34 @@ public class Post {
         this.member=member;
         member.getPosts().add(this);
     }
+    public void addPhoto(Photo photo){
+        photos.add(photo);
+        photo.setPost(this);
+    }
+
+    public void addRequest(Request request){
+        requests.add(request);
+        request.setPost(this);
+    }
+
+    public void addDeal(Deal deal){
+        deals.add(deal);
+        deal.setPost(this);
+    }
+
+    public void addPostCategory(PostCategory postCategory){
+        categories.add(postCategory);
+        postCategory.setPost(this);
+    }
+
+    //==생성 메서드==//
+
+    public Post(Member member, String title, String rental_unit, int rental_price, int quantity, String explain) {
+        this.member = member;
+        this.title = title;
+        this.rental_unit = rental_unit;
+        this.rental_price = rental_price;
+        this.quantity = quantity;
+        this.explain = explain;
+    }
 }

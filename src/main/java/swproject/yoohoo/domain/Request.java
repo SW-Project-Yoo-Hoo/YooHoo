@@ -29,4 +29,15 @@ public class Request {
     private String contact;
     private LocalDateTime requestDate;
 
+    //==연관관계 메서드==//
+    public void setPost(Post post){
+        this.post=post;
+        post.getRequests().add(this);
+    }
+
+    public void setMember(Member member){
+        this.member=member;
+        member.getRequests().add(this);
+    }
+
 }

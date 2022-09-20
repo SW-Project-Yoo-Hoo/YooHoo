@@ -18,4 +18,20 @@ public class Photo {
 
     private String fileName;
     private String filePath;
+
+    public Photo(String fileName, String filePath) {
+        this.fileName = fileName;
+        this.filePath = filePath;
+    }
+
+    public Photo() {
+
+    }
+
+    public void setPost(Post post){
+        this.post=post;
+        post.getPhotos().add(this);
+    }
+
+
 }

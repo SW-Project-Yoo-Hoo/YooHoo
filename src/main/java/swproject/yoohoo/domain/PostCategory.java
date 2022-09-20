@@ -1,8 +1,12 @@
 package swproject.yoohoo.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter @Setter
 @Table(name="post_category")
 public class PostCategory {
 
@@ -17,6 +21,23 @@ public class PostCategory {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    public void setPost(Post post){
+        this.post=post;
+        post.getCategories().add(this);
+    }
+
+    public void setCategory(Category category){
+        this.category=category;
+        category.getPosts().add(this);
+    }
+
+    //==생성 메서드==//
+    public static PostCategory createPostCategory(Category category){
+        PostCategory postCategory=new PostCategory();
+        postCategory.setCategory(category);
+        return postCategory;
+    }
 
 
 }

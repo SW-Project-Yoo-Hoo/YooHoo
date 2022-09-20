@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ResultVO {
-    private String code;
+    private int code;
     private String message;
+    private String data;
 }
