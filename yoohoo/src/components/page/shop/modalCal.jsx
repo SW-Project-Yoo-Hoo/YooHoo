@@ -63,7 +63,7 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
       // 주 단위 일 때
       setValCheck("");
     } else {
-      setValCheck("대여 단위를 확인 해 주세요\n" + val + "일 선택");
+      setValCheck(val + "일 선택하셨습니다!\n" + "대여 단위를 확인 해 주세요");
     }
   }, [startDay, endDay]);
 
@@ -139,7 +139,7 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
               </div>
             </div>
             <div className={styles.warning}>
-              <p className={styles.warning}>
+              <p className={styles.warningText}>
                 {valCheck === "" || date.length !== 2 ? "" : valCheck}
               </p>
             </div>
@@ -292,5 +292,9 @@ const CalendarContainer = styled.div`
     border-top-right-radius: 0.6944vw;
     border-bottom-right-radius: 0.6944vw;
     background-color: #cde1d7;
+  }
+
+  /* 그 이상 */
+  @media (min-width: 1920px) {
   }
 `;

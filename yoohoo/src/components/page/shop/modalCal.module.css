@@ -1,4 +1,4 @@
-@value highlight2, calender, unselect, textInputPlace, textInput, mainGreen from "../../../common/color.css";
+@value mainOrange, highlight2, calender, unselect, textInputPlace, textInput, mainGreen from "../../../common/color.css";
 
 .container {
   width: 100vw;
@@ -117,8 +117,15 @@
 }
 
 .warning {
-  font-size: 0.9028vw;
-  margin-bottom: 0.9028vw;
   padding: 0;
   white-space: pre-wrap;
+}
+
+.warningText {
+  color: mainOrange;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 1.5278vw;
+  font-size: 0.9722vw;
 }
