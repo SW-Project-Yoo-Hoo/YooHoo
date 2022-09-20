@@ -1,14 +1,22 @@
 @value mainGreen,highlight1,background1,textInput,textInputPlace,lightWhite from "../../../../common/color.css";
 @value marginLeftRight from "../../../../common/size.css";
 
-.backGroundIamge {
-  background-image: url("../../../../../public/images/headerBackground.png");
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 12.34375vw;
+.displayNone {
+  display: none;
 }
 
 .container {
-  background-color: background1;
+  box-shadow: 0 0 0 1px black inset;
+  margin: 2.0833vw 2.1875vw 2.5694vw 2.1875vw;
+  min-height: 13.125vw;
+}
+
+.noPost {
+  display: flex;
+  height: 13.125vw;
+  justify-content: center;
+  align-items: center;
+  font-family: "Regular";
+  font-size: 0.6944vw;
+  color: highlight1;
 }
