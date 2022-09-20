@@ -1,18 +1,33 @@
 import React from "react";
 import styles from "../shopDetail.module.css";
-import PhotoItem from "./photoItem";
 
 const PhotoList = ({ data, currentItem, onView }) => {
   const { id, image, title } = currentItem;
-  {
-    console.log(id);
+
+  function onClick(id, event) {
+    onView(id);
+
+    for (let value of data) {
+      if (value.id !== id) {
+        value.show = false;
+      } else {
+        value.show = true;
+      }
+    }
   }
+
   return (
     <article>
       <img className={styles.img1} src={image} alt={title} />
       <ul className={styles.imgBtn}>
         {data.map((item) => (
-          <PhotoItem key={item.id} item={item} onView={onView} />
+          <li onClick={(event) => onClick(item.id, event)}>
+            <img
+              className={item.show ? styles.nowBtn : styles.imgBtnList}
+              src={item.image}
+              alt={item.title}
+            />
+          </li>
         ))}
       </ul>
     </article>
