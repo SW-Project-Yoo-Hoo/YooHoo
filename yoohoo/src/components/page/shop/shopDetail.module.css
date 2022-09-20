@@ -60,6 +60,15 @@
 .imgGroup {
   width: 41.6667vw;
   height: 31.25vw;
+  object-fit: cover;
+}
+
+.imgBtnList {
+  width: 3.3333vw;
+  height: 3.3333vw;
+  border-radius: 0.4167vw;
+  margin-right: 0.7639vw;
+  opacity: 60%;
 }
 
 .imgBtn {
@@ -80,19 +89,12 @@
   height: 24.8611vw;
 }
 
-.A {
-  opacity: 100%;
+.nowBtn {
   width: 3.3333vw;
   height: 3.3333vw;
-  outline: 0;
-  border: 0;
-  padding: 0;
-  margin: 1.0417vw 0.7639vw 0 0;
-
-  background-color: background1;
-  cursor: pointer;
-  list-style: none;
-  display: flex;
+  border-radius: 0.4167vw;
+  margin-right: 0.7639vw;
+  opacity: 100%;
 }
 
 /* 회사소개 */
@@ -105,6 +107,8 @@
   width: 3.3333vw;
   height: 3.3333vw;
   border-radius: 50%;
+  border: 0.0694vw solid textInput;
+  object-fit: contain;
 }
 
 .companyInfo {
@@ -238,6 +242,8 @@
 }
 
 /* ================================= */
+/* 물품 제목, 카테고리, 가격, 대여기간 등 정보*/
+
 .title {
   font-size: 1.3889vw;
   font-family: "Regular";
@@ -331,7 +337,7 @@
   height: 2.2917vw;
   padding: 0;
   display: flex;
-  justify-content: center;
+  padding-left: 0.8333vw;
   align-items: center;
   background-color: lightWhite;
   border-radius: 0.6944vw;
@@ -398,6 +404,7 @@
   border-style: solid;
 }
 
+/* 주문 수량, 총 금액 */
 .totalCountInfo,
 .totalPriceInfo {
   display: flex;
@@ -452,20 +459,4 @@
   height: 0.9722vw;
   color: mainGreen;
   margin-right: 0.5556vw;
-}
-
-.imgBtnList {
-  width: 3.3333vw;
-  height: 3.3333vw;
-  border-radius: 0.4167vw;
-  margin-right: 0.7639vw;
-  opacity: 60%;
-}
-
-.nowBtn {
-  width: 3.3333vw;
-  height: 3.3333vw;
-  border-radius: 0.4167vw;
-  margin-right: 0.7639vw;
-  opacity: 100%;
 }
