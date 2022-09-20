@@ -3,6 +3,7 @@
 
 .displayFlex {
   display: flex;
+  justify-content: space-between;
 }
 
 .displayNone {
@@ -182,7 +183,7 @@
 /* 게시물 보드 */
 .posts {
   position: relative;
-  margin: 3.6458vw marginLeftRight 26.597vw 2.6041vw;
+  margin: 3.6458vw marginLeftRight 26.597vw 0vw;
   z-index: 1;
   /* height: 23.5416vw; */
   /* padding: 2.0833vw 2.1875vw 2.0833vw 2.1875vw; */
