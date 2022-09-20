@@ -6,8 +6,7 @@
 }
 
 .container {
-  box-shadow: 0 0 0 1px black inset;
-  margin: 2.0833vw 2.1875vw 2.5694vw 2.1875vw;
+  margin: 2.0833vw 0.7291vw 5.243vw 2.1875vw;
   min-height: 13.125vw;
 }
 
