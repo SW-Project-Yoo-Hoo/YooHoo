@@ -24,6 +24,10 @@
   min-height: 212.4652vw;
 }
 
+.home {
+  position: relative;
+}
+
 .container {
   height: 100vh;
   width: 100vw;
@@ -91,6 +95,9 @@
   border-radius: 32px;
   border-style: none;
   margin-top: 5.1388vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .partOneImage {
@@ -244,9 +251,14 @@
 
 /* 그 이상 */
 @media (min-width: 1920px) {
+  .bottomContainer {
+    position: relative;
+    bottom: 0;
+  }
   .backGroundImage {
     background-repeat: no-repeat;
     background-size: 100vw 4080px;
+    min-height: 4080px;
   }
 
   .container {
