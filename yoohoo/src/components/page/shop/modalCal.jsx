@@ -263,8 +263,6 @@ const CalendarContainer = styled.div`
     }
   }
 
-  /* 추가 */
-
   .react-calendar__tile--now {
     color: #ea973e;
   }
@@ -340,8 +338,6 @@ const CalendarContainer = styled.div`
         padding-top: 5px;
       }
     }
-
-    /* 추가 */
 
     .react-calendar__tile--range {
       height: 36px;

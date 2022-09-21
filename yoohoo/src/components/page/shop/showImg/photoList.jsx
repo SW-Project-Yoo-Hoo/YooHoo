@@ -2,9 +2,9 @@ import React from "react";
 import styles from "../shopDetail.module.css";
 
 const PhotoList = ({ data, currentItem, onView }) => {
-  const { id, image, title } = currentItem;
+  const { image, title } = currentItem;
 
-  function onClick(id, event) {
+  function onClick(id) {
     onView(id);
 
     for (let value of data) {

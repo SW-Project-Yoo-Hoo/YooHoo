@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import styles from "./shopDetail.module.css";
 import styled from "styled-components";
 import Header from "../../header/header";
