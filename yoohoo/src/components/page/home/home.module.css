@@ -258,6 +258,7 @@
   .backGroundImage {
     background-repeat: no-repeat;
     background-size: 100vw 4080px;
+    min-height: 4080px;
   }
 
   .container {
