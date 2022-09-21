@@ -296,10 +296,8 @@ const ShopDetail = (props) => {
               </button>
             </div>
           </div>
-        </div>
 
-        {/* Footer */}
-        <div>
+          {/* Footer */}
           <img
             className={styles.footerImg}
             src={process.env.PUBLIC_URL + "images/footBackground.png"}

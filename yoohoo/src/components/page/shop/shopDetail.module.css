@@ -7,13 +7,14 @@
   width: 100vw;
   overflow-x: hidden;
   background-color: background1;
+  min-height: 111.1111vw;
 }
 
 .background {
   width: 100vw;
   background-color: background1;
   position: relative;
-  min-height: 111.1111vw;
+  z-index: 1;
 }
 
 .detailPage::-webkit-scrollbar {
@@ -37,6 +38,7 @@
   background-size: cover;
   position: absolute;
   bottom: 0;
+  z-index: -1;
 }
 
 /* ================================= */
@@ -47,13 +49,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  margin: 3.4722vw 16.6667vw 0 16.6667vw;
+  margin: 3.4722vw 0 0 0;
 }
 
 /* 물품 사진 */
 .productInfo {
   width: 41.6667vw;
   height: 93.75vw;
+  margin-left: 16.6667vw;
   margin-right: 4.1667vw;
 }
 
@@ -469,9 +472,8 @@
 /* ================================= */
 /* 그 이상 */
 @media (min-width: 1920px) {
-  .background {
-    height: 2134px;
-    min-height: 2134px;
+  .detailPage {
+    min-height: 2203px;
   }
 
   .headerImg {
@@ -495,7 +497,7 @@
   .productInfo {
     width: 800px;
     height: 1702px;
-    margin-right: 80px;
+    margin: 0 80px 0 0;
   }
 
   .imgGroup {
