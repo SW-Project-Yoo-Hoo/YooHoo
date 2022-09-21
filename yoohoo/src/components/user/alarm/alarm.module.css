@@ -1,14 +1,132 @@
-@value mainGreen,highlight1,background1,textInput,textInputPlace,lightWhite from "../../../common/color.css";
+@value mainOrange, mainGreen, highlight1, highlight3, background1, shadow, textInput, textInputPlace, lightWhite, line, iconLightGrey from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
-.backGroundIamge {
-  background-image: url("../../../../public/images/headerBackground.png");
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 12.34375vw;
+/* ================================= */
+/* 헤더, 배경, 푸터 CSS */
+
+.background {
+  width: 100vw;
+  background-color: background1;
+  position: relative;
+  min-height: 51.0417vw;
 }
 
+.headerImg {
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ================================= */
+
 .container {
-  background-color: background1;
+  width: 100vw;
+  margin-left: 19.0278vw;
+  margin-right: 16.6667vw;
+  cursor: pointer;
+}
+
+.megaphoneImg {
+  width: 9.375vw;
+  height: 9.375vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 16.6667vw;
+}
+
+.line {
+  position: relative;
+}
+
+.hr {
+  position: absolute;
+  height: 6.4583vw;
+  border-left: 0.1389vw solid iconLightGrey;
+  top: 6.5972vw;
+  left: 19.9306vw;
+}
+
+.circle {
+  width: 0.7639vw;
+  height: 0.7639vw;
+  border: 0.1389vw solid highlight3;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 10.4861vw;
+  left: 19.5833vw;
+}
+
+.alarm {
+  width: 64.3229vw;
+  height: 7.8125vw;
+  margin-top: 5.2083vw;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.dayContiner {
+  display: flex;
+  justify-content: cetner;
+  align-items: center;
+  margin-bottom: 1.5972vw;
+}
+
+.timeImg {
+  width: 1.875vw;
+  height: 1.875vw;
+  margin-right: 1.0417vw;
+}
+
+.day {
+  margin: 0;
+  font-size: 0.8333vw;
+  font-family: "Regular";
+  color: highlight1;
+}
+
+.contents {
+  height: 4.375vw;
+  background-color: lightWhite;
+  margin-left: 1.6667vw;
+  border-radius: 0.8333vw;
+  border: 0.0694vw solid textInput;
+  box-shadow: 0 0.0694vw 0.3472vw shadow;
+  display: flex;
+}
+
+.pic {
+  margin: 0.9722vw 0.8333vw 0 1.0417vw;
+}
+
+.productImg {
+  width: 2.4306vw;
+  height: 2.4306vw;
+  border: 0.0694vw solid textInput;
+  border-radius: 0.3472vw;
+  object-fit: cover;
+}
+
+.P {
+  margin-top: 0.9028vw;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.8333vw;
+  font-family: "Medium";
+  color: mainOrange;
+  margin-bottom: 0.2083vw;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.7639vw;
+  font-family: "Regular";
+  color: highlight1;
 }
