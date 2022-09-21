@@ -66,10 +66,6 @@
   margin-top: 1.3889vw;
 }
 
-.selectBtns {
-  margin-top: 1.1806vw;
-}
-
 .dateContainer {
   width: 15.9722vw;
   height: 2.6389vw;
@@ -79,16 +75,16 @@
 }
 
 .mean,
-.selected {
+.selected,
+.unselected {
   align-items: center;
-  font-size: 0.7639vw;
+  font-size: 0.8333vw;
   color: textInputPlace;
   margin: 0.6944vw 0 0 0.8333vw;
   padding: 0;
 }
 
 .selected {
-  font-size: 0.8333;
   color: unselect;
 }
 
@@ -108,14 +104,6 @@
   cursor: pointer;
 }
 
-.unselected {
-  align-items: center;
-  font-size: 0.7639vw;
-  color: textInputPlace;
-  margin: 0.6944vw 0 0 0.8333vw;
-  padding: 0;
-}
-
 .warning {
   padding: 0;
   white-space: pre-wrap;
@@ -128,4 +116,71 @@
   text-align: center;
   margin-top: 1.5278vw;
   font-size: 0.7639vw;
+}
+
+/* ================================= */
+/* 그 이상 */
+@media (min-width: 1920px) {
+  .modal {
+    width: 990px;
+    height: 592px;
+    border-radius: 40px;
+  }
+
+  .modalBtn {
+    left: 911px;
+    top: 44px;
+  }
+
+  .modalBtnIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .calendar {
+    width: 457px;
+    height: 377px;
+    margin: 55px 0 0 91px;
+  }
+
+  .selectDate {
+    margin: 91px 60px 0 0;
+  }
+
+  .title {
+    font-size: 18px;
+    margin: 0 0 18px 0;
+  }
+
+  .end {
+    margin-top: 27px;
+  }
+
+  .dateContainer {
+    width: 307px;
+    height: 50px;
+    border: 1px solid textInput;
+    border-radius: 13px;
+  }
+
+  .mean,
+  .selected,
+  .unselected {
+    font-size: 16px;
+    margin: 13px 0 0 16px;
+  }
+
+  .finishBtn {
+    margin: 0 0 55px 403px;
+    width: 186px;
+    height: 50px;
+    font-size: 16px;
+    border: 1px solid textInput;
+    border-radius: 20px;
+  }
+
+  .warningText {
+    margin-top: 30px;
+    font-size: 16px;
+  }
 }

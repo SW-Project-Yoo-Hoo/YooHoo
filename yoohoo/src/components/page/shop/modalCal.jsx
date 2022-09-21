@@ -210,10 +210,10 @@ const CalendarContainer = styled.div`
   /* ~~~ button styles ~~~ */
   button {
     color: black;
-    margin: 3px;
+    margin: 0.2083vw;
     border: 0;
-    border-radius: 3px;
-    padding: 5px 0;
+    border-radius: 0.2083vw;
+    padding: 0.3472vw 0;
     background-color: white;
     cursor: pointer;
     font-size: 0.7639vw;
@@ -236,11 +236,6 @@ const CalendarContainer = styled.div`
       justify-content: center;
       padding-top: 0.2472vw;
     }
-  }
-
-  /* ~~~ neighboring month & weekend styles ~~~ */
-  .react-calendar__month-view__days__day--neighboringMonth {
-    // opacity: 0.7;
   }
 
   /* 주말 색깔 */
@@ -271,13 +266,11 @@ const CalendarContainer = styled.div`
   /* 추가 */
 
   .react-calendar__tile--now {
-    border: 1px solid #cde1d7;
-    border-radius: 0.6944vw;
-    height: 1.6667vw;
+    color: #ea973e;
   }
 
   .react-calendar__tile--range {
-    height: 1.6667vw;
+    height: 1.8667vw;
     background-color: #cde1d7;
     border-radius: 0;
   }
@@ -296,5 +289,72 @@ const CalendarContainer = styled.div`
 
   /* 그 이상 */
   @media (min-width: 1920px) {
+    .react-calendar {
+      width: 457px;
+      height: 377px;
+      border: 0;
+      font-family: "Medium";
+    }
+
+    /* ~~~ container styles ~~~ */
+    width: 457px;
+    height: 377px;
+
+    /* ~~~ navigation styles ~~~ */
+    .react-calendar__navigation {
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 12px;
+
+      /* 2022년 9월*/
+      .react-calendar__navigation__label {
+        font-size: 24px;
+        margin: 0 0 23px 0;
+      }
+
+      .react-calendar__navigation__arrow {
+        flex-grow: 0.333;
+        margin: 0 0 23px 0;
+        font-size: 21px;
+      }
+    }
+
+    /* ~~~ label styles ~~~ */
+    .react-calendar__month-view__weekdays {
+      font-size: 17px;
+    }
+
+    /* ~~~ button styles ~~~ */
+    button {
+      margin: 4px;
+      border-radius: 4px;
+      padding: 7px 0;
+      font-size: 15px;
+    }
+
+    /* ~~~ day grid styles ~~~ */
+    .react-calendar__month-view__days {
+      height: 260px;
+      margin-top: 23px;
+
+      .react-calendar__tile {
+        padding-top: 5px;
+      }
+    }
+
+    /* 추가 */
+
+    .react-calendar__tile--range {
+      height: 36px;
+    }
+
+    .react-calendar__tile--rangeStart {
+      border-top-left-radius: 13px;
+      border-bottom-left-radius: 13px;
+    }
+
+    .react-calendar__tile--rangeEnd {
+      border-top-right-radius: 13px;
+      border-bottom-right-radius: 13px;
+    }
   }
 `;
