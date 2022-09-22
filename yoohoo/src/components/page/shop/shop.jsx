@@ -3,6 +3,7 @@ import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
 import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import Header from "../../header/header";
+import ShopImg from "./shopImg";
 
 const Shop = (props) => {
   return (
@@ -15,65 +16,48 @@ const Shop = (props) => {
           alt="Header"
         />
 
-        <span className={styles.title}>SHOP</span>
-        <div className={styles.orderDiv}>
-          <MdSwapVert className={styles.orderIcon} />
-          <span>최신순</span>
-        </div>
-        <div className={styles.hr}></div>
-        <span className={styles.subTitle}>All Products</span>
-
         <div className={styles.container}>
-          <div className={styles.productGroup}>
-            <div className={styles.product}>
-              <img
-                className={styles.productImg}
-                src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
-                alt="Product"
-              />
-              <div className={styles.info}>
-                <p className={styles.productTitle}>
-                  일이삼사오육칠팔구십일이삼사오육칠팔구십
-                </p>
-                <div className={styles.info2}>
-                  <p className={styles.productPrice}>Price</p>
-                  <MdFavoriteBorder className={styles.wishIcon} />
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.product}>
-              <img
-                className={styles.productImg}
-                src={process.env.PUBLIC_URL + "images/about/hj.svg"}
-                alt="Product"
-              />
-              <div className={styles.info}>
-                <p className={styles.productTitle}>
-                  일이삼사오육칠팔구십일이삼사오육칠팔구십
-                </p>
-                <div className={styles.info2}>
-                  <p className={styles.productPrice}>Price</p>
-                  <MdFavoriteBorder className={styles.wishIcon} />
-                </div>
-              </div>
-            </div>
+          <span className={styles.title}>SHOP</span>
+          <div className={styles.orderDiv}>
+            <MdSwapVert className={styles.orderIcon} />
+            <span className={styles.orderSpan}>최신순</span>
           </div>
-        </div>
+          <div className={styles.hr}></div>
+          <span className={styles.subTitle}>All Products</span>
 
-        {/* Footer */}
-        <div>
-          <img
-            className={styles.footerImg}
-            src={process.env.PUBLIC_URL + "images/footBackground.png"}
-            alt="Footer"
-          />
-          <img
-            className={styles.footerImg2}
-            src={process.env.PUBLIC_URL + "images/shop/bottomIllu.svg"}
-            alt="Illu"
-          />
-          <Footer />
+          <div className={styles.productGroup}>
+            {ShopImg.map((item, index) => (
+              <div className={styles.product}>
+                <img
+                  className={styles.productImg}
+                  src={item.image}
+                  alt="Product"
+                />
+                <div className={styles.info}>
+                  <p className={styles.productTitle}>{item.title}</p>
+                  <div className={styles.info2}>
+                    <p className={styles.productPrice}>{item.price}</p>
+                    <MdFavoriteBorder className={styles.wishIcon} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer */}
+          <div className={styles.footer}>
+            <img
+              className={styles.footerImg}
+              src={process.env.PUBLIC_URL + "images/footBackground.png"}
+              alt="Footer"
+            />
+            <img
+              className={styles.footerImg2}
+              src={process.env.PUBLIC_URL + "images/shop/bottomIllu.svg"}
+              alt="Illu"
+            />
+            <Footer />
+          </div>
         </div>
       </div>
     </>
