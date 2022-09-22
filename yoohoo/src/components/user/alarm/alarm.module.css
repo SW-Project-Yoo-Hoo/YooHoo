@@ -4,11 +4,9 @@
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
-.background {
+.wrap {
   width: 100vw;
-  background-color: background1;
-  position: relative;
-  min-height: 51.0417vw;
+  position: absolute;
 }
 
 .headerImg {
@@ -16,17 +14,23 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  top: 0;
-  left: 0;
+  z-index: -1;
 }
 
+.backImg {
+  width: 100vw;
+  height: 100vmax;
+  position: absolute;
+  z-index: -2;
+}
 /* ================================= */
 
-.container {
-  width: 100vw;
-  margin-left: 19.0278vw;
-  margin-right: 16.6667vw;
-  cursor: pointer;
+.alarmList {
+  position: absolute;
+  margin: 0;
+  padding-top: 3.0503vw;
+  padding-bottom: 3.0503vw;
+  padding-left: 0;
 }
 
 .megaphoneImg {
@@ -36,38 +40,56 @@
   top: 0;
   right: 0;
   margin-right: 16.6667vw;
+  z-index: 1;
 }
 
-.line {
+.alarmItems {
+  margin-left: 19.0278vw;
+  margin-right: 16.6667vw;
   position: relative;
 }
 
-.hr {
+.alarmItems::marker {
+  content: "";
+}
+
+.hr,
+.hr2 {
   position: absolute;
   height: 6.4583vw;
   border-left: 0.1389vw solid iconLightGrey;
-  top: 6.5972vw;
-  left: 19.9306vw;
+  margin-left: 0.9028vw;
+  margin-top: 1.875vw;
 }
 
-.circle {
+.hr2 {
+  height: calc(6.4583vw + 1.8056vw);
+  transform: translateY(-3.8056vw);
+}
+
+.circle,
+.circle2 {
   width: 0.7639vw;
   height: 0.7639vw;
   border: 0.1389vw solid highlight3;
   border-radius: 50%;
   background-color: white;
   position: absolute;
-  top: 10.4861vw;
-  left: 19.5833vw;
+  margin-left: 0.5556vw;
+  margin-top: 5.2778vw;
+}
+
+.circle2 {
+  margin-top: 1.8056vw;
+}
+
+.containDate {
+  margin-top: 2.0833vw;
 }
 
 .alarm {
   width: 64.3229vw;
-  height: 7.8125vw;
-  margin-top: 5.2083vw;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 1.8056vw;
 }
 
 .dayContiner {
@@ -90,10 +112,11 @@
   color: highlight1;
 }
 
-.contents {
+.contents,
+.contents2 {
   height: 4.375vw;
   background-color: lightWhite;
-  margin-left: 1.6667vw;
+  margin-left: 2.6389vw;
   border-radius: 0.8333vw;
   border: 0.0694vw solid textInput;
   box-shadow: 0 0.0694vw 0.3472vw shadow;
@@ -129,4 +152,8 @@
   font-size: 0.7639vw;
   font-family: "Regular";
   color: highlight1;
+}
+
+.footer {
+  margin-top: auto;
 }
