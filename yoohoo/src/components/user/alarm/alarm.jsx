@@ -13,23 +13,28 @@ const Alarm = (props) => {
         src={process.env.PUBLIC_URL + "images/headerBackground.png"}
         alt="Header"
       />
-      <img
-        className={styles.backImg}
-        src={process.env.PUBLIC_URL + "images/alarm/background.png"}
-        alt="Background"
-      />
+
       <div className={styles.alarmList}>
         <img
           className={styles.megaphoneImg}
           src={process.env.PUBLIC_URL + "images/alarm/megaphone.svg"}
           alt="Megaphone"
+        />{" "}
+        <img
+          className={styles.backImg}
+          src={process.env.PUBLIC_URL + "images/alarm/background.png"}
+          alt="Background"
         />
         {AlarmList.map((item, index) => (
           <div className={styles.alarmItems} key={item.id}>
             {index === 0 || item.date !== AlarmList[index - 1].date ? (
               <>
                 <div>
-                  <div className={styles.hr}></div>
+                  <div
+                    className={
+                      item.title === "반갑습니다!" ? styles.hrFirst : styles.hr
+                    }
+                  ></div>
                   <div className={styles.circle}></div>
                 </div>
                 <div className={styles.containDate}>
@@ -61,7 +66,7 @@ const Alarm = (props) => {
             ) : (
               <>
                 <div className={styles.noneDate}>
-                  <div className={styles.contour}>
+                  <div>
                     <div className={styles.hr2}></div>
                     <div className={styles.circle2}></div>
                   </div>

@@ -19,8 +19,9 @@
 
 .backImg {
   width: 100vw;
-  height: 100vmax;
+  height: 100%;
   position: absolute;
+  transform: translateY(-3.0503vw);
   z-index: -2;
 }
 /* ================================= */
@@ -53,18 +54,26 @@
   content: "";
 }
 
+.hrFirst,
 .hr,
 .hr2 {
   position: absolute;
-  height: 6.4583vw;
   border-left: 0.1389vw solid iconLightGrey;
   margin-left: 0.9028vw;
   margin-top: 1.875vw;
 }
 
+.hrFirst {
+  height: 5.9722vw;
+}
+
+.hr {
+  height: 7.9722vw;
+}
+
 .hr2 {
-  height: calc(6.4583vw + 1.8056vw);
-  transform: translateY(-3.8056vw);
+  height: calc(6.4583vw + 0.8056vw);
+  transform: translateY(-2.8056vw);
 }
 
 .circle,
