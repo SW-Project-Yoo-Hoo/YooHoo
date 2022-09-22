@@ -165,10 +165,10 @@
   }
 
   .returnButtonShow {
-    width: 154px;
+    width: 100px;
     border-radius: 12px;
     top: calc(10px + 26.66px + 8px); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-    right: calc(-154px + 10px + 13.33px);
+    right: calc(-100px + 10px + 13.33px);
     /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
   }
 
