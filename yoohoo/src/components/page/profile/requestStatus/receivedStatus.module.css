@@ -113,6 +113,13 @@
   border-top: 1px solid iconLightGrey;
 }
 
+@media screen and (min-width: 1024px), screen and (max-width: 1440px) {
+  .returnButtonShow {
+    width: 77px;
+    right: calc(-77px + 0.5555vw + 0.6944vw);
+  }
+}
+
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* 1920px 이상  */
 @media (min-width: 1920px) {
