@@ -4,9 +4,10 @@
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
-.wrap {
+.background {
   width: 100vw;
-  position: absolute;
+  background-color: background1;
+  position: relative;
 }
 
 .headerImg {
@@ -14,33 +15,39 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  z-index: -1;
+  z-index: 1;
+}
+
+/* ================================= */
+
+.container {
+  width: 100vw;
+  background-color: background1;
+  z-index: 2;
 }
 
 .backImg {
   width: 100vw;
   height: 100%;
-  position: absolute;
   transform: translateY(-3.0503vw);
   z-index: -2;
 }
-/* ================================= */
 
 .alarmList {
-  position: absolute;
+  position: relative;
   margin: 0;
   padding-top: 3.0503vw;
   padding-bottom: 3.0503vw;
   padding-left: 0;
+  z-index: 1;
 }
 
 .megaphoneImg {
   width: 9.375vw;
   height: 9.375vw;
   position: absolute;
-  top: 0;
+  top: -5.175vw;
   right: 0;
-  margin-right: 16.6667vw;
   z-index: 1;
 }
 
@@ -97,7 +104,6 @@
 }
 
 .alarm {
-  width: 64.3229vw;
   margin-bottom: 1.8056vw;
 }
 
@@ -123,11 +129,11 @@
 
 .contents,
 .contents2 {
+  width: 61.6667vw;
   height: 4.375vw;
   background-color: lightWhite;
   margin-left: 2.6389vw;
   border-radius: 0.8333vw;
-  border: 0.0694vw solid textInput;
   box-shadow: 0 0.0694vw 0.3472vw shadow;
   display: flex;
 }
@@ -165,4 +171,176 @@
 
 .footer {
   margin-top: auto;
+}
+
+/* ================================= */
+/* 그 이상 */
+@media (min-width: 1920px) {
+  .background {
+    width: 100vw;
+    background-color: background1;
+    position: relative;
+  }
+
+  .headerImg {
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .container {
+    z-index: 2;
+  }
+
+  .backImg {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    transform: translateY(-59px);
+    z-index: -2;
+  }
+  /* ================================= */
+
+  .alarmList {
+    width: 100vw;
+    position: relative;
+    margin: 0;
+    padding-top: 59px;
+    padding-bottom: 59px;
+    padding-left: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: cetner;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .megaphoneImg {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    top: -58px;
+    right: 0;
+    z-index: 1;
+  }
+
+  .alarmItems {
+    margin: 0 320px 0 365px;
+    position: relative;
+  }
+
+  .hrFirst,
+  .hr,
+  .hr2 {
+    position: absolute;
+    border-left: 2px solid iconLightGrey;
+    margin-left: 17px;
+    margin-top: 76px;
+  }
+
+  .hrFirst {
+    height: 115px;
+  }
+
+  .hr {
+    height: 193px;
+  }
+
+  .hr2 {
+    height: 140px;
+    transform: translateY(-53px);
+  }
+
+  .circle,
+  .circle2 {
+    width: 14px;
+    height: 14px;
+    border: 2px solid highlight3;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 140px;
+  }
+
+  .circle2 {
+    margin-top: 35px;
+  }
+
+  .containDate {
+    margin-top: 40px;
+  }
+
+  .alarm {
+    margin-bottom: 35px;
+  }
+
+  .dayContiner {
+    display: flex;
+    justify-content: cetner;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .timeImg {
+    width: 36px;
+    height: 36px;
+    margin-right: 20px;
+  }
+
+  .day {
+    margin: 0;
+    font-size: 16px;
+    font-family: "Regular";
+    color: highlight1;
+  }
+
+  .contents,
+  .contents2 {
+    width: 1184px;
+    height: 84px;
+    background-color: lightWhite;
+    margin: 0 0 0 57px;
+    border-radius: 16px;
+    box-shadow: 0 1px 6px shadow;
+    display: flex;
+  }
+
+  .pic {
+    margin: 19px 16px 0 20px;
+  }
+
+  .productImg {
+    width: 46px;
+    height: 46px;
+    border: 1px solid textInput;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  .P {
+    margin-top: 18px;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 16px;
+    font-family: "Medium";
+    color: mainOrange;
+    margin-bottom: 4px;
+  }
+
+  .description {
+    margin: 0;
+    font-size: 14px;
+    font-family: "Regular";
+    color: highlight1;
+  }
+
+  .footer {
+    margin-top: auto;
+  }
 }
