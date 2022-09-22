@@ -130,6 +130,10 @@
 
 /* 1920px 이상 */
 @media (min-width: 1920px) {
+  .backGroundIamge {
+    background-size: 100vw 237px;
+    min-height: 237px;
+  }
   .signUpContainer {
     width: 100vw;
     justify-content: center;

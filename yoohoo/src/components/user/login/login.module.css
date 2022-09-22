@@ -144,12 +144,22 @@
 
 /* 1920px 이상 */
 @media (min-width: 1920px) {
+  .container {
+    padding-bottom: 275px;
+    min-height: 980px;
+  }
+  .backGroundIamge {
+    background-size: 100vw 237px;
+    min-height: 237px;
+  }
+
   .loginContainer {
     width: 100vw;
     margin-left: 0;
     margin-right: 0;
     margin-top: 190px;
     justify-content: center;
+    min-height: 556px;
   }
 
   .loginImg {
