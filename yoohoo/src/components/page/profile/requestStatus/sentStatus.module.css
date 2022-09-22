@@ -48,7 +48,7 @@
 .postTitle {
   overflow: hidden;
   text-overflow: ellipsis;
-  /* height: 0.6944vw; */
+  padding-bottom: 0.2083vw;
   word-wrap: brek-word;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -82,5 +82,9 @@
     height: 196px;
     margin-bottom: 12px;
     border-radius: 32px;
+  }
+
+  .postTitle {
+    padding-bottom: 4px;
   }
 }
