@@ -386,6 +386,16 @@
 
 /* 1920px 이상  */
 @media (min-width: 1920px) {
+  .backGroundIamgeHeader {
+    background-size: 100vw 237px;
+    min-height: 237px;
+  }
+
+  .backGroundIamgeFoot {
+    background-size: 100vw 300px;
+    height: 300px;
+  }
+
   .container {
     padding-bottom: 240px;
   }
