@@ -96,7 +96,7 @@
   top: calc(
     0.5555vw + 1.3888vw + 0.4166vw
   ); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-  right: calc(-9.0277vw + 0.5555vw + 0.6944vw);
+  right: calc(-8.0208vw + 0.5555vw + 0.6944vw);
   /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
 }
 
@@ -168,7 +168,7 @@
     width: 154px;
     border-radius: 12px;
     top: calc(10px + 26.66px + 8px); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-    right: calc(-154px + 10px + 4px);
+    right: calc(-154px + 10px + 13.33px);
     /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
   }
 
