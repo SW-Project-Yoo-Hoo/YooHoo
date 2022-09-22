@@ -49,11 +49,25 @@
   z-index: 1;
 }
 
-.iconButton {
-  transform: rotate(90deg);
+.iconInfoButton {
   width: 1.3888vw; /*20px*/
   height: 1.3888vw;
-  color: mainGreen;
+  color: iconLightGrey;
+}
+
+.iconPriceButtonWrapper {
+  width: 0.7638vw;
+  height: 0.7638vw;
+  background-color: unselect;
+  margin-right: 0.2083vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.iconPriceButton {
+  color: white;
 }
 
 .postImg {
@@ -90,9 +104,17 @@
   margin-bottom: 0.1388vw;
 }
 
+.dealPrice {
+  margin-bottom: 0.2083vw;
+}
+
+.dealMargin {
+  padding-right: 1.8055vw;
+}
+
 .returnButtonShow {
   position: absolute;
-  width: 8.0208vw;
+  width: 9.8611vw;
   background-color: white;
   z-index: 1;
   border: 1px solid iconLightGrey;
@@ -100,21 +122,24 @@
   top: calc(
     0.5555vw + 1.3888vw + 0.4166vw
   ); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-  right: calc(-9.0277vw + 0.5555vw + 0.6944vw);
+  right: calc(-9.8611vw + 0.5555vw + 0.6944vw);
   /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
+  padding: 0.7638vw 1.25vw 0.7638vw 1.25vw;
 }
 
-.returnButtonText {
-  display: flex;
-  height: 2.5vw;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.6944vw;
-  color: highlight1;
-}
-
-.returnButtonLine {
-  border-top: 1px solid iconLightGrey;
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* 1024px ~ 1440px  */
+@media screen and (min-width: 1024px), screen and (max-width: 1440px) {
+  .returnButtonShow {
+    width: 142px;
+    border-radius: 12px;
+    /* top: calc(
+      0.5555vw + 1.3888vw + 0.4166vw
+    ); 아이콘 마진 + 아이콘 높이 + 6px */
+    right: calc(-142px + 0.5555vw + 0.6944vw);
+    /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
+    padding: 11px 18px 11px 18px;
+  }
 }
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
@@ -143,9 +168,15 @@
     margin: 10px;
   }
 
-  .iconButton {
+  .iconInfoButton {
     width: 26.66px;
     height: 26.66px;
+  }
+
+  .iconPriceButtonWrapper {
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
   }
 
   .postImg {
@@ -163,16 +194,16 @@
     margin-bottom: 2px;
   }
 
-  .returnButtonShow {
-    width: 154px;
-    border-radius: 12px;
-    top: calc(10px + 26.66px + 8px); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-    right: calc(-154px + 10px + 4px);
-    /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
+  .dealPrice {
+    margin-bottom: 4px;
   }
 
-  .returnButtonText {
-    height: 48px;
-    font-size: 14px;
+  .returnButtonShow {
+    width: 189px;
+    border-radius: 12px;
+    top: calc(10px + 26.66px + 8px); /* 아이콘 마진 + 아이콘 높이 + 6px*/
+    right: calc(-189px + 10px + 13.33px);
+    /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
+    padding: 14px 24px 14px 24px;
   }
 }

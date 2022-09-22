@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./completStatus.module.css";
-import { MdPlayCircleFilled } from "react-icons/md";
+import { MdInfo, MdAttachMoney } from "react-icons/md";
 
 const CompletStatus = (props) => {
   const post = [];
@@ -33,6 +33,9 @@ const CompletStatus = (props) => {
     post.push(postInfo1);
     post.push(postInfo2);
     post.push(postInfo1);
+    post.push(postInfo1);
+    post.push(postInfo2);
+    post.push(postInfo1);
 
     // console.log(post);
   };
@@ -48,7 +51,7 @@ const CompletStatus = (props) => {
         className={showButton ? styles.returnButtonShow : styles.displayNone}
       >
         {/* 금액, 대여단위 */}
-        <div>
+        <div className={styles.dealPrice}>
           <span>
             {props.price.toLocaleString("ko-KR")}/{props.unit}
           </span>
@@ -86,7 +89,7 @@ const CompletStatus = (props) => {
               setShowButton(props.showButton);
             }}
           >
-            <MdPlayCircleFilled className={styles.iconButton} />
+            <MdInfo className={styles.iconInfoButton} />
           </div>
           {/* 대여 정보 */}
           {returnButtonShow(props, showButton)}
@@ -99,10 +102,10 @@ const CompletStatus = (props) => {
 
         {/* 게시물 총 금액 */}
         <div className={styles.postTotalPrice}>
-          <MdPlayCircleFilled className={styles.iconButton} />
-          <span className={styles.postTitle}>
-            {props.totalPrice.toLocaleString("ko-KR")}원
-          </span>
+          <div className={styles.iconPriceButtonWrapper}>
+            <MdAttachMoney className={styles.iconPriceButton} />
+          </div>
+          <span>{props.totalPrice.toLocaleString("ko-KR")}원</span>
         </div>
       </div>
     );
