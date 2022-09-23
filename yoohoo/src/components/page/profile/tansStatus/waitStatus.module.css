@@ -3,10 +3,6 @@
 .displayNone {
   display: none;
 }
-/* 
-.colorUnselcet {
-  color: unselect;
-} */
 
 .container {
   margin: 2.0833vw 0.7291vw 5.243vw 2.1875vw;
@@ -84,7 +80,6 @@
   margin-bottom: 0.1388vw;
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* 1920px 이상  */
 @media (min-width: 1920px) {
   .container {

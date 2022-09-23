@@ -27,8 +27,6 @@ const WaitStatus = (props) => {
     //정보가 존재하면 객체 넣기
     post.push(postInfo1);
     post.push(postInfo2);
-
-    // console.log(post);
   };
 
   //디데이 계산하기

@@ -29,8 +29,6 @@ const MyPost = (props) => {
     post.push(postInfo2);
     post.push(postInfo1);
     post.push(postInfo2);
-
-    // console.log(post);
   };
 
   const pageNaviHandling = (props) => {

@@ -51,7 +51,7 @@
   width: 18.75vw;
   height: 10.1388vw;
   position: absolute;
-  bottom: -1.3888vw; /*-20px*/
+  bottom: -1.3888vw;
   right: 0;
   margin-right: marginLeftRight;
   z-index: 1;
@@ -63,7 +63,6 @@
   margin: 3.6458vw 0 0 calc(marginLeftRight - 2.1875vw);
   position: relative;
   height: 37.0138vw;
-  /* height: 380px; */
   width: 16.6666vw;
   border-radius: 1.5625vw;
   background-color: lightWhite;
@@ -232,7 +231,6 @@
   padding: 2.0833vw 2.1875vw 2.0833vw 2.1875vw;
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* 1920px 이상  */
 @media (min-width: 1920px) {
   .backGroundIamgeHeader {
@@ -275,7 +273,6 @@
   /* contents */
   /* 회원정보 + 메뉴 */
   .userKategorie {
-    /* margin: 70px 0 0 -42px; */
     margin-top: 70px;
     height: 710px;
     width: 320px;
@@ -352,7 +349,6 @@
   /* 게시물 보드 */
   .posts {
     position: relative;
-    /* margin: 70px marginLeftRight 26.597vw 0vw; */
     margin-top: 70px;
     margin-left: 50px;
     margin-bottom: 511px;

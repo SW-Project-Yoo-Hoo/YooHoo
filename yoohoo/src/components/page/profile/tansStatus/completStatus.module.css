@@ -50,7 +50,7 @@
 }
 
 .iconInfoButton {
-  width: 1.3888vw; /*20px*/
+  width: 1.3888vw;
   height: 1.3888vw;
   color: iconLightGrey;
 }
@@ -127,22 +127,17 @@
   padding: 0.7638vw 1.25vw 0.7638vw 1.25vw;
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* 1024px ~ 1440px  */
 @media screen and (min-width: 1024px), screen and (max-width: 1440px) {
   .returnButtonShow {
     width: 142px;
     border-radius: 12px;
-    /* top: calc(
-      0.5555vw + 1.3888vw + 0.4166vw
-    ); 아이콘 마진 + 아이콘 높이 + 6px */
     right: calc(-142px + 0.5555vw + 0.6944vw);
     /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
     padding: 11px 18px 11px 18px;
   }
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* 1920px 이상  */
 @media (min-width: 1920px) {
   .container {

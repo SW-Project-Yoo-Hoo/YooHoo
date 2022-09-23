@@ -3,8 +3,6 @@ import styles from "./progressStatus.module.css";
 import { MdPlayCircleFilled } from "react-icons/md";
 
 const ProgressStatus = (props) => {
-  // const [showButton, setShowButton] = useState(false);
-
   const post = [];
 
   const postInfo1 = {
@@ -42,8 +40,6 @@ const ProgressStatus = (props) => {
     post.push(postInfo1);
     post.push(postInfo2);
     post.push(postInfo1);
-
-    // console.log(post);
   };
 
   const pageNaviHandling = (props) => {
@@ -103,7 +99,6 @@ const ProgressStatus = (props) => {
           </div>
           {/* 조기반납, 반납버튼 */}
           {showButton ? returnButtonShow(props) : ""}
-          {/* {returnButtonShow(props, showButton)} */}
         </div>
 
         {/* 게시물 제목 */}

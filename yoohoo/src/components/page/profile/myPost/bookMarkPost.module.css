@@ -54,7 +54,6 @@
   -webkit-box-orient: vertical;
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* 1920px 이상  */
 @media (min-width: 1920px) {
   .container {

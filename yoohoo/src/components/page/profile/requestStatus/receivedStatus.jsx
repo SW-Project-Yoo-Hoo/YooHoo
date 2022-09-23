@@ -30,8 +30,6 @@ const ReceivedStatus = (props) => {
     post.push(postInfo1);
     post.push(postInfo2);
     post.push(postInfo1);
-
-    // console.log(post);
   };
 
   const pageNaviHandling = (props) => {

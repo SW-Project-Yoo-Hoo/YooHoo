@@ -81,9 +81,6 @@ const EditProfile = () => {
             onChange={onChangeImg}
           />
         </label>
-        {/* <div className={styles.photoButton}>
-          <MdPhotoCamera className={styles.photoButtonIcon} />
-        </div> */}
       </div>
 
       {/* 정보 입력 */}

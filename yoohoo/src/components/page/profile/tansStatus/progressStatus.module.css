@@ -51,7 +51,7 @@
 
 .iconButton {
   transform: rotate(90deg);
-  width: 1.3888vw; /*20px*/
+  width: 1.3888vw;
   height: 1.3888vw;
   color: mainGreen;
 }
@@ -95,21 +95,22 @@
   top: calc(
     0.5555vw + 1.3888vw + 0.4166vw
   ); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-  /* right: calc(-8.0208vw + 0.5555vw + 0.6944vw); */
-  /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
-  /* right: calc(0.5555vw + 0.6944vw); */
 }
 
 .earlyReturnButton {
   /* 조기반납 버튼 위치 조정 */
   width: 116px;
-  right: calc(-116px + 0.5555vw + 0.6944vw);
+  right: calc(
+    -116px + 0.5555vw + 0.6944vw
+  ); /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
 }
 
 .returnButtonStyle {
   /* 반납 버튼 위치 조정 */
   width: 97px;
-  right: calc(-97px + 0.5555vw + 0.6944vw);
+  right: calc(
+    -97px + 0.5555vw + 0.6944vw
+  ); /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
 }
 
 .returnButtonText {
@@ -138,7 +139,6 @@
   }
 }
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 /* 1920px 이상  */
 @media (min-width: 1920px) {
   .container {
