@@ -176,6 +176,10 @@
 /* ================================= */
 /* 그 이상 */
 @media (min-width: 1920px) {
+  .headerImg {
+    height: 237px;
+  }
+
   .background {
     width: 100vw;
     background-color: background1;

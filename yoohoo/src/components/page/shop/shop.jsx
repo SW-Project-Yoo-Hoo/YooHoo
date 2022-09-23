@@ -17,14 +17,15 @@ const Shop = (props) => {
         />
 
         <div className={styles.container}>
-          <span className={styles.title}>SHOP</span>
-          <div className={styles.orderDiv}>
-            <MdSwapVert className={styles.orderIcon} />
-            <span className={styles.orderSpan}>최신순</span>
+          <div className={styles.spanGroup}>
+            <span className={styles.title}>SHOP</span>
+            <div className={styles.orderDiv}>
+              <MdSwapVert className={styles.orderIcon} />
+              <span className={styles.orderSpan}>최신순</span>
+            </div>
+            <div className={styles.hr}></div>
+            <span className={styles.subTitle}>All Products</span>
           </div>
-          <div className={styles.hr}></div>
-          <span className={styles.subTitle}>All Products</span>
-
           <div className={styles.productGroup}>
             {ShopImg.map((item, index) => (
               <div className={styles.product}>

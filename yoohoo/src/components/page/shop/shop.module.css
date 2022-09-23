@@ -25,6 +25,7 @@
   background-size: cover;
   position: absolute;
   bottom: 0;
+  z-index: 0;
 }
 
 .footerImg2 {
@@ -37,6 +38,7 @@
 
 .footer {
   margin-top: auto;
+  z-index: 0;
 }
 /* ================================= */
 
@@ -104,13 +106,15 @@
   width: 54.1667vw;
   /* height: 50.8333vw; */
   position: relative;
-  margin-top: 4.3056vw;
-  margin-left: 29.1667vw;
+  margin: 4.3056vw 0 3.4722vw 29.1667vw;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 2.6389vw;
-  margin-bottom: 3.4722vw;
-  /* grid-template-columns: 13.9583vw 13.9583vw 13.9583vw 12.2917vw; */
+  column-gap: 1.6667vw;
+}
+
+.product {
+  cursor: pointer;
 }
 
 .info {
@@ -159,9 +163,137 @@
 /* ================================= */
 /* 그 이상 */
 @media (min-width: 1920px) {
+  .headerImg {
+    height: 237px;
+  }
+
+  .footerImg {
+    height: 300px;
+  }
+
   .footerImg2 {
     width: 444px;
     height: 444px;
-    margin: 0 0 -40px 321px;
+    /* margin: 0 0 -40px 321px; */
+    margin: 0 auto -40px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 418px;
+  }
+
+  .spanGroup {
+    width: 1920px;
+    height: 82px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .title {
+    position: absolute;
+    padding-top: 42px;
+    margin-left: 341px;
+    font-size: 30px;
+
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    left: 338px;
+  }
+
+  .orderDiv {
+    position: absolute;
+    font-size: 16px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 48px;
+    left: 1200px;
+  }
+
+  .orderIcon {
+    width: 19px;
+    height: 19px;
+    margin: 0 8px 0 0;
+  }
+
+  .hr {
+    width: 200px;
+    position: absolute;
+    border-top: 1px solid line;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 111px;
+    left: 338px;
+  }
+
+  .subTitle {
+    position: absolute;
+    font-size: 18px;
+
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 135px;
+    left: 338px;
+  }
+
+  /* ================================= */
+
+  .container {
+    width: 100vw;
+    position: absolute;
+    background-color: background1;
+  }
+
+  .productGroup {
+    z-index: 2;
+    width: 1040px;
+    position: relative;
+    margin: 0 auto 67px auto;
+    /* margin: 82px 12.5vw 67px 21.875vw; */
+    /* padding-left: 300px; */
+    /* margin-left: 560px; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 38px;
+    column-gap: 24px;
+    left: 123px;
+    /* place-content: center;
+    place-items: center; */
+    /* padding-left: 220px; */
+  }
+
+  .info {
+    width: 216px;
+    margin: 12px 0 0 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .info2 {
+    margin-top: 4px;
+  }
+
+  .productImg {
+    width: 236px;
+    height: 236px;
+    border-radius: 32px;
+  }
+
+  .productPrice {
+    font-size: 14px;
+  }
+
+  .wishIcon {
+    width: 16px;
+    height: 16px;
   }
 }
