@@ -9,6 +9,7 @@ import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import ModalCal from "./modalCal";
 import ShowImg from "./showImg/showImg";
+import ShopImg from "./shopImg";
 import moment from "moment";
 
 const ShopDetail = (props) => {
@@ -101,35 +102,6 @@ const ShopDetail = (props) => {
     return <Right onClick={() => scrollNext()} />;
   }
 
-  /* 살펴보기 아아템들 */
-  const items = [
-    {
-      id: 1,
-      image: process.env.PUBLIC_URL + "images/shop/a.jpg",
-      title: "일이삼사오육칠팔구십일이삼사오육칠팔구십",
-      price: "Price",
-    },
-    {
-      id: 2,
-      image: process.env.PUBLIC_URL + "images/about/ys.svg",
-      title: "물품2",
-      price: "Price",
-    },
-    {
-      id: 3,
-      image: process.env.PUBLIC_URL + "images/about/hj.svg",
-      title: "물품3",
-      price: "Price",
-    },
-    {
-      id: 4,
-      image: process.env.PUBLIC_URL + "images/about/hj.svg",
-      title: "물품3",
-      price: "Price",
-    },
-  ];
-
-  /* ================================ */
   /* 찜하기 버튼 */
   const onClickWishBtn = () => {
     setWish((wish) => !wish);
@@ -138,7 +110,7 @@ const ShopDetail = (props) => {
   /* ================================ */
 
   return (
-    <div className={styles.detailPage}>
+    <>
       <Header />
       <div className={styles.background}>
         <img
@@ -169,7 +141,9 @@ const ShopDetail = (props) => {
 
             <div>
               <p className={styles.descriptionTitle}>물품 소개</p>
-              <div className={styles.descriptionContent}> 설명</div>
+              <div className={styles.descriptionContent}>
+                {ShopImg[0].contents}
+              </div>
             </div>
 
             <div className={styles.hr}></div>
@@ -179,12 +153,13 @@ const ShopDetail = (props) => {
               <LookProducts>
                 <div className={styles.lookProducts}>
                   <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-                    {items.map((item) => (
+                    {/* 추가 ) 현재 게시물과 다른것들만 보여주기 */}
+                    {ShopImg.map((item) => (
                       <div id={item.id} className={styles.products1}>
                         <button className={styles.otherProductsBtn}>
                           <img
                             className={styles.otherProductsImg}
-                            src={process.env.PUBLIC_URL + item.image}
+                            src={item.image}
                             alt="Product"
                           />
                         </button>
@@ -209,7 +184,7 @@ const ShopDetail = (props) => {
 
           <div className={styles.productInfo2}>
             {/* 물품 제목, 대여 기간, 거래하기 버튼 */}
-            <p className={styles.title}>Title</p>
+            <p className={styles.title}>{ShopImg[0].title}</p>
             <div className={styles.categoryGroup}>
               <div className={styles.category}>#책상</div>
               <div className={styles.category}>#의자</div>
@@ -298,15 +273,17 @@ const ShopDetail = (props) => {
           </div>
 
           {/* Footer */}
-          <img
-            className={styles.footerImg}
-            src={process.env.PUBLIC_URL + "images/footBackground.png"}
-            alt="Footer"
-          />
-          <Footer />
+          <div className={styles.footer}>
+            <img
+              className={styles.footerImg}
+              src={process.env.PUBLIC_URL + "images/footBackground.png"}
+              alt="Footer"
+            />
+            <Footer />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
