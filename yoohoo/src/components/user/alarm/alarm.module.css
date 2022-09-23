@@ -136,6 +136,7 @@
   border-radius: 0.8333vw;
   box-shadow: 0 0.0694vw 0.3472vw shadow;
   display: flex;
+  cursor: pointer;
 }
 
 .pic {
