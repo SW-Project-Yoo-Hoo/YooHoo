@@ -3,18 +3,10 @@
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
-.detailPage {
-  width: 100vw;
-  overflow-x: hidden;
-  background-color: background1;
-  min-height: 111.1111vw;
-}
-
 .background {
   width: 100vw;
   background-color: background1;
   position: relative;
-  z-index: 1;
 }
 
 .detailPage::-webkit-scrollbar {
@@ -28,6 +20,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 /* Footer */
@@ -36,28 +29,37 @@
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
-  position: absolute;
+  transform: translateY(0.3472vw);
   bottom: 0;
-  z-index: -1;
+  z-index: 0;
 }
 
+.footer {
+  position: absolute;
+  margin: auto;
+  bottom: 0;
+  z-index: 0;
+}
 /* ================================= */
 
 .container {
+  background-color: background1;
   width: 100vw;
   display: flex;
   position: absolute;
   top: 0;
   left: 0;
-  margin: 3.4722vw 0 0 0;
+  margin: 0;
 }
 
 /* 물품 사진 */
 .productInfo {
   width: 41.6667vw;
   height: 93.75vw;
-  margin-left: 16.6667vw;
-  margin-right: 4.1667vw;
+  margin: 3.4722vw 4.1667vw 13.75vw 16.6667vw;
+
+  position: relative;
+  z-index: 2;
 }
 
 .imgGroup {
@@ -181,7 +183,7 @@
 .lefttBtn,
 .rightBtn {
   width: 2.3122vw;
-  height: 23vw; /* 수정 하기*/
+  height: 23vw;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -247,7 +249,14 @@
 /* ================================= */
 /* 물품 제목, 카테고리, 가격, 대여기간 등 정보*/
 
+.productInfo2 {
+  width: 37.5vw;
+  margin-top: 3.4722vw;
+  z-index: 2;
+}
+
 .title {
+  width: 20.8333vw;
   font-size: 1.3889vw;
   font-family: "Regular";
   line-height: 2.0833vw;
@@ -287,8 +296,10 @@
 }
 
 .period {
+  width: 20.8333vw;
   display: flex;
   position: relative;
+  margin-right: 16.6667vw;
 }
 
 .periodTitle {
@@ -413,10 +424,12 @@
 /* 주문 수량, 총 금액 */
 .totalCountInfo,
 .totalPriceInfo {
+  width: 20.8333vw;
   display: flex;
   position: relative;
   font-size: 0.6944vw;
   color: highlight2;
+  margin-right: 16.6667vw;
   margin-bottom: 0.7639vw;
   font-family: "Medium";
 }
@@ -472,10 +485,6 @@
 /* ================================= */
 /* 그 이상 */
 @media (min-width: 1920px) {
-  .detailPage {
-    min-height: 2203px;
-  }
-
   .headerImg {
     height: 235px;
   }
@@ -483,13 +492,12 @@
   .footerImg {
     height: 300px;
     background-color: none;
+    transform: translateY(5px);
   }
 
   /* ================================= */
 
   .container {
-    margin: 70px 0 0 0;
-    display: flex;
     justify-content: center;
   }
 
@@ -497,7 +505,7 @@
   .productInfo {
     width: 800px;
     height: 1702px;
-    margin: 0 80px 0 0;
+    margin: 70px 80px 60px 320px;
   }
 
   .imgGroup {
@@ -592,8 +600,8 @@
 
   .lefttBtn,
   .rightBtn {
-    width: 44px; /* 수정 하기*/
-    height: 292px; /* 수정 하기*/
+    width: 44px;
+    height: 292px;
   }
 
   .otherProductsBtn {
@@ -628,7 +636,13 @@
   /* ================================= */
   /* 물품 제목, 카테고리, 가격, 대여기간 등 정보*/
 
+  .productInfo2 {
+    width: 720px;
+    margin-top: 70px;
+  }
+
   .title {
+    width: 400px;
     font-size: 28px;
     line-height: 41px;
     margin: 0 0 27px 0;
@@ -652,11 +666,19 @@
   .price {
     margin: 0 0 40px 0;
     font-size: 20px;
+
+    margin-right: 320px;
+  }
+
+  .period {
+    width: 400px;
   }
 
   .periodTitle {
     font-size: 16px;
     margin: 0 0 14px 0;
+
+    margin-right: 320px;
   }
 
   .helpImg {
@@ -725,6 +747,7 @@
   /* 주문 수량, 총 금액 */
   .totalCountInfo,
   .totalPriceInfo {
+    width: 400px;
     font-size: 14px;
     margin-bottom: 14px;
   }
