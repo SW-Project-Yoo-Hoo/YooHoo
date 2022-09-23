@@ -39,16 +39,13 @@ const SentStatus = (props) => {
     console.log("이동하기!");
   };
 
-  const returnButtonShow = (props, showButton) => {
+  const returnButtonShow = (props) => {
     const cancelRequest = (event) => {
       //백엔드로 거래 취소 정보 전송
       event.stopPropagation();
     };
     return (
-      <div
-        className={showButton ? styles.returnButtonShow : styles.displayNone}
-      >
-        {/* 조기반납 */}
+      <div className={styles.returnButtonShow}>
         <div
           className={styles.returnButtonText}
           onClick={(event) => cancelRequest(event)}
@@ -81,7 +78,7 @@ const SentStatus = (props) => {
             <MdCancel className={styles.iconButton} />
           </div>
           {/* 요청취소 버튼 */}
-          {returnButtonShow(props, showButton)}
+          {showButton ? returnButtonShow(props) : ""}
         </div>
 
         {/* 게시물 제목 */}

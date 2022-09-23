@@ -39,7 +39,7 @@ const ReceivedStatus = (props) => {
     console.log("이동하기!");
   };
 
-  const returnButtonShow = (props, showButton) => {
+  const returnButtonShow = (props) => {
     const acceptButton = (event) => {
       //백엔드로 거래 수락 정보 전송
       event.stopPropagation();
@@ -51,10 +51,8 @@ const ReceivedStatus = (props) => {
     };
 
     return (
-      <div
-        className={showButton ? styles.returnButtonShow : styles.displayNone}
-      >
-        {/* 조기반납 */}
+      <div className={styles.returnButtonShow}>
+        {/* 수락하기 */}
         <div
           className={styles.returnButtonText}
           onClick={(event) => acceptButton(event)}
@@ -62,7 +60,7 @@ const ReceivedStatus = (props) => {
           <span>수락하기</span>
         </div>
         <div className={styles.returnButtonLine} />
-        {/* 반납 */}
+        {/* 거절하기 */}
         <div
           className={styles.returnButtonText}
           onClick={(event) => rejectButton(event)}
@@ -95,7 +93,7 @@ const ReceivedStatus = (props) => {
             <MdPlayCircleFilled className={styles.iconButton} />
           </div>
           {/* 조기반납, 반납버튼 */}
-          {returnButtonShow(props, showButton)}
+          {showButton ? returnButtonShow(props) : ""}
         </div>
 
         {/* 게시물 제목 */}

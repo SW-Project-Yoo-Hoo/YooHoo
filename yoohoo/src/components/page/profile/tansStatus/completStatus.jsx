@@ -45,11 +45,9 @@ const CompletStatus = (props) => {
     console.log("이동하기!");
   };
 
-  const returnButtonShow = (props, showButton) => {
+  const returnButtonShow = (props) => {
     return (
-      <div
-        className={showButton ? styles.returnButtonShow : styles.displayNone}
-      >
+      <div className={styles.returnButtonShow}>
         {/* 금액, 대여단위 */}
         <div className={styles.dealPrice}>
           <span>
@@ -92,7 +90,7 @@ const CompletStatus = (props) => {
             <MdInfo className={styles.iconInfoButton} />
           </div>
           {/* 대여 정보 */}
-          {returnButtonShow(props, showButton)}
+          {showButton ? returnButtonShow(props) : ""}
         </div>
 
         {/* 게시물 제목 */}
