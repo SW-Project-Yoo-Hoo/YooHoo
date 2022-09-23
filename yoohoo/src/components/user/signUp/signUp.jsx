@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styles from "./signUp.module.css";
-import { Routes, Route } from "react-router-dom";
-import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 
