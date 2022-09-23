@@ -1,4 +1,4 @@
-@value mainGreen,mainOrange,highlight1,highlight3,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey,unselect from "../../../common/color.css";
+@value mainGreen,mainOrange,highlight1,background1,textInput,textInputPlace,lightWhite,shadow,iconLightGrey,unselect from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 .colorHighlight1 {
