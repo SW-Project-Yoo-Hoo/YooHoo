@@ -91,7 +91,7 @@
   background-color: white;
   z-index: 1;
   border: 1px solid iconLightGrey;
-  border-radius: 12px;
+  border-radius: 0.8333vw;
   top: calc(
     0.5555vw + 1.3888vw + 0.4166vw
   ); /* 아이콘 마진 + 아이콘 높이 + 6px*/
