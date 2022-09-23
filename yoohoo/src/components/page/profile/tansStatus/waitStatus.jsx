@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import styles from "./waitStatus.module.css";
 import moment from "moment";
 import "moment/locale/ko";

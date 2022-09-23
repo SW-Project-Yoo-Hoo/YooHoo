@@ -1,4 +1,4 @@
-@value unselect,textInput, iconLightGrey from "../../../../common/color.css";
+@value unselect, iconLightGrey from "../../../../common/color.css";
 
 .displayNone {
   display: none;

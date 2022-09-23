@@ -1,4 +1,4 @@
-@value mainGreen,highlight2, textInput,textInputPlace,unselect, boldWhite from "../../../../common/color.css";
+@value mainGreen,highlight2, textInput,unselect, boldWhite from "../../../../common/color.css";
 
 .displayNone {
   display: none;
