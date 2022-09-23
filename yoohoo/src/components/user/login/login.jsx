@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./login.module.css";
 import { Navigate } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
-
-// 프로필 클릭 -> 로그인 창으로 넘어옴
-// 현재 로그인이 되어 있으면 -> 프로필 페이지로 바로 연결
-// 현재 로그인이 안되어 있으면 -> 로그인 페이지 렌더링
 
 const Login = (props) => {
   //회원정보 상태
@@ -121,7 +117,7 @@ const Login = (props) => {
 };
 
 const MyPage = (props) => {
-  let test = 1;
+  let test = 0;
   return test ? <Navigate to="/Profile" replace={true} /> : <Login />;
 };
 

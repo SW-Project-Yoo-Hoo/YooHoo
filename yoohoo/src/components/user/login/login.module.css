@@ -1,4 +1,4 @@
-@value mainGreen,highlight1, background1,textInput,textInputPlace,lightWhite,mainOrange from "../../../common/color.css";
+@value mainGreen,highlight1, background1,textInput,lightWhite,mainOrange from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 @font-face {
