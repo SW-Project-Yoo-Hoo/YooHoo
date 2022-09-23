@@ -1,6 +1,5 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./post.module.css";
-import { Link, NavLink } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import { MdCancel, MdCheck, MdPhotoCamera } from "react-icons/md";
@@ -657,7 +656,7 @@ const Post = (props) => {
           {/* 입력창 */}
           <div className={styles.detailTextFild}>
             <textarea
-              // type="text"
+              type="text"
               name="contents"
               maxlength="499"
               onChange={changeHandling}
