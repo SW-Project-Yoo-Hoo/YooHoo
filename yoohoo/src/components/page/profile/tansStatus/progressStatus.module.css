@@ -88,29 +88,54 @@
 
 .returnButtonShow {
   position: absolute;
-  width: 8.0208vw;
   background-color: white;
   z-index: 1;
   border: 1px solid iconLightGrey;
-  border-radius: 0.4166vw;
+  border-radius: 12px;
   top: calc(
     0.5555vw + 1.3888vw + 0.4166vw
   ); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-  right: calc(-8.0208vw + 0.5555vw + 0.6944vw);
+  /* right: calc(-8.0208vw + 0.5555vw + 0.6944vw); */
   /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
+  /* right: calc(0.5555vw + 0.6944vw); */
+}
+
+.earlyReturnButton {
+  /* 조기반납 버튼 위치 조정 */
+  width: 116px;
+  right: calc(-116px + 0.5555vw + 0.6944vw);
+}
+
+.returnButtonStyle {
+  /* 반납 버튼 위치 조정 */
+  width: 97px;
+  right: calc(-97px + 0.5555vw + 0.6944vw);
 }
 
 .returnButtonText {
   display: flex;
-  height: 2.5vw;
+  margin: 0.7638vw 1.25vw 0.7638vw 1.25vw;
   justify-content: center;
-  align-items: center;
   font-size: 0.6944vw;
   color: highlight1;
 }
 
 .returnButtonLine {
   border-top: 1px solid iconLightGrey;
+}
+
+@media (min-width: 1440px) {
+  .earlyReturnButton {
+    /* 조기반납 버튼 위치 조정 */
+    width: 8.0555vw;
+    right: calc(-8.0555vw + 0.5555vw + 0.6944vw);
+  }
+
+  .returnButtonStyle {
+    /* 반납 버튼 위치 조정 */
+    width: 6.7361vw;
+    right: calc(-6.7361vw + 0.5555vw + 0.6944vw);
+  }
 }
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
@@ -165,15 +190,24 @@
   }
 
   .returnButtonShow {
-    width: 154px;
     border-radius: 12px;
     top: calc(10px + 26.66px + 8px); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-    right: calc(-154px + 10px + 13.33px);
-    /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
+  }
+
+  .earlyReturnButton {
+    /* 조기반납 버튼 위치 조정 */
+    width: 160px;
+    right: calc(-160px + 10px + 13.33px);
+  }
+
+  .returnButtonStyle {
+    /* 반납 버튼 위치 조정 */
+    width: 132px;
+    right: calc(-132px + 10px + 13.33px);
   }
 
   .returnButtonText {
-    height: 48px;
     font-size: 14px;
+    margin: 14px 24px 14px 24px;
   }
 }

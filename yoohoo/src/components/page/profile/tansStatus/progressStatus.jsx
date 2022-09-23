@@ -13,10 +13,10 @@ const ProgressStatus = (props) => {
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
     startDay: "2022.09.28",
     endDay: "2022.10.22",
-    requset: {
-      //반납,조기반납 요청이 들어왔나?
-      earlyReturn: true,
-      return: false,
+    message: {
+      //현재 상태
+      state: "요청 중",
+      text: "조기반납",
     },
 
     showButton: false,
@@ -28,10 +28,10 @@ const ProgressStatus = (props) => {
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
     startDay: "2023.08.22",
     endDay: "2024.09.22",
-    requset: {
-      //반납,조기반납 요청이 들어왔나?
-      earlyReturn: false,
-      return: true,
+    message: {
+      //현재 상태
+      state: "요청하기",
+      text: "반납",
     },
     showButton: false,
   };
@@ -51,40 +51,29 @@ const ProgressStatus = (props) => {
     console.log("이동하기!");
   };
 
-  const returnButtonShow = (props, showButton) => {
-    const earlyReturnButton = (event) => {
-      //백엔드로 조기반납 정보 전송
-      event.stopPropagation();
-    };
-
+  const returnButtonShow = (props) => {
     const returnButton = (event) => {
       //백엔드로 반납 정보 전송
+      //현재 상태가 요청 중이면 전송하지 않음
       event.stopPropagation();
     };
 
     return (
       <div
-        className={showButton ? styles.returnButtonShow : styles.displayNone}
+        className={[
+          styles.returnButtonShow,
+          props.message.text === "반납"
+            ? styles.returnButtonStyle
+            : styles.earlyReturnButton,
+        ].join(" ")}
       >
         {/* 조기반납 */}
-        <div
-          className={styles.returnButtonText}
-          onClick={(event) => earlyReturnButton(event)}
-        >
-          <span>
-            조기반납
-            {props.requset.earlyReturn ? " 수락" : " 요청"}
-          </span>
-        </div>
-        <div className={styles.returnButtonLine} />
-        {/* 반납 */}
         <div
           className={styles.returnButtonText}
           onClick={(event) => returnButton(event)}
         >
           <span>
-            반납
-            {props.requset.return ? " 수락" : " 요청"}
+            {props.message.text} {props.message.state}
           </span>
         </div>
       </div>
@@ -113,7 +102,8 @@ const ProgressStatus = (props) => {
             <MdPlayCircleFilled className={styles.iconButton} />
           </div>
           {/* 조기반납, 반납버튼 */}
-          {returnButtonShow(props, showButton)}
+          {showButton ? returnButtonShow(props) : ""}
+          {/* {returnButtonShow(props, showButton)} */}
         </div>
 
         {/* 게시물 제목 */}
