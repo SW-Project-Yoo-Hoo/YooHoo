@@ -174,7 +174,6 @@
   .footerImg2 {
     width: 444px;
     height: 444px;
-    /* margin: 0 0 -40px 321px; */
     margin: 0 auto -40px auto;
 
     display: flex;
@@ -258,17 +257,11 @@
     width: 1040px;
     position: relative;
     margin: 0 auto 67px auto;
-    /* margin: 82px 12.5vw 67px 21.875vw; */
-    /* padding-left: 300px; */
-    /* margin-left: 560px; */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 38px;
     column-gap: 24px;
     left: 123px;
-    /* place-content: center;
-    place-items: center; */
-    /* padding-left: 220px; */
   }
 
   .info {
