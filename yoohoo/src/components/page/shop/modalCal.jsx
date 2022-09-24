@@ -216,7 +216,7 @@ const CalendarContainer = styled.div`
     padding: 0.3472vw 0;
     background-color: white;
     cursor: pointer;
-    font-size: 0.7639vw;
+    font-size: 0.9028vw;
     font-family: "Medium";
   }
 
@@ -234,7 +234,7 @@ const CalendarContainer = styled.div`
       margin: 0;
       display: flex;
       justify-content: center;
-      padding-top: 0.2472vw;
+      padding-top: 0.1172vw;
     }
   }
 

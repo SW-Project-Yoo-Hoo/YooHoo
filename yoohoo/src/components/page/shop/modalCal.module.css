@@ -80,7 +80,7 @@
   align-items: center;
   font-size: 0.8333vw;
   color: textInputPlace;
-  margin: 0.6944vw 0 0 0.8333vw;
+  margin: 0.5444vw 0 0 0.8333vw;
   padding: 0;
 }
 
@@ -96,12 +96,15 @@
   width: 9.7222vw;
   height: 2.6389vw;
   color: white;
-  font-size: 0.7639vw;
+  font-size: 0.9028vw;
   font-family: "Medium";
   background-color: mainGreen;
   border: 0.0694vw solid textInput;
   border-radius: 1.0417vw;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .warning {

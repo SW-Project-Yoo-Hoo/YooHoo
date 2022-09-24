@@ -71,15 +71,15 @@
 }
 
 .hrFirst {
-  height: 5.9722vw;
+  height: 6.5702vw;
 }
 
 .hr {
-  height: 7.9722vw;
+  height: 8.6722vw;
 }
 
 .hr2 {
-  height: calc(6.4583vw + 0.8056vw);
+  height: 7.9639vw;
   transform: translateY(-2.8056vw);
 }
 
@@ -130,29 +130,26 @@
 .contents,
 .contents2 {
   width: 61.6667vw;
-  height: 4.375vw;
+  height: 4.905vw;
   background-color: lightWhite;
   margin-left: 2.6389vw;
   border-radius: 0.8333vw;
   box-shadow: 0 0.0694vw 0.3472vw shadow;
   display: flex;
   cursor: pointer;
+  align-items: center;
 }
 
 .pic {
-  margin: 0.9722vw 0.8333vw 0 1.0417vw;
+  margin: 0.2633vw 0.8333vw 0 1.0417vw;
 }
 
 .productImg {
-  width: 2.4306vw;
-  height: 2.4306vw;
+  width: 2.5106vw;
+  height: 2.5106vw;
   border: 0.0694vw solid textInput;
   border-radius: 0.3472vw;
   object-fit: cover;
-}
-
-.P {
-  margin-top: 0.9028vw;
 }
 
 .title {
@@ -181,66 +178,35 @@
     height: 237px;
   }
 
-  .background {
-    width: 100vw;
-    background-color: background1;
-    position: relative;
-  }
-
-  .headerImg {
-    width: 100vw;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    z-index: 1;
-  }
-
-  .container {
-    z-index: 2;
-  }
-
   .backImg {
-    width: 100vw;
-    height: 100%;
     position: absolute;
     transform: translateY(-59px);
-    z-index: -2;
   }
-  /* ================================= */
 
   .alarmList {
     width: 100vw;
-    position: relative;
-    margin: 0;
     padding-top: 59px;
     padding-bottom: 59px;
-    padding-left: 0;
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: cetner;
     align-items: center;
-    z-index: 1;
   }
 
   .megaphoneImg {
     width: 180px;
     height: 180px;
-    position: absolute;
     top: -58px;
-    right: 0;
-    z-index: 1;
   }
 
   .alarmItems {
     margin: 0 320px 0 365px;
-    position: relative;
   }
 
   .hrFirst,
   .hr,
   .hr2 {
-    position: absolute;
     border-left: 2px solid iconLightGrey;
     margin-left: 17px;
     margin-top: 76px;
@@ -264,9 +230,6 @@
     width: 14px;
     height: 14px;
     border: 2px solid highlight3;
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
     margin-left: 10px;
     margin-top: 140px;
   }
@@ -284,9 +247,6 @@
   }
 
   .dayContiner {
-    display: flex;
-    justify-content: cetner;
-    align-items: center;
     margin-bottom: 30px;
   }
 
@@ -299,23 +259,19 @@
   .day {
     margin: 0;
     font-size: 16px;
-    font-family: "Regular";
-    color: highlight1;
   }
 
   .contents,
   .contents2 {
     width: 1184px;
     height: 84px;
-    background-color: lightWhite;
     margin: 0 0 0 57px;
     border-radius: 16px;
     box-shadow: 0 1px 6px shadow;
-    display: flex;
   }
 
   .pic {
-    margin: 19px 16px 0 20px;
+    margin: 6px 16px 0 20px;
   }
 
   .productImg {
@@ -323,29 +279,16 @@
     height: 46px;
     border: 1px solid textInput;
     border-radius: 6px;
-    object-fit: cover;
-  }
-
-  .P {
-    margin-top: 18px;
   }
 
   .title {
     margin: 0;
     font-size: 16px;
-    font-family: "Medium";
-    color: mainOrange;
     margin-bottom: 4px;
   }
 
   .description {
     margin: 0;
     font-size: 14px;
-    font-family: "Regular";
-    color: highlight1;
-  }
-
-  .footer {
-    margin-top: auto;
   }
 }

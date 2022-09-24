@@ -109,8 +109,8 @@
 }
 
 .companyImg {
-  width: 3.3333vw;
-  height: 3.3333vw;
+  width: 3.5vw;
+  height: 3.5vw;
   border-radius: 50%;
   border: 0.0694vw solid textInput;
   object-fit: contain;
@@ -125,14 +125,14 @@
 }
 
 .companyName {
-  font-size: 0.6944vw;
+  font-size: 0.8333vw;
   font-family: "Medium";
   margin: 0 0 0.4167vw 0;
 }
 
 .companyAddress {
   margin: 0;
-  font-size: 0.5556vw;
+  font-size: 0.6944vw;
   font-family: "Regular";
 }
 
