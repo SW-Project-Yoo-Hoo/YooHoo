@@ -11,7 +11,7 @@ const WaitStatus = (props) => {
     id: "게시글 아이디1",
     img: "/Images/test.jpeg",
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    startDay: "2022.09.28",
+    startDay: "2022.09.30",
     endDay: "2022.10.22",
   };
 
@@ -34,10 +34,10 @@ const WaitStatus = (props) => {
   //디데이 계산하기
   const countDay = (props) => {
     //현재 날짜(형식 지정해주기)
-    const now = moment(moment().format("YYYY.MM.DD"));
+    const now = moment(new Date(moment().format("YYYY.MM.DD")));
 
     //디데이를 설정할 날짜
-    const dDay = moment(props.startDay);
+    const dDay = moment(new Date(props.startDay));
 
     //day 기준으로 날짜 차이 구하기
     return dDay.diff(now, "days");
