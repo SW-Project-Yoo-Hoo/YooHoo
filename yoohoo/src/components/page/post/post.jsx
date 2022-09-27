@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./post.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
@@ -121,6 +121,10 @@ const Post = (props) => {
       console.log("등록!");
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={styles.container}>
