@@ -11,12 +11,8 @@
   background-color: background2;
   position: absolute;
   bottom: -254px;
-}
-
-.footerLine {
-  width: 100%;
-  background-color: line;
-  margin: 0;
+  border-top: 1px solid;
+  border-color: line;
 }
 
 .footer {
@@ -70,11 +66,13 @@
   }
 
   .footer {
+    width: 1280px;
     height: 300px;
     padding-top: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0 auto 0 auto;
   }
 
   .noticeTitle,

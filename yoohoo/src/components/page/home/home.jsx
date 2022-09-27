@@ -1,19 +1,13 @@
 import React from "react";
 import styles from "./home.module.css";
 import Header from "../../header/header";
+import Footer from "../../footer/footer";
 import { Link } from "react-router-dom";
 import { MdOutlineTrendingFlat } from "react-icons/md";
 
 const Home = (props) => {
-  const pageTransform = () => {
-    console.log("페이지이동하기!");
-    // console.log(window.innerWidth);
-    // console.log(window.innerHeight);
-    window.location.href = "/About";
-  };
-
   return (
-    <div>
+    <div className={styles.home}>
       <Header />
       <div className={styles.backGroundImage}>
         <div className={styles.container}>
@@ -50,9 +44,9 @@ const Home = (props) => {
 
               {/* button */}
               <div>
-                <button className={styles.buttonStyle} onClick={pageTransform}>
-                  Read More
-                </button>
+                <Link to="./about">
+                  <div className={styles.buttonStyle}>Read More</div>
+                </Link>
               </div>
             </div>
 
@@ -182,7 +176,13 @@ const Home = (props) => {
             </div>
           </div>
         </div>
+        <div className={styles.bottomContainer}>
+          <Footer />
+        </div>
       </div>
+      {/* <div className={styles.bottomContainer}>
+        <Footer />
+      </div> */}
     </div>
   );
 };

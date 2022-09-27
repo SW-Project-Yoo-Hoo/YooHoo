@@ -15,13 +15,6 @@
   min-height: 165.83vw;
 }
 
-/* ------------------------ */
-/* 헤더 추가시 삭제 */
-.wrapHeader {
-  padding-top: 75px;
-}
-/* ------------------------ */
-
 /* 맨 위 타이틀 */
 
 .title {
@@ -207,11 +200,6 @@
   /* body {
     background-color: background2;
   } */
-
-  /* 헤더 추가시 삭제 */
-  .wrapHeader {
-    padding-top: 100px;
-  }
 
   .background {
     width: 100vw;

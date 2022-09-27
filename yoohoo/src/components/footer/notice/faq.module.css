@@ -3,10 +3,6 @@
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
-.wrapHeader {
-  padding-top: 75px;
-}
-
 .background {
   width: 100vw;
   background-color: background1;
@@ -41,11 +37,8 @@
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.wrapfooter {
-  position: static;
   bottom: 0;
+  transform: translateY(0.2778vw);
 }
 
 /* ================================= */
@@ -138,10 +131,6 @@
   /* ================================= */
   /* 헤더, 배경, 푸터 CSS */
 
-  .wrapHeader {
-    padding-top: 100px;
-  }
-
   .background {
     height: 100%;
   }
@@ -155,13 +144,6 @@
     height: 654px;
     margin: 0;
     left: calc((100vw - 654px) * 0.5);
-  }
-
-  /* Footer */
-
-  .wrapfooter {
-    position: static;
-    bottom: 0;
   }
 
   .footerImg {

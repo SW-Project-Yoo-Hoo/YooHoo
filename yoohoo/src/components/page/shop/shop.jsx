@@ -1,12 +1,14 @@
 import React from "react";
 import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import Header from "../../header/header";
+import ShopImg from "./shopImg";
 
 const Shop = (props) => {
   return (
     <>
-      <div className={styles.wrapHeader}></div>
+      <Header />
       <div className={styles.background}>
         <img
           className={styles.headerImg}
@@ -14,64 +16,49 @@ const Shop = (props) => {
           alt="Header"
         />
 
-        <div>
-          <span className={styles.title}>SHOP</span>
-          <span className={styles.order}>⬇⬆ 최신순</span>
-          <hr className={styles.hr}></hr>
-          <span className={styles.subTitle}>All Products</span>
-        </div>
-
-        <div clssName={styles.container}>
-          <div className={styles.productGroup}>
-            <div className={styles.product}>
-              <img
-                className={styles.productImg}
-                src={process.env.PUBLIC_URL + "images/shop/a.jpg"}
-                alt="Product"
-              />
-              <div className={styles.info}>
-                <p className={styles.productTitle}>
-                  일이삼사오육칠팔구십일이삼사오육칠팔구십
-                </p>
-                <div className={styles.info2}>
-                  <p className={styles.productPrice}>Price</p>
-                  <AiOutlineHeart className={styles.wishIcon} />
-                </div>
-              </div>
+        <div className={styles.container}>
+          <div className={styles.spanGroup}>
+            <span className={styles.title}>SHOP</span>
+            <div className={styles.orderDiv}>
+              <MdSwapVert className={styles.orderIcon} />
+              <span className={styles.orderSpan}>최신순</span>
             </div>
-
-            <div className={styles.product}>
-              <img
-                className={styles.productImg}
-                src={process.env.PUBLIC_URL + "images/about/hj.svg"}
-                alt="Product"
-              />
-              <div className={styles.info}>
-                <p className={styles.productTitle2}>
-                  일이삼사오육칠팔구십일이삼사오육칠팔구십
-                </p>
-                <div className={styles.info2}>
-                  <p className={styles.productPrice}>Price</p>
-                  <AiOutlineHeart className={styles.wishIcon} />
-                </div>
-              </div>
-            </div>
+            <div className={styles.hr}></div>
+            <span className={styles.subTitle}>All Products</span>
           </div>
-        </div>
+          <div className={styles.productGroup}>
+            {ShopImg.map((item, index) => (
+              <div className={styles.product}>
+                <img
+                  className={styles.productImg}
+                  src={item.image}
+                  alt="Product"
+                />
+                <div className={styles.info}>
+                  <p className={styles.productTitle}>{item.title}</p>
+                  <div className={styles.info2}>
+                    <p className={styles.productPrice}>{item.price}</p>
+                    <MdFavoriteBorder className={styles.wishIcon} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
-        {/* Footer */}
-        <div>
-          <img
-            className={styles.footerImg}
-            src={process.env.PUBLIC_URL + "images/footBackground.png"}
-            alt="Footer"
-          />
-          <img
-            className={styles.footerImg2}
-            src={process.env.PUBLIC_URL + "images/shop/bottomIllu.png"}
-            alt="Illu"
-          />
-          <Footer />
+          {/* Footer */}
+          <div className={styles.footer}>
+            <img
+              className={styles.footerImg}
+              src={process.env.PUBLIC_URL + "images/footBackground.png"}
+              alt="Footer"
+            />
+            <img
+              className={styles.footerImg2}
+              src={process.env.PUBLIC_URL + "images/shop/bottomIllu.svg"}
+              alt="Illu"
+            />
+            <Footer />
+          </div>
         </div>
       </div>
     </>

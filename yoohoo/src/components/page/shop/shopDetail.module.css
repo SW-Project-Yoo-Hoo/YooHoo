@@ -1,25 +1,26 @@
-@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, unselect, lightWhite, textInput, textInputPlace from "../../../common/color.css";
+@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, shadow, unselect, lightWhite, textInput, textInputPlace from "../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
-
-.wrapHeader {
-  padding-top: 75px;
-  background-color: aliceblue;
-}
 
 .background {
   width: 100vw;
   background-color: background1;
   position: relative;
-  min-height: 111.1111vw;
-  overflow-x: hidden;
+}
+
+.detailPage::-webkit-scrollbar {
+  display: none;
 }
 
 .headerImg {
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 /* Footer */
@@ -28,43 +29,64 @@
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
-  position: absolute;
+  transform: translateY(0.3472vw);
   bottom: 0;
+  z-index: 0;
 }
 
+.footer {
+  position: absolute;
+  margin: auto;
+  bottom: 0;
+  z-index: 0;
+}
 /* ================================= */
 
 .container {
+  background-color: background1;
   width: 100vw;
   display: flex;
   position: absolute;
   top: 0;
   left: 0;
-  margin: 3.4722vw 16.6667vw 0 16.6667vw;
+  margin: 0;
 }
 
 /* 물품 사진 */
 .productInfo {
   width: 41.6667vw;
-  height: 60.7639vw;
-  margin-right: 4.1667vw;
+  height: 93.75vw;
+  margin: 3.4722vw 4.1667vw 13.75vw 16.6667vw;
+
+  position: relative;
+  z-index: 2;
 }
 
 .imgGroup {
   width: 41.6667vw;
   height: 31.25vw;
+  object-fit: cover;
+}
+
+.imgBtnList {
+  width: 3.3333vw;
+  height: 3.3333vw;
+  border-radius: 0.4167vw;
+  margin-right: 0.7639vw;
+  opacity: 60%;
+  border: 0.0694vw solid textInput;
 }
 
 .imgBtn {
   width: 3.3333vw;
   height: 3.3333vw;
   outline: 0;
-  border: 0;
   padding: 0;
   margin: 1.0417vw 0.7639vw 0 0;
-  opacity: 60%;
   background-color: background1;
   cursor: pointer;
+  list-style: none;
+  display: flex;
 }
 
 .img1 {
@@ -72,10 +94,12 @@
   height: 24.8611vw;
 }
 
-.img2 {
+.nowBtn {
   width: 3.3333vw;
   height: 3.3333vw;
   border-radius: 0.4167vw;
+  margin-right: 0.7639vw;
+  opacity: 100%;
 }
 
 /* 회사소개 */
@@ -85,9 +109,11 @@
 }
 
 .companyImg {
-  width: 3.3333vw;
-  height: 3.3333vw;
+  width: 3.5vw;
+  height: 3.5vw;
   border-radius: 50%;
+  border: 0.0694vw solid textInput;
+  object-fit: contain;
 }
 
 .companyInfo {
@@ -95,24 +121,24 @@
   flex-direction: column;
   margin-left: 1.0417vw;
   justify-content: center;
-  align-items: center;
+  align-items: left;
 }
 
 .companyName {
-  font-size: 0.6944vw;
+  font-size: 0.8333vw;
   font-family: "Medium";
   margin: 0 0 0.4167vw 0;
 }
 
 .companyAddress {
   margin: 0;
-  font-size: 0.5556vw;
+  font-size: 0.6944vw;
   font-family: "Regular";
 }
 
-.line1 {
+.hr {
   width: 41.6667vw;
-  background-color: line;
+  border-top: 0.0694vw solid line;
   margin: 0;
 }
 
@@ -143,21 +169,29 @@
 }
 
 .lookProducts {
+  overflow: hidden;
   width: 45.8333vw;
   height: 23vw;
-  display: flex;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-.lookProducts::-webkit-scrollbar {
-  display: none;
 }
 
 .products1 {
   width: 16.3889vw;
   cursor: pointer;
   margin: 0 2.2222vw 0 0;
+}
+
+.lefttBtn,
+.rightBtn {
+  width: 2.3122vw;
+  height: 23vw;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: unselect;
+}
+
+.rightBtn {
+  justify-content: right;
 }
 
 .otherProductsBtn {
@@ -172,6 +206,7 @@
 .otherProductsImg {
   width: 16.3889vw;
   height: 16.3889vw;
+  border: 0.0694vw solid textInput;
   border-radius: 1.6667vw;
   object-fit: cover;
 }
@@ -186,11 +221,6 @@
 
 .otherProductsTitle {
   margin: 0;
-  white-space: normal;
-}
-
-.otherProductsTitle2 {
-  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -200,7 +230,6 @@
   display: flex;
   position: relative;
   align-items: center;
-  margin-top: 0.2778vw;
 }
 
 .otherProductsPrice {
@@ -218,11 +247,21 @@
 }
 
 /* ================================= */
+/* 물품 제목, 카테고리, 가격, 대여기간 등 정보*/
+
+.productInfo2 {
+  width: 37.5vw;
+  margin-top: 3.4722vw;
+  z-index: 2;
+}
+
 .title {
+  width: 20.8333vw;
   font-size: 1.3889vw;
   font-family: "Regular";
   line-height: 2.0833vw;
   margin: 0 0 1.6667vw 0;
+  color: highlight1;
 }
 
 .categoryGroup {
@@ -233,10 +272,8 @@
   display: flex;
   width: 3.6111vw;
   height: 1.5278vw;
-  border-width: 0.0694vw;
-  border-style: solid;
+  border: 0.0694vw solid highlight1;
   border-radius: 0.5556vw;
-  border-color: highlight1;
   background-color: lightWhite;
   justify-content: center;
   align-items: center;
@@ -245,9 +282,9 @@
   margin: 0 0.625vw 1.5972vw 0;
 }
 
-.line2 {
+.hr2 {
   width: 20.8333vw;
-  background-color: line;
+  border-top: 0.0694vw solid line;
   margin: 0 0 1.5972vw 0;
 }
 
@@ -255,11 +292,14 @@
   margin: 0 0 2.2222vw 0;
   font-size: 0.9722vw;
   font-family: "Medium";
+  color: highlight1;
 }
 
 .period {
+  width: 20.8333vw;
   display: flex;
   position: relative;
+  margin-right: 16.6667vw;
 }
 
 .periodTitle {
@@ -269,7 +309,9 @@
   margin: 0 0 0.8333vw 0;
 }
 
-.help {
+.helpImg {
+  width: 1.0417vw;
+  height: 1.0417vw;
   position: absolute;
   right: 0;
   border: 0;
@@ -278,27 +320,54 @@
   cursor: pointer;
 }
 
-.helpImg {
-  width: 1.0417vw;
-  height: 1.0417vw;
+.helpContainer {
+  display: none;
 }
 
-.periodBtn {
+.helpContent {
+  margin: 0 0 0 1.25vw;
+  font-size: 0.6944vw;
+  line-height: 1.0417vw;
+  font-family: "Regular";
+}
+
+.helpImg:hover .helpContainer {
+  width: 9.8611vw;
+  height: 3.5417vw;
+  background-color: white;
+  border: 0.0694vw solid iconLightGrey;
+  border-radius: 0.9722vw;
+  box-shadow: 0 0.2083vw 0.4167vw shadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translate(-9.375vw, -4.0973vw);
+}
+
+.periodBtn,
+.selectPeriodBtn {
   width: 20.8333vw;
   height: 2.2917vw;
   padding: 0;
   display: flex;
-  justify-content: center;
+  padding-left: 0.8333vw;
   align-items: center;
   background-color: lightWhite;
   border-radius: 0.6944vw;
-  border-color: textInput;
+  border: 0.0694vw solid textInput;
   border-width: 0.0694vw;
-  font-size: 0.9722;
+  font-size: 0.9722vw;
   font-family: "Regular";
-  color: textInputPlace;
   cursor: pointer;
   margin-bottom: 1.0417vw;
+}
+
+.periodBtn {
+  color: textInputPlace;
+}
+
+.selectPeriodBtn {
+  color: unselect;
 }
 
 .countTitle {
@@ -316,10 +385,8 @@
   align-items: center;
   margin-bottom: 1.5972vw;
   background-color: lightWhite;
-  border-color: textInput;
   border-radius: 0.5556vw;
-  border-width: 0.0694vw;
-  border-style: solid;
+  border: 0.0694vw solid textInput;
 }
 
 .minusBtn,
@@ -350,18 +417,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-color: textInput;
-  border-width: 0.0694vw;
-  border-style: solid;
+  border-right: 0.0694vw solid textInput;
+  border-left: 0.0694vw solid textInput;
 }
 
+/* 주문 수량, 총 금액 */
 .totalCountInfo,
 .totalPriceInfo {
+  width: 20.8333vw;
   display: flex;
   position: relative;
   font-size: 0.6944vw;
   color: highlight2;
+  margin-right: 16.6667vw;
   margin-bottom: 0.7639vw;
+  font-family: "Medium";
 }
 
 .totalCount,
@@ -369,6 +439,7 @@
   margin: 0;
   position: absolute;
   right: 0;
+  font-family: "Regular";
 }
 
 .btns {
@@ -381,10 +452,10 @@
   width: 9.7222vw;
   height: 2.6389vw;
   border-radius: 1.0417vw;
-  border-width: 0.0694vw;
   font-size: 0.8333vw;
   cursor: pointer;
   padding: 0;
+  border: 0.0694vw solid mainGreen;
 }
 
 .tradeBtn {
@@ -403,9 +474,304 @@
   justify-content: center;
   align-items: center;
 }
+
 .wishIcon2 {
   width: 0.9722vw;
   height: 0.9722vw;
   color: mainGreen;
   margin-right: 0.5556vw;
+}
+
+/* ================================= */
+/* 그 이상 */
+@media (min-width: 1920px) {
+  .headerImg {
+    height: 235px;
+  }
+
+  .footerImg {
+    height: 300px;
+    background-color: none;
+    transform: translateY(5px);
+  }
+
+  /* ================================= */
+
+  .container {
+    justify-content: center;
+  }
+
+  /* 물품 사진 */
+  .productInfo {
+    width: 800px;
+    height: 1702px;
+    margin: 70px 80px 60px 320px;
+  }
+
+  .imgGroup {
+    width: 800px;
+    height: 600px;
+  }
+
+  .imgBtnList {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    margin-right: 14px;
+    border: 1px solid textInput;
+  }
+
+  .imgBtn {
+    width: 64px;
+    height: 64px;
+    margin: 20px 14px 0 0;
+  }
+
+  .img1 {
+    width: 800px;
+    height: 476px;
+  }
+
+  .nowBtn {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    margin-right: 14px;
+  }
+
+  /* 회사소개 */
+
+  .company {
+    margin-bottom: 36px;
+  }
+
+  .companyImg {
+    width: 64px;
+    height: 64px;
+    border: 1px solid textInput;
+  }
+
+  .companyInfo {
+    margin-left: 20px;
+  }
+
+  .companyName {
+    font-size: 14px;
+    margin: 0 0 8px 0;
+  }
+
+  .companyAddress {
+    font-size: 12px;
+  }
+
+  .hr {
+    width: 800px;
+    border-top: 1px solid line;
+  }
+
+  /* 물품 소개 */
+
+  .descriptionTitle {
+    margin: 30px 0 46px 0;
+    font-size: 20px;
+  }
+
+  .descriptionContent {
+    margin: 0 0 100px 0;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  /* 살펴보기 */
+  .lookTitle {
+    margin: 70px 0 46px 0;
+    font-size: 20px;
+  }
+
+  .lookProducts {
+    width: 880px;
+    height: 292px;
+  }
+
+  .products1 {
+    width: 236px;
+    margin: 0 32px 0 0;
+  }
+
+  .lefttBtn,
+  .rightBtn {
+    width: 44px;
+    height: 292px;
+  }
+
+  .otherProductsBtn {
+    height: 236px;
+  }
+
+  .otherProductsImg {
+    width: 236px;
+    height: 236px;
+    border-radius: 32px;
+    border: 1px solid textInput;
+  }
+
+  .info {
+    font-size: 14px;
+    width: 216px;
+    margin: 12px 0 0 10px;
+    line-height: 20px;
+  }
+
+  .otherProductsPrice {
+    font-size: 14px;
+    margin: 4px 0 0 0;
+    color: unselect;
+  }
+
+  .wishIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ================================= */
+  /* 물품 제목, 카테고리, 가격, 대여기간 등 정보*/
+
+  .productInfo2 {
+    width: 720px;
+    margin-top: 70px;
+  }
+
+  .title {
+    width: 400px;
+    font-size: 28px;
+    line-height: 41px;
+    margin: 0 0 27px 0;
+  }
+
+  .category {
+    width: 69px;
+    height: 29px;
+    border: 0.8px solid highlight1;
+    border-radius: 10px;
+    font-size: 12px;
+    margin: 0 12px 30px 0;
+  }
+
+  .hr2 {
+    width: 400px;
+    border-top: 1px solid line;
+    margin: 0 0 30px 0;
+  }
+
+  .price {
+    margin: 0 0 40px 0;
+    font-size: 20px;
+
+    margin-right: 320px;
+  }
+
+  .period {
+    width: 400px;
+  }
+
+  .periodTitle {
+    font-size: 16px;
+    margin: 0 0 14px 0;
+
+    margin-right: 320px;
+  }
+
+  .helpImg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .helpContent {
+    margin: 0 0 0 24px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .helpImg:hover .helpContainer {
+    width: 190px;
+    height: 68px;
+    border: 1px solid iconLightGrey;
+    border-radius: 19px;
+    box-shadow: 0 3px 6px shadow;
+    transform: translate(-180px, -75px);
+  }
+
+  .periodBtn,
+  .selectPeriodBtn {
+    width: 400px;
+    height: 44px;
+    padding-left: 16px;
+    border-radius: 13px;
+    border: 1px solid textInput;
+    border-width: 0.0694vw;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .countTitle {
+    font-size: 16px;
+    margin: 0 0 14px 0;
+  }
+
+  .countBtns {
+    width: 114px;
+    height: 36px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 1px solid textInput;
+  }
+
+  .minusBtn,
+  .plusBtn {
+    width: 37px;
+  }
+
+  .btnIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .countNum {
+    width: 40px;
+    height: 35px;
+    font-size: 14px;
+    border-right: 1px solid textInput;
+    border-left: 1px solid textInput;
+  }
+
+  /* 주문 수량, 총 금액 */
+  .totalCountInfo,
+  .totalPriceInfo {
+    width: 400px;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .btns {
+    margin-top: 40px;
+  }
+
+  .tradeBtn,
+  .wishBtn {
+    width: 186px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 16px;
+    border: 1px solid mainGreen;
+  }
+
+  .tradeBtn {
+    margin-right: 28px;
+  }
+
+  .wishIcon2 {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+  }
 }
