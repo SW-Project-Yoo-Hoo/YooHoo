@@ -50,13 +50,14 @@
   top: 0;
   left: 0;
   margin: 0;
+  padding-bottom: 13.75vw;
 }
 
 /* 물품 사진 */
 .productInfo {
   width: 41.6667vw;
-  height: 93.75vw;
-  margin: 3.4722vw 4.1667vw 13.75vw 16.6667vw;
+  /* height: 93.75vw; */
+  margin: 3.4722vw 4.1667vw 0 16.6667vw;
 
   position: relative;
   z-index: 2;
@@ -160,6 +161,10 @@
   overflow: auto;
 }
 
+.descriptionContent::-webkit-scrollbar {
+  display: none;
+}
+
 /* 살펴보기 */
 
 .lookTitle {
@@ -171,7 +176,8 @@
 .lookProducts {
   overflow: hidden;
   width: 45.8333vw;
-  height: 23vw;
+  height: 20.2778vw;
+  /* height: 23vw; */
 }
 
 .products1 {
@@ -183,7 +189,7 @@
 .lefttBtn,
 .rightBtn {
   width: 2.3122vw;
-  height: 23vw;
+  height: 20.2778vw;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -215,7 +221,7 @@
   font-size: 0.9722vw;
   font-family: "Regular";
   width: 15vw;
-  margin: 0.8333vw 0 0 0.6944vw;
+  margin: 0.6333vw 0 0 0.6944vw;
   line-height: 1.3889vw;
 }
 
@@ -499,13 +505,14 @@
 
   .container {
     justify-content: center;
+    padding-bottom: 361px;
   }
 
   /* 물품 사진 */
   .productInfo {
     width: 800px;
-    height: 1702px;
-    margin: 70px 80px 60px 320px;
+    /* height: 1702px; */
+    margin: 70px 80px 0 320px;
   }
 
   .imgGroup {

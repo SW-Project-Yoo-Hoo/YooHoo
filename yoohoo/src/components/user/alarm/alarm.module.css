@@ -37,7 +37,8 @@
   position: relative;
   margin: 0;
   padding-top: 3.0503vw;
-  padding-bottom: 3.0503vw;
+  /* padding-bottom: alarm의 margin-bottom 뺀 길이 */
+  padding-bottom: 11.7361vw;
   padding-left: 0;
   z-index: 1;
 }
@@ -186,7 +187,7 @@
   .alarmList {
     width: 100vw;
     padding-top: 59px;
-    padding-bottom: 59px;
+    padding-bottom: 225px;
     margin: auto;
     display: flex;
     flex-direction: column;
