@@ -26,6 +26,7 @@ const Post = (props) => {
       ...inputs,
       [name]: value,
     });
+    console.log(value);
   };
 
   //이미지
@@ -120,6 +121,11 @@ const Post = (props) => {
       //게시물 상세보기로 이동
       console.log("등록!");
     }
+  };
+
+  const isNotNumber = (value) => {
+    const regExp = /[a-z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣|-]/g;
+    return regExp.test(value);
   };
 
   useEffect(() => {
@@ -614,9 +620,18 @@ const Post = (props) => {
                 {/* 단위 */}
                 <div className={styles.displayFlex}>
                   <input
-                    type="number"
+                    type="text"
                     name="price"
-                    onChange={changeHandling}
+                    onChange={(e) => {
+                      if (
+                        e.nativeEvent.data &&
+                        isNotNumber(e.nativeEvent.data)
+                      ) {
+                        e.preventDefault();
+                        return null;
+                      }
+                      changeHandling(e);
+                    }}
                     value={price}
                     className={styles.priceInput}
                   />
@@ -634,9 +649,18 @@ const Post = (props) => {
                 {/* 단위 */}
                 <div className={styles.displayFlex}>
                   <input
-                    type="number"
+                    type="text"
                     name="quantity"
-                    onChange={changeHandling}
+                    onChange={(e) => {
+                      if (
+                        e.nativeEvent.data &&
+                        isNotNumber(e.nativeEvent.data)
+                      ) {
+                        e.preventDefault();
+                        return null;
+                      }
+                      changeHandling(e);
+                    }}
                     value={quantity}
                     className={[styles.priceInput, styles.quantityInput].join(
                       " "
