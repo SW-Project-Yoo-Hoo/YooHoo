@@ -13,6 +13,8 @@ import SentStatus from "./requestStatus/sentStatus";
 import ReceivedStatus from "./requestStatus/receivedStatus";
 import { MdLocationOn, MdPhone } from "react-icons/md";
 
+import { useLocation } from "react-router-dom";
+
 const Profile = (props) => {
   const userInfo = {
     name: "testName",
@@ -23,6 +25,14 @@ const Profile = (props) => {
 
   //웹 스토리지 저장 커스텀 훅 호출
   const [call, setCall] = useLocalStorage("call", "MyPost");
+
+  // 알람 페이지에서 넘어온 경우
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state !== null) {
+      setCall(location.state.call);
+    }
+  }, [location]);
 
   //컴포넌트 호출
   const callComponent = (props) => {
