@@ -3,8 +3,41 @@ import styles from "./alarm.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import AlarmList from "./alarmList";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Alarm = (props) => {
+  // 마이프로필로 이동하기 위한 call 추가
+  useEffect(() => {
+    AlarmList.map((item) => {
+      switch (item.title) {
+        case "반납 일정":
+          item.call = "ProgressStatus";
+          break;
+        case "반납 요청":
+          item.call = "ProgressStatus";
+          break;
+        case "조기 반납 요청":
+          item.call = "ProgressStatus";
+          break;
+        case "거래 취소":
+          item.call = "SentStatus";
+          break;
+        case "거래 시작":
+          item.call = "ProgressStatus";
+          break;
+        case "거래 요청":
+          item.call = "ReceivedStatus";
+          break;
+        case "거래 완료":
+          item.call = "CompletStatus";
+          break;
+        default:
+          item.call = "MyPost";
+      }
+    });
+  }, []);
+
   return (
     <>
       <Header />
@@ -49,19 +82,23 @@ const Alarm = (props) => {
                           />
                           <p className={styles.day}>{item.date}</p>
                         </div>
-                        <div className={styles.contents}>
-                          <div className={styles.pic}>
-                            <img
-                              className={styles.productImg}
-                              src={item.image}
-                              alt="Product"
-                            />
+                        <Link to="/profile" state={{ call: item.call }}>
+                          <div className={styles.contents}>
+                            <div className={styles.pic}>
+                              <img
+                                className={styles.productImg}
+                                src={item.image}
+                                alt="Product"
+                              />
+                            </div>
+                            <div className={styles.P}>
+                              <p className={styles.title}>{item.title}</p>
+                              <p className={styles.description}>
+                                {item.content}
+                              </p>
+                            </div>
                           </div>
-                          <div className={styles.P}>
-                            <p className={styles.title}>{item.title}</p>
-                            <p className={styles.description}>{item.content}</p>
-                          </div>
-                        </div>
+                        </Link>
                       </div>
                     </div>
                   </>
@@ -73,19 +110,23 @@ const Alarm = (props) => {
                         <div className={styles.circle2}></div>
                       </div>
                       <div className={styles.alarm}>
-                        <div className={styles.contents2}>
-                          <div className={styles.pic}>
-                            <img
-                              className={styles.productImg}
-                              src={item.image}
-                              alt="Product"
-                            />
+                        <Link to="/profile" state={{ call: item.call }}>
+                          <div className={styles.contents2}>
+                            <div className={styles.pic}>
+                              <img
+                                className={styles.productImg}
+                                src={item.image}
+                                alt="Product"
+                              />
+                            </div>
+                            <div className={styles.P}>
+                              <p className={styles.title}>{item.title}</p>
+                              <p className={styles.description}>
+                                {item.content}
+                              </p>
+                            </div>
                           </div>
-                          <div className={styles.P}>
-                            <p className={styles.title}>{item.title}</p>
-                            <p className={styles.description}>{item.content}</p>
-                          </div>
-                        </div>
+                        </Link>
                       </div>
                     </div>
                   </>
