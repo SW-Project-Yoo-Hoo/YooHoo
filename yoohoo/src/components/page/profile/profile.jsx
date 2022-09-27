@@ -105,11 +105,11 @@ const Profile = (props) => {
               ].join(" ")}
             >
               <MdLocationOn className={styles.userInfoIcon} />
-              <sapn className={styles.userInfoText}>{userInfo.adress}</sapn>
+              <span className={styles.userInfoText}>{userInfo.adress}</span>
             </div>
             <div className={styles.userInfoBottom}>
               <MdPhone className={styles.userInfoIcon} />
-              <sapn className={styles.userInfoText}>{userInfo.phone}</sapn>
+              <span className={styles.userInfoText}>{userInfo.phone}</span>
             </div>
           </div>
 

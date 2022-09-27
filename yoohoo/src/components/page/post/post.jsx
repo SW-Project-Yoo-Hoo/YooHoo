@@ -146,7 +146,7 @@ const Post = (props) => {
           <input
             type="text"
             name="title"
-            maxlength="19"
+            maxLength="19"
             onChange={changeHandling}
             value={title}
             placeholder="게시물 제목을 입력해주세요(최대 20자)"
@@ -686,7 +686,7 @@ const Post = (props) => {
             <textarea
               type="text"
               name="contents"
-              maxlength="499"
+              maxLength="499"
               onChange={changeHandling}
               value={contents}
               rows={6}

@@ -95,12 +95,12 @@ const SignUp = (props) => {
 
         {/* signUpForm */}
         <div className={styles.signUpForm}>
-          <sapn className={styles.title}>회원가입</sapn>
+          <span className={styles.title}>회원가입</span>
 
           {/* id */}
           <div className={styles.form}>
             <label className={styles.label}>
-              <sapn>이메일</sapn>
+              <span>이메일</span>
               <span className={styles.labelSpan}> *</span>
               <input
                 type="text"
@@ -116,7 +116,7 @@ const SignUp = (props) => {
           {/* pw */}
           <div className={styles.form}>
             <label className={styles.label}>
-              <sapn>비밀번호</sapn>
+              <span>비밀번호</span>
               <span className={styles.labelSpan}> *</span>
               <input
                 type="text"
@@ -132,7 +132,7 @@ const SignUp = (props) => {
           {/* Company Name */}
           <div className={styles.form}>
             <label className={styles.label}>
-              <sapn>회사명</sapn>
+              <span>회사명</span>
               <span className={styles.labelSpan}> *</span>
               <input
                 type="text"
@@ -148,7 +148,7 @@ const SignUp = (props) => {
           {/* adress */}
           <div className={styles.form}>
             <label className={styles.label}>
-              <sapn>회사 주소</sapn>
+              <span>회사 주소</span>
               <span className={styles.labelSpan}> *</span>
               <input
                 type="text"
@@ -164,7 +164,7 @@ const SignUp = (props) => {
           {/* phone */}
           <div className={styles.form}>
             <label className={styles.label}>
-              <sapn>연락처</sapn>
+              <span>연락처</span>
               <span className={styles.labelSpan}> *</span>
               <input
                 type="text"
@@ -179,7 +179,7 @@ const SignUp = (props) => {
 
           {/* loginAlert */}
           <div className={incorrect ? styles.alertInfo : styles.alertInfoNone}>
-            <spna className={styles.alertSpan}>{alertText}</spna>
+            <span className={styles.alertSpan}>{alertText}</span>
           </div>
 
           {/* signUpButton */}

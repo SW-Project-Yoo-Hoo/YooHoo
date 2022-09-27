@@ -50,7 +50,7 @@ const Login = (props) => {
 
         {/* loginForm */}
         <div className={styles.loginForm}>
-          <sapn className={styles.title}>로그인</sapn>
+          <span className={styles.title}>로그인</span>
 
           {/* id */}
           <div className={styles.form}>
@@ -84,9 +84,9 @@ const Login = (props) => {
 
           {/* loginAlert */}
           <div className={incorrect ? styles.alertInfo : styles.alertInfoNone}>
-            <spna className={styles.alertSpan}>
+            <span className={styles.alertSpan}>
               로그인 정보가 올바르지 않습니다.
-            </spna>
+            </span>
           </div>
 
           {/* loginButton */}
@@ -117,7 +117,7 @@ const Login = (props) => {
 };
 
 const MyPage = (props) => {
-  let test = 0;
+  let test = 1;
   return test ? <Navigate to="/profile" replace={true} /> : <Login />;
 };
 
