@@ -8,35 +8,34 @@ import { useEffect } from "react";
 
 const Alarm = (props) => {
   // 마이프로필로 이동하기 위한 call 추가
-  useEffect(() => {
-    AlarmList.map((item) => {
-      switch (item.title) {
-        case "반납 일정":
-          item.call = "ProgressStatus";
-          break;
-        case "반납 요청":
-          item.call = "ProgressStatus";
-          break;
-        case "조기 반납 요청":
-          item.call = "ProgressStatus";
-          break;
-        case "거래 취소":
-          item.call = "SentStatus";
-          break;
-        case "거래 시작":
-          item.call = "ProgressStatus";
-          break;
-        case "거래 요청":
-          item.call = "ReceivedStatus";
-          break;
-        case "거래 완료":
-          item.call = "CompletStatus";
-          break;
-        default:
-          item.call = "MyPost";
-      }
-    });
-  }, []);
+
+  AlarmList.map((item) => {
+    switch (item.title) {
+      case "반납 일정":
+        item.call = "ProgressStatus";
+        break;
+      case "반납 요청":
+        item.call = "ProgressStatus";
+        break;
+      case "조기 반납 요청":
+        item.call = "ProgressStatus";
+        break;
+      case "거래 취소":
+        item.call = "SentStatus";
+        break;
+      case "거래 시작":
+        item.call = "ProgressStatus";
+        break;
+      case "거래 요청":
+        item.call = "ReceivedStatus";
+        break;
+      case "거래 완료":
+        item.call = "CompletStatus";
+        break;
+      default:
+        item.call = "MyPost";
+    }
+  });
 
   return (
     <>

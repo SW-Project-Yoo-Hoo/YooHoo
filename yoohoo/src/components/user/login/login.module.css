@@ -140,6 +140,7 @@
   border-radius: 1.1111vw;
   border-style: none;
   border: 1px solid mainGreen;
+  cursor: pointer;
 }
 
 /* 1920px 이상 */
@@ -219,6 +220,7 @@
     font-size: 18px;
     width: 240px;
     border-radius: 22px;
+    cursor: pointer;
   }
 
   .signUpButton {

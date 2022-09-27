@@ -12,8 +12,7 @@ import CompletStatus from "./tansStatus/completStatus";
 import SentStatus from "./requestStatus/sentStatus";
 import ReceivedStatus from "./requestStatus/receivedStatus";
 import { MdLocationOn, MdPhone } from "react-icons/md";
-
-// import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Profile = (props) => {
   const userInfo = {
@@ -27,12 +26,12 @@ const Profile = (props) => {
   const [call, setCall] = useLocalStorage("call", "MyPost");
 
   // 알람 페이지에서 넘어온 경우
-  // const location = useLocation();
-  // useEffect(() => {
-  //   if (location.state !== null) {
-  //     setCall((call) => location.state.call);
-  //   }
-  // }, [location]);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state !== null) {
+      setCall(location.state.call);
+    }
+  }, [location]);
 
   //컴포넌트 호출
   const callComponent = (props) => {
@@ -115,11 +114,11 @@ const Profile = (props) => {
               ].join(" ")}
             >
               <MdLocationOn className={styles.userInfoIcon} />
-              <sapn className={styles.userInfoText}>{userInfo.adress}</sapn>
+              <span className={styles.userInfoText}>{userInfo.adress}</span>
             </div>
             <div className={styles.userInfoBottom}>
               <MdPhone className={styles.userInfoIcon} />
-              <sapn className={styles.userInfoText}>{userInfo.phone}</sapn>
+              <span className={styles.userInfoText}>{userInfo.phone}</span>
             </div>
           </div>
 

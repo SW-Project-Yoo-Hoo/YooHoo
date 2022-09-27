@@ -44,7 +44,7 @@ const Home = (props) => {
 
               {/* button */}
               <div>
-                <Link to="./about">
+                <Link to="/about">
                   <div className={styles.buttonStyle}>Read More</div>
                 </Link>
               </div>
