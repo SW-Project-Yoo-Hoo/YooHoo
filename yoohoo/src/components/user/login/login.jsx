@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./login.module.css";
 import { Navigate } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 
 const Login = (props) => {
+  /* 페이지 이동 시 스크롤 상단으로 */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   //회원정보 상태
   const [inputs, setInputs] = useState({
     id: "",
@@ -117,7 +122,7 @@ const Login = (props) => {
 };
 
 const MyPage = (props) => {
-  let test = 1;
+  let test = 0;
   return test ? <Navigate to="/profile" replace={true} /> : <Login />;
 };
 
