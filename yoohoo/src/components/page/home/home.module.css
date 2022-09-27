@@ -1,4 +1,4 @@
-@value mainGreen,highlight1,highlight3,shadow,background1,background2 from "../../../common/color.css";
+@value mainGreen,highlight1,highlight3,shadow from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 @font-face {
@@ -249,7 +249,6 @@
   justify-content: center;
 }
 
-/* 그 이상 */
 @media (min-width: 1920px) {
   .bottomContainer {
     position: relative;

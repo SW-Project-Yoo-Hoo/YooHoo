@@ -1,4 +1,4 @@
-@value mainGreen,highlight1,background1,textInput,textInputPlace,lightWhite,mainOrange from "../../../common/color.css";
+@value mainGreen,highlight1,background1,textInput,lightWhite,mainOrange from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 @font-face {
@@ -13,6 +13,7 @@
 
 .container {
   background-color: background1;
+  position: relative;
   padding-bottom: 7.6388vw;
 }
 
@@ -129,6 +130,10 @@
 
 /* 1920px 이상 */
 @media (min-width: 1920px) {
+  .backGroundIamge {
+    background-size: 100vw 237px;
+    min-height: 237px;
+  }
   .signUpContainer {
     width: 100vw;
     justify-content: center;
