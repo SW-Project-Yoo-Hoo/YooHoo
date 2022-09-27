@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
 import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -6,10 +6,19 @@ import Header from "../../header/header";
 import ShopImg from "./shopImg";
 
 const Shop = (props) => {
+  const [wishItem, setWishItem] = useState(ShopImg);
+
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  /* 찜하기 버튼 */
+  function onClickWishBtn(id, prevWish) {
+    setWishItem(
+      wishItem.map((it) => (it.id === id ? { ...it, wish: !prevWish } : it))
+    );
+  }
 
   return (
     <>
@@ -43,7 +52,18 @@ const Shop = (props) => {
                   <p className={styles.productTitle}>{item.title}</p>
                   <div className={styles.info2}>
                     <p className={styles.productPrice}>{item.price}</p>
-                    <MdFavoriteBorder className={styles.wishIcon} />
+
+                    <div
+                      onClick={() =>
+                        onClickWishBtn(item.id, wishItem[item.id - 1].wish)
+                      }
+                    >
+                      {wishItem[item.id - 1].wish ? (
+                        <MdFavorite className={styles.wishIcon} />
+                      ) : (
+                        <MdFavoriteBorder className={styles.wishIcon} />
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

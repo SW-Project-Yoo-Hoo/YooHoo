@@ -12,7 +12,6 @@ import CompletStatus from "./tansStatus/completStatus";
 import SentStatus from "./requestStatus/sentStatus";
 import ReceivedStatus from "./requestStatus/receivedStatus";
 import { MdLocationOn, MdPhone } from "react-icons/md";
-
 import { useLocation } from "react-router-dom";
 
 const Profile = (props) => {

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 const Alarm = (props) => {
   // 마이프로필로 이동하기 위한 call 추가
+
   AlarmList.map((item) => {
     switch (item.title) {
       case "반납 일정":
