@@ -8,7 +8,6 @@ import ShopImg from "./shopImg";
 const Shop = (props) => {
   const [wishItem, setWishItem] = useState(ShopImg);
 
-  console.log(wishItem);
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
     window.scrollTo(0, 0);
