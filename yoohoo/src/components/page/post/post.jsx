@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./post.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
@@ -26,6 +26,7 @@ const Post = (props) => {
       ...inputs,
       [name]: value,
     });
+    console.log(value);
   };
 
   //이미지
@@ -122,6 +123,15 @@ const Post = (props) => {
     }
   };
 
+  const isNotNumber = (value) => {
+    const regExp = /[a-z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣|-]/g;
+    return regExp.test(value);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles.container}>
       {/* header */}
@@ -136,7 +146,7 @@ const Post = (props) => {
           <input
             type="text"
             name="title"
-            maxlength="19"
+            maxLength="19"
             onChange={changeHandling}
             value={title}
             placeholder="게시물 제목을 입력해주세요(최대 20자)"
@@ -152,7 +162,7 @@ const Post = (props) => {
               <span className={styles.colorHighlight1}>이미지</span>
               <span className={styles.colorMainGreen}> *</span>
             </div>
-            <span className={styles.textSub}>최대 5장 첨부 가능</span>
+            <span className={styles.textSub}>최대 8장 첨부 가능</span>
           </div>
 
           {/* 이미지 첨부 */}
@@ -610,9 +620,18 @@ const Post = (props) => {
                 {/* 단위 */}
                 <div className={styles.displayFlex}>
                   <input
-                    type="number"
+                    type="text"
                     name="price"
-                    onChange={changeHandling}
+                    onChange={(e) => {
+                      if (
+                        e.nativeEvent.data &&
+                        isNotNumber(e.nativeEvent.data)
+                      ) {
+                        e.preventDefault();
+                        return null;
+                      }
+                      changeHandling(e);
+                    }}
                     value={price}
                     className={styles.priceInput}
                   />
@@ -630,9 +649,18 @@ const Post = (props) => {
                 {/* 단위 */}
                 <div className={styles.displayFlex}>
                   <input
-                    type="number"
+                    type="text"
                     name="quantity"
-                    onChange={changeHandling}
+                    onChange={(e) => {
+                      if (
+                        e.nativeEvent.data &&
+                        isNotNumber(e.nativeEvent.data)
+                      ) {
+                        e.preventDefault();
+                        return null;
+                      }
+                      changeHandling(e);
+                    }}
                     value={quantity}
                     className={[styles.priceInput, styles.quantityInput].join(
                       " "
@@ -658,7 +686,7 @@ const Post = (props) => {
             <textarea
               type="text"
               name="contents"
-              maxlength="499"
+              maxLength="499"
               onChange={changeHandling}
               value={contents}
               rows={6}

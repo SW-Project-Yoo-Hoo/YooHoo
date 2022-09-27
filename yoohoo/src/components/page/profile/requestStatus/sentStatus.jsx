@@ -7,6 +7,7 @@ const SentStatus = (props) => {
 
   const postInfo1 = {
     //테스트용 객체
+    id: "게시글 아이디1",
     img: "/Images/test.jpeg",
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
     startDay: "2022.09.28",
@@ -17,6 +18,7 @@ const SentStatus = (props) => {
 
   const postInfo2 = {
     //테스트용 객체
+    id: "게시글 아이디2",
     img: "/Images/home/earth.svg",
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
     startDay: "2023.08.22",
@@ -29,7 +31,6 @@ const SentStatus = (props) => {
     //정보가 존재하면 객체 넣기
     post.push(postInfo1);
     post.push(postInfo2);
-    post.push(postInfo1);
   };
 
   const pageNaviHandling = (props) => {
@@ -54,12 +55,16 @@ const SentStatus = (props) => {
     );
   };
 
-  const ShowPost = (props) => {
+  const ShowPost = (props, id) => {
     //각 게시글마다 버튼 show 상태 관리
     const [showButton, setShowButton] = useState(props.showButton);
 
     return (
-      <div className={styles.post} onClick={() => pageNaviHandling(props)}>
+      <div
+        className={styles.post}
+        onClick={() => pageNaviHandling(props)}
+        key={id}
+      >
         {/* 게시물 사진 */}
         <div className={styles.postImgDay}>
           <img className={styles.postImg} src={props.img} alt="img" />
@@ -109,7 +114,7 @@ const SentStatus = (props) => {
       <div
         className={post.length === 0 ? styles.displayNone : styles.gridWrapper}
       >
-        {post.map((post) => ShowPost(post))}
+        {post.map((post) => ShowPost(post, post.id))}
       </div>
     </div>
   );

@@ -126,6 +126,7 @@
   width: 12.5vw;
   border-radius: 1.1111vw;
   border-style: none;
+  cursor: pointer;
 }
 
 /* 1920px 이상 */
