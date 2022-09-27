@@ -14,14 +14,14 @@ const UserInfo = (props) => {
 
       {/* alarmIcon */}
       <li className={styles.liStyle}>
-        <Link to="/Alarm">
+        <Link to="/alarm">
           <TbBell className={styles.icon} />
         </Link>
       </li>
 
       {/* profileIcon */}
       <li className={styles.liStyle}>
-        <Link to="/Login">
+        <Link to="/login">
           <MdPersonOutline className={styles.icon} />
         </Link>
       </li>

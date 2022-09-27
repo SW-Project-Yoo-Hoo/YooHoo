@@ -32,7 +32,7 @@ const Login = (props) => {
   };
 
   const signUpHandling = () => {
-    window.location.href = "/SignUp";
+    window.location.href = "/signUp";
   };
 
   return (
@@ -118,7 +118,7 @@ const Login = (props) => {
 
 const MyPage = (props) => {
   let test = 0;
-  return test ? <Navigate to="/Profile" replace={true} /> : <Login />;
+  return test ? <Navigate to="/profile" replace={true} /> : <Login />;
 };
 
 export default MyPage;

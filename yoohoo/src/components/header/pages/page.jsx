@@ -6,22 +6,22 @@ const Page = () => {
   return (
     <ul className={styles.container}>
       <li className={styles.pageStyle}>
-        <Link to="/Home" className={styles.active}>
+        <Link to="/home" className={styles.active}>
           HOME
         </Link>
       </li>
       <li className={styles.pageStyle}>
-        <Link to="/Shop" className={styles.active}>
+        <Link to="/shop" className={styles.active}>
           SHOP
         </Link>
       </li>
       <li className={styles.pageStyle}>
-        <Link to="/Post" className={styles.active}>
+        <Link to="/post" className={styles.active}>
           POST
         </Link>
       </li>
       <li className={styles.pageStyle}>
-        <Link to="/About" className={styles.active}>
+        <Link to="/about" className={styles.active}>
           ABOUT
         </Link>
       </li>
