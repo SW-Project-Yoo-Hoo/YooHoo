@@ -20,7 +20,8 @@ const ShopDetail = (props) => {
   const [count, setCount] = useState(1);
   const [dateCnt, setDateCnt] = useState(0); //일, 주 , 월, 년 에 따라
   const [price, setprice] = useState(0);
-  const [wish, setWish] = useState(false);
+  const [wish, setWish] = useState(false); // 찜하기 버튼
+  const [wishItem, setWishItem] = useState(ShopImg); // 살펴보기 찜
 
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
@@ -112,6 +113,13 @@ const ShopDetail = (props) => {
     setWish((wish) => !wish);
   };
 
+  /* 살펴보기 찜하기 버튼 */
+  function onClickWishBtn2(id, prevWish) {
+    setWishItem(
+      wishItem.map((it) => (it.id === id ? { ...it, wish: !prevWish } : it))
+    );
+  }
+
   /* ================================ */
 
   return (
@@ -176,7 +184,21 @@ const ShopDetail = (props) => {
                             <p className={styles.otherProductsPrice}>
                               {item.price}
                             </p>
-                            <MdFavoriteBorder className={styles.wishIcon} />
+                            <div
+                              className={styles.wishIcon}
+                              onClick={() =>
+                                onClickWishBtn2(
+                                  item.id,
+                                  wishItem[item.id - 1].wish
+                                )
+                              }
+                            >
+                              {wishItem[item.id - 1].wish ? (
+                                <MdFavorite />
+                              ) : (
+                                <MdFavoriteBorder />
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
