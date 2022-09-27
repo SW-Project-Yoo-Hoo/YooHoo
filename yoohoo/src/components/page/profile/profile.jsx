@@ -31,6 +31,7 @@ const Profile = (props) => {
     if (location.state !== null) {
       setCall(location.state.call);
     }
+    window.scrollTo(0, 0);
   }, [location]);
 
   //컴포넌트 호출
