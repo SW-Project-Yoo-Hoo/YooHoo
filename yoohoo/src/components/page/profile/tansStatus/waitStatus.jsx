@@ -8,6 +8,7 @@ const WaitStatus = (props) => {
 
   const postInfo1 = {
     //테스트용 객체
+    id: "게시글 아이디1",
     img: "/Images/test.jpeg",
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
     startDay: "2022.09.28",
@@ -16,6 +17,7 @@ const WaitStatus = (props) => {
 
   const postInfo2 = {
     //테스트용 객체
+    id: "게시글 아이디2",
     img: "/Images/home/earth.svg",
     title: "testTitle이 얼마나 길어질까유쩔죠~~",
     startDay: "2023.08.22",
@@ -46,9 +48,13 @@ const WaitStatus = (props) => {
     console.log("이동하기!");
   };
 
-  const ShowPost = (props) => {
+  const ShowPost = (props, id) => {
     return (
-      <div className={styles.post} onClick={() => pageNaviHandling(props)}>
+      <div
+        className={styles.post}
+        onClick={() => pageNaviHandling(props)}
+        key={id}
+      >
         {/* 게시물 사진 */}
         <div className={styles.postImgDay}>
           <img className={styles.postImg} src={props.img} alt="img" />
@@ -88,7 +94,7 @@ const WaitStatus = (props) => {
       <div
         className={post.length === 0 ? styles.displayNone : styles.gridWrapper}
       >
-        {post.map((post) => ShowPost(post))}
+        {post.map((post) => ShowPost(post, post.id))}
       </div>
     </div>
   );
