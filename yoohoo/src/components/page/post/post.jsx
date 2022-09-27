@@ -156,7 +156,7 @@ const Post = (props) => {
               <span className={styles.colorHighlight1}>이미지</span>
               <span className={styles.colorMainGreen}> *</span>
             </div>
-            <span className={styles.textSub}>최대 5장 첨부 가능</span>
+            <span className={styles.textSub}>최대 8장 첨부 가능</span>
           </div>
 
           {/* 이미지 첨부 */}
