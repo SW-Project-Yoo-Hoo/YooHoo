@@ -185,7 +185,11 @@ const ShopDetail = (props) => {
                               {item.price}
                             </p>
                             <div
-                              className={styles.wishIcon}
+                              className={
+                                wishItem[item.id - 1].wish
+                                  ? styles.selectWishIcon
+                                  : styles.unselectWishIcon
+                              }
                               onClick={() =>
                                 onClickWishBtn2(
                                   item.id,

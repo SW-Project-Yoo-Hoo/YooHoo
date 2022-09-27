@@ -1,4 +1,4 @@
-@value mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, shadow, unselect, lightWhite, textInput, textInputPlace from "../../../common/color.css";
+@value mainOrange, mainGreen, background1, background2, highlight1, highlight2, line, iconLightGrey, shadow, unselect, lightWhite, textInput, textInputPlace from "../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
@@ -245,11 +245,17 @@
   color: unselect;
 }
 
-.wishIcon {
+.unselectWishIcon,
+.selectWishIcon {
   width: 1.1111vw;
   height: 1.1111vw;
   position: absolute;
   right: 0;
+  color: mainOrange;
+}
+
+.unselectWishIcon {
+  color: unselect;
 }
 
 /* ================================= */

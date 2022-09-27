@@ -1,4 +1,4 @@
-@value background1, background2, highlight1, line, unselect from "../../../common/color.css";
+@value unselect, background1, background2, highlight1, line, unselect, mainOrange from "../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
@@ -153,11 +153,17 @@
   color: unselect;
 }
 
-.wishIcon {
+.unselectWishIcon,
+.selectWishIcon {
   width: 0.8333vw;
   height: 0.8333vw;
   position: absolute;
   right: 0;
+  color: mainOrange;
+}
+
+.unselectWishIcon {
+  color: unselect;
 }
 
 /* ================================= */

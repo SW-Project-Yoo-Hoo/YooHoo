@@ -54,14 +54,19 @@ const Shop = (props) => {
                     <p className={styles.productPrice}>{item.price}</p>
 
                     <div
+                      className={
+                        wishItem[item.id - 1].wish
+                          ? styles.selectWishIcon
+                          : styles.unselectWishIcon
+                      }
                       onClick={() =>
                         onClickWishBtn(item.id, wishItem[item.id - 1].wish)
                       }
                     >
                       {wishItem[item.id - 1].wish ? (
-                        <MdFavorite className={styles.wishIcon} />
+                        <MdFavorite className={styles.selectWishIcon} />
                       ) : (
-                        <MdFavoriteBorder className={styles.wishIcon} />
+                        <MdFavoriteBorder className={styles.unselectWishIcon} />
                       )}
                     </div>
                   </div>
