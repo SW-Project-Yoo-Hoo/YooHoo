@@ -22,6 +22,11 @@ const ShopDetail = (props) => {
   const [price, setprice] = useState(0);
   const [wish, setWish] = useState(false);
 
+  /* 페이지 이동 시 스크롤 상단으로 */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const start = new Date(startDate);
     const end = new Date(endDate);

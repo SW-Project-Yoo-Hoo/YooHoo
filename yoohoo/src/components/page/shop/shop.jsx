@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
 import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -6,6 +6,11 @@ import Header from "../../header/header";
 import ShopImg from "./shopImg";
 
 const Shop = (props) => {
+  /* 페이지 이동 시 스크롤 상단으로 */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Header />
