@@ -180,6 +180,9 @@ const Home = (props) => {
           <Footer />
         </div>
       </div>
+      {/* <div className={styles.bottomContainer}>
+        <Footer />
+      </div> */}
     </div>
   );
 };

@@ -3,16 +3,10 @@
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
 
-.wrapHeader {
-  padding-top: 75px;
-  background-color: aliceblue;
-}
-
 .background {
   width: 100vw;
   background-color: background1;
   position: relative;
-  min-height: 80vw;
 }
 
 .headerImg {
@@ -20,8 +14,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  top: 0;
-  left: 0;
+  z-index: 1;
 }
 
 /* Footer */
@@ -32,17 +25,29 @@
   background-size: cover;
   position: absolute;
   bottom: 0;
+  z-index: 0;
 }
 
 .footerImg2 {
   width: 23.125vw;
   height: 23.125vw;
   margin: 0 0 -40px 17.6389vw;
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
 
+.footer {
+  margin-top: auto;
+  z-index: 0;
+}
 /* ================================= */
+
+.title,
+.hr,
+.orderSpan,
+.subTitle {
+  z-index: 3;
+}
 
 .title {
   position: absolute;
@@ -53,7 +58,7 @@
   color: highlight1;
 }
 
-.order {
+.orderDiv {
   position: absolute;
   right: 0;
   margin-top: 2.5vw;
@@ -61,12 +66,22 @@
   font-size: 0.8333vw;
   color: highlight1;
   font-family: "Regular";
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderIcon {
+  width: 1vw;
+  height: 1vw;
+  margin: 0 0.3167vw 0 0;
 }
 
 .hr {
   width: 10.4167vw;
   position: absolute;
-  background-color: line;
+  border-top: 1px solid line;
   margin: 5.7639vw 0 0 17.7778vw;
 }
 
@@ -82,18 +97,24 @@
 
 .container {
   width: 100vw;
-  position: relative;
+  position: absolute;
+  background-color: background1;
 }
 
 .productGroup {
+  z-index: 2;
   width: 54.1667vw;
-  height: 50.8333vw;
-  position: absolute;
-  margin-top: 4.3056vw;
-  margin-left: 29.1667vw;
+  /* height: 50.8333vw; */
+  position: relative;
+  margin: 4.3056vw 0 3.4722vw 29.1667vw;
   display: grid;
-  grid-template-columns: 13.9583vw 13.9583vw 13.9583vw 12.2917vw;
-  grid-template-rows: 17.8472vw 17.8472vw 15.2083vw;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2.6389vw;
+  column-gap: 1.6667vw;
+}
+
+.product {
+  cursor: pointer;
 }
 
 .info {
@@ -108,7 +129,7 @@
   display: flex;
   position: relative;
   align-items: center;
-  margin-top: 0.2083vw;
+  margin-top: 0.2983vw;
 }
 
 .productImg {
@@ -119,10 +140,6 @@
 }
 
 .productTitle {
-  margin: 0;
-}
-
-.productTitle2 {
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -146,9 +163,130 @@
 /* ================================= */
 /* 그 이상 */
 @media (min-width: 1920px) {
+  .headerImg {
+    height: 237px;
+  }
+
+  .footerImg {
+    height: 300px;
+  }
+
   .footerImg2 {
     width: 444px;
     height: 444px;
-    margin: 0 0 -40px 321px;
+    margin: 0 auto -40px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 418px;
+  }
+
+  .spanGroup {
+    width: 1920px;
+    height: 82px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .title {
+    position: absolute;
+    padding-top: 42px;
+    margin-left: 341px;
+    font-size: 30px;
+
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    left: 338px;
+  }
+
+  .orderDiv {
+    position: absolute;
+    font-size: 16px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 48px;
+    left: 1200px;
+  }
+
+  .orderIcon {
+    width: 19px;
+    height: 19px;
+    margin: 0 8px 0 0;
+  }
+
+  .hr {
+    width: 200px;
+    position: absolute;
+    border-top: 1px solid line;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 111px;
+    left: 338px;
+  }
+
+  .subTitle {
+    position: absolute;
+    font-size: 18px;
+
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 135px;
+    left: 338px;
+  }
+
+  /* ================================= */
+
+  .container {
+    width: 100vw;
+    position: absolute;
+    background-color: background1;
+  }
+
+  .productGroup {
+    z-index: 2;
+    width: 1040px;
+    position: relative;
+    margin: 0 auto 67px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 38px;
+    column-gap: 24px;
+    left: 123px;
+  }
+
+  .info {
+    width: 216px;
+    margin: 12px 0 0 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .info2 {
+    margin-top: 4px;
+  }
+
+  .productImg {
+    width: 236px;
+    height: 236px;
+    border-radius: 32px;
+  }
+
+  .productPrice {
+    font-size: 14px;
+  }
+
+  .wishIcon {
+    width: 16px;
+    height: 16px;
   }
 }

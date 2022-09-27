@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../header/header";
 import Footer from "../footer";
 import styles from "./faq.module.css";
 import QnA from "./qna.js";
 
 const FAQ = (props) => {
+  /* 페이지 이동 시 스크롤 상단으로 */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [qnaList, setQnaList] = useState(QnA);
 
   const onClick = (id) => {
@@ -17,7 +22,7 @@ const FAQ = (props) => {
 
   return (
     <>
-      <div className={styles.wrapHeader}></div>
+      <Header />
       <div className={styles.background}>
         <div className={styles.imgGroup}>
           <img
@@ -70,15 +75,14 @@ const FAQ = (props) => {
               </div>
             </div>
           ))}
+
           {/* Footer */}
-          <div className={styles.wrapfooter}>
-            <img
-              className={styles.footerImg}
-              src={process.env.PUBLIC_URL + "images/footBackground.png"}
-              alt="Footer"
-            />
-            <Footer />
-          </div>
+          <img
+            className={styles.footerImg}
+            src={process.env.PUBLIC_URL + "images/footBackground.png"}
+            alt="Footer"
+          />
+          <Footer />
         </div>
       </div>
     </>
