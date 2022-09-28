@@ -4,14 +4,13 @@ package swproject.yoohoo.controller;
 import lombok.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import swproject.yoohoo.domain.Alarm;
-import swproject.yoohoo.domain.Member;
-import swproject.yoohoo.domain.ResultVO;
-import swproject.yoohoo.domain.SessionConst;
+import swproject.yoohoo.domain.*;
 import swproject.yoohoo.login.Login;
 import swproject.yoohoo.service.AlarmService;
+import swproject.yoohoo.service.CategoryService;
 import swproject.yoohoo.service.MemberService;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -23,6 +22,7 @@ import java.util.List;
 public class MemberController {
     private final MemberService memberService;
     private final AlarmService alarmService;
+    private final CategoryService categoryService;
 
     @PostMapping("/members")
     public ResultVO create(@RequestBody JoinForm form){
@@ -111,6 +111,43 @@ public class MemberController {
             this.address = member.getAddress();
             this.contact = member.getContact();
             this.photo_dir = member.getPhoto_dir();
+        }
+    }
+
+    @PostConstruct
+    public void createCategory(){
+        if(categoryService.findOne(1L)==null){
+            Category category1 = new Category();
+            category1.setId(1L);
+            category1.setName("desk");
+            categoryService.saveCategory(category1);
+
+            Category category2 = new Category();
+            category2.setId(2L);
+            category2.setName("chair");
+            categoryService.saveCategory(category2);
+        }
+
+    }
+
+    @PostConstruct
+    public void firstJoin(){
+        if(memberService.findMembers().isEmpty()){
+            Member member = new Member();
+            member.setEmail("object1997@naver.com");
+            member.setPassword("qqq");
+            member.setCompany("YooHoo");
+            member.setAddress("낙동남로 1372-7");
+            member.setContact("010-7470-3965");
+            member.setPhoto_dir("");
+            memberService.join(member);
+
+            Alarm alarm = new Alarm();
+            alarm.setMember(member);
+            alarm.setTitle("반갑습니다!");
+            alarm.setContent("회원님의 다양한 자원을 공유해보세요");
+            alarm.setAlarmDate(LocalDateTime.now());
+            alarmService.save(alarm);
         }
     }
 }
