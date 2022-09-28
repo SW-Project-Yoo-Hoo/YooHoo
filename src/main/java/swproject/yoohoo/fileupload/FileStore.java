@@ -42,6 +42,16 @@ public class FileStore {
         return new Photo(originalFilename,storeFilename);
     }
 
+    public String storeProfileImage(MultipartFile multipartFile) throws IOException {
+        if(multipartFile.isEmpty()){
+            return null;
+        }
+        String originalFilename = multipartFile.getOriginalFilename();
+        String storeFilename = createStoreFilename(originalFilename);
+        multipartFile.transferTo(new File(getFullPath(storeFilename)));
+        return storeFilename;
+    }
+
     private String createStoreFilename(String originalFilename) {
         String ext = extractExt(originalFilename);
         String uuid = UUID.randomUUID().toString();

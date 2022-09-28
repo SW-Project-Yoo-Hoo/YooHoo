@@ -19,17 +19,17 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    private String email;
+    private String email; //이메일
 
-    private String password;
+    private String password; //비밀번호
 
-    private String company;
+    private String company; //회사 이름
 
-    private String address;
+    private String address; //주소
 
-    private String contact;
+    private String contact; //연락처
 
-    private String photo_dir;
+    private String photo_dir; //프로필 사진 경로
 
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     List<Post> posts=new ArrayList<>();

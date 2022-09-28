@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 @Table(name="post_category")
-public class PostCategory {
+public class PostCategory { //Post-Category 이어주는 역할
 
     @Id @GeneratedValue
     @Column(name = "post_category_id")

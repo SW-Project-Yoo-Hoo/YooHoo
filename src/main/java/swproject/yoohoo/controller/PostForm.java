@@ -8,11 +8,11 @@ import java.util.List;
 
 @Getter @Setter
 public class PostForm {
-    private String title;
-    private String rental_unit;
-    private int rental_price;
-    private int quantity;
-    private String explain;
-    private List<MultipartFile> photos;
-    private List<Long> categories;
+    private String title; //제목
+    private String rental_unit; //대여 단위
+    private int rental_price; //대여 가격
+    private int quantity; //수량
+    private String explain; //내용
+    private List<MultipartFile> photos; //사진들
+    private List<Long> categories; //카테고리들
 }

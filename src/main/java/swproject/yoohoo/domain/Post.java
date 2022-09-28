@@ -1,5 +1,6 @@
 package swproject.yoohoo.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,12 +33,12 @@ public class Post {
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
     private List<PostCategory> categories=new ArrayList<>();
 
-    private String title;
-    private String rental_unit;
-    private int rental_price;
-    private int quantity;
-    private String content;
-    private LocalDateTime postDate;
+    private String title; //제목
+    private String rental_unit; //대여 단위
+    private int rental_price; //대여 가격
+    private int quantity; //수량
+    private String content; //설명
+    private LocalDateTime postDate; //등록 날짜시간
 
     public Post() {
 
@@ -70,7 +71,7 @@ public class Post {
     }
 
     //==생성 메서드==//
-
+    @Builder
     public Post(Member member, String title, String rental_unit, int rental_price, int quantity, String content) {
         this.member = member;
         this.title = title;

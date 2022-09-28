@@ -1,5 +1,6 @@
 package swproject.yoohoo.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,17 @@ public class Category {
     List<PostCategory> posts=new ArrayList<>();
 
     private String name;
+
+    @Builder
+    public Category(Long id, List<PostCategory> posts, String name) {
+        this.id = id;
+        this.posts = posts;
+        this.name = name;
+    }
+
+    public Category() {
+
+    }
 
     //==연관관계 메서드==//
     public void addPost(PostCategory postCategory){

@@ -5,10 +5,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import swproject.yoohoo.controller.EditForm;
+import swproject.yoohoo.controller.MemberController;
 import swproject.yoohoo.controller.MemberForm;
 import swproject.yoohoo.domain.Member;
+import swproject.yoohoo.fileupload.FileStore;
 import swproject.yoohoo.repository.MemberRepository;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -18,6 +22,7 @@ import java.util.List;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final FileStore fileStore;
 
     /**
      * 회원가입
@@ -45,13 +50,16 @@ public class MemberService {
 
     /** 회원 수정 */
     @Transactional //변경
-    public Long updateMember(Long memberid, MemberForm form){
+    public Long updateMember(Long memberid, EditForm form) throws IOException {
+
         Member member= memberRepository.findOne(memberid);
         member.setEmail(form.getEmail());
         member.setPassword(form.getPassword());
         member.setCompany(form.getCompany());
         member.setAddress(form.getAddress());
         member.setContact(form.getContact());
+        String photo_dir=fileStore.storeProfileImage(form.getPhoto());
+        member.setPhoto_dir(photo_dir);
         return memberid;
     }
 

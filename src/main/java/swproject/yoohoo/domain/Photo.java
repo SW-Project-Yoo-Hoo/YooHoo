@@ -1,5 +1,6 @@
 package swproject.yoohoo.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +17,9 @@ public class Photo {
     @JoinColumn(name = "post_id")
     private Post post;
 
-    private String fileName;
-    private String filePath;
-
+    private String fileName; //사진파일 이름
+    private String filePath; //사진파일 경로
+    @Builder
     public Photo(String fileName, String filePath) {
         this.fileName = fileName;
         this.filePath = filePath;
