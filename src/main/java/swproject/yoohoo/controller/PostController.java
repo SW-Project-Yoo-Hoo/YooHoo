@@ -58,12 +58,14 @@ public class PostController {
 
     @Getter
     public class PostsDTO{
+        private Long post_id;
         private String title; //제목
         private String unit; //대여 단위
         private int price; //대여 가격
         private Image image; //대표 사진
 
         public PostsDTO(Post post) {
+            this.post_id=post.getId();
             this.title = post.getTitle();
             this.unit = post.getRental_unit();
             this.price = post.getRental_price();
@@ -107,7 +109,7 @@ public class PostController {
                    .map(m->new Image(m))
                    .collect(Collectors.toList());
 
-          this.categories=post.getCategories().stream()
+          this.categories=post.getPostCategories().stream()
                   .map(m->new CategoryName(m.getCategory().getName()))
                   .collect(Collectors.toList());
 

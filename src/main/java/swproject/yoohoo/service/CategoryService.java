@@ -26,4 +26,6 @@ public class CategoryService {
     public Category findOne(Long categoryId){
         return categoryRepository.findOne(categoryId);
     }
+
+    public Category findOnebyName(String categoryName){return categoryRepository.findOnebyName(categoryName);}
 }

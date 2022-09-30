@@ -1,9 +1,11 @@
 package swproject.yoohoo.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import swproject.yoohoo.controller.PostController;
 import swproject.yoohoo.controller.PostForm;
 import swproject.yoohoo.domain.*;
 import swproject.yoohoo.fileupload.FileStore;
@@ -20,6 +22,7 @@ import static swproject.yoohoo.domain.PostCategory.createPostCategory;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Slf4j
 public class PostService {
 
     private final PostRepository postRepository;
@@ -29,7 +32,7 @@ public class PostService {
     private final FileStore fileStore;
 
     @Transactional
-    public Long savePost(Long memberId, PostCreateRequestDto requestDto,List<MultipartFile> files,List<Long> categoryIds) throws IOException {
+    public Long savePost(Long memberId, PostCreateRequestDto requestDto,List<MultipartFile> files,List<PostController.CategoryName> categoryNames) throws IOException {
         //엔티티 조회
         Member member = memberRepository.findOne(memberId);
 
@@ -50,8 +53,10 @@ public class PostService {
             }
         }
 
-        for (Long categoryId : categoryIds) {
-            PostCategory postCategory=PostCategory.createPostCategory(categoryRepository.findOne(categoryId));
+        for (PostController.CategoryName categoryName : categoryNames) {
+            Category category=categoryRepository.findOnebyName(categoryName.getName());
+            log.info("찾은 카테고리={}",category);
+            PostCategory postCategory=PostCategory.createPostCategory(category);
             post.addPostCategory(postCategory);
         }
 

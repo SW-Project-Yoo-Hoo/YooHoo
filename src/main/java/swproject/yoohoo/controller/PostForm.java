@@ -14,5 +14,5 @@ public class PostForm {
     private int quantity; //수량
     private String explain; //내용
     private List<MultipartFile> photos; //사진들
-    private List<Long> categories; //카테고리들
+    private List<PostController.CategoryName> categories; //카테고리들
 }

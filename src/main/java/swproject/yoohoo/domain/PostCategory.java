@@ -14,17 +14,17 @@ public class PostCategory { //Post-Category 이어주는 역할
     @Column(name = "post_category_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
     private Post post;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;
 
     public void setPost(Post post){
         this.post=post;
-        post.getCategories().add(this);
+        post.getPostCategories().add(this);
     }
 
     public void setCategory(Category category){

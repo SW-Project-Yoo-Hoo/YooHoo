@@ -73,7 +73,7 @@ public class MemberController {
         return new ResultVO(200,"로그아웃 성공",null);
     }
 
-    @GetMapping("/member/edit")
+    @GetMapping("/members/my/myInfo")
     public ResultVO editForm(@Login Member loginMember){
         return new ResultVO(200,null,new EditDTO(loginMember));
     }
@@ -116,7 +116,7 @@ public class MemberController {
 
     @PostConstruct
     public void createCategory(){
-        if(categoryService.findOne(1L)==null){
+        if(categoryService.findCategories().isEmpty()){
             Category category1 = new Category();
             category1.setId(1L);
             category1.setName("desk");

@@ -15,18 +15,18 @@ import java.io.IOException;
 public class ApiExceptionController {
 
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST) //400기본,
+    @ResponseStatus(HttpStatus.UNAUTHORIZED) //401
     @ExceptionHandler(IllegalArgumentException.class)
     public ResultVO illegalExHandle(IllegalArgumentException e) {
         log.error("[exceptionHandle] ex", e);
-        return new ResultVO(400, e.getMessage(),null);
+        return new ResultVO(401, e.getMessage(),null);
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST) //400기본, 메소드를 호출하기 위한 상태가 아닐 때
+    @ResponseStatus(HttpStatus.CONFLICT) //409
     @ExceptionHandler(IllegalStateException.class)
     public ResultVO illegalExHandle(IllegalStateException e) {
         log.error("[exceptionHandle] ex", e);
-        return new ResultVO(400, e.getMessage(),null);
+        return new ResultVO(409, e.getMessage(),null);
     }
 
     @ExceptionHandler

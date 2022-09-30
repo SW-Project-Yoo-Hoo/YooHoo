@@ -31,7 +31,7 @@ public class Post {
     List<Deal> deals=new ArrayList<>();
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
-    private List<PostCategory> categories=new ArrayList<>();
+    private List<PostCategory> postCategories =new ArrayList<>();
 
     private String title; //제목
     private String rental_unit; //대여 단위
@@ -66,8 +66,8 @@ public class Post {
     }
 
     public void addPostCategory(PostCategory postCategory){
-        categories.add(postCategory);
         postCategory.setPost(this);
+        postCategories.add(postCategory);
     }
 
     //==생성 메서드==//
