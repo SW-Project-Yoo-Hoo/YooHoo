@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./alarm.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import AlarmList from "./alarmList";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 
 const Alarm = (props) => {
-  // 마이프로필로 이동하기 위한 call 추가
+  const [alarmList, setAlarmList] = useState([]);
 
+  // 마이프로필로 이동하기 위한 call 추가
   AlarmList.map((item) => {
     switch (item.title) {
       case "반납 일정":
@@ -37,6 +38,17 @@ const Alarm = (props) => {
     }
   });
 
+  /* 백엔드에서 알람 리스트 가져오기 */
+  useEffect(() => {
+    const getList = () => {
+      axios
+        .get("/alarms")
+        .then((res) => setAlarmList(res.data.data))
+        .catch((error) => console.log(error));
+    };
+    getList();
+  }, []);
+
   return (
     <>
       <Header />
@@ -48,7 +60,7 @@ const Alarm = (props) => {
             alt="Header"
           />
           <div className={styles.alarmList}>
-            {AlarmList.map((item, index) => (
+            {alarmList.map((item, index) => (
               <div className={styles.alarmItems} key={item.id}>
                 {index === 0 && (
                   <img
@@ -79,7 +91,7 @@ const Alarm = (props) => {
                             }
                             alt="Time"
                           />
-                          <p className={styles.day}>{item.date}</p>
+                          <p className={styles.day}>{item.alarmDate}</p>
                         </div>
                         <Link to="/profile" state={{ call: item.call }}>
                           <div className={styles.contents}>
