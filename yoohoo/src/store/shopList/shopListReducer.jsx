@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const shopListSlice = createAsyncThunk("GET_LIST", async () => {
+export const shopListThunk = createAsyncThunk("GET_LIST", async () => {
   const res = await axios.get("/posts");
   return res.data.data;
 });
@@ -11,6 +11,6 @@ export const shopListReducer = createSlice({
   initialState: [],
   reducers: {},
   extraReducers: {
-    [shopListSlice.fulfilled]: (state, { payload }) => [...payload],
+    [shopListThunk.fulfilled]: (state, { payload }) => [...payload],
   },
 });

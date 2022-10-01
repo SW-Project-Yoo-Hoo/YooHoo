@@ -7,7 +7,7 @@ import ShopImg from "./shopImg";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { shopListSlice } from "../../../store/shopList/shopListSlice";
+import { shopListThunk } from "../../../store/shopList/shopListReducer";
 
 const Shop = (props) => {
   /* Redux-Toolkit */
@@ -16,7 +16,7 @@ const Shop = (props) => {
 
   const [wishItem, setWishItem] = useState(ShopImg);
   useEffect(() => {
-    dispatch(shopListSlice());
+    dispatch(shopListThunk());
   }, []);
 
   /* 페이지 이동 시 스크롤 상단으로 */

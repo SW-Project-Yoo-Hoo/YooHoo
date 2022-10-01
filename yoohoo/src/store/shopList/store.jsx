@@ -4,7 +4,7 @@ import {
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 
-import { shopListReducer } from "./shopListSlice";
+import { shopListReducer } from "./shopListReducer";
 
 const reducer = combineReducers({ shopListReducer: shopListReducer.reducer });
 
