@@ -5,26 +5,37 @@ import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import Header from "../../header/header";
 import ShopImg from "./shopImg";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { shopListSlice } from "../../../store/shopList/shopListSlice";
 
 const Shop = (props) => {
-  const [productList, setProductList] = useState([]);
+  /* Redux-Toolkit */
+  const dispatch = useDispatch();
+  const shopList = useSelector((state) => state.shopListReducer);
+
   const [wishItem, setWishItem] = useState(ShopImg);
+  useEffect(() => {
+    dispatch(shopListSlice());
+  }, []);
 
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // const [productList, setProductList] = useState([]);
+
   /* 백엔드에서 물품 리스트 가져오기 */
-  useEffect(() => {
-    const getList = () => {
-      axios
-        .get("/posts")
-        .then((res) => setProductList(res.data.data))
-        .catch((error) => console.log(error));
-    };
-    getList();
-  }, []);
+  // useEffect(() => {
+  //   const getList = () => {
+  //     axios
+  //       .get("/posts")
+  //       .then((res) => setProductList(res.data.data))
+  //       .catch((error) => console.log(error));
+  //   };
+  //   getList();
+  // }, []);
 
   /* 찜하기 버튼 */
   function onClickWishBtn(id, prevWish) {
@@ -54,25 +65,28 @@ const Shop = (props) => {
             <span className={styles.subTitle}>All Products</span>
           </div>
           <div className={styles.productGroup}>
-            {productList.map((item, index) => (
-              <div className={styles.product}>
-                <img
-                  className={styles.productImg}
-                  src={process.env.PUBLIC_URL + "productList/" + item.image.dir}
-                  alt="Product"
-                />
-                <div className={styles.info}>
-                  <p className={styles.productTitle}>{item.title}</p>
-                  <div className={styles.info2}>
-                    <p className={styles.productPrice}>
-                      {item.price.toLocaleString("ko-KR")}/{item.unit}
-                    </p>
-                    <div className={styles.unselectWishIcon}>
-                      <MdFavoriteBorder className={styles.unselectWishIcon} />
-                    </div>
+            {shopList.map((item) => (
+              <Link to="/detail/`${item.post_id}" state={{ info: item }}>
+                <div className={styles.product}>
+                  <img
+                    className={styles.productImg}
+                    src={
+                      process.env.PUBLIC_URL + "productList/" + item.image.dir
+                    }
+                    alt="Product"
+                  />
+                  <div className={styles.info}>
+                    <p className={styles.productTitle}>{item.title}</p>
+                    <div className={styles.info2}>
+                      <p className={styles.productPrice}>
+                        {item.price.toLocaleString("ko-KR")}원/{item.unit}
+                      </p>
+                      <div className={styles.unselectWishIcon}>
+                        <MdFavoriteBorder className={styles.unselectWishIcon} />
+                      </div>
 
-                    {/* 찜하기 기능 추가시 주석 제거 */}
-                    {/* <div
+                      {/* 찜하기 기능 추가시 주석 제거 */}
+                      {/* <div
                       className={
                         wishItem[item.id - 1].wish
                           ? styles.selectWishIcon
@@ -88,9 +102,10 @@ const Shop = (props) => {
                         <MdFavoriteBorder className={styles.unselectWishIcon} />
                       )}
                     </div> */}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
