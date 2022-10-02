@@ -6,18 +6,19 @@ import Header from "../../header/header";
 import ShopImg from "./shopImg";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { shopListThunk } from "../../../store/modules/shopList";
 import { useDispatch, useSelector } from "react-redux";
-import { shopListThunk } from "../../../store/shopList/shopListReducer";
 
 const Shop = (props) => {
   /* Redux-Toolkit */
   const dispatch = useDispatch();
   const shopList = useSelector((state) => state.shopListReducer);
 
-  const [wishItem, setWishItem] = useState(ShopImg);
   useEffect(() => {
     dispatch(shopListThunk());
   }, []);
+
+  const [wishItem, setWishItem] = useState(ShopImg);
 
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {

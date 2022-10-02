@@ -11,8 +11,14 @@ import ModalCal from "./modalCal";
 import ShowImg from "./showImg/showImg";
 import ShopImg from "./shopImg";
 import moment from "moment";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { shopItemThunk } from "../../../store/modules/shopItem";
 
 const ShopDetail = (props) => {
+  const REACT_PUBLIC_URL = "http://localhost:3000/";
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const [startDate, setStartDay] = useState("");
@@ -23,10 +29,36 @@ const ShopDetail = (props) => {
   const [wish, setWish] = useState(false); // 찜하기 버튼
   const [wishItem, setWishItem] = useState(ShopImg); // 살펴보기 찜
 
+  const [productItem, setProductItem] = useState("");
+
+  /* 해당 아이템 */
+  const location = useLocation();
+  let item = location.state.info;
+
+  /* Redux-Toolkit */
+  const dispatch = useDispatch();
+  const shopItem = useSelector((state) => state.shopItemReducer);
+  useEffect(() => {
+    dispatch(shopItemThunk(item.post_id));
+  }, []);
+
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  /* 백엔드에서 선택한 게시물 가져오기 */
+  // useEffect(() => {
+  //   const getItem = () => {
+  //     axios
+  //       .get(`/posts/${item.post_id}`)
+  //       .then((res) => {
+  //         setProductItem(res.data.data);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   };
+  //   getItem();
+  // }, []);
 
   useEffect(() => {
     const start = new Date(startDate);
@@ -49,7 +81,7 @@ const ShopDetail = (props) => {
   }, [startDate, endDate]);
 
   useEffect(() => {
-    setprice(dateCnt * count);
+    setprice(dateCnt * count * productItem.rental_price);
     // setprice(dateCnt * count * price);
   }, [dateCnt, count]);
 
@@ -70,7 +102,9 @@ const ShopDetail = (props) => {
   /* ================================ */
   /* 수량 버튼*/
   const plusBtn = () => {
-    setCount(count + 1);
+    if (count >= productItem.quantity) {
+      setCount(productItem.quantity);
+    } else setCount(count + 1);
   };
 
   const minusBtn = () => {
@@ -121,17 +155,16 @@ const ShopDetail = (props) => {
   }
 
   /* ================================ */
-
+  console.log(shopItem);
   return (
     <>
       <Header />
       <div className={styles.background}>
         <img
           className={styles.headerImg}
-          src={process.env.PUBLIC_URL + "images/headerBackground.png"}
+          src={REACT_PUBLIC_URL + "images/headerBackground.png"}
           alt="Header"
         />
-
         <div className={styles.container}>
           <div className={styles.productInfo}>
             {/* 사진, 회사 소개, 물품 소개, 살펴보기 */}
@@ -141,12 +174,12 @@ const ShopDetail = (props) => {
             <div className={styles.company}>
               <img
                 className={styles.companyImg}
-                src={process.env.PUBLIC_URL + "images/about/ys.svg"}
+                src={REACT_PUBLIC_URL + "images/about/ys.svg"}
                 alt="Company"
               />
               <div className={styles.companyInfo}>
-                <p className={styles.companyName}>YooHoo Company</p>
-                <p className={styles.companyAddress}>사하구 하단동 510-6</p>
+                <p className={styles.companyName}>{productItem.company}</p>
+                <p className={styles.companyAddress}>{productItem.address}</p>
               </div>
             </div>
 
@@ -155,7 +188,7 @@ const ShopDetail = (props) => {
             <div>
               <p className={styles.descriptionTitle}>물품 소개</p>
               <div className={styles.descriptionContent}>
-                {ShopImg[0].contents}
+                {productItem.explain}
               </div>
             </div>
 
@@ -172,7 +205,7 @@ const ShopDetail = (props) => {
                         <button className={styles.otherProductsBtn}>
                           <img
                             className={styles.otherProductsImg}
-                            src={item.image}
+                            src={REACT_PUBLIC_URL + item.image}
                             alt="Product"
                           />
                         </button>
@@ -215,13 +248,16 @@ const ShopDetail = (props) => {
 
           <div className={styles.productInfo2}>
             {/* 물품 제목, 대여 기간, 거래하기 버튼 */}
-            <p className={styles.title}>{ShopImg[0].title}</p>
+            <p className={styles.title}>{productItem.title}</p>
             <div className={styles.categoryGroup}>
               <div className={styles.category}>#책상</div>
               <div className={styles.category}>#의자</div>
             </div>
             <div className={styles.hr2}></div>
-            <p className={styles.price}>가격</p>
+            <p className={styles.price}>
+              {productItem.rental_price}원/
+              {productItem.rental_unit}
+            </p>
 
             <div>
               <div className={styles.period}>
@@ -229,12 +265,12 @@ const ShopDetail = (props) => {
                 <div className={styles.helpImg}>
                   <img
                     className={styles.helpImg}
-                    src={process.env.PUBLIC_URL + "images/shopDetail/info.png"}
+                    src={REACT_PUBLIC_URL + "images/shopDetail/info.png"}
                     alt="Help"
                   />
                   <div className={styles.helpContainer}>
                     <p className={styles.helpContent}>
-                      대여 기간은 주 단위로만
+                      대여 기간은 '{productItem.rental_unit}' 단위로만
                     </p>
                     <p className={styles.helpContent}>설정할 수 있습니다.</p>
                   </div>
@@ -307,7 +343,7 @@ const ShopDetail = (props) => {
           <div className={styles.footer}>
             <img
               className={styles.footerImg}
-              src={process.env.PUBLIC_URL + "images/footBackground.png"}
+              src={REACT_PUBLIC_URL + "images/footBackground.png"}
               alt="Footer"
             />
             <Footer />
