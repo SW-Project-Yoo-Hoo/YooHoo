@@ -3,6 +3,7 @@ import styles from "./login.module.css";
 import { Navigate } from "react-router-dom";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
+import axios from "axios";
 
 const Login = (props) => {
   /* 페이지 이동 시 스크롤 상단으로 */
@@ -29,11 +30,31 @@ const Login = (props) => {
   const [incorrect, setIncorrect] = useState(false);
 
   const loginHandling = () => {
-    console.log("로그인 버튼 눌렀다!!");
-    //백엔드랑 통신 해서 로그인 정보가 올바르면 원래 있던 페이지로 돌아가기
-    //window.history.back();
-    //로그인 정보가 올바르지 않으면 알림 띄우기
-    setIncorrect(true);
+    const data = {
+      email: id,
+      password: pw,
+    };
+
+    axios
+      .post("/login", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(function (response) {
+        if (response.data.code === 200) {
+          //로그인 성공
+          //로그인 정보가 올바르면 원래 있던 페이지로 돌아가기
+          window.history.back();
+        }
+        //else {
+        //   //내부오류 회원가입 실패
+        // }
+      })
+      .catch(function (error) {
+        //로그인 정보가 올바르지 않으면 알림 띄우기
+        setIncorrect(true);
+      });
   };
 
   const signUpHandling = () => {
