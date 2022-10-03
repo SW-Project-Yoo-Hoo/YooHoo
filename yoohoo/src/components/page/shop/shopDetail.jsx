@@ -31,22 +31,23 @@ const ShopDetail = (props) => {
   const [photoGroup, setPhotoGroup] = useState("");
   const [currentItem, setCurrentItem] = useState("");
 
-  /* Redux-Toolkit */
-  const dispatch = useDispatch();
-  const shopList = useSelector((state) => state.shopListReducer);
-
-  useEffect(() => {
-    dispatch(shopListThunk());
-  }, []);
-
   /** 처음 렌더링 됐을 때, 현재 보여지는 사진 check */
   const [isPicLoaded, setIsPicLoaded] = useState(false);
 
   /**===================== */
   /* 추가 기능 */
   const [wish, setWish] = useState(false); // 찜하기 버튼
-  const [wishItem, setWishItem] = useState(shopList); // 살펴보기 찜
+  const [wishItem, setWishItem] = useState(false);
+  // const [wishItem, setWishItem] = useState(shopList); // 살펴보기 찜
   /**===================== */
+
+  /* Shop -> Redux-Toolkit */
+  const dispatch = useDispatch();
+  const shopList = useSelector((state) => state.shopListReducer);
+
+  useEffect(() => {
+    dispatch(shopListThunk());
+  }, []);
 
   /* 해당 아이템 */
   const location = useLocation();
@@ -199,6 +200,24 @@ const ShopDetail = (props) => {
     }
   }
 
+  function Category(item) {
+    switch (item) {
+      case "desk":
+        return "#책상";
+      case "chair":
+        return "#의자";
+      case "faxMachine":
+        return "#팩스기";
+      case "copyMachine":
+        return "#복사기";
+      case "coffeeMachine":
+        return "#커피머신";
+      case "mouse":
+        return "#마우스";
+      case "computer":
+        return "#컴퓨터";
+    }
+  }
   /* ================================ */
   return (
     <>
@@ -354,8 +373,9 @@ const ShopDetail = (props) => {
                 {/* 물품 제목, 대여 기간, 거래하기 버튼 */}
                 <p className={styles.title}>{productItem.title}</p>
                 <div className={styles.categoryGroup}>
-                  <div className={styles.category}>#책상</div>
-                  <div className={styles.category}>#의자</div>
+                  {productItem.categories.map((item) => (
+                    <div className={styles.category}>{Category(item.name)}</div>
+                  ))}
                 </div>
                 <div className={styles.hr2}></div>
                 <p className={styles.price}>
