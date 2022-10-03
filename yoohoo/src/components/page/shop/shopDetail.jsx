@@ -21,15 +21,15 @@ const ShopDetail = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const [startDate, setStartDay] = useState("");
-  const [endDate, setEndDay] = useState("");
-  const [count, setCount] = useState(1);
-  const [dateCnt, setDateCnt] = useState(0); //일, 주, 월, 년 에 따라
-  const [price, setPrice] = useState(0);
+  const [startDate, setStartDay] = useState(""); //시작 날짜
+  const [endDate, setEndDay] = useState(""); //반납 날짜
+  const [count, setCount] = useState(1); // 수량
+  const [dateCnt, setDateCnt] = useState(0); //일, 주, 월, 년 에 따라 계산 됨
+  const [price, setPrice] = useState(0); // 총 금액
 
-  const [productItem, setProductItem] = useState("");
-  const [photoGroup, setPhotoGroup] = useState("");
-  const [currentItem, setCurrentItem] = useState("");
+  const [productItem, setProductItem] = useState(""); //해당 게시물
+  const [photoGroup, setPhotoGroup] = useState(""); //해당 게시물 사진 그룹
+  const [currentItem, setCurrentItem] = useState(""); //선택된 사진
 
   /** 처음 렌더링 됐을 때, 현재 보여지는 사진 check */
   const [isPicLoaded, setIsPicLoaded] = useState(false);
@@ -56,6 +56,10 @@ const ShopDetail = (props) => {
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
     window.scrollTo(0, 0);
+    setStartDay("");
+    setEndDay("");
+    setCount(1);
+    setPrice(0);
   }, [location]);
 
   /* 백엔드에서 선택한 게시물 가져오기 */
@@ -80,30 +84,37 @@ const ShopDetail = (props) => {
     getItem();
   }, [location]);
 
+  /* 사용자가 고른 시작 날짜 ~ 반납 날짜 => 대여 단위에 맞게 계산 */
   useEffect(() => {
     const start = new Date(startDate);
     const end = new Date(endDate);
     const diffDate = start.getTime() - end.getTime();
 
-    // 일 차이
-    const val = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24))) + 1;
-
-    // 주 차이
-    const val2 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 7)));
-
-    // 월 차이
-    const val3 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 30)));
-
-    // 연도 차이
-    const val4 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 365)));
-
+    let val = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24))) + 1;
+    switch (productItem.rental_unit) {
+      case "일":
+        val /= 1;
+        break;
+      case "주":
+        val /= 7;
+        break;
+      case "월":
+        val /= 30;
+        break;
+      case "년":
+        console.log("뿡");
+        val /= 365;
+        break;
+    }
     setDateCnt(val);
   }, [startDate, endDate]);
 
+  /* 총 금액 계산 */
   useEffect(() => {
     setPrice(dateCnt * count * productItem.rental_price);
   }, [dateCnt, count]);
 
+  /* 모달창 닫기 */
   const modalClose = () => {
     setModalOpen(!modalOpen);
   };
@@ -119,7 +130,7 @@ const ShopDetail = (props) => {
   };
 
   /* ================================ */
-  /* 수량 버튼*/
+  /* +, - 수량 버튼*/
   const plusBtn = () => {
     if (count >= productItem.quantity) {
       setCount(productItem.quantity);
@@ -182,6 +193,7 @@ const ShopDetail = (props) => {
     setCurrentItem(photoGroup.find((item) => item.id === id));
   };
 
+  /* 사진 눌렀을 때 */
   function onClickPicture(id) {
     onView(id);
 
@@ -200,6 +212,8 @@ const ShopDetail = (props) => {
     }
   }
 
+  /* ================================ */
+  /* 카테고리 분류 */
   function Category(item) {
     switch (item) {
       case "desk":
@@ -218,6 +232,7 @@ const ShopDetail = (props) => {
         return "#컴퓨터";
     }
   }
+
   /* ================================ */
   return (
     <>
@@ -422,6 +437,7 @@ const ShopDetail = (props) => {
                       modalClose={modalClose}
                       changeStart={changeStart}
                       changeEnd={changeEnd}
+                      unit={productItem.rental_unit}
                     />
                   )}
                 </div>
