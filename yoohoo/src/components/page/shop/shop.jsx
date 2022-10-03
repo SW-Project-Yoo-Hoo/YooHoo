@@ -3,7 +3,6 @@ import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
 import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import Header from "../../header/header";
-import ShopImg from "./shopImg";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { shopListThunk } from "../../../store/modules/shopList";
@@ -18,7 +17,8 @@ const Shop = (props) => {
     dispatch(shopListThunk());
   }, []);
 
-  const [wishItem, setWishItem] = useState(ShopImg);
+  const [wishItem, setWishItem] = useState(shopList);
+  // const [wishItem, setWishItem] = useState(ShopImg);
 
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
@@ -67,7 +67,11 @@ const Shop = (props) => {
           </div>
           <div className={styles.productGroup}>
             {shopList.map((item) => (
-              <Link to="/detail/`${item.post_id}" state={{ info: item }}>
+              <Link
+                to={`/detail/${item.post_id}`}
+                state={{ info: item }}
+                key={item.post_id}
+              >
                 <div className={styles.product}>
                   <img
                     className={styles.productImg}
