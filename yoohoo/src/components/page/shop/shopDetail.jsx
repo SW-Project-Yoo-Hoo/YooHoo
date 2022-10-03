@@ -3,15 +3,17 @@ import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import styles from "./shopDetail.module.css";
 import styled from "styled-components";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import ModalCal from "./modalCal";
-import ShopImg from "./shopImg";
 import moment from "moment";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { shopListThunk } from "../../../store/modules/shopList";
 
 const ShopDetail = (props) => {
   const REACT_PUBLIC_URL = "http://localhost:3000/";
@@ -29,29 +31,37 @@ const ShopDetail = (props) => {
   const [photoGroup, setPhotoGroup] = useState("");
   const [currentItem, setCurrentItem] = useState("");
 
+  /* Redux-Toolkit */
+  const dispatch = useDispatch();
+  const shopList = useSelector((state) => state.shopListReducer);
+
+  useEffect(() => {
+    dispatch(shopListThunk());
+  }, []);
+
   /** 처음 렌더링 됐을 때, 현재 보여지는 사진 check */
   const [isPicLoaded, setIsPicLoaded] = useState(false);
 
   /**===================== */
   /* 추가 기능 */
   const [wish, setWish] = useState(false); // 찜하기 버튼
-  const [wishItem, setWishItem] = useState(ShopImg); // 살펴보기 찜
+  const [wishItem, setWishItem] = useState(shopList); // 살펴보기 찜
   /**===================== */
 
   /* 해당 아이템 */
   const location = useLocation();
-  let item = location.state.info;
+  let nowItem = location.state.info;
 
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [location]);
 
   /* 백엔드에서 선택한 게시물 가져오기 */
   useEffect(() => {
     const getItem = () => {
       axios
-        .get(`/posts/${item.post_id}`)
+        .get(`/posts/${nowItem.post_id}`)
         .then((res) => {
           setProductItem(res.data.data);
           setPhotoGroup(
@@ -67,7 +77,7 @@ const ShopDetail = (props) => {
         .catch((error) => console.log(error));
     };
     getItem();
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     const start = new Date(startDate);
@@ -241,7 +251,6 @@ const ShopDetail = (props) => {
                               }
                               alt="Product"
                             />
-                            {console.log("item.show", item.show)}
                           </li>
                         )))}
                     </ul>
@@ -278,47 +287,63 @@ const ShopDetail = (props) => {
                   <LookProducts>
                     <div className={styles.lookProducts}>
                       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-                        {/* 추가 ) 현재 게시물과 다른것들만 보여주기 */}
-                        {ShopImg.map((item) => (
-                          <div id={item.id} className={styles.products1}>
-                            <button className={styles.otherProductsBtn}>
-                              <img
-                                className={styles.otherProductsImg}
-                                src={REACT_PUBLIC_URL + item.image}
-                                alt="Product"
-                              />
-                            </button>
-                            <div className={styles.info}>
-                              <p className={styles.otherProductsTitle}>
-                                {item.title}
-                              </p>
-                              <div className={styles.info2}>
-                                <p className={styles.otherProductsPrice}>
-                                  {item.price}
-                                </p>
-                                <div
-                                  className={
-                                    wishItem[item.id - 1].wish
-                                      ? styles.selectWishIcon
-                                      : styles.unselectWishIcon
-                                  }
-                                  onClick={() =>
-                                    onClickWishBtn2(
-                                      item.id,
-                                      wishItem[item.id - 1].wish
-                                    )
-                                  }
+                        {/* 현재 게시물과 다른것들만 보여주기 */}
+                        {shopList.map(
+                          (item) =>
+                            item.post_id !== nowItem.post_id && (
+                              <div id={item.id} className={styles.products1}>
+                                <Link
+                                  to={`/detail/${item.post_id}`}
+                                  state={{ info: item }}
+                                  key={item.post_id}
                                 >
-                                  {wishItem[item.id - 1].wish ? (
-                                    <MdFavorite />
-                                  ) : (
-                                    <MdFavoriteBorder />
-                                  )}
-                                </div>
+                                  <button className={styles.otherProductsBtn}>
+                                    <img
+                                      className={styles.otherProductsImg}
+                                      src={
+                                        REACT_PUBLIC_URL +
+                                        "productList/" +
+                                        item.image.dir
+                                      }
+                                      alt="Product"
+                                    />
+                                  </button>
+                                  <div className={styles.info}>
+                                    <p className={styles.otherProductsTitle}>
+                                      {item.title}
+                                    </p>
+                                    <div className={styles.info2}>
+                                      <p className={styles.otherProductsPrice}>
+                                        {item.price.toLocaleString("ko-KR")}/
+                                        {item.unit}
+                                      </p>
+                                      <div className={styles.unselectWishIcon}>
+                                        <MdFavoriteBorder />
+                                        {/* <div
+                                      className={
+                                        wishItem[item.id - 1].wish
+                                          ? styles.selectWishIcon
+                                          : styles.unselectWishIcon
+                                      }
+                                      onClick={() =>
+                                        onClickWishBtn2(
+                                          item.id,
+                                          wishItem[item.id - 1].wish
+                                        )
+                                      }
+                                    >
+                                      {wishItem[item.id - 1].wish ? (
+                                        <MdFavorite />
+                                      ) : (
+                                        <MdFavoriteBorder />
+                                      )} */}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </Link>
                               </div>
-                            </div>
-                          </div>
-                        ))}
+                            )
+                        )}
                       </ScrollMenu>
                     </div>
                   </LookProducts>
