@@ -4,15 +4,15 @@ import {
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 
-import { shopItemReducer } from "./modules/shopItem";
+import { shopItemSlice } from "./modules/shopItem";
 import { shopListReducer } from "./modules/shopList";
 
 const rootReducer = combineReducers({
   shopListReducer: shopListReducer.reducer,
-  shopItemReducer: shopItemReducer.reducer,
+  shopItemSlice: shopItemSlice.reducer,
 });
 
 export default configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
