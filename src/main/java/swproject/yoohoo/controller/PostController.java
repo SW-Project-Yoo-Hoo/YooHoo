@@ -103,6 +103,7 @@ public class PostController {
 
            this.title=post.getTitle();
            this.rental_unit=post.getRental_unit();
+           this.rental_price=post.getRental_price();
            this.quantity= post.getQuantity();
            this.explain=post.getContent();
            this.photos=post.getPhotos().stream()
