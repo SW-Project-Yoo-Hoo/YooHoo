@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./post.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
+import { Navigate } from "react-router-dom";
 import { MdCancel, MdCheck, MdPhotoCamera } from "react-icons/md";
+import axios from "axios";
 
 const Post = (props) => {
   //입력 데이터 확인
@@ -26,41 +28,50 @@ const Post = (props) => {
       ...inputs,
       [name]: value,
     });
-    console.log(value);
   };
 
   //이미지
   const [showImages, setShowImages] = useState([]);
 
-  // 이미지 상대경로 저장
+  //백엔드로 전송할 이미지
+  const [uploadFile, setUploadFile] = useState([]);
+
+  // 이미지 상대경로 저장(미리보기)
   const imageAddHandling = (e) => {
     const imageLists = e.target.files;
     let imageUrlLists = [...showImages];
+    let imageUrlListsOrigin = [...uploadFile];
 
     for (let i = 0; i < imageLists.length; i++) {
       const currentImageUrl = URL.createObjectURL(imageLists[i]);
       imageUrlLists.push(currentImageUrl);
+      imageUrlListsOrigin.push(imageLists[i]);
     }
 
     if (imageUrlLists.length > 8) {
       imageUrlLists = imageUrlLists.slice(0, 8);
+      imageUrlListsOrigin = imageUrlListsOrigin.slice(0, 8);
     }
 
     setShowImages(imageUrlLists);
+    setUploadFile(imageUrlListsOrigin);
+    console.log(uploadFile);
   };
 
   // X버튼 클릭 시 이미지 삭제
   const imageDeleteHandling = (id) => {
     setShowImages(showImages.filter((_, index) => index !== id));
+    setUploadFile(uploadFile.filter((_, index) => index !== id));
+    console.log(uploadFile);
   };
 
+  //백엔드로 전송할 이미지 파일 경로
   const onChangeImg = (e) => {
     e.preventDefault();
-
-    if (e.target.files) {
-      const uploadFile = e.target.files;
-      console.log(uploadFile);
-    }
+    // if (e.target.files) {
+    //   uploadFile.push(e.target.files);
+    //   console.log(uploadFile);
+    // }
   };
 
   //대여 물품 선택
@@ -96,6 +107,101 @@ const Post = (props) => {
   //대여단위
   const [dealUnit, setDealUnit] = useState("일");
 
+  const communication = () => {
+    // console.log(title, contents, price, quantity, dealUnit, stuffs);
+    // console.log(uploadFile);
+    // console.log(uploadFile[0]);
+    //백엔드로 데이터 전송
+    const formData = new FormData();
+    //게시물 제목
+    formData.append("title", title);
+    //대여 단위
+    formData.append("rental_unit", dealUnit);
+    //대여 가격
+    formData.append("rental_price", price);
+    //수량
+    formData.append("quantity", quantity);
+    //내용
+    formData.append("explain", contents);
+    //사진들
+    // let test = [];
+
+    // let iterator = uploadFile.values();
+    // for (const value of iterator) {
+    //   test.push(value);
+    // }
+    // console.log(test[0].files);
+    // for (const [key, value] of Object.entries(uploadFile)) {
+    //   // console.log(`${key} ${value}`);
+    //   //console.log(value);
+    //   test.push(value);
+    //   //console.log(test);
+    // }
+    // for (let i = 0; i < uploadFile.length; i++) {
+    //   test.push(uploadFile[i]);
+    // }
+    // for (let i = 1; i < uploadFile.length; i++) {
+    //   test[0].push(uploadFile[i]);
+    // }
+
+    formData.append("photos", uploadFile);
+    //카테고리들
+    let categories = [];
+    for (const [key, value] of Object.entries(stuffs)) {
+      if (value) categories.push(key);
+    }
+    formData.append("categories", categories);
+
+    // for (let value of formData.values()) {
+    //   console.log(typeof value, value);
+    // }
+    // console.log(uploadFile[0]);
+
+    axios
+      .post("/posts", formData, {
+        headers: {
+          "Contest-Type": "multipart/form-data",
+        },
+      })
+      .then(function (response) {
+        console.log(response);
+        if (response.data.code === 200) {
+          //원래는 백에서 리다이렉트 해야 함
+          //일단은 임의적으로 로그인 페이지 이동 해 놨음
+          window.location.href = "/login";
+        } else if (response.data.code === 201) {
+          //게시물 등록 성공
+          //게시물 상세보기 페이지로 이동
+          //일단은 홈으로 이동
+          window.location.href = "/home";
+        }
+        //else {
+        //   //내부오류 회원가입 실패
+        // }
+      })
+      .catch(function (error) {
+        console.log(error);
+        // if (error.response) {
+        //   // get response with a status code not in range 2xx
+        //   console.log(error.response.data);
+        //   console.log(error.response.status);
+        //   console.log(error.response.headers);
+        // } else if (error.request) {
+        //   // no response
+        //   console.log(error.request);
+        //   // instance of XMLHttpRequest in the browser
+        //   // instance ofhttp.ClientRequest in node.js
+        // } else {
+        //   // Something wrong in setting up the request
+        //   console.log("Error", error.message);
+        // }
+        // console.log(error.config);
+      });
+
+    //게시물 상세보기로 이동
+    console.log("등록!");
+  };
+
   // 등록하기 버튼 클릭 핸들링
   const postClickHandling = () => {
     //데이터 입력 확인
@@ -115,11 +221,10 @@ const Post = (props) => {
       setAlertText("상세 내용을 입력해주세요");
       setIncorrect(true);
     } else {
-      setIncorrect(false);
       //데이터 입력이 모두 되어 있다면
-      //백엔드로 데이터 전송
-      //게시물 상세보기로 이동
-      console.log("등록!");
+
+      setIncorrect(false);
+      communication();
     }
   };
 
