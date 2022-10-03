@@ -20,7 +20,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         {/* <Route path="/Home" render={() => <Home />} /> */}
         <Route path="/shop" element={<Shop />} />
-        <Route path="/detail" element={<ShopDetail />} />
+        <Route path="/detail/:id" element={<ShopDetail />} />
         <Route path="/post" element={<Post />} />
         <Route path="/about" element={<About />} />
         <Route path="/alarm" element={<Alarm />} />
