@@ -57,14 +57,13 @@ const SignUp = (props) => {
       .then(function (response) {
         if (response.data.code === 201) {
           //회원가입 성공
-          window.location.href = "/Login";
+          window.location.replace("./login");
         }
         //else {
         //   //내부오류 회원가입 실패
         // }
       })
       .catch(function (error) {
-        console.log("hi");
         setIncorrect(true);
         setAlertText("중복된 아이디입니다.");
       });
