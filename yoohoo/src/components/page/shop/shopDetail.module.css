@@ -66,7 +66,7 @@
 .imgGroup {
   width: 41.6667vw;
   height: 31.25vw;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .imgBtnList {
@@ -93,6 +93,7 @@
 .img1 {
   width: 41.6667vw;
   height: 24.8611vw;
+  object-fit: contain;
 }
 
 .nowBtn {
