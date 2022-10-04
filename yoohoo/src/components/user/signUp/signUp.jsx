@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styles from "./signUp.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
+import axios from "axios";
+
+// axios.defaults.withCredentials = true;
 
 const SignUp = (props) => {
   const [inputs, setInputs] = useState({
@@ -37,11 +40,33 @@ const SignUp = (props) => {
   const signUpHandling = () => {
     setIncorrect(false);
     //백엔드로 회원 정보 전송하기
+    const data = {
+      email: id,
+      password: pw,
+      company: companyName,
+      address: adress,
+      contact: phone,
+    };
 
-    //만약 회원가입이 제대로 됐다면 로그인 페이지로 이동
-    window.location.href = "/Login";
-    //만약 중복된 아이디라면 알림 띄우기
-    //setAlertText("중복된 아이디입니다.");
+    axios
+      .post("/members", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(function (response) {
+        if (response.data.code === 201) {
+          //회원가입 성공
+          window.location.replace("./login");
+        }
+        //else {
+        //   //내부오류 회원가입 실패
+        // }
+      })
+      .catch(function (error) {
+        setIncorrect(true);
+        setAlertText("중복된 아이디입니다.");
+      });
   };
 
   const regexHandling = () => {
