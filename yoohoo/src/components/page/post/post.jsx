@@ -125,12 +125,18 @@ const Post = (props) => {
     for (const [key, value] of Object.entries(stuffs)) {
       if (value) categories.push(key);
     }
-    for (let i = 0; i < categories.length; i++) {
-      formData.append("categories", categories[i]);
+    if (categories.length > 0) {
+      //카테고리가 존재하면 이름 보내기
+      for (let i = 0; i < categories.length; i++) {
+        formData.append("categories", categories[i]);
+      }
+    } else {
+      //카테고리가 존재하지 않으면 빈 배열 보내기
+      formData.append("categories", Array.from({ length: 1 }));
     }
 
     for (let value of formData.values()) {
-      console.log(typeof value, value);
+      console.log(value);
     }
 
     axios
