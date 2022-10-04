@@ -46,7 +46,7 @@ const ShopDetail = (props) => {
 
   /* Shop -> Redux-Toolkit */
   const dispatch = useDispatch();
-  const shopList = useSelector((state) => state.shopListReducer);
+  const shopList = useSelector((state) => state.shopListSlice);
 
   useEffect(() => {
     dispatch(shopListThunk());

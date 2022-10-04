@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Shop = (props) => {
   /* Redux-Toolkit */
   const dispatch = useDispatch();
-  const shopList = useSelector((state) => state.shopListReducer);
+  const shopList = useSelector((state) => state.shopListSlice);
 
   useEffect(() => {
     dispatch(shopListThunk());

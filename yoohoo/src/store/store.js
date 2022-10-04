@@ -5,10 +5,10 @@ import {
 } from "@reduxjs/toolkit";
 
 import { shopItemSlice } from "./modules/shopItem";
-import { shopListReducer } from "./modules/shopList";
+import { shopListSlice } from "./modules/shopList";
 
 const rootReducer = combineReducers({
-  shopListReducer: shopListReducer.reducer,
+  shopListSlice: shopListSlice.reducer,
   shopItemSlice: shopItemSlice.reducer,
 });
 

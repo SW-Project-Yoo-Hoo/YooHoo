@@ -6,7 +6,7 @@ export const shopListThunk = createAsyncThunk("GET_LIST", async () => {
   return res.data.data;
 });
 
-export const shopListReducer = createSlice({
+export const shopListSlice = createSlice({
   name: "shopList",
   initialState: [],
   reducers: {},
