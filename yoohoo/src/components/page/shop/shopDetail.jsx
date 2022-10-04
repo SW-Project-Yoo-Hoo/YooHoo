@@ -34,6 +34,9 @@ const ShopDetail = (props) => {
   /** 처음 렌더링 됐을 때, 현재 보여지는 사진 check */
   const [isPicLoaded, setIsPicLoaded] = useState(false);
 
+  /** 거래하기 눌렀을 때 정보 check */
+  const [trade, setTrade] = useState(true);
+
   /**===================== */
   /* 추가 기능 */
   const [wish, setWish] = useState(false); // 찜하기 버튼
@@ -107,6 +110,7 @@ const ShopDetail = (props) => {
         break;
     }
     setDateCnt(val);
+    setTrade(true);
   }, [startDate, endDate]);
 
   /* 총 금액 계산 */
@@ -114,6 +118,20 @@ const ShopDetail = (props) => {
     setPrice(dateCnt * count * productItem.rental_price);
   }, [dateCnt, count]);
 
+  /* ================================ */
+  /* 거래하기 버튼 */
+  const onClickTrade = () => {
+    // 대여 기간 설정 안 했을 때
+    isNaN(dateCnt) && setTrade((trade) => !trade);
+
+    // 로그인 안 했을 떄
+
+    // 백엔드로 거래 정보 POST
+    if (trade === true) {
+    }
+  };
+
+  /* ================================ */
   /* 모달창 닫기 */
   const modalClose = () => {
     setModalOpen(!modalOpen);
@@ -468,7 +486,9 @@ const ShopDetail = (props) => {
                 </div>
 
                 <div className={styles.btns}>
-                  <button className={styles.tradeBtn}>거래하기</button>
+                  <button className={styles.tradeBtn} onClick={onClickTrade}>
+                    거래하기
+                  </button>
                   <button className={styles.wishBtn} onClick={onClickWishBtn}>
                     <div className={styles.wishContent}>
                       {wish ? (
@@ -480,6 +500,13 @@ const ShopDetail = (props) => {
                     </div>
                   </button>
                 </div>
+                {!trade && (
+                  <div className={styles.warning}>
+                    <p className={styles.warningText}>
+                      대여 기간을 설정해 주세요
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Footer */}
