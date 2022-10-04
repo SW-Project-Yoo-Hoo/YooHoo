@@ -1,5 +1,6 @@
 package swproject.yoohoo.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +28,29 @@ public class Request {
     private int rental_period;
     private int rental_quantity;
     private String contact;
+    private int total_price; //총 대여 가격
+
+    @Enumerated(EnumType.STRING)
+    private RequestStatus status; //요청상태 [REQUEST,ACCEPTED, REJECTED,OVERTIME]: [요청중,수락됨,거절됨,거절X but 기간 지남]
+
     private LocalDateTime requestDate;
+    //==생성 메서드==//
+    public Request() {
+
+    }
+    @Builder
+    public Request(Post post, Member member, LocalDate startDate, LocalDate returnDate, int rental_period, int rental_quantity, int total_price) {
+        this.post = post;
+        this.member = member;
+        this.startDate = startDate;
+        this.returnDate = returnDate;
+        this.rental_period = rental_period;
+        this.rental_quantity = rental_quantity;
+        this.contact="";
+        this.total_price = total_price;
+        this.status=RequestStatus.REQUEST;
+        this.requestDate=LocalDateTime.now();
+    }
 
     //==연관관계 메서드==//
     public void setPost(Post post){
@@ -39,5 +62,21 @@ public class Request {
         this.member=member;
         member.getRequests().add(this);
     }
+
+    //==비즈니스 로직==//
+    /** 요청 거절 **/
+    public void reject(){
+        this.setStatus(RequestStatus.REJECTED);
+    }
+
+    public void accept(){
+        if(startDate.isBefore(LocalDate.now())){//거래 시작날짜가 이미 지났으면
+            throw new IllegalArgumentException("이미 기간이 지난 요청은 수락할 수 없습니다.");
+        }
+        this.setStatus(RequestStatus.ACCEPTED);
+    }
+
+
+
 
 }

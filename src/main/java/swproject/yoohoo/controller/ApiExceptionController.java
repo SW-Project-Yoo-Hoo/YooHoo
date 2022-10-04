@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import swproject.yoohoo.domain.ResultVO;
+import swproject.yoohoo.exception.AlreadyExistException;
 import swproject.yoohoo.exception.UserException;
 
 import java.io.IOException;
@@ -22,12 +23,21 @@ public class ApiExceptionController {
         return new ResultVO(401, e.getMessage(),null);
     }
 
-    @ResponseStatus(HttpStatus.CONFLICT) //409
+    @ResponseStatus(HttpStatus.UNAUTHORIZED) //401
     @ExceptionHandler(IllegalStateException.class)
     public ResultVO illegalExHandle(IllegalStateException e) {
         log.error("[exceptionHandle] ex", e);
+        return new ResultVO(401, e.getMessage(),null);
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)//409
+    @ExceptionHandler(AlreadyExistException.class)
+    public ResultVO AlreadyExistExHandle(AlreadyExistException e){
+        log.error("[exceptionHandle] ex", e);
         return new ResultVO(409, e.getMessage(),null);
     }
+
+
 
     @ExceptionHandler
     public ResultVO userExHandle(UserException e) {

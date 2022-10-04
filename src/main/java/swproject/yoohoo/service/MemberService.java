@@ -6,9 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import swproject.yoohoo.controller.EditForm;
-import swproject.yoohoo.controller.MemberController;
-import swproject.yoohoo.controller.MemberForm;
 import swproject.yoohoo.domain.Member;
+import swproject.yoohoo.exception.AlreadyExistException;
 import swproject.yoohoo.fileupload.FileStore;
 import swproject.yoohoo.repository.MemberRepository;
 
@@ -37,7 +36,7 @@ public class MemberService {
         List<Member> findMembers =
                 memberRepository.findByEmail(member.getEmail());
         if (!findMembers.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
+            throw new AlreadyExistException("이미 존재하는 회원입니다.");
         }
     }
     /**

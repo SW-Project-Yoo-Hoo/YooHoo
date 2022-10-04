@@ -37,6 +37,7 @@ public class Post {
     private String rental_unit; //대여 단위
     private int rental_price; //대여 가격
     private int quantity; //수량
+    @Column(length = 500)
     private String content; //설명
     private LocalDateTime postDate; //등록 날짜시간
 

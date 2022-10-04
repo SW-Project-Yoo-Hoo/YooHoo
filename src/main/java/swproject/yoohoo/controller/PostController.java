@@ -57,8 +57,8 @@ public class PostController {
     }
 
     @Getter
-    public class PostsDTO{
-        private Long post_id;
+    public class PostsDTO{ //게시글 전체보기 DTO
+        private Long post_id; //게시글 id
         private String title; //제목
         private String unit; //대여 단위
         private int price; //대여 가격
@@ -80,7 +80,7 @@ public class PostController {
 
     @Getter
     @AllArgsConstructor
-    public class PostDTO{
+    public class PostDTO{ //게시글 상세보기 DTO
         private String company; //작성자 회사이름
         private String address; //작성자 주소
         private String photo_dir; //작성자 프로필 사진 경로
@@ -119,7 +119,7 @@ public class PostController {
     }
 
     @Getter
-    public static class CategoryName{ //카테고리
+    public static class CategoryName{ //카테고리 DTO
         private String name; //카테고리 이름
         public CategoryName(String name) {
             this.name = name;
@@ -127,7 +127,7 @@ public class PostController {
     }
 
     @Getter
-    public static class Image{//사진DTO
+    public static class Image{ //사진 DTO
         private String name; //사진 저장 이름
         private String dir; //사진 경로
 
@@ -135,6 +135,5 @@ public class PostController {
             this.name = photo.getFileName();
             this.dir = photo.getFilePath();
         }
-
     }
 }

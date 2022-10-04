@@ -11,6 +11,8 @@ import swproject.yoohoo.repository.MemberRepository;
 
 import javax.persistence.EntityManager;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -72,5 +74,11 @@ public class MemberServiceTest {
 
         //then
         fail("예외가 발생해야 한다.");
+    }
+
+    @Test
+    public void 시계_확인(){
+        LocalDate date=LocalDate.parse("2022-12-11", DateTimeFormatter.ISO_LOCAL_DATE);
+        System.out.println(date);
     }
 }

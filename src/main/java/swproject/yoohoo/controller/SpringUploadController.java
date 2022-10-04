@@ -36,7 +36,6 @@ public class SpringUploadController {
             String fullPath = fileDir + file.getOriginalFilename();
             log.info("파일 저장 fullPath={}",fullPath);
             file.transferTo(new File(fullPath));
-
             //DB에도 fullPath 저장
         }
         return "upload-form";

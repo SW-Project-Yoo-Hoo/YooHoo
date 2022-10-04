@@ -61,7 +61,7 @@ public class MemberController {
         session.setAttribute(SessionConst.LOGIN_MEMBER,loginMember);
         //세션 생성, 세션에 회원 정보 보관
 
-        return new ResultVO(200,"로그인 성공",null);
+        return new ResultVO(200,"로그인 성공",loginMember.getId());
     }
 
 
@@ -118,14 +118,33 @@ public class MemberController {
     public void createCategory(){
         if(categoryService.findCategories().isEmpty()){
             Category category1 = new Category();
-            category1.setId(1L);
             category1.setName("desk");
             categoryService.saveCategory(category1);
 
             Category category2 = new Category();
-            category2.setId(2L);
             category2.setName("chair");
             categoryService.saveCategory(category2);
+
+            Category category3 = new Category();
+            category3.setName("faxMachine");
+            categoryService.saveCategory(category3);
+
+            Category category4 = new Category();
+            category4.setName("copyMachine");
+            categoryService.saveCategory(category4);
+
+            Category category5 = new Category();
+            category5.setName("coffeeMachine");
+            categoryService.saveCategory(category5);
+
+            Category category6 = new Category();
+            category6.setName("mouse");
+            categoryService.saveCategory(category6);
+
+            Category category7 = new Category();
+            category7.setName("computer");
+            categoryService.saveCategory(category7);
+
         }
 
     }
@@ -148,6 +167,24 @@ public class MemberController {
             alarm.setContent("회원님의 다양한 자원을 공유해보세요");
             alarm.setAlarmDate(LocalDateTime.now());
             alarmService.save(alarm);
+            //회원1 회원가입
+
+            Member member2 = new Member();
+            member2.setEmail("object19972@naver.com");
+            member2.setPassword("qqq");
+            member2.setCompany("YooHoo");
+            member2.setAddress("낙동남로 1372-7");
+            member2.setContact("010-7470-3965");
+            member2.setPhoto_dir("");
+            memberService.join(member2);
+
+            Alarm alarm2 = new Alarm();
+            alarm.setMember(member2);
+            alarm.setTitle("반갑습니다!");
+            alarm.setContent("회원님의 다양한 자원을 공유해보세요");
+            alarm.setAlarmDate(LocalDateTime.now());
+            alarmService.save(alarm);
+            //회원2 회원가입
         }
     }
 }
