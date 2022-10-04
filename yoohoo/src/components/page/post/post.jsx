@@ -36,7 +36,7 @@ const Post = (props) => {
   //백엔드로 전송할 이미지
   const [uploadFile, setUploadFile] = useState([]);
 
-  // 이미지 상대경로 저장(미리보기)
+  // 이미지 상대경로 및 파일 저장
   const imageAddHandling = (e) => {
     const imageLists = e.target.files;
     let imageUrlLists = [...showImages];
@@ -62,16 +62,10 @@ const Post = (props) => {
   const imageDeleteHandling = (id) => {
     setShowImages(showImages.filter((_, index) => index !== id));
     setUploadFile(uploadFile.filter((_, index) => index !== id));
-    console.log(uploadFile);
   };
 
-  //백엔드로 전송할 이미지 파일 경로
   const onChangeImg = (e) => {
     e.preventDefault();
-    // if (e.target.files) {
-    //   uploadFile.push(e.target.files);
-    //   console.log(uploadFile);
-    // }
   };
 
   //대여 물품 선택
@@ -108,9 +102,6 @@ const Post = (props) => {
   const [dealUnit, setDealUnit] = useState("일");
 
   const communication = () => {
-    // console.log(title, contents, price, quantity, dealUnit, stuffs);
-    // console.log(uploadFile);
-    // console.log(uploadFile[0]);
     //백엔드로 데이터 전송
     const formData = new FormData();
     //게시물 제목
@@ -123,39 +114,24 @@ const Post = (props) => {
     formData.append("quantity", quantity);
     //내용
     formData.append("explain", contents);
+
     //사진들
-    // let test = [];
+    for (let i = 0; i < uploadFile.length; i++) {
+      formData.append("photos", uploadFile[i]);
+    }
 
-    // let iterator = uploadFile.values();
-    // for (const value of iterator) {
-    //   test.push(value);
-    // }
-    // console.log(test[0].files);
-    // for (const [key, value] of Object.entries(uploadFile)) {
-    //   // console.log(`${key} ${value}`);
-    //   //console.log(value);
-    //   test.push(value);
-    //   //console.log(test);
-    // }
-    // for (let i = 0; i < uploadFile.length; i++) {
-    //   test.push(uploadFile[i]);
-    // }
-    // for (let i = 1; i < uploadFile.length; i++) {
-    //   test[0].push(uploadFile[i]);
-    // }
-
-    formData.append("photos", uploadFile);
     //카테고리들
     let categories = [];
     for (const [key, value] of Object.entries(stuffs)) {
       if (value) categories.push(key);
     }
-    formData.append("categories", categories);
+    for (let i = 0; i < categories.length; i++) {
+      formData.append("categories", categories[i]);
+    }
 
-    // for (let value of formData.values()) {
-    //   console.log(typeof value, value);
-    // }
-    // console.log(uploadFile[0]);
+    for (let value of formData.values()) {
+      console.log(typeof value, value);
+    }
 
     axios
       .post("/posts", formData, {
@@ -174,28 +150,12 @@ const Post = (props) => {
           //게시물 상세보기 페이지로 이동
           //일단은 홈으로 이동
           window.location.href = "/home";
+        } else {
+          //내부오류
         }
-        //else {
-        //   //내부오류 회원가입 실패
-        // }
       })
       .catch(function (error) {
         console.log(error);
-        // if (error.response) {
-        //   // get response with a status code not in range 2xx
-        //   console.log(error.response.data);
-        //   console.log(error.response.status);
-        //   console.log(error.response.headers);
-        // } else if (error.request) {
-        //   // no response
-        //   console.log(error.request);
-        //   // instance of XMLHttpRequest in the browser
-        //   // instance ofhttp.ClientRequest in node.js
-        // } else {
-        //   // Something wrong in setting up the request
-        //   console.log("Error", error.message);
-        // }
-        // console.log(error.config);
       });
 
     //게시물 상세보기로 이동
