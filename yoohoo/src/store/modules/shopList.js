@@ -11,6 +11,6 @@ export const shopListSlice = createSlice({
   initialState: [],
   reducers: {},
   extraReducers: {
-    [shopListThunk.fulfilled]: (state, { payload }) => [...payload],
+    [shopListThunk.fulfilled]: (state, { payload }) => [...payload].reverse(),
   },
 });
