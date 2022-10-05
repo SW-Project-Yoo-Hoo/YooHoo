@@ -25,19 +25,6 @@ const Shop = (props) => {
     window.scrollTo(0, 0);
   }, []);
 
-  // const [productList, setProductList] = useState([]);
-
-  /* 백엔드에서 물품 리스트 가져오기 */
-  // useEffect(() => {
-  //   const getList = () => {
-  //     axios
-  //       .get("/posts")
-  //       .then((res) => setProductList(res.data.data))
-  //       .catch((error) => console.log(error));
-  //   };
-  //   getList();
-  // }, []);
-
   /* 찜하기 버튼 */
   function onClickWishBtn(id, prevWish) {
     setWishItem(
@@ -67,11 +54,7 @@ const Shop = (props) => {
           </div>
           <div className={styles.productGroup}>
             {shopList.map((item) => (
-              <Link
-                to={`/detail/${item.post_id}`}
-                state={{ info: item }}
-                key={item.post_id}
-              >
+              <Link to={`/detail/${item.post_id}`} state={{ info: item }}>
                 <div className={styles.product}>
                   <img
                     className={styles.productImg}
