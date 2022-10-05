@@ -18,7 +18,7 @@ const Alarm = (props) => {
         return "ProgressStatus";
       case "조기 반납 요청":
         return "ProgressStatus";
-      case "거래 취소":
+      case "요청 취소":
         return "SentStatus";
       case "거래 시작":
         return "ProgressStatus";
