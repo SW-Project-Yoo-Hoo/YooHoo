@@ -24,7 +24,13 @@ public class DealRepository {
 
     public Deal findOne(Long id){return em.find(Deal.class,id);}
 
-//    public List<Deal> findByMe(Member member, DealStatus status){
-//        return em.createQuery("select d from Deal d where ")
-//    }
+    public List<Deal> findByStatus(Member member, DealStatus status){
+        return em.createQuery("select d from Deal d where (d.member=:member " +
+                                "or d.post.member=:member) " +
+                                "and d.status=:status",
+                Deal.class)
+                .setParameter("member",member)
+                .setParameter("status",status)
+                .getResultList();
+    }
 }

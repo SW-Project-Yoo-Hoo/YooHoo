@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import swproject.yoohoo.domain.*;
 import swproject.yoohoo.login.Login;
 import swproject.yoohoo.service.MemberService;
@@ -27,7 +27,7 @@ public class PostController {
 
 
     @PostMapping("/posts")
-    public void create(PostForm form, @Login Member loginMember, HttpServletResponse response) throws IOException {
+    public ResponseEntity create(PostForm form, @Login Member loginMember, HttpServletResponse response) throws IOException {
         PostCreateRequestDto requestDto=new PostCreateRequestDto(
                 form.getTitle(),
                 form.getRental_unit(),
@@ -35,8 +35,13 @@ public class PostController {
                 form.getQuantity(),
                 form.getExplain());
         Long postId=postService.savePost(loginMember.getId(), requestDto,form.getPhotos(),form.getCategories());
-        String uri="/posts/"+postId;
-        response.sendRedirect(uri);
+        log.info("저장성공 상세보기로 리다이렉트");
+        HttpHeaders headers = new HttpHeaders();
+        String url="http://localhost:3000/posts/"+postId;
+        headers.add("Location", url);
+        log.info("저장성공 상세보기로 리다이렉트 가자");
+        return new ResponseEntity(headers, HttpStatus.FOUND);
+
     }
 
     @GetMapping("/posts/{id}")

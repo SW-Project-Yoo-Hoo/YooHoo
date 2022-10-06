@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @RestController
 @RequiredArgsConstructor
 public class RequestController {
@@ -46,9 +47,9 @@ public class RequestController {
     }
 
     @PutMapping("/requests/{id}")
-    public ResultVO reject(@PathVariable Long id){
-        requestService.rejectRequest(id);
-        return new ResultVO(200,"요청 거절 성공",null);
+    public ResultVO cancel(@PathVariable Long id,@Login Member loginMember){
+        requestService.cancelRequest(id,loginMember.getId());
+        return new ResultVO(200,"요청 취소/거절 성공",null);
     }
 
     @PostMapping("/requests/{id}")

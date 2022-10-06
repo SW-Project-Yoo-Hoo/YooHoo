@@ -47,18 +47,23 @@ public class RequestService {
     }
 
     @Transactional
-    public void rejectRequest(Long requestId){
+    public void cancelRequest(Long requestId,Long loginId){
         Request request=requestRepository.findOne(requestId);
-        Post post=request.getPost();
-        Member member=request.getMember();
-        request.reject();
+        Post post=request.getPost();//
+        Member member=request.getMember();//요청자
+        if(member.getId()==loginId){//요청자가 취소
+            request.cancel();
+        }
+        else {//받은사람이 취소
+            request.reject();
 
-        Alarm alarm = Alarm.builder()
-                .member(member)
-                .title("거래 취소")
-                .content("거래가 취소 되었어요. 재요청을 하시겠습니까?")
-                .photo_dir(post.getPhotos().get(0).getFilePath()).build();
-        alarmRepository.save(alarm);
+            Alarm alarm = Alarm.builder()
+                    .member(member)
+                    .title("거래 취소")
+                    .content("거래가 취소 되었어요. 재요청을 하시겠습니까?")
+                    .photo_dir(post.getPhotos().get(0).getFilePath()).build();
+            alarmRepository.save(alarm);
+        }
     }
 
     @Transactional

@@ -4,11 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import swproject.yoohoo.domain.Deal;
-import swproject.yoohoo.domain.Post;
-import swproject.yoohoo.domain.Request;
+import swproject.yoohoo.domain.*;
 import swproject.yoohoo.repository.DealRepository;
+import swproject.yoohoo.repository.MemberRepository;
 import swproject.yoohoo.repository.RequestRepository;
+
+import java.util.List;
 
 
 @Service
@@ -17,6 +18,7 @@ import swproject.yoohoo.repository.RequestRepository;
 @Slf4j
 public class DealService {
     private final RequestRepository requestRepository;
+    private final MemberRepository memberRepository;
     private final DealRepository dealRepository;
 
     @Transactional
@@ -36,4 +38,23 @@ public class DealService {
     public Deal findOne(Long dealId){
         return dealRepository.findOne(dealId);
     }
+
+    public List<Deal> findMyPreDeal(Long memberId){
+        Member member = memberRepository.findOne(memberId);
+        DealStatus status=DealStatus.PRE;
+        return dealRepository.findByStatus(member,status);
+    }
+
+    public List<Deal> findMyInDeal(Long memberId){
+        Member member = memberRepository.findOne(memberId);
+        DealStatus status=DealStatus.IN;
+        return dealRepository.findByStatus(member,status);
+    }
+
+    public List<Deal> findMyPostDeal(Long memberId){
+        Member member = memberRepository.findOne(memberId);
+        DealStatus status=DealStatus.POST;
+        return dealRepository.findByStatus(member,status);
+    }
+
 }

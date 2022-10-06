@@ -43,7 +43,6 @@ public class Request {
         this.startDate = startDate;
         this.returnDate = returnDate;
         this.rental_quantity = rental_quantity;
-        this.rental_quantity = rental_quantity;
         this.total_price = total_price;
         this.status=RequestStatus.REQUEST;
         this.requestDate=LocalDateTime.now();
@@ -73,6 +72,9 @@ public class Request {
         this.setStatus(RequestStatus.ACCEPTED);
     }
 
+    public void cancel(){
+        this.setStatus(RequestStatus.DELETED);
+    }
 
 
 

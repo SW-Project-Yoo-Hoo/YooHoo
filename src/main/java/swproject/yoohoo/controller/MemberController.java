@@ -2,6 +2,7 @@ package swproject.yoohoo.controller;
 
 
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import swproject.yoohoo.domain.*;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class MemberController {
     private final MemberService memberService;
     private final AlarmService alarmService;
@@ -47,6 +49,7 @@ public class MemberController {
 
     @GetMapping("/login")
     public ResultVO login(){
+        log.info("로그인 리다이렉트 성공");
         return new ResultVO(200,"로그인 리다이렉트 성공",null);
     }
 
@@ -73,6 +76,7 @@ public class MemberController {
     @GetMapping("/my")
     public ResultVO myPage(@Login Member loginMember){
         myDTO myDTO = new myDTO(loginMember);
+        log.info("마이페이지 이동 성공");
         return new ResultVO(200,"마이페이지 이동 성공",myDTO);
     }
 
