@@ -3,7 +3,7 @@ import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import styles from "./shopDetail.module.css";
 import styled from "styled-components";
 import Header from "../../header/header";
@@ -105,7 +105,6 @@ const ShopDetail = (props) => {
         val /= 30;
         break;
       case "년":
-        console.log("뿡");
         val /= 365;
         break;
     }
@@ -120,14 +119,36 @@ const ShopDetail = (props) => {
 
   /* ================================ */
   /* 거래하기 버튼 */
+  const navigate = useNavigate();
   const onClickTrade = () => {
     // 대여 기간 설정 안 했을 때
     isNaN(dateCnt) && setTrade((trade) => !trade);
 
-    // 로그인 안 했을 떄
+    // 로그인 안 했을 때
 
-    // 백엔드로 거래 정보 POST
+    // 백엔드로 '거래 정보' POST
     if (trade === true) {
+      const data = {
+        post_id: nowItem.post_id,
+        startDate: moment(startDate).format("YYYY-MM-DD"),
+        returnDate: moment(endDate).format("YYYY-MM-DD"),
+        total_price: price,
+        rental_quantity: count,
+      };
+      axios
+        .post("/requests", data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then(
+          navigate("/profile", {
+            state: {
+              call: "SentStatus",
+            },
+          })
+        )
+        .catch((error) => console.log(error));
     }
   };
 
