@@ -100,7 +100,7 @@ public class MemberController {
         return new ResultVO(200,null, newform);
     }
 
-    @GetMapping("/admin/members") //관리자 용이라 dto따로 사용X
+    @GetMapping("/admin/members") //테스트용이라 dto따로 사용X
     public ResultVO list(){
         List<Member> members = memberService.findMembers();
         return new ResultVO(200,null,members);

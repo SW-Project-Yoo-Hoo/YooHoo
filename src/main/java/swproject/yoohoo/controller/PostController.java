@@ -58,6 +58,16 @@ public class PostController {
         return new ResultVO(200,"게시물 전체 조회 성공",postlist);
     }
 
+    @GetMapping("/my/myPosts")
+    public ResultVO myList(@Login Member loginMember){
+        List<Post> posts=postService.findMyPosts(loginMember.getId());
+        List<PostsDTO> dtoList=posts.stream()
+                .map(m->new PostsDTO(m))
+                .collect(Collectors.toList());
+
+        return new ResultVO(200,"내 게시물 조회 성공",dtoList);
+    }
+
     @Getter
     public class PostsDTO{ //게시글 전체보기 DTO
         private Long post_id; //게시글 id
@@ -119,6 +129,7 @@ public class PostController {
             log.info("postDTO 생성: {}",this);
         }
     }
+
 
     @Getter
     public static class CategoryName{ //카테고리 DTO

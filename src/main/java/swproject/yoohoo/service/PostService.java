@@ -63,6 +63,11 @@ public class PostService {
         return post.getId();
     }
 
+    public List<Post> findMyPosts(Long loginId){
+        Member member= memberRepository.findOne(loginId);
+        return postRepository.findByWriter(member);
+    }
+
     public List<Post> findPosts(){
         return postRepository.findAll();
     }

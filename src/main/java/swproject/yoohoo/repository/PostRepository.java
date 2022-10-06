@@ -2,6 +2,7 @@ package swproject.yoohoo.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import swproject.yoohoo.domain.Member;
 import swproject.yoohoo.domain.Post;
 
 import javax.persistence.EntityManager;
@@ -29,6 +30,13 @@ public class PostRepository {
         return em.createQuery("select p from Post p where p.title = :title",
                 Post.class)
                 .setParameter("title",title)
+                .getResultList();
+    }
+
+    public List<Post> findByWriter(Member member){
+        return em.createQuery("select p from Post p where p.member = :member",
+                Post.class)
+                .setParameter("member",member)
                 .getResultList();
     }
 }

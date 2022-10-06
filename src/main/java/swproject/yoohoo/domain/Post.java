@@ -39,6 +39,8 @@ public class Post {
     private int quantity; //수량
     @Column(length = 500)
     private String content; //설명
+    @Enumerated(EnumType.STRING)
+    private PostStatus status; //삭제관리 위한 상태 [POST,DELETED]: [포스트,삭제됨]
     private LocalDateTime postDate; //등록 날짜시간
 
     public Post() {
@@ -80,6 +82,7 @@ public class Post {
         this.rental_price = rental_price;
         this.quantity = quantity;
         this.content = content;
+        this.status=PostStatus.POST;
         this.postDate=LocalDateTime.now();
     }
 }
