@@ -150,12 +150,12 @@ const Post = (props) => {
         if (response.data.code === 200) {
           //원래는 백에서 리다이렉트 해야 함
           //일단은 임의적으로 로그인 페이지 이동 해 놨음
-          window.location.href = "/login";
+          //window.location.href = "/login";
         } else if (response.data.code === 201) {
           //게시물 등록 성공
           //게시물 상세보기 페이지로 이동
           //일단은 홈으로 이동
-          window.location.href = "/home";
+          //window.location.href = "/home";
         } else {
           //내부오류
         }
