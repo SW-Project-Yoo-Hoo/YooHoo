@@ -13,6 +13,7 @@ import SentStatus from "./requestStatus/sentStatus";
 import ReceivedStatus from "./requestStatus/receivedStatus";
 import { MdLocationOn, MdPhone } from "react-icons/md";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Profile = (props) => {
   const userInfo = {
@@ -78,6 +79,26 @@ const Profile = (props) => {
     //백엔드로 회원 정보 전송하기
     //내 게시물 보기로 이동하기
     setCall("MyPost");
+  };
+
+  //로그아웃 버튼 클릭시
+  const logoutHandling = () => {
+    //백엔드에 로그아웃 요청
+    axios
+      .post("/logout")
+      .then(function (response) {
+        // response
+        if (response.data.code === 200) {
+          //로그아웃 성공
+          //메인홈으로 이동
+          window.location.href = "/home";
+        }
+        // console.log(response);
+      })
+      .catch(function (error) {
+        // 오류발생시 실행
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -272,7 +293,12 @@ const Profile = (props) => {
               >
                 프로필 수정
               </div>
-              <div>로그아웃</div>
+              <div
+                className={styles.cursorPointer}
+                onClick={() => logoutHandling()}
+              >
+                로그아웃
+              </div>
             </div>
           </div>
         </div>
