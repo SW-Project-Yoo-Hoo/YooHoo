@@ -13,6 +13,7 @@ import swproject.yoohoo.login.Login;
 import swproject.yoohoo.service.MemberService;
 import swproject.yoohoo.service.PostService;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,15 +27,16 @@ public class PostController {
 
 
     @PostMapping("/posts")
-    public ResultVO create(PostForm form,@Login Member loginMember) throws IOException {
+    public void create(PostForm form, @Login Member loginMember, HttpServletResponse response) throws IOException {
         PostCreateRequestDto requestDto=new PostCreateRequestDto(
                 form.getTitle(),
                 form.getRental_unit(),
                 form.getRental_price(),
                 form.getQuantity(),
                 form.getExplain());
-        postService.savePost(loginMember.getId(), requestDto,form.getPhotos(),form.getCategories());
-        return new ResultVO(201,"게시물 생성 성공",null);
+        Long postId=postService.savePost(loginMember.getId(), requestDto,form.getPhotos(),form.getCategories());
+        String uri="/posts/"+postId;
+        response.sendRedirect(uri);
     }
 
     @GetMapping("/posts/{id}")
@@ -94,27 +96,27 @@ public class PostController {
         private List<CategoryName> categories; //카테고리 리스트
 
         //카테고리 담기
-       public PostDTO (Member member, Post post){//Enity->DTO
-           log.info("postDTO생성- member={},post={}",member,post);
+        public PostDTO (Member member, Post post){//Enity->DTO
+            log.info("postDTO생성- member={},post={}",member,post);
 
-           this.company= member.getCompany();
-           this.address= member.getAddress();
-           this.photo_dir= member.getPhoto_dir();
+            this.company= member.getCompany();
+            this.address= member.getAddress();
+            this.photo_dir= member.getPhoto_dir();
 
-           this.title=post.getTitle();
-           this.rental_unit=post.getRental_unit();
-           this.rental_price=post.getRental_price();
-           this.quantity= post.getQuantity();
-           this.explain=post.getContent();
-           this.photos=post.getPhotos().stream()
-                   .map(m->new Image(m))
-                   .collect(Collectors.toList());
+            this.title=post.getTitle();
+            this.rental_unit=post.getRental_unit();
+            this.rental_price=post.getRental_price();
+            this.quantity= post.getQuantity();
+            this.explain=post.getContent();
+            this.photos=post.getPhotos().stream()
+                    .map(m->new Image(m))
+                    .collect(Collectors.toList());
 
-          this.categories=post.getPostCategories().stream()
-                  .map(m->new CategoryName(m.getCategory().getName()))
-                  .collect(Collectors.toList());
+            this.categories=post.getPostCategories().stream()
+                    .map(m->new CategoryName(m.getCategory().getName()))
+                    .collect(Collectors.toList());
 
-           log.info("postDTO 생성: {}",this);
+            log.info("postDTO 생성: {}",this);
         }
     }
 

@@ -1,5 +1,6 @@
 package swproject.yoohoo.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,12 +18,27 @@ public class Alarm {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="deal_id")
-    private Deal deal;
+    @Enumerated(EnumType.STRING)
+    private AlarmStatus status; //알람상태 [ALARM, DELETE]: [알람,삭제]
 
-    private String type;
-    private String title;
-    private String content;
-    private LocalDateTime alarmDate;
+    private String title; //제목
+    private String content; //내용
+    private String photo_dir; //게시글 대표 사진
+    private LocalDateTime alarmDate; //알림 생성 날짜&시간
+
+    //==생성 메서드==//
+    @Builder
+    public Alarm(Member member, String title, String content, String photo_dir) {
+        this.member = member;
+        this.status=AlarmStatus.ALARM;
+        this.title = title;
+        this.content = content;
+        this.photo_dir = photo_dir;
+        this.alarmDate=LocalDateTime.now();
+    }
+
+
+    public Alarm() {
+
+    }
 }

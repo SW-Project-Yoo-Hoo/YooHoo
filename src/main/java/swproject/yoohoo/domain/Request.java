@@ -25,9 +25,7 @@ public class Request {
 
     private LocalDate startDate;
     private LocalDate returnDate;
-    private int rental_period;
     private int rental_quantity;
-    private String contact;
     private int total_price; //총 대여 가격
 
     @Enumerated(EnumType.STRING)
@@ -39,14 +37,13 @@ public class Request {
 
     }
     @Builder
-    public Request(Post post, Member member, LocalDate startDate, LocalDate returnDate, int rental_period, int rental_quantity, int total_price) {
+    public Request(Post post, Member member, LocalDate startDate, LocalDate returnDate, int rental_quantity, int total_price) {
         this.post = post;
         this.member = member;
         this.startDate = startDate;
         this.returnDate = returnDate;
-        this.rental_period = rental_period;
         this.rental_quantity = rental_quantity;
-        this.contact="";
+        this.rental_quantity = rental_quantity;
         this.total_price = total_price;
         this.status=RequestStatus.REQUEST;
         this.requestDate=LocalDateTime.now();

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import swproject.yoohoo.controller.PostController;
-import swproject.yoohoo.controller.PostForm;
 import swproject.yoohoo.domain.*;
 import swproject.yoohoo.fileupload.FileStore;
 import swproject.yoohoo.repository.CategoryRepository;
@@ -17,7 +16,7 @@ import swproject.yoohoo.repository.PostRepository;
 import java.io.IOException;
 import java.util.List;
 
-import static swproject.yoohoo.domain.PostCategory.createPostCategory;
+
 
 @Service
 @Transactional(readOnly = true)

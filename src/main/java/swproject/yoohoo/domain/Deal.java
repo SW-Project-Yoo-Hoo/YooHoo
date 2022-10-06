@@ -27,9 +27,8 @@ public class Deal {
 
     private LocalDate startDate;
     private LocalDate returnDate;
-    private int return_period;
     private int return_quantity;
-    private String contact;
+    private int total_price; //총 대여 가격
 
     private boolean returnP;
     private boolean returnU;
@@ -48,9 +47,8 @@ public class Deal {
         }
         this.startDate=request.getStartDate();
         this.returnDate=request.getReturnDate();
-        this.return_period=request.getRental_period();
         this.return_quantity=request.getRental_quantity();
-        this.contact= request.getContact();
+        this.total_price=request.getTotal_price();
         this.returnP=false;
         this.returnU=false;
     }

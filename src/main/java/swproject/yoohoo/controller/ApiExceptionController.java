@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import swproject.yoohoo.domain.ResultVO;
 import swproject.yoohoo.exception.AlreadyExistException;
-import swproject.yoohoo.exception.UserException;
 
 import java.io.IOException;
 
@@ -35,14 +34,6 @@ public class ApiExceptionController {
     public ResultVO AlreadyExistExHandle(AlreadyExistException e){
         log.error("[exceptionHandle] ex", e);
         return new ResultVO(409, e.getMessage(),null);
-    }
-
-
-
-    @ExceptionHandler
-    public ResultVO userExHandle(UserException e) {
-        log.error("[exceptionHandle] ex", e);
-        return new ResultVO(400, e.getMessage(),null);
     }
 
 

@@ -35,11 +35,11 @@ public class MemberController {
         member.setPhoto_dir("");
         memberService.join(member);
 
-        Alarm alarm = new Alarm();
-        alarm.setMember(member);
-        alarm.setTitle("반갑습니다!");
-        alarm.setContent("회원님의 다양한 자원을 공유해보세요");
-        alarm.setAlarmDate(LocalDateTime.now());
+        Alarm alarm = Alarm.builder()
+                .member(member)
+                .title("반갑습니다!")
+                .content("회원님의 다양한 자원을 공유해보세요")
+                .photo_dir("").build();
         alarmService.save(alarm);
 
         return new ResultVO(201,"가입 생성",null);
@@ -61,7 +61,19 @@ public class MemberController {
         session.setAttribute(SessionConst.LOGIN_MEMBER,loginMember);
         //세션 생성, 세션에 회원 정보 보관
 
-        return new ResultVO(200,"로그인 성공",loginMember.getId());
+        return new ResultVO(200,"로그인 성공",null);
+    }
+
+    @GetMapping("/isLogin")
+    public ResultVO loginCheck(@Login Member loginMember){
+        if(loginMember==null) return new ResultVO(200,"로그인 되어있지 않습니다.",false);
+        return new ResultVO(200,"로그인 되어있습니다.",true);
+    }
+
+    @GetMapping("/my")
+    public ResultVO myPage(@Login Member loginMember){
+        myDTO myDTO = new myDTO(loginMember);
+        return new ResultVO(200,"마이페이지 이동 성공",myDTO);
     }
 
 
@@ -107,6 +119,21 @@ public class MemberController {
         public EditDTO(Member member) {
             this.email = member.getEmail();
             this.password = member.getPassword();
+            this.company = member.getCompany();
+            this.address = member.getAddress();
+            this.contact = member.getContact();
+            this.photo_dir = member.getPhoto_dir();
+        }
+    }
+
+    @Getter
+    static class myDTO{
+        private String company; //회사 이름
+        private String address; //회사 주소
+        private String contact; //회사 연락처
+        private String photo_dir; //프로필 사진 경로
+
+        public myDTO(Member member) {
             this.company = member.getCompany();
             this.address = member.getAddress();
             this.contact = member.getContact();
@@ -161,11 +188,11 @@ public class MemberController {
             member.setPhoto_dir("");
             memberService.join(member);
 
-            Alarm alarm = new Alarm();
-            alarm.setMember(member);
-            alarm.setTitle("반갑습니다!");
-            alarm.setContent("회원님의 다양한 자원을 공유해보세요");
-            alarm.setAlarmDate(LocalDateTime.now());
+            Alarm alarm = Alarm.builder()
+                    .member(member)
+                    .title("반갑습니다!")
+                    .content("회원님의 다양한 자원을 공유해보세요")
+                    .photo_dir("").build();
             alarmService.save(alarm);
             //회원1 회원가입
 
@@ -178,12 +205,12 @@ public class MemberController {
             member2.setPhoto_dir("");
             memberService.join(member2);
 
-            Alarm alarm2 = new Alarm();
-            alarm.setMember(member2);
-            alarm.setTitle("반갑습니다!");
-            alarm.setContent("회원님의 다양한 자원을 공유해보세요");
-            alarm.setAlarmDate(LocalDateTime.now());
-            alarmService.save(alarm);
+            Alarm alarm2 = Alarm.builder()
+                    .member(member2)
+                    .title("반갑습니다!")
+                    .content("회원님의 다양한 자원을 공유해보세요")
+                    .photo_dir("").build();
+            alarmService.save(alarm2);
             //회원2 회원가입
         }
     }

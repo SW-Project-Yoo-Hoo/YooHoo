@@ -9,6 +9,7 @@ import swproject.yoohoo.domain.Member;
 import swproject.yoohoo.domain.ResultVO;
 import swproject.yoohoo.login.Login;
 import swproject.yoohoo.service.AlarmService;
+import swproject.yoohoo.service.PostService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AlarmController {
     private final AlarmService alarmService;
+    private final PostService postService;
 
     @GetMapping("/alarms")
     public ResultVO list(@Login Member loginMember){ //미완성
@@ -34,11 +36,13 @@ public class AlarmController {
         private String title; //제목
         private String content; //내용
         private LocalDateTime alarmDate; //생성 날짜
-
+        private String photo_dir; //게시글 대표 사진
         public alarmDTO(Alarm alarm) {
             this.title = alarm.getTitle();
             this.content = alarm.getContent();
             this.alarmDate = alarm.getAlarmDate();
+            this.photo_dir=alarm.getPhoto_dir();
+
         }
     }
 }

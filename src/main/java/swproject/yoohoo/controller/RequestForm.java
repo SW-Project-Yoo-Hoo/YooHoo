@@ -16,7 +16,6 @@ public class RequestForm { //거래 등록 Form
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate returnDate; //반납 날짜
 
-    private int rental_period; //대여 기간
     private int rental_quantity; //대여 수량
     private int total_price; //총 대여 가격
 }

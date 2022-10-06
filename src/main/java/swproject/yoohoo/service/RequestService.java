@@ -34,29 +34,46 @@ public class RequestService {
         Request request = Request.builder()
                         .member(member).post(post)
                         .startDate(form.getStartDate()).returnDate(form.getReturnDate())
-                        .rental_period(form.getRental_period()).rental_quantity(form.getRental_quantity())
+                        .rental_quantity(form.getRental_quantity())
                         .total_price(form.getTotal_price()).build();
-
-        Alarm alarm = new Alarm();
-        alarm.setMember(writer);
-        alarm.setTitle("거래 요청");
-        alarm.setContent("회원님의 게시물에 거래 요청이 들어왔어요. 거래를 수락해주세요!");
-        alarm.setAlarmDate(LocalDateTime.now());
-        alarmRepository.save(alarm);
-
         requestRepository.save(request);
+
+        Alarm alarm = Alarm.builder()
+                .member(writer)
+                .title("거래 요청")
+                .content("회원님의 게시물에 거래 요청이 들어왔어요. 거래를 수락해주세요!")
+                .photo_dir(post.getPhotos().get(0).getFilePath()).build();
+        alarmRepository.save(alarm);
     }
 
     @Transactional
     public void rejectRequest(Long requestId){
         Request request=requestRepository.findOne(requestId);
+        Post post=request.getPost();
+        Member member=request.getMember();
         request.reject();
+
+        Alarm alarm = Alarm.builder()
+                .member(member)
+                .title("거래 취소")
+                .content("거래가 취소 되었어요. 재요청을 하시겠습니까?")
+                .photo_dir(post.getPhotos().get(0).getFilePath()).build();
+        alarmRepository.save(alarm);
     }
 
     @Transactional
     public void acceptRequest(Long requestId){
         Request request=requestRepository.findOne(requestId);
+        Post post=request.getPost();
+        Member member=request.getMember();
         request.accept();
+
+        Alarm alarm = Alarm.builder()
+                .member(member)
+                .title("거래 요청")
+                .content("회원님이 요청이 수락되었습니다.")
+                .photo_dir(post.getPhotos().get(0).getFilePath()).build();
+        alarmRepository.save(alarm);
     }
 
     public List<Request> findRequests(){
