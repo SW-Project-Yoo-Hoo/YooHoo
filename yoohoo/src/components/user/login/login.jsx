@@ -143,8 +143,6 @@ const Login = (props) => {
 };
 
 const MyPage = (props) => {
-  // let test = 0;
-  // return test ? <Navigate to="/profile" replace={true} /> : <Login />;
   return <Login />;
 };
 
