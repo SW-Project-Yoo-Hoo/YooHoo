@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./alarm.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
-import AlarmList from "./alarmList";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Alarm = (props) => {
