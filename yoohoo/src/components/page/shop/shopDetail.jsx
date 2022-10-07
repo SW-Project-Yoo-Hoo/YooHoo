@@ -35,8 +35,10 @@ const ShopDetail = (props) => {
   const [isPicLoaded, setIsPicLoaded] = useState(false);
 
   /** 거래하기 눌렀을 때 정보 check */
-  const [trade, setTrade] = useState(true);
+  /** 0: 거래 가능, 1: 대여 기간 미선택, 2: 본인 게시물 */
+  const [trade, setTrade] = useState(0);
 
+  /** 로그인 정보 check */
   const [loginInfo, setLoginInfo] = useState("");
 
   /**===================== */
@@ -87,7 +89,17 @@ const ShopDetail = (props) => {
         .catch((error) => console.log(error));
     };
 
+    const getLoginCheck = () => {
+      axios
+        .get("/isLogin")
+        .then((res) => {
+          setLoginInfo(res.data);
+        })
+        .catch((error) => console.log(error));
+    };
+
     getItem();
+    getLoginCheck();
   }, [location]);
 
   /* 사용자가 고른 [시작 날짜 ~ 반납 날짜] => 대여 단위에 맞게 계산 */
@@ -112,7 +124,7 @@ const ShopDetail = (props) => {
         break;
     }
     setDateCnt(val);
-    setTrade(true);
+    setTrade(0);
   }, [startDate, endDate]);
 
   /* 총 금액 계산 */
@@ -126,12 +138,15 @@ const ShopDetail = (props) => {
 
   const onClickTrade = () => {
     // 로그인 안 했을 때
+    if (loginInfo.data === false) {
+      navigate("/login");
+    }
 
     // 내 게시물에 거래하기 눌렀을 때
 
     // 대여 기간 설정 안 했을 때
     if (isNaN(dateCnt)) {
-      setTrade(false);
+      setTrade(1);
     }
     // 백엔드로 '거래 정보' POST
     else {
@@ -148,14 +163,14 @@ const ShopDetail = (props) => {
             "Content-Type": "application/json",
           },
         })
-        .then(
+        .then((res) => {
           navigate("/profile", {
             state: {
               call: "SentStatus",
             },
-          })
-        )
-        .catch((error) => console.log(error));
+          });
+        })
+        .catch((error) => setTrade(2));
     }
   };
 
@@ -528,13 +543,14 @@ const ShopDetail = (props) => {
                     </div>
                   </button>
                 </div>
-                {!trade && (
-                  <div className={styles.warning}>
-                    <p className={styles.warningText}>
-                      대여 기간을 설정해 주세요
-                    </p>
-                  </div>
-                )}
+
+                <div className={styles.warning}>
+                  <p className={styles.warningText}>
+                    {trade === 1 && "대여 기간을 설정해 주세요!"}
+                    {trade === 2 &&
+                      "본인 게시물에는 거래 요청을 할 수 없습니다!"}
+                  </p>
+                </div>
               </div>
 
               {/* Footer */}
