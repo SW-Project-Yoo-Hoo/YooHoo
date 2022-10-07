@@ -7,6 +7,8 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
 const Alarm = (props) => {
+  const REACT_PUBLIC_URL = "http://localhost:3000/";
+
   const [alarmList, setAlarmList] = useState([]);
 
   // 마이프로필로 이동하기 위한 call 추가
@@ -43,6 +45,7 @@ const Alarm = (props) => {
               content: item.content,
               dateMonth: new Date(item.alarmDate).getMonth() + 1,
               dateDate: new Date(item.alarmDate).getDate(),
+              photo: item.photo_dir,
               call: setCall(item.title),
             }))
           );
@@ -113,13 +116,20 @@ const Alarm = (props) => {
                                 {item.title === "반갑습니다!" ? (
                                   <img
                                     className={styles.productImg}
-                                    src="/Images/header/logo.png"
+                                    src={
+                                      REACT_PUBLIC_URL +
+                                      "images/header/logo.png"
+                                    }
                                     alt="logo"
                                   />
                                 ) : (
                                   <img
                                     className={styles.productImg}
-                                    src={item.image}
+                                    src={
+                                      REACT_PUBLIC_URL +
+                                      "productList/" +
+                                      item.photo
+                                    }
                                     alt="Product"
                                   />
                                 )}
@@ -139,18 +149,39 @@ const Alarm = (props) => {
                     <>
                       <div className={styles.noneDate}>
                         <div>
-                          <div className={styles.hr2}></div>
+                          <div
+                            className={
+                              item.title === "반갑습니다!"
+                                ? styles.hr2First
+                                : styles.hr2
+                            }
+                          ></div>
                           <div className={styles.circle2}></div>
                         </div>
                         <div className={styles.alarm}>
                           <Link to="/profile" state={{ call: item.call }}>
                             <div className={styles.contents2}>
                               <div className={styles.pic}>
-                                <img
-                                  className={styles.productImg}
-                                  src={item.image}
-                                  alt="Product"
-                                />
+                                {item.title === "반갑습니다!" ? (
+                                  <img
+                                    className={styles.productImg}
+                                    src={
+                                      REACT_PUBLIC_URL +
+                                      "images/header/logo.png"
+                                    }
+                                    alt="logo"
+                                  />
+                                ) : (
+                                  <img
+                                    className={styles.productImg}
+                                    src={
+                                      REACT_PUBLIC_URL +
+                                      "productList/" +
+                                      item.photo
+                                    }
+                                    alt="Product"
+                                  />
+                                )}
                               </div>
                               <div className={styles.P}>
                                 <p className={styles.title}>{item.title}</p>
