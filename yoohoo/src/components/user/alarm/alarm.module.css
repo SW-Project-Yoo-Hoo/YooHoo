@@ -63,6 +63,7 @@
 }
 
 .hrFirst,
+.hr2First,
 .hr,
 .hr2 {
   position: absolute;
@@ -82,6 +83,11 @@
 .hr2 {
   height: 7.9639vw;
   transform: translateY(-2.8056vw);
+}
+
+.hr2First {
+  height: 4.6702vw;
+  transform: translateY(-1.5056vw);
 }
 
 .circle,
@@ -206,6 +212,7 @@
   }
 
   .hrFirst,
+  .hr2First,
   .hr,
   .hr2 {
     border-left: 2px solid iconLightGrey;
@@ -224,6 +231,11 @@
   .hr2 {
     height: 140px;
     transform: translateY(-53px);
+  }
+
+  .hr2First {
+    height: 43px;
+    transform: translateY(-30px);
   }
 
   .circle,
