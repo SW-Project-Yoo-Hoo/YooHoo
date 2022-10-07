@@ -101,10 +101,6 @@ const Profile = (props) => {
       });
   };
 
-  useEffect(() => {
-    //첫 렌더링 할때만 회원정보 불러오기
-  }, []);
-
   return (
     <div className={styles.container}>
       {/* header */}
