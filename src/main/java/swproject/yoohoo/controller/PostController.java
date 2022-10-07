@@ -27,7 +27,7 @@ public class PostController {
 
 
     @PostMapping("/posts")
-    public void create(PostForm form, @Login Member loginMember, HttpServletResponse response) throws IOException {
+    public ResultVO create(PostForm form, @Login Member loginMember, HttpServletResponse response) throws IOException {
         PostCreateRequestDto requestDto=new PostCreateRequestDto(
                 form.getTitle(),
                 form.getRental_unit(),
@@ -36,8 +36,10 @@ public class PostController {
                 form.getExplain());
         Long postId=postService.savePost(loginMember.getId(), requestDto,form.getPhotos(),form.getCategories());
 
-        String uri="/posts/"+postId;
-        response.sendRedirect(uri);
+//        String uri="/posts/"+postId;
+//        response.sendRedirect(uri);
+
+        return new ResultVO(201,"게시물 등록 성공",postId);
     }
 
     @GetMapping("/posts/{id}")
