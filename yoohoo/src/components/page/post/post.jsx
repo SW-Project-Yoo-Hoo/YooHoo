@@ -147,26 +147,26 @@ const Post = (props) => {
       })
       .then(function (response) {
         console.log(response);
-        if (response.data.message === "로그인 리다이렉트 성공") {
-          window.location.href = "/login";
-        } else if (response.data.message === "게시물 조회 성공") {
-          window.location.href = "/detail";
-        }
-        // if (response.data.code === 200) {
-        //   console.log(response);
-        //   //원래는 백에서 리다이렉트 해야 함
-        //   //일단은 임의적으로 로그인 페이지 이동 해 놨음
-        //   // window.location.href = "/login";
-        // } else if (response.data.code === 201) {
-        //   console.log(response);
-        //   // 게시물 등록 성공
-        //   // 게시물 상세보기 페이지로 이동
-        //   // 일단은 홈으로 이동
-        //   // window.location.href = "/home";
-        // } else {
-        //   // console.log(response);
-        //   //내부오류
+        // if (response.data.message === "로그인 리다이렉트 성공") {
+        //   window.location.href = "/login";
+        // } else if (response.data.message === "게시물 조회 성공") {
+        //   window.location.href = "/detail";
         // }
+        if (response.data.code === 200) {
+          console.log(response);
+          //원래는 백에서 리다이렉트 해야 함
+          //일단은 임의적으로 로그인 페이지 이동 해 놨음
+          // window.location.href = "/login";
+        } else if (response.data.code === 201) {
+          console.log(response);
+          // 게시물 등록 성공
+          // 게시물 상세보기 페이지로 이동
+          // 일단은 홈으로 이동
+          // window.location.href = "/home";
+        } else {
+          // console.log(response);
+          //내부오류
+        }
       })
       .catch(function (error) {
         console.log(error);
