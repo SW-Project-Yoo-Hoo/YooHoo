@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./editProfile.module.css";
 import { MdPhotoCamera } from "react-icons/md";
 
@@ -8,6 +9,19 @@ const EditProfile = () => {
     adress: "",
     phone: "",
   });
+
+  /* 백엔드에서 물품 리스트 가져오기 */
+  useEffect(() => {
+    const getInfo = () => {
+      axios
+        .get("/members/my/myInfo")
+        .then((res) => {
+          setInputs(res.data.data);
+        })
+        .catch((error) => console.log(error));
+    };
+    getInfo();
+  }, []);
 
   const { companyName, adress, phone } = inputs;
 
@@ -55,7 +69,7 @@ const EditProfile = () => {
         {/* 이미지 미리보기 */}
         <div className={styles.showPhoto}>
           {/* 이미지 선택 전  */}
-          <div>{/* 사용ㅈ ㅏ원래 이미지 받아오기 */}</div>
+          <div>{/* 사용자원래 이미지 받아오기 */}</div>
 
           {/* 이미지 선택 후 */}
           {showImages.map((image, id) => (
@@ -93,6 +107,7 @@ const EditProfile = () => {
             name="companyName"
             onChange={changeHandling}
             value={companyName}
+            placeholder={inputs.company}
             // placeholder="아이디를 입력해주세요"
             className={styles.input}
           />
@@ -106,6 +121,7 @@ const EditProfile = () => {
             name="adress"
             onChange={changeHandling}
             value={adress}
+            placeholder={inputs.address}
             // placeholder="아이디를 입력해주세요"
             className={styles.input}
           />
@@ -119,6 +135,7 @@ const EditProfile = () => {
             name="phone"
             onChange={changeHandling}
             value={phone}
+            placeholder={inputs.contact}
             // placeholder="아이디를 입력해주세요"
             className={styles.input}
           />
