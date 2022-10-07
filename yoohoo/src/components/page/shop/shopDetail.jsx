@@ -3,7 +3,10 @@ import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { BiPlus, BiMinus } from "react-icons/bi";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { shopListThunk } from "../../../store/modules/shopList";
 import styles from "./shopDetail.module.css";
 import styled from "styled-components";
 import Header from "../../header/header";
@@ -11,9 +14,6 @@ import Footer from "../../footer/footer";
 import ModalCal from "./modalCal";
 import moment from "moment";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { shopListThunk } from "../../../store/modules/shopList";
 
 const ShopDetail = (props) => {
   const REACT_PUBLIC_URL = "http://localhost:3000/";
@@ -36,6 +36,8 @@ const ShopDetail = (props) => {
 
   /** 거래하기 눌렀을 때 정보 check */
   const [trade, setTrade] = useState(true);
+
+  const [loginInfo, setLoginInfo] = useState("");
 
   /**===================== */
   /* 추가 기능 */
@@ -84,10 +86,11 @@ const ShopDetail = (props) => {
         })
         .catch((error) => console.log(error));
     };
+
     getItem();
   }, [location]);
 
-  /* 사용자가 고른 시작 날짜 ~ 반납 날짜 => 대여 단위에 맞게 계산 */
+  /* 사용자가 고른 [시작 날짜 ~ 반납 날짜] => 대여 단위에 맞게 계산 */
   useEffect(() => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -120,14 +123,18 @@ const ShopDetail = (props) => {
   /* ================================ */
   /* 거래하기 버튼 */
   const navigate = useNavigate();
-  const onClickTrade = () => {
-    // 대여 기간 설정 안 했을 때
-    isNaN(dateCnt) && setTrade((trade) => !trade);
 
+  const onClickTrade = () => {
     // 로그인 안 했을 때
 
+    // 내 게시물에 거래하기 눌렀을 때
+
+    // 대여 기간 설정 안 했을 때
+    if (isNaN(dateCnt)) {
+      setTrade(false);
+    }
     // 백엔드로 '거래 정보' POST
-    if (trade === true) {
+    else {
       const data = {
         post_id: nowItem.post_id,
         startDate: moment(startDate).format("YYYY-MM-DD"),
@@ -212,12 +219,12 @@ const ShopDetail = (props) => {
   }
 
   /* ================================ */
-  /* 찜하기 버튼 */
+  /* [게시물 상세보기] 찜하기 버튼 */
   const onClickWishBtn = () => {
     setWish((wish) => !wish);
   };
 
-  /* 살펴보기 찜하기 버튼 */
+  /* [살펴보기] 찜하기 버튼 */
   function onClickWishBtn2(id, prevWish) {
     setWishItem(
       wishItem.map((it) => (it.id === id ? { ...it, wish: !prevWish } : it))
