@@ -21,7 +21,7 @@ const UserInfo = (props) => {
 
       {/* profileIcon */}
       <li className={styles.liStyle}>
-        <Link to="/login">
+        <Link to="/profile">
           <MdPersonOutline className={styles.icon} />
         </Link>
       </li>
