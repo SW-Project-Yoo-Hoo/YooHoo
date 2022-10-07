@@ -102,6 +102,29 @@ const Post = (props) => {
   const [dealUnit, setDealUnit] = useState("일");
 
   const communication = () => {
+    //로그인 여부 확인
+    axios
+      .get("/isLogin")
+      .then(function (response) {
+        console.log(response);
+        //로그인 되어 있음
+        if (response.data.data === true) {
+          console.log(response);
+          enrollPost();
+        } else {
+          //로그인 안됨
+          window.location.href = "/login";
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    //게시물 상세보기로 이동
+    console.log("등록!");
+  };
+
+  const enrollPost = async () => {
     //백엔드로 데이터 전송
     const formData = new FormData();
     //게시물 제목
@@ -134,12 +157,7 @@ const Post = (props) => {
       //카테고리가 존재하지 않으면 빈 배열 보내기
       formData.append("categories", Array.from({ length: 1 }));
     }
-
-    for (let value of formData.values()) {
-      console.log(value);
-    }
-
-    axios
+    await axios
       .post("/posts", formData, {
         headers: {
           "Contest-Type": "multipart/form-data",
@@ -147,33 +165,17 @@ const Post = (props) => {
       })
       .then(function (response) {
         console.log(response);
-        // if (response.data.message === "로그인 리다이렉트 성공") {
-        //   window.location.href = "/login";
-        // } else if (response.data.message === "게시물 조회 성공") {
-        //   window.location.href = "/detail";
-        // }
-        if (response.data.code === 200) {
-          console.log(response);
-          //원래는 백에서 리다이렉트 해야 함
-          //일단은 임의적으로 로그인 페이지 이동 해 놨음
-          // window.location.href = "/login";
-        } else if (response.data.code === 201) {
-          console.log(response);
-          // 게시물 등록 성공
-          // 게시물 상세보기 페이지로 이동
-          // 일단은 홈으로 이동
-          // window.location.href = "/home";
+        if (response.data.code === 201) {
+          //게시물 등록 완료 되면 상세보기로 이동하기
+          window.location.href = `/detail/${response.data.data}`;
         } else {
-          // console.log(response);
+          console.log(response);
           //내부오류
         }
       })
       .catch(function (error) {
         console.log(error);
       });
-
-    //게시물 상세보기로 이동
-    console.log("등록!");
   };
 
   // 등록하기 버튼 클릭 핸들링
