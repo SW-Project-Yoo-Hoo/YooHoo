@@ -27,7 +27,7 @@ public class PostController {
 
 
     @PostMapping("/posts")
-    public ResponseEntity create(PostForm form, @Login Member loginMember, HttpServletResponse response) throws IOException {
+    public void create(PostForm form, @Login Member loginMember, HttpServletResponse response) throws IOException {
         PostCreateRequestDto requestDto=new PostCreateRequestDto(
                 form.getTitle(),
                 form.getRental_unit(),
@@ -35,13 +35,9 @@ public class PostController {
                 form.getQuantity(),
                 form.getExplain());
         Long postId=postService.savePost(loginMember.getId(), requestDto,form.getPhotos(),form.getCategories());
-        log.info("저장성공 상세보기로 리다이렉트");
-        HttpHeaders headers = new HttpHeaders();
-        String url="http://localhost:3000/posts/"+postId;
-        headers.add("Location", url);
-        log.info("저장성공 상세보기로 리다이렉트 가자");
-        return new ResponseEntity(headers, HttpStatus.FOUND);
 
+        String uri="/posts/"+postId;
+        response.sendRedirect(uri);
     }
 
     @GetMapping("/posts/{id}")
