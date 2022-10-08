@@ -1,51 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./receivedStatus.module.css";
 import { MdPlayCircleFilled } from "react-icons/md";
+import axios from "axios";
 
 const ReceivedStatus = (props) => {
-  const post = [];
+  const [post, setPost] = useState([]);
 
-  const postInfo1 = {
-    //테스트용 객체
-    id: "게시글 아이디1",
-    img: "/Images/test.jpeg",
-    title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    startDay: "2022.09.28",
-    endDay: "2022.10.22",
-
-    showButton: false,
-  };
-
-  const postInfo2 = {
-    //테스트용 객체
-    id: "게시글 아이디2",
-    img: "/Images/home/earth.svg",
-    title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    startDay: "2023.08.22",
-    endDay: "2024.09.22",
-    showButton: false,
-  };
-
-  const getpost = () => {
-    //백엔드에서 정보 가져오기
-    //정보가 존재하면 객체 넣기
-    post.push(postInfo1);
-    post.push(postInfo2);
+  //수락,거절 버튼 토글 이벤트
+  const onToggle = (id) => {
+    setPost(
+      post.map((post) =>
+        post.post_id === id ? { ...post, toggle: !post.toggle } : post
+      )
+    );
   };
 
   const pageNaviHandling = (props) => {
     //해당 페이지 상세보기로 이동하기
-    console.log("이동하기!");
+    window.location.href = `/detail/${props}`;
   };
 
   const returnButtonShow = (props) => {
     const acceptButton = (event) => {
       //백엔드로 거래 수락 정보 전송
+      console.log("수락하기");
       event.stopPropagation();
     };
 
     const rejectButton = (event) => {
       //백엔드로 거래 거절 정보 전송
+      console.log("거절하기");
       event.stopPropagation();
     };
 
@@ -70,33 +54,35 @@ const ReceivedStatus = (props) => {
     );
   };
 
-  const ShowPost = (props, id) => {
-    //각 게시글마다 버튼 show 상태 관리
-    const [showButton, setShowButton] = useState(props.showButton);
-
+  const ShowPost = (props) => {
     return (
       <div
         className={styles.post}
-        onClick={() => pageNaviHandling(props)}
-        key={id}
+        onClick={() => pageNaviHandling(props.post_id)}
+        key={props.post_id}
       >
         {/* 게시물 사진 */}
         <div className={styles.postImgDay}>
-          <img className={styles.postImg} src={props.img} alt="img" />
+          <img
+            className={styles.postImg}
+            src={process.env.PUBLIC_URL + "productList/" + props.image.name}
+            alt="img"
+          />
           {/* button*/}
           <div
             className={styles.returnButton}
             onClick={(event) => {
               //이벤트 버블링 방지
               event.stopPropagation();
-              props.showButton = !showButton;
-              setShowButton(props.showButton);
+
+              //버튼 토글 이벤트
+              onToggle(props.post_id);
             }}
           >
             <MdPlayCircleFilled className={styles.iconButton} />
           </div>
-          {/* 조기반납, 반납버튼 */}
-          {showButton ? returnButtonShow(props) : ""}
+          {/* 수락하기, 거절하기 버튼 */}
+          {props.toggle ? returnButtonShow(props) : ""}
         </div>
 
         {/* 게시물 제목 */}
@@ -107,30 +93,55 @@ const ReceivedStatus = (props) => {
         {/* 게시물 대여 날짜 */}
         <div className={[styles.dealDate, styles.dealDateMargin].join(" ")}>
           <span>시작날짜</span>
-          <span>{props.startDay}</span>
+          <span>{props.startDate}</span>
         </div>
         <div className={styles.dealDate}>
           <span>반납날짜</span>
-          <span>{props.endDay}</span>
+          <span>{props.returnDate}</span>
         </div>
       </div>
     );
   };
 
+  useEffect(() => {
+    let postAdd = [...post];
+    async function get() {
+      await axios
+        .get("/my/requests_received")
+        .then(function (response) {
+          if (response.data.code === 200) {
+            //데이터 받기 성공
+            let responseData = response.data.data;
+
+            for (const [key, value] of Object.entries(responseData)) {
+              postAdd[key] = {
+                ...value,
+                //버튼 토글 속성 추가
+                toggle: false,
+              };
+            }
+            setPost(postAdd);
+          }
+        })
+        .catch(function (error) {
+          // 오류발생시 실행
+          console.log(error);
+        });
+    }
+    get();
+  }, []);
+
   return (
     <div className={styles.container}>
-      {getpost()}
-      {/* 게시물이 없을때 */}
-      <div className={post.length === 0 ? styles.noPost : styles.displayNone}>
-        <span>받은 요청이 없습니다</span>
-      </div>
-
-      {/* 게시물이 있을때 */}
-      <div
-        className={post.length === 0 ? styles.displayNone : styles.gridWrapper}
-      >
-        {post.map((post) => ShowPost(post, post.id))}
-      </div>
+      {post.length === 0 ? (
+        <div className={styles.noPost}>
+          <span>받은 요청이 없습니다</span>
+        </div>
+      ) : (
+        <div className={styles.gridWrapper}>
+          {post.map((post) => ShowPost(post))}
+        </div>
+      )}
     </div>
   );
 };
