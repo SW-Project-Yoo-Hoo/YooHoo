@@ -15,22 +15,59 @@ const ReceivedStatus = (props) => {
     );
   };
 
+  //거절 후 포스트 지우기
+  const remove = (id) => {
+    // post.post_id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+    // = post.post_id가 id 인 것을 제거함
+    setPost(post.filter((post) => post.post_id !== id));
+  };
+
+  //게시물 상세보기로 이동
   const pageNaviHandling = (props) => {
     //해당 페이지 상세보기로 이동하기
     window.location.href = `/detail/${props}`;
   };
 
+  //수락,거절 버튼
   const returnButtonShow = (props) => {
+    //수락하기
     const acceptButton = (event) => {
       //백엔드로 거래 수락 정보 전송
       console.log("수락하기");
       event.stopPropagation();
+      axios
+        .post(`/requests/${props.request_id}`)
+        .then(function (response) {
+          console.log(response);
+          if (response.data.code === 200) {
+            //거절 성공
+          }
+        })
+        .catch(function (error) {
+          // 오류발생시 실행
+          console.log(error);
+        });
+      remove(props.post_id);
     };
 
+    //거절하기
     const rejectButton = (event) => {
       //백엔드로 거래 거절 정보 전송
       console.log("거절하기");
       event.stopPropagation();
+
+      axios
+        .put(`/requests/${props.request_id}`)
+        .then(function (response) {
+          if (response.data.code === 200) {
+            //거절 성공
+          }
+        })
+        .catch(function (error) {
+          // 오류발생시 실행
+          console.log(error);
+        });
+      remove(props.post_id);
     };
 
     return (
@@ -59,14 +96,14 @@ const ReceivedStatus = (props) => {
       <div
         className={styles.post}
         onClick={() => pageNaviHandling(props.post_id)}
-        key={props.post_id}
+        key={props.request_id}
       >
         {/* 게시물 사진 */}
         <div className={styles.postImgDay}>
           <img
             className={styles.postImg}
-            src={process.env.PUBLIC_URL + "productList/" + props.image.name}
-            alt="img"
+            src={process.env.PUBLIC_URL + "productList/" + props.image.dir}
+            alt="이미지를 찾을 수 없습니다"
           />
           {/* button*/}
           <div
@@ -129,7 +166,7 @@ const ReceivedStatus = (props) => {
         });
     }
     get();
-  }, []);
+  }, [post.post_id]);
 
   return (
     <div className={styles.container}>
