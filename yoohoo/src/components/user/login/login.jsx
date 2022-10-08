@@ -9,6 +9,22 @@ const Login = (props) => {
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
     window.scrollTo(0, 0);
+    //잘못된 접근 확인
+    const pageHandling = async () => {
+      await axios
+        .get("/isLogin")
+        .then(function (response) {
+          //로그인 되어 있음
+          if (response.data.data === true) {
+            //프로필페이지로 이동
+            window.location.href = "/profile";
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+    pageHandling();
   }, []);
 
   //회원정보 상태
