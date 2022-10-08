@@ -10,7 +10,7 @@ const SentStatus = (props) => {
   const onToggle = (id) => {
     setPost(
       post.map((post) =>
-        post.post_id === id ? { ...post, toggle: !post.toggle } : post
+        post.request_id === id ? { ...post, toggle: !post.toggle } : post
       )
     );
   };
@@ -81,7 +81,7 @@ const SentStatus = (props) => {
               //이벤트 버블링 방지
               event.stopPropagation();
               //버튼 토글 이벤트
-              onToggle(props.post_id);
+              onToggle(props.request_id);
             }}
           >
             <MdCancel className={styles.iconButton} />
