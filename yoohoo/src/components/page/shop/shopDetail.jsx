@@ -2,6 +2,7 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -40,6 +41,8 @@ const ShopDetail = (props) => {
 
   /** 로그인 정보 check */
   const [loginInfo, setLoginInfo] = useState("");
+
+  const [companyPhoto, setCompanyPhoto] = useState("");
 
   /**===================== */
   /* 추가 기능 */
@@ -98,8 +101,18 @@ const ShopDetail = (props) => {
         .catch((error) => console.log(error));
     };
 
+    const getProfilePhoto = () => {
+      axios
+        .get("/my")
+        .then((res) => {
+          setCompanyPhoto(res);
+        })
+        .catch((error) => console.log(error));
+    };
+
     getItem();
     getLoginCheck();
+    getProfilePhoto();
   }, [location]);
 
   /* 사용자가 고른 [시작 날짜 ~ 반납 날짜] => 대여 단위에 맞게 계산 */
@@ -351,13 +364,23 @@ const ShopDetail = (props) => {
                     </ul>
                   </div>
                 </div>
-
+                {console.log(companyPhoto)}
                 <div className={styles.company}>
-                  <img
-                    className={styles.companyImg}
-                    src={REACT_PUBLIC_URL + "images/about/ys.svg"}
-                    alt="Company"
-                  />
+                  {companyPhoto.data.data.photo_dir === "" ? (
+                    <img
+                      className={styles.companyImg}
+                      src={REACT_PUBLIC_URL + "images/userProfileBasic.svg"}
+                      alt="Company"
+                    />
+                  ) : (
+                    /** 회사 프로필 수정 */
+                    <img
+                      className={styles.companyImg}
+                      src={REACT_PUBLIC_URL + "images/about/ys.svg"}
+                      alt="Company"
+                    />
+                  )}
+
                   <div className={styles.companyInfo}>
                     <p className={styles.companyName}>{productItem.company}</p>
                     <p className={styles.companyAddress}>
@@ -365,18 +388,14 @@ const ShopDetail = (props) => {
                     </p>
                   </div>
                 </div>
-
                 <div className={styles.hr}></div>
-
                 <div>
                   <p className={styles.descriptionTitle}>물품 소개</p>
                   <div className={styles.descriptionContent}>
                     {productItem.explain}
                   </div>
                 </div>
-
                 <div className={styles.hr}></div>
-
                 <div>
                   <p className={styles.lookTitle}>살펴보기</p>
                   <LookProducts>
@@ -464,16 +483,11 @@ const ShopDetail = (props) => {
                   <div className={styles.period}>
                     <p className={styles.periodTitle}>대여 기간</p>
                     <div className={styles.helpImg}>
-                      <img
-                        className={styles.helpImg}
-                        src={REACT_PUBLIC_URL + "images/shopDetail/info.png"}
-                        alt="Help"
-                      />
+                      <AiOutlineExclamationCircle className={styles.helpImg} />
                       <div className={styles.helpContainer}>
                         <p className={styles.helpContent}>
                           대여 기간은 '{productItem.rental_unit}' 단위로만
-                        </p>
-                        <p className={styles.helpContent}>
+                          <br></br>
                           설정할 수 있습니다.
                         </p>
                       </div>
@@ -505,12 +519,12 @@ const ShopDetail = (props) => {
                 <div>
                   <p className={styles.countTitle}>수량</p>
                   <div className={styles.countBtns}>
-                    <button className={styles.minusBtn}>
-                      <BiMinus className={styles.btnIcon} onClick={minusBtn} />
+                    <button className={styles.minusBtn} onClick={minusBtn}>
+                      <BiMinus className={styles.btnIcon} />
                     </button>
                     <p className={styles.countNum}>{count}</p>
-                    <button className={styles.plusBtn}>
-                      <BiPlus className={styles.btnIcon} onClick={plusBtn} />
+                    <button className={styles.plusBtn} onClick={plusBtn}>
+                      <BiPlus className={styles.btnIcon} />
                     </button>
                   </div>
                 </div>
