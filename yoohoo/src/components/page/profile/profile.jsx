@@ -29,6 +29,21 @@ const Profile = (props) => {
   // 알람 페이지에서 넘어온 경우
   const location = useLocation();
   useEffect(() => {
+    const pageHandling = async () => {
+      await axios
+        .get("/isLogin")
+        .then(function (response) {
+          //로그인 되어 있음
+          if (response.data.data === false) {
+            //로그인페이지로 이동
+            window.location.href = "/login";
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+    pageHandling();
     if (location.state !== null) {
       setCall(location.state.call);
     }
