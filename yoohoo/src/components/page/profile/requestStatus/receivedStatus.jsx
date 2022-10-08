@@ -19,7 +19,7 @@ const ReceivedStatus = (props) => {
   const remove = (id) => {
     // post.post_id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
     // = post.post_id가 id 인 것을 제거함
-    setPost(post.filter((post) => post.post_id !== id));
+    setPost(post.filter((post) => post.request_id !== id));
   };
 
   //게시물 상세보기로 이동
@@ -47,7 +47,7 @@ const ReceivedStatus = (props) => {
           // 오류발생시 실행
           console.log(error);
         });
-      remove(props.post_id);
+      remove(props.request_id);
     };
 
     //거절하기
@@ -67,7 +67,7 @@ const ReceivedStatus = (props) => {
           // 오류발생시 실행
           console.log(error);
         });
-      remove(props.post_id);
+      remove(props.request_id);
     };
 
     return (
