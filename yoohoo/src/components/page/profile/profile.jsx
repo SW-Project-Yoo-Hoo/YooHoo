@@ -48,7 +48,6 @@ const Profile = (props) => {
       await axios
         .get("/my")
         .then(function (response) {
-          console.log(response);
           let responseData = response.data.data;
 
           for (const [key, value] of Object.entries(responseData)) {
@@ -58,12 +57,8 @@ const Profile = (props) => {
               userAdd[key] =
                 process.env.PUBLIC_URL + "images/userProfileBasic.svg";
             }
-
-            console.log(key, value);
           }
-          console.log(userAdd);
           setUserInfo(userAdd);
-          console.log(userInfo);
         })
         .catch(function (error) {
           console.log(error);
