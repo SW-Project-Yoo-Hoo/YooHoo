@@ -3,10 +3,22 @@ import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
 import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import Header from "../../header/header";
-import ShopImg from "./shopImg";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { shopListThunk } from "../../../store/modules/shopList";
+import { useDispatch, useSelector } from "react-redux";
 
 const Shop = (props) => {
-  const [wishItem, setWishItem] = useState(ShopImg);
+  /* Redux-Toolkit */
+  const dispatch = useDispatch();
+  const shopList = useSelector((state) => state.shopListSlice);
+
+  useEffect(() => {
+    dispatch(shopListThunk());
+  }, []);
+
+  const [wishItem, setWishItem] = useState(shopList);
+  // const [wishItem, setWishItem] = useState(ShopImg);
 
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
@@ -41,19 +53,28 @@ const Shop = (props) => {
             <span className={styles.subTitle}>All Products</span>
           </div>
           <div className={styles.productGroup}>
-            {ShopImg.map((item, index) => (
-              <div className={styles.product}>
-                <img
-                  className={styles.productImg}
-                  src={item.image}
-                  alt="Product"
-                />
-                <div className={styles.info}>
-                  <p className={styles.productTitle}>{item.title}</p>
-                  <div className={styles.info2}>
-                    <p className={styles.productPrice}>{item.price}</p>
+            {shopList.map((item) => (
+              <Link to={`/detail/${item.post_id}`} state={{ info: item }}>
+                <div className={styles.product}>
+                  <img
+                    className={styles.productImg}
+                    src={
+                      process.env.PUBLIC_URL + "productList/" + item.image.dir
+                    }
+                    alt="Product"
+                  />
+                  <div className={styles.info}>
+                    <p className={styles.productTitle}>{item.title}</p>
+                    <div className={styles.info2}>
+                      <p className={styles.productPrice}>
+                        {item.price.toLocaleString("ko-KR")}원/{item.unit}
+                      </p>
+                      <div className={styles.unselectWishIcon}>
+                        <MdFavoriteBorder className={styles.unselectWishIcon} />
+                      </div>
 
-                    <div
+                      {/* 찜하기 기능 추가시 주석 제거 */}
+                      {/* <div
                       className={
                         wishItem[item.id - 1].wish
                           ? styles.selectWishIcon
@@ -68,10 +89,11 @@ const Shop = (props) => {
                       ) : (
                         <MdFavoriteBorder className={styles.unselectWishIcon} />
                       )}
+                    </div> */}
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

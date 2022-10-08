@@ -1,11 +1,11 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import Calendar from "react-calendar";
 import styles from "./modalCal.module.css";
 import styled from "styled-components";
 import moment from "moment";
 
-const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
+const ModalCal = ({ modalClose, changeStart, changeEnd, unit }) => {
   const [date, setDate] = useState("");
   const [startDay, setStartDay] = useState("");
   const [endDay, setEndDay] = useState("");
@@ -16,7 +16,26 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
 
   const [valCheck, setValCheck] = useState("");
 
+  const [productUnit, setProductUnit] = useState(0); // 해당 게시물 대여 단위
+
   function onClickDay(value) {
+    if (productUnit === 0) {
+      switch (unit) {
+        case "일":
+          setProductUnit(1);
+          break;
+        case "주":
+          setProductUnit(7);
+          break;
+        case "월":
+          setProductUnit(30);
+          break;
+        case "년":
+          setProductUnit(365);
+          break;
+      }
+    }
+
     /* 시작 날짜 안 눌렀을 때 */
     if (!startDayClick && !endDayClick) {
       setDate(value);
@@ -47,20 +66,9 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
     const end = new Date(endDay);
     const diffDate = start.getTime() - end.getTime();
 
-    // 일 차이
     const val = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24))) + 1;
 
-    // 주 차이
-    const val2 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 7)));
-
-    // 월 차이
-    const val3 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 30)));
-
-    // 연도 차이
-    const val4 = Math.floor(Math.abs(diffDate / (1000 * 60 * 60 * 24 * 365)));
-
-    if (val % 7 === 0) {
-      // 주 단위 일 때
+    if (val % productUnit === 0) {
       setValCheck("");
     } else {
       setValCheck(val + "일 선택하셨습니다!\n" + "대여 단위를 확인 해 주세요");
@@ -121,6 +129,7 @@ const ModalCal = ({ modalClose, changeStart, changeEnd }) => {
                   className={
                     startDay !== "" ? styles.selected : styles.unselected
                   }
+                  content
                 >
                   {startDay !== ""
                     ? moment(startDay).format("YYYY.MM.DD")

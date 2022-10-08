@@ -66,7 +66,7 @@
 .imgGroup {
   width: 41.6667vw;
   height: 31.25vw;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .imgBtnList {
@@ -93,6 +93,7 @@
 .img1 {
   width: 41.6667vw;
   height: 24.8611vw;
+  object-fit: contain;
 }
 
 .nowBtn {
@@ -494,6 +495,21 @@
   margin-right: 0.5556vw;
 }
 
+.warning {
+  width: 20.8333vw;
+  margin-top: 2.0833vw;
+}
+
+.warningText {
+  color: mainOrange;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0.7639vw;
+  font-family: "Regular";
+}
 /* ================================= */
 /* 그 이상 */
 @media (min-width: 1920px) {
@@ -786,5 +802,14 @@
     width: 18px;
     height: 18px;
     margin-right: 10px;
+  }
+
+  .warning {
+    width: 400px;
+    margin-top: 40px;
+  }
+
+  .warningText {
+    font-size: 15px;
   }
 }
