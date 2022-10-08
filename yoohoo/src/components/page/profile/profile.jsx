@@ -16,12 +16,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 const Profile = (props) => {
-  const userInfo = {
-    name: "testName",
-    adress: "testAdress",
-    phone: "testPhone",
-    photoSrc: "",
-  };
+  const [userInfo, setUserInfo] = useState({});
 
   //웹 스토리지 저장 커스텀 훅 호출
   const [call, setCall] = useLocalStorage("call", "MyPost");
@@ -29,6 +24,9 @@ const Profile = (props) => {
   // 알람 페이지에서 넘어온 경우
   const location = useLocation();
   useEffect(() => {
+    window.scrollTo(0, 0);
+
+    //잘못된 접근 확인
     const pageHandling = async () => {
       await axios
         .get("/isLogin")
@@ -43,11 +41,41 @@ const Profile = (props) => {
           console.log(error);
         });
     };
+
+    //회원정보 불러오기
+    const getUser = async () => {
+      let userAdd = { ...userInfo };
+      await axios
+        .get("/my")
+        .then(function (response) {
+          console.log(response);
+          let responseData = response.data.data;
+
+          for (const [key, value] of Object.entries(responseData)) {
+            if (value) {
+              userAdd[key] = value;
+            } else {
+              userAdd[key] =
+                process.env.PUBLIC_URL + "images/userProfileBasic.svg";
+            }
+
+            console.log(key, value);
+          }
+          console.log(userAdd);
+          setUserInfo(userAdd);
+          console.log(userInfo);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
     pageHandling();
+    getUser();
+
     if (location.state !== null) {
       setCall(location.state.call);
     }
-    window.scrollTo(0, 0);
   }, [location]);
 
   //컴포넌트 호출
@@ -132,10 +160,10 @@ const Profile = (props) => {
             <div className={styles.userInfoTop}>
               <img
                 className={styles.userPhoto}
-                src="/Images/header/logo.png"
-                alt="logo"
+                src={userInfo.photo_dir}
+                alt="회원 프로필 사진"
               ></img>
-              <span className={styles.userName}>{userInfo.name}</span>
+              <span className={styles.userName}>{userInfo.company}</span>
             </div>
 
             {/* 주소, 전화번호 */}
@@ -147,11 +175,11 @@ const Profile = (props) => {
               ].join(" ")}
             >
               <MdLocationOn className={styles.userInfoIcon} />
-              <span className={styles.userInfoText}>{userInfo.adress}</span>
+              <span className={styles.userInfoText}>{userInfo.address}</span>
             </div>
             <div className={styles.userInfoBottom}>
               <MdPhone className={styles.userInfoIcon} />
-              <span className={styles.userInfoText}>{userInfo.phone}</span>
+              <span className={styles.userInfoText}>{userInfo.contact}</span>
             </div>
           </div>
 
