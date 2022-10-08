@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./post.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
+import { Navigate } from "react-router-dom";
 import { MdCancel, MdCheck, MdPhotoCamera } from "react-icons/md";
+import axios from "axios";
 
 const Post = (props) => {
   //입력 데이터 확인
@@ -26,41 +28,44 @@ const Post = (props) => {
       ...inputs,
       [name]: value,
     });
-    console.log(value);
   };
 
   //이미지
   const [showImages, setShowImages] = useState([]);
 
-  // 이미지 상대경로 저장
+  //백엔드로 전송할 이미지
+  const [uploadFile, setUploadFile] = useState([]);
+
+  // 이미지 상대경로 및 파일 저장
   const imageAddHandling = (e) => {
     const imageLists = e.target.files;
     let imageUrlLists = [...showImages];
+    let imageUrlListsOrigin = [...uploadFile];
 
     for (let i = 0; i < imageLists.length; i++) {
       const currentImageUrl = URL.createObjectURL(imageLists[i]);
       imageUrlLists.push(currentImageUrl);
+      imageUrlListsOrigin.push(imageLists[i]);
     }
 
     if (imageUrlLists.length > 8) {
       imageUrlLists = imageUrlLists.slice(0, 8);
+      imageUrlListsOrigin = imageUrlListsOrigin.slice(0, 8);
     }
 
     setShowImages(imageUrlLists);
+    setUploadFile(imageUrlListsOrigin);
+    console.log(uploadFile);
   };
 
   // X버튼 클릭 시 이미지 삭제
   const imageDeleteHandling = (id) => {
     setShowImages(showImages.filter((_, index) => index !== id));
+    setUploadFile(uploadFile.filter((_, index) => index !== id));
   };
 
   const onChangeImg = (e) => {
     e.preventDefault();
-
-    if (e.target.files) {
-      const uploadFile = e.target.files;
-      console.log(uploadFile);
-    }
   };
 
   //대여 물품 선택
@@ -96,6 +101,83 @@ const Post = (props) => {
   //대여단위
   const [dealUnit, setDealUnit] = useState("일");
 
+  const communication = () => {
+    //로그인 여부 확인
+    axios
+      .get("/isLogin")
+      .then(function (response) {
+        console.log(response);
+        //로그인 되어 있음
+        if (response.data.data === true) {
+          console.log(response);
+          enrollPost();
+        } else {
+          //로그인 안됨
+          window.location.href = "/login";
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    //게시물 상세보기로 이동
+    console.log("등록!");
+  };
+
+  const enrollPost = async () => {
+    //백엔드로 데이터 전송
+    const formData = new FormData();
+    //게시물 제목
+    formData.append("title", title);
+    //대여 단위
+    formData.append("rental_unit", dealUnit);
+    //대여 가격
+    formData.append("rental_price", price);
+    //수량
+    formData.append("quantity", quantity);
+    //내용
+    formData.append("explain", contents);
+
+    //사진들
+    for (let i = 0; i < uploadFile.length; i++) {
+      formData.append("photos", uploadFile[i]);
+    }
+
+    //카테고리들
+    let categories = [];
+    for (const [key, value] of Object.entries(stuffs)) {
+      if (value) categories.push(key);
+    }
+    if (categories.length > 0) {
+      //카테고리가 존재하면 이름 보내기
+      for (let i = 0; i < categories.length; i++) {
+        formData.append("categories", categories[i]);
+      }
+    } else {
+      //카테고리가 존재하지 않으면 빈 배열 보내기
+      formData.append("categories", Array.from({ length: 1 }));
+    }
+    await axios
+      .post("/posts", formData, {
+        headers: {
+          "Contest-Type": "multipart/form-data",
+        },
+      })
+      .then(function (response) {
+        console.log(response);
+        if (response.data.code === 201) {
+          //게시물 등록 완료 되면 상세보기로 이동하기
+          window.location.href = `/detail/${response.data.data}`;
+        } else {
+          console.log(response);
+          //내부오류
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   // 등록하기 버튼 클릭 핸들링
   const postClickHandling = () => {
     //데이터 입력 확인
@@ -115,11 +197,10 @@ const Post = (props) => {
       setAlertText("상세 내용을 입력해주세요");
       setIncorrect(true);
     } else {
-      setIncorrect(false);
       //데이터 입력이 모두 되어 있다면
-      //백엔드로 데이터 전송
-      //게시물 상세보기로 이동
-      console.log("등록!");
+
+      setIncorrect(false);
+      communication();
     }
   };
 

@@ -1,4 +1,4 @@
-@value background2, textInputPlace from "./common/color.css";
+@value background2, textInputPlace, highlight1,lightWhite from "./common/color.css";
 
 body {
   margin: 0;
@@ -21,6 +21,11 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px lightWhite inset;
+  -webkit-text-fill-color: highlight1;
 }
 
 @media (min-width: 1920px) {

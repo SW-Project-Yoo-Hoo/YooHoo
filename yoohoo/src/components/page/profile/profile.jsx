@@ -13,14 +13,10 @@ import SentStatus from "./requestStatus/sentStatus";
 import ReceivedStatus from "./requestStatus/receivedStatus";
 import { MdLocationOn, MdPhone } from "react-icons/md";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Profile = (props) => {
-  const userInfo = {
-    name: "testName",
-    adress: "testAdress",
-    phone: "testPhone",
-    photoSrc: "",
-  };
+  const [userInfo, setUserInfo] = useState({});
 
   //웹 스토리지 저장 커스텀 훅 호출
   const [call, setCall] = useLocalStorage("call", "MyPost");
@@ -28,10 +24,53 @@ const Profile = (props) => {
   // 알람 페이지에서 넘어온 경우
   const location = useLocation();
   useEffect(() => {
+    window.scrollTo(0, 0);
+
+    //잘못된 접근 확인
+    const pageHandling = async () => {
+      await axios
+        .get("/isLogin")
+        .then(function (response) {
+          //로그인 되어 있음
+          if (response.data.data === false) {
+            //로그인페이지로 이동
+            window.location.href = "/login";
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
+    //회원정보 불러오기
+    const getUser = async () => {
+      let userAdd = { ...userInfo };
+      await axios
+        .get("/my")
+        .then(function (response) {
+          let responseData = response.data.data;
+
+          for (const [key, value] of Object.entries(responseData)) {
+            if (value) {
+              userAdd[key] = value;
+            } else {
+              userAdd[key] =
+                process.env.PUBLIC_URL + "images/userProfileBasic.svg";
+            }
+          }
+          setUserInfo(userAdd);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
+    pageHandling();
+    getUser();
+
     if (location.state !== null) {
       setCall(location.state.call);
     }
-    window.scrollTo(0, 0);
   }, [location]);
 
   //컴포넌트 호출
@@ -80,9 +119,25 @@ const Profile = (props) => {
     setCall("MyPost");
   };
 
-  useEffect(() => {
-    //첫 렌더링 할때만 회원정보 불러오기
-  }, []);
+  //로그아웃 버튼 클릭시
+  const logoutHandling = () => {
+    //백엔드에 로그아웃 요청
+    axios
+      .post("/logout")
+      .then(function (response) {
+        // response
+        if (response.data.code === 200) {
+          //로그아웃 성공
+          //메인홈으로 이동
+          window.location.href = "/home";
+        }
+        // console.log(response);
+      })
+      .catch(function (error) {
+        // 오류발생시 실행
+        console.log(error);
+      });
+  };
 
   return (
     <div className={styles.container}>
@@ -100,10 +155,10 @@ const Profile = (props) => {
             <div className={styles.userInfoTop}>
               <img
                 className={styles.userPhoto}
-                src="/Images/header/logo.png"
-                alt="logo"
+                src={userInfo.photo_dir}
+                alt="회원 프로필 사진"
               ></img>
-              <span className={styles.userName}>{userInfo.name}</span>
+              <span className={styles.userName}>{userInfo.company}</span>
             </div>
 
             {/* 주소, 전화번호 */}
@@ -115,11 +170,11 @@ const Profile = (props) => {
               ].join(" ")}
             >
               <MdLocationOn className={styles.userInfoIcon} />
-              <span className={styles.userInfoText}>{userInfo.adress}</span>
+              <span className={styles.userInfoText}>{userInfo.address}</span>
             </div>
             <div className={styles.userInfoBottom}>
               <MdPhone className={styles.userInfoIcon} />
-              <span className={styles.userInfoText}>{userInfo.phone}</span>
+              <span className={styles.userInfoText}>{userInfo.contact}</span>
             </div>
           </div>
 
@@ -272,7 +327,12 @@ const Profile = (props) => {
               >
                 프로필 수정
               </div>
-              <div>로그아웃</div>
+              <div
+                className={styles.cursorPointer}
+                onClick={() => logoutHandling()}
+              >
+                로그아웃
+              </div>
             </div>
           </div>
         </div>

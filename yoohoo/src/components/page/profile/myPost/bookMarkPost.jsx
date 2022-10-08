@@ -25,8 +25,8 @@ const bookMarkPost = (props) => {
   const getpost = () => {
     //백엔드에서 정보 가져오기
     //정보가 존재하면 객체 넣기
-    post.push(postInfo1);
-    post.push(postInfo2);
+    // post.push(postInfo1);
+    // post.push(postInfo2);
   };
 
   const pageNaviHandling = (props) => {

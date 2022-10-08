@@ -54,6 +54,9 @@
   width: 1.3888vw;
   height: 1.3888vw;
   color: mainGreen;
+  background-color: white;
+  background-size: 1.3888vw 1.3888vw;
+  border-radius: 50%;
 }
 
 .postImg {
@@ -93,9 +96,8 @@
   z-index: 1;
   border: 1px solid iconLightGrey;
   border-radius: 0.4166vw;
-  top: calc(
-    0.5555vw + 1.3888vw + 0.4166vw
-  ); /* 아이콘 마진 + 아이콘 높이 + 6px*/
+  top: calc(0.5555vw + 1.3888vw + 0.4166vw);
+  /* 아이콘 마진 + 아이콘 높이 + 6px*/
   right: calc(-5.2083vw + 0.5555vw + 0.6944vw);
   /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
 }

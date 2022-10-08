@@ -16,6 +16,9 @@
 .noPost {
   display: flex;
   height: 13.125vw;
+  /* height: calc(10.2083vw + 0.625vw); */
+  /*높이 : 사진높이 + 사진 바텀 마진 + */
+  /*프로필 내 페이지 이동 시 깜빡임을 없애기 위해서 게시물 있을때 or 없을때 크기 맞춰보기*/
   justify-content: center;
   align-items: center;
   font-family: "Regular";
@@ -54,6 +57,9 @@
   width: 1.3888vw;
   height: 1.3888vw;
   color: textInput;
+  background-color: white;
+  background-size: 1.3888vw 1.3888vw;
+  border-radius: 50%;
 }
 
 .postImg {

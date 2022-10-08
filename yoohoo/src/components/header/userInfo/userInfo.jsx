@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./userInfo.module.css";
 import { MdSearch, MdPersonOutline } from "react-icons/md";
 import { TbBell } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const UserInfo = (props) => {
+  const [page, setPage] = useState("/login");
+
+  useEffect(() => {
+    const pageHandling = async () => {
+      // let test = false;
+      await axios
+        .get("/isLogin")
+        .then(function (response) {
+          //로그인 되어 있음
+          if (response.data.data === true) {
+            //프로필로 이동
+            setPage("/profile");
+          } else {
+            //로그인 페이지 이동
+            setPage("/login");
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+    pageHandling();
+  }, []);
+
   return (
     <ul className={styles.userInfo}>
       {/* searchIcon */}
@@ -21,7 +46,7 @@ const UserInfo = (props) => {
 
       {/* profileIcon */}
       <li className={styles.liStyle}>
-        <Link to="/login">
+        <Link to={page}>
           <MdPersonOutline className={styles.icon} />
         </Link>
       </li>

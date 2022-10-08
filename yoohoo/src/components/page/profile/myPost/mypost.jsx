@@ -1,48 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./myPost.module.css";
+import axios from "axios";
 
 const MyPost = (props) => {
-  const post = [];
+  const [post, setPost] = useState([]);
 
-  const postInfo1 = {
-    //테스트용 객체
-    id: "게시글 아이디1",
-    img: "/Images/test.jpeg",
-    title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    unit: "월",
-    price: 500000,
-  };
-
-  const postInfo2 = {
-    //테스트용 객체
-    id: "게시글 아이디2",
-    img: "/Images/home/earth.svg",
-    title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    unit: "일",
-    price: 50000,
-  };
-
-  const getpost = () => {
-    //백엔드에서 정보 가져오기
-    //정보가 존재하면 객체 넣기
-    post.push(postInfo1);
-    post.push(postInfo2);
-  };
-
+  //게시물 상세보기로 이동
   const pageNaviHandling = (props) => {
     //해당 페이지 상세보기로 이동하기
-    console.log("이동하기!");
+    window.location.href = `/detail/${props}`;
   };
 
-  const ShowPost = (props, id) => {
+  const ShowPost = (props) => {
     return (
       <div
         className={styles.post}
-        onClick={() => pageNaviHandling(props)}
-        key={id}
+        onClick={() => pageNaviHandling(props.post_id)}
+        key={props.post_id}
       >
         {/* 게시물 사진 */}
-        <img className={styles.postImg} src={props.img} alt="img" />
+        <img
+          className={styles.postImg}
+          src={process.env.PUBLIC_URL + "productList/" + props.image.dir}
+          alt="이미지를 찾을 수 없습니다"
+        />
 
         {/* 게시물 제목 */}
         <div>
@@ -59,20 +40,41 @@ const MyPost = (props) => {
     );
   };
 
+  useEffect(() => {
+    let postAdd = [...post];
+    async function get() {
+      await axios
+        .get("/my/myPosts")
+        .then(function (response) {
+          if (response.data.code === 200) {
+            //데이터 받기 성공
+            let responseData = response.data.data;
+
+            for (const [key, value] of Object.entries(responseData)) {
+              postAdd[key] = value;
+            }
+            setPost(postAdd);
+          }
+        })
+        .catch(function (error) {
+          // 오류발생시 실행
+          console.log(error);
+        });
+    }
+    get();
+  }, []);
+
   return (
     <div className={styles.container}>
-      {getpost()}
-      {/* 게시물이 없을때 */}
-      <div className={post.length === 0 ? styles.noPost : styles.displayNone}>
-        <span>작성된 게시물이 없습니다</span>
-      </div>
-
-      {/* 게시물이 있을때 */}
-      <div
-        className={post.length === 0 ? styles.displayNone : styles.gridWrapper}
-      >
-        {post.map((post) => ShowPost(post, post.id))}
-      </div>
+      {post.length === 0 ? (
+        <div className={styles.noPost}>
+          <span>작성된 게시물이 없습니다</span>
+        </div>
+      ) : (
+        <div className={styles.gridWrapper}>
+          {post.map((post) => ShowPost(post))}
+        </div>
+      )}
     </div>
   );
 };
