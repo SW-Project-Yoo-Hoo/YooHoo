@@ -1,48 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./sentStatus.module.css";
 import { MdCancel } from "react-icons/md";
+import axios from "axios";
 
 const SentStatus = (props) => {
-  const post = [];
+  const [post, setPost] = useState([]);
 
-  const postInfo1 = {
-    //테스트용 객체
-    id: "게시글 아이디1",
-    img: "/Images/test.jpeg",
-    title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    startDay: "2022.09.28",
-    endDay: "2022.10.22",
-
-    showButton: false,
+  //요청취소 버튼 토글 이벤트
+  const onToggle = (id) => {
+    setPost(
+      post.map((post) =>
+        post.post_id === id ? { ...post, toggle: !post.toggle } : post
+      )
+    );
   };
 
-  const postInfo2 = {
-    //테스트용 객체
-    id: "게시글 아이디2",
-    img: "/Images/home/earth.svg",
-    title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    startDay: "2023.08.22",
-    endDay: "2024.09.22",
-    showButton: false,
+  //거절 후 포스트 지우기
+  const remove = (id) => {
+    // post.post_id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+    // = post.post_id 가 id 인 것을 제거함
+    setPost(post.filter((post) => post.post_id !== id));
   };
 
-  const getpost = () => {
-    //백엔드에서 정보 가져오기
-    //정보가 존재하면 객체 넣기
-    post.push(postInfo1);
-    post.push(postInfo2);
-  };
-
+  //게시물 상세보기로 이동
   const pageNaviHandling = (props) => {
     //해당 페이지 상세보기로 이동하기
-    console.log("이동하기!");
+    window.location.href = `/detail/${props}`;
   };
 
+  //요청 취소 버튼
   const returnButtonShow = (props) => {
     const cancelRequest = (event) => {
       //백엔드로 거래 취소 정보 전송
       event.stopPropagation();
+      console.log("요청 취소");
+      axios
+        .put(`/requests/${props.request_id}`)
+        .then(function (response) {
+          if (response.data.code === 200) {
+            //거절 성공
+          }
+        })
+        .catch(function (error) {
+          // 오류발생시 실행
+          console.log(error);
+        });
+      remove(props.post_id);
     };
+
     return (
       <div className={styles.returnButtonShow}>
         <div
@@ -55,33 +60,34 @@ const SentStatus = (props) => {
     );
   };
 
-  const ShowPost = (props, id) => {
-    //각 게시글마다 버튼 show 상태 관리
-    const [showButton, setShowButton] = useState(props.showButton);
-
+  const ShowPost = (props) => {
     return (
       <div
         className={styles.post}
-        onClick={() => pageNaviHandling(props)}
-        key={id}
+        onClick={() => pageNaviHandling(props.post_id)}
+        key={props.request_id}
       >
         {/* 게시물 사진 */}
         <div className={styles.postImgDay}>
-          <img className={styles.postImg} src={props.img} alt="img" />
+          <img
+            className={styles.postImg}
+            src={process.env.PUBLIC_URL + "productList/" + props.image.dir}
+            alt="이미지를 찾을 수 없습니다"
+          />
           {/* button*/}
           <div
             className={styles.returnButton}
             onClick={(event) => {
               //이벤트 버블링 방지
               event.stopPropagation();
-              props.showButton = !showButton;
-              setShowButton(props.showButton);
+              //버튼 토글 이벤트
+              onToggle(props.post_id);
             }}
           >
             <MdCancel className={styles.iconButton} />
           </div>
           {/* 요청취소 버튼 */}
-          {showButton ? returnButtonShow(props) : ""}
+          {props.toggle ? returnButtonShow(props) : ""}
         </div>
 
         {/* 게시물 제목 */}
@@ -92,30 +98,55 @@ const SentStatus = (props) => {
         {/* 게시물 대여 날짜 */}
         <div className={[styles.dealDate, styles.dealDateMargin].join(" ")}>
           <span>시작날짜</span>
-          <span>{props.startDay}</span>
+          <span>{props.startDate}</span>
         </div>
         <div className={styles.dealDate}>
           <span>반납날짜</span>
-          <span>{props.endDay}</span>
+          <span>{props.returnDate}</span>
         </div>
       </div>
     );
   };
 
+  useEffect(() => {
+    let postAdd = [...post];
+    async function get() {
+      await axios
+        .get("/my/requests")
+        .then(function (response) {
+          if (response.data.code === 200) {
+            //데이터 받기 성공
+            let responseData = response.data.data;
+
+            for (const [key, value] of Object.entries(responseData)) {
+              postAdd[key] = {
+                ...value,
+                //버튼 토글 속성 추가
+                toggle: false,
+              };
+            }
+            setPost(postAdd);
+          }
+        })
+        .catch(function (error) {
+          // 오류발생시 실행
+          console.log(error);
+        });
+    }
+    get();
+  }, [post.post_id]);
+
   return (
     <div className={styles.container}>
-      {getpost()}
-      {/* 게시물이 없을때 */}
-      <div className={post.length === 0 ? styles.noPost : styles.displayNone}>
-        <span>대기 요청이 없습니다</span>
-      </div>
-
-      {/* 게시물이 있을때 */}
-      <div
-        className={post.length === 0 ? styles.displayNone : styles.gridWrapper}
-      >
-        {post.map((post) => ShowPost(post, post.id))}
-      </div>
+      {post.length === 0 ? (
+        <div className={styles.noPost}>
+          <span>대기 요청이 없습니다</span>
+        </div>
+      ) : (
+        <div className={styles.gridWrapper}>
+          {post.map((post) => ShowPost(post))}
+        </div>
+      )}
     </div>
   );
 };
