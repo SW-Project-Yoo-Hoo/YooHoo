@@ -283,12 +283,14 @@
 }
 
 .categoryGroup {
+  width: 20.8333vw;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .category {
   display: flex;
-  width: 4.2111vw;
+  width: 4.711vw;
   height: 1.9278vw;
   border: 0.0694vw solid highlight1;
   border-radius: 0.5556vw;
@@ -297,13 +299,13 @@
   align-items: center;
   font-size: 0.8333vw;
   font-family: "Regular";
-  margin: 0 0.625vw 1.5972vw 0;
+  margin: 0 0.625vw 0.625vw 0;
 }
 
 .hr2 {
   width: 20.8333vw;
   border-top: 0.0694vw solid line;
-  margin: 0 0 1.5972vw 0;
+  margin: 0.9722vw 0 1.5972vw 0;
 }
 
 .price {
@@ -702,13 +704,13 @@
     border: 0.8px solid highlight1;
     border-radius: 10px;
     font-size: 12px;
-    margin: 0 12px 30px 0;
+    margin: 0 12px 12px 0;
   }
 
   .hr2 {
     width: 400px;
     border-top: 1px solid line;
-    margin: 0 0 30px 0;
+    margin: 18px 0 30px 0;
   }
 
   .price {
