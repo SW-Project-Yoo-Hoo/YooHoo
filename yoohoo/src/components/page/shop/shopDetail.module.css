@@ -50,7 +50,7 @@
   top: 0;
   left: 0;
   margin: 0;
-  padding-bottom: 13.75vw;
+  padding-bottom: 18.8194vw;
 }
 
 /* 물품 사진 */
@@ -181,12 +181,13 @@
 .lookProducts {
   overflow: hidden;
   width: 45.8333vw;
-  height: 20.2778vw;
+  height: 15.5083vw;
   /* height: 23vw; */
 }
 
 .products1 {
-  width: 16.3889vw;
+  width: 12.2917vw;
+  height: 15.5083vw;
   cursor: pointer;
   margin: 0 2.2222vw 0 0;
 }
@@ -194,7 +195,7 @@
 .lefttBtn,
 .rightBtn {
   width: 2.3122vw;
-  height: 20.2778vw;
+  height: 15.5083vw;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -206,7 +207,7 @@
 }
 
 .otherProductsBtn {
-  height: 16.3889vw;
+  height: 12.2917vw;
   background-color: background1;
   outline: 0;
   border: 0;
@@ -215,18 +216,18 @@
 }
 
 .otherProductsImg {
-  width: 16.3889vw;
-  height: 16.3889vw;
+  width: 12.2917vw;
+  height: 12.2917vw;
   border: 0.0694vw solid textInput;
   border-radius: 1.6667vw;
   object-fit: cover;
 }
 
 .info {
-  font-size: 0.9722vw;
+  font-size: 0.6944vw;
   font-family: "Regular";
-  width: 15vw;
-  margin: 0.6333vw 0 0 0.6944vw;
+  width: 12.2917vw;
+  margin: 0 0 0 0.2944vw;
   line-height: 1.3889vw;
 }
 
@@ -244,9 +245,9 @@
 }
 
 .otherProductsPrice {
-  font-size: 0.9722vw;
+  font-size: 0.6944vw;
   font-family: "Regular";
-  margin: 0.2778vw 0 0 0;
+  margin: 0 0 0 0;
   color: unselect;
 }
 
@@ -287,14 +288,14 @@
 
 .category {
   display: flex;
-  width: 3.6111vw;
-  height: 1.5278vw;
+  width: 4.2111vw;
+  height: 1.9278vw;
   border: 0.0694vw solid highlight1;
   border-radius: 0.5556vw;
   background-color: lightWhite;
   justify-content: center;
   align-items: center;
-  font-size: 0.5556vw;
+  font-size: 0.8333vw;
   font-family: "Regular";
   margin: 0 0.625vw 1.5972vw 0;
 }
@@ -484,11 +485,13 @@
   margin-right: 1.4583vw;
   background-color: mainGreen;
   color: lightWhite;
+  font-family: "Medium";
 }
 
 .wishBtn {
   background-color: lightWhite;
   color: mainGreen;
+  font-family: "Regular";
 }
 
 .wishContent {
@@ -663,7 +666,7 @@
   .info {
     font-size: 14px;
     width: 216px;
-    margin: 12px 0 0 10px;
+    margin: 8px 0 0 10px;
     line-height: 20px;
   }
 
