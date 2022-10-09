@@ -123,6 +123,7 @@
   width: 12.5vw;
   border-radius: 1.1111vw;
   border-style: none;
+  cursor: pointer;
 }
 
 .signUpButton {
@@ -220,7 +221,6 @@
     font-size: 18px;
     width: 240px;
     border-radius: 22px;
-    cursor: pointer;
   }
 
   .signUpButton {
