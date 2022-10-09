@@ -117,7 +117,7 @@ const ProgressStatus = (props) => {
                 toggle: false,
               };
             }
-            setPost(postAdd);
+            setPost(postAdd.reverse());
           }
         })
         .catch(function (error) {

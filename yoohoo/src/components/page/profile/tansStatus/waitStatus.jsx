@@ -68,7 +68,7 @@ const WaitStatus = (props) => {
             for (const [key, value] of Object.entries(responseData)) {
               postAdd[key] = value;
             }
-            setPost(postAdd);
+            setPost(postAdd.reverse());
           }
         })
         .catch(function (error) {
