@@ -1,4 +1,4 @@
-@value unselect, iconLightGrey from "../../../../common/color.css";
+@value unselect, iconLightGrey,highlight1, textInput from "../../../../common/color.css";
 
 .displayNone {
   display: none;
@@ -52,7 +52,10 @@
 .iconInfoButton {
   width: 1.3888vw;
   height: 1.3888vw;
-  color: iconLightGrey;
+  color: textInput;
+  background-color: white;
+  background-size: 1.3888vw 1.3888vw;
+  border-radius: 50%;
 }
 
 .iconPriceButtonWrapper {
