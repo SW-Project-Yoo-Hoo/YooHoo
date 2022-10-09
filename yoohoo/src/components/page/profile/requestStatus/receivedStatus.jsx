@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./receivedStatus.module.css";
 import { MdPlayCircleFilled } from "react-icons/md";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ReceivedStatus = (props) => {
   const [post, setPost] = useState([]);
@@ -20,12 +21,6 @@ const ReceivedStatus = (props) => {
     // post.post_id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
     // = post.post_id가 id 인 것을 제거함
     setPost(post.filter((post) => post.request_id !== id));
-  };
-
-  //게시물 상세보기로 이동
-  const pageNaviHandling = (props) => {
-    //해당 페이지 상세보기로 이동하기
-    window.location.href = `/detail/${props}`;
   };
 
   //수락,거절 버튼
@@ -93,18 +88,16 @@ const ReceivedStatus = (props) => {
 
   const ShowPost = (props) => {
     return (
-      <div
-        className={styles.post}
-        onClick={() => pageNaviHandling(props.post_id)}
-        key={props.request_id}
-      >
+      <div className={styles.post} key={props.request_id}>
         {/* 게시물 사진 */}
         <div className={styles.postImgDay}>
-          <img
-            className={styles.postImg}
-            src={process.env.PUBLIC_URL + "productList/" + props.image.dir}
-            alt="이미지를 찾을 수 없습니다"
-          />
+          <Link to={`/detail/${props.post_id}`} state={{ info: props }}>
+            <img
+              className={styles.postImg}
+              src={process.env.PUBLIC_URL + "productList/" + props.image.dir}
+              alt="이미지를 찾을 수 없습니다"
+            />
+          </Link>
           {/* button*/}
           <div
             className={styles.returnButton}

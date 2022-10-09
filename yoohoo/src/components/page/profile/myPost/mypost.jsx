@@ -1,29 +1,22 @@
 import React, { useState, useEffect } from "react";
 import styles from "./myPost.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const MyPost = (props) => {
   const [post, setPost] = useState([]);
 
-  //게시물 상세보기로 이동
-  const pageNaviHandling = (props) => {
-    //해당 페이지 상세보기로 이동하기
-    window.location.href = `/detail/${props}`;
-  };
-
   const ShowPost = (props) => {
     return (
-      <div
-        className={styles.post}
-        onClick={() => pageNaviHandling(props.post_id)}
-        key={props.post_id}
-      >
+      <div className={styles.post} key={props.post_id}>
         {/* 게시물 사진 */}
-        <img
-          className={styles.postImg}
-          src={process.env.PUBLIC_URL + "productList/" + props.image.dir}
-          alt="이미지를 찾을 수 없습니다"
-        />
+        <Link to={`/detail/${props.post_id}`} state={{ info: props }}>
+          <img
+            className={styles.postImg}
+            src={process.env.PUBLIC_URL + "productList/" + props.image.dir}
+            alt="이미지를 찾을 수 없습니다"
+          />
+        </Link>
 
         {/* 게시물 제목 */}
         <div>
