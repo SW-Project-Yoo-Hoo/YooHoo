@@ -93,6 +93,10 @@
 .img1 {
   width: 41.6667vw;
   height: 24.8611vw;
+  object-fit: cover;
+}
+
+.img1:hover {
   object-fit: contain;
 }
 
