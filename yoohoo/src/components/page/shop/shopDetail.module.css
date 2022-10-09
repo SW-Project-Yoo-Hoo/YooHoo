@@ -93,6 +93,10 @@
 .img1 {
   width: 41.6667vw;
   height: 24.8611vw;
+  object-fit: cover;
+}
+
+.img1:hover {
   object-fit: contain;
 }
 
@@ -329,7 +333,7 @@
   right: 0;
   border: 0;
   outline: 0;
-  background-color: background1;
+  color: mainGreen;
   cursor: pointer;
 }
 
@@ -338,10 +342,15 @@
 }
 
 .helpContent {
-  margin: 0 0 0 1.25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
   font-size: 0.6944vw;
   line-height: 1.0417vw;
   font-family: "Regular";
+  color: black;
 }
 
 .helpImg:hover .helpContainer {
@@ -511,6 +520,13 @@
   font-family: "Regular";
 }
 /* ================================= */
+@media (max-width: 1200px) {
+  .helpImg:hover .helpContainer {
+    width: 11.0611vw;
+    transform: translate(-10.675vw, -4.0973vw);
+  }
+}
+
 /* 그 이상 */
 @media (min-width: 1920px) {
   .headerImg {
@@ -716,7 +732,6 @@
   }
 
   .helpContent {
-    margin: 0 0 0 24px;
     font-size: 14px;
     line-height: 20px;
   }
