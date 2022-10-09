@@ -61,7 +61,9 @@ const Login = (props) => {
         if (response.data.code === 200) {
           //로그인 성공
           //로그인 정보가 올바르면 원래 있던 페이지로 돌아가기
-          window.history.back();
+          if (window.history.go(-1) == "/signUp") {
+            window.history.go(-2);
+          } else window.history.back();
         }
         //else {
         //   //내부오류 회원가입 실패
