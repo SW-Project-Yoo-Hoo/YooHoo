@@ -698,6 +698,10 @@
     margin: 0 0 27px 0;
   }
 
+  .categoryGroup {
+    width: 400px;
+  }
+
   .category {
     width: 69px;
     height: 29px;
@@ -716,7 +720,6 @@
   .price {
     margin: 0 0 40px 0;
     font-size: 20px;
-
     margin-right: 320px;
   }
 
