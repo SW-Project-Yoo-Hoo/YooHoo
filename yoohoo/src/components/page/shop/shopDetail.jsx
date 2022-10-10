@@ -88,6 +88,7 @@ const ShopDetail = (props) => {
           );
           setCurrentItem(res.data.data.photos[0]);
           setIsLoaded(true);
+          console.log(res);
         })
         .catch((error) => console.log(error));
     };
@@ -101,18 +102,8 @@ const ShopDetail = (props) => {
         .catch((error) => console.log(error));
     };
 
-    const getProfilePhoto = () => {
-      axios
-        .get("/my")
-        .then((res) => {
-          setCompanyPhoto(res);
-        })
-        .catch((error) => console.log(error));
-    };
-
     getItem();
     getLoginCheck();
-    getProfilePhoto();
   }, [location]);
 
   /* 사용자가 고른 [시작 날짜 ~ 반납 날짜] => 대여 단위에 맞게 계산 */
@@ -364,19 +355,19 @@ const ShopDetail = (props) => {
                     </ul>
                   </div>
                 </div>
-                {console.log(companyPhoto)}
                 <div className={styles.company}>
-                  {companyPhoto.data.data.photo_dir === "" ? (
+                  {productItem.photo_dir === "" ? (
                     <img
                       className={styles.companyImg}
                       src={REACT_PUBLIC_URL + "images/userProfileBasic.svg"}
                       alt="Company"
                     />
                   ) : (
-                    /** 회사 프로필 수정 */
                     <img
                       className={styles.companyImg}
-                      src={REACT_PUBLIC_URL + "images/about/ys.svg"}
+                      src={
+                        REACT_PUBLIC_URL + "profileImg/" + productItem.photo_dir
+                      }
                       alt="Company"
                     />
                   )}
