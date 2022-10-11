@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
@@ -41,8 +41,6 @@ const ShopDetail = (props) => {
 
   /** 로그인 정보 check */
   const [loginInfo, setLoginInfo] = useState("");
-
-  const [companyPhoto, setCompanyPhoto] = useState("");
 
   /**===================== */
   /* 추가 기능 */
@@ -88,7 +86,6 @@ const ShopDetail = (props) => {
           );
           setCurrentItem(res.data.data.photos[0]);
           setIsLoaded(true);
-          console.log(res);
         })
         .catch((error) => console.log(error));
     };
