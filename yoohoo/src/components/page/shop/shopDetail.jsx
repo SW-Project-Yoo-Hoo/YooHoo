@@ -61,13 +61,14 @@ const ShopDetail = (props) => {
   const location = useLocation();
   let nowItem = location.state.info;
 
-  /* 페이지 이동 시 스크롤 상단으로 */
+  /* 페이지 이동 했을 때 */
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // 스크롤 상단
     setStartDay("");
     setEndDay("");
     setCount(1);
     setPrice(0);
+    setIsPicLoaded(false);
   }, [location]);
 
   /* 백엔드에서 선택한 게시물 가져오기 */
