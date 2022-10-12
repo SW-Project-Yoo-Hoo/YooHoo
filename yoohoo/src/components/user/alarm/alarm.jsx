@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./alarm.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Alarm = (props) => {
@@ -10,6 +10,8 @@ const Alarm = (props) => {
 
   const [alarmList, setAlarmList] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const navigate = useNavigate();
 
   // 마이프로필로 이동하기 위한 call 추가
   function setCall(title) {
@@ -54,7 +56,19 @@ const Alarm = (props) => {
         .catch((error) => console.log(error));
     };
 
-    getList();
+    const getLoginCheck = async () => {
+      await axios
+        .get("/isLogin")
+        .then((res) => {
+          /** 로그인 안 했을 때 -> 로그인 페이지로 이동 */
+          if (res.data.data === false) {
+            navigate("/login");
+          } else getList(); /* 알람 리스트 가져오기  */
+        })
+        .catch((error) => console.log(error));
+    };
+
+    getLoginCheck();
   }, []);
 
   return (
