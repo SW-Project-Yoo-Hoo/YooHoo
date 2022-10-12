@@ -7,7 +7,9 @@ import axios from "axios";
 
 const UserInfo = (props) => {
   const [page, setPage] = useState("/login");
+  const [alarmPage, setAlarmPage] = useState("/login");
 
+  // 페이지 설정
   useEffect(() => {
     const pageHandling = async () => {
       // let test = false;
@@ -18,9 +20,11 @@ const UserInfo = (props) => {
           if (response.data.data === true) {
             //프로필로 이동
             setPage("/profile");
+            setAlarmPage("/alarm");
           } else {
             //로그인 페이지 이동
             setPage("/login");
+            setAlarmPage("/login");
           }
         })
         .catch(function (error) {
@@ -39,7 +43,7 @@ const UserInfo = (props) => {
 
       {/* alarmIcon */}
       <li className={styles.liStyle}>
-        <Link to="/alarm">
+        <Link to={alarmPage}>
           <TbBell className={styles.icon} />
         </Link>
       </li>
