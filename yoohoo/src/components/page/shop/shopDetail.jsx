@@ -139,40 +139,38 @@ const ShopDetail = (props) => {
   const navigate = useNavigate();
 
   const onClickTrade = () => {
-    // 로그인 안 했을 때
+    // 로그인 안 했을 때 -> 로그인 페이지로 이동
     if (loginInfo.data === false) {
       navigate("/login");
-    }
-
-    // 내 게시물에 거래하기 눌렀을 때
-
-    // 대여 기간 설정 안 했을 때
-    if (isNaN(dateCnt)) {
-      setTrade(1);
-    }
-    // 백엔드로 '거래 정보' POST
-    else {
-      const data = {
-        post_id: nowItem.post_id,
-        startDate: moment(startDate).format("YYYY-MM-DD"),
-        returnDate: moment(endDate).format("YYYY-MM-DD"),
-        total_price: price,
-        rental_quantity: count,
-      };
-      axios
-        .post("/requests", data, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          navigate("/profile", {
-            state: {
-              call: "SentStatus",
+    } else {
+      // 대여 기간 설정 안 했을 때
+      if (isNaN(dateCnt)) {
+        setTrade(1);
+      }
+      // 백엔드로 '거래 정보' POST
+      else {
+        const data = {
+          post_id: nowItem.post_id,
+          startDate: moment(startDate).format("YYYY-MM-DD"),
+          returnDate: moment(endDate).format("YYYY-MM-DD"),
+          total_price: price,
+          rental_quantity: count,
+        };
+        axios
+          .post("/requests", data, {
+            headers: {
+              "Content-Type": "application/json",
             },
-          });
-        })
-        .catch((error) => setTrade(2));
+          })
+          .then((res) => {
+            navigate("/profile", {
+              state: {
+                call: "SentStatus",
+              },
+            });
+          })
+          .catch((error) => setTrade(2));
+      }
     }
   };
 
