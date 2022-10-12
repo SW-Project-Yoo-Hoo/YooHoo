@@ -3,10 +3,10 @@ package swproject.yoohoo.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import swproject.yoohoo.domain.*;
+import swproject.yoohoo.repository.AlarmRepository;
 import swproject.yoohoo.repository.DealRepository;
 import swproject.yoohoo.repository.MemberRepository;
 import swproject.yoohoo.repository.RequestRepository;
@@ -24,6 +24,7 @@ public class DealService {
     private final RequestRepository requestRepository;
     private final MemberRepository memberRepository;
     private final DealRepository dealRepository;
+    private final AlarmRepository alarmRepository;
 
     @Transactional
     public void save(Long requestId){
@@ -75,6 +76,7 @@ public class DealService {
                 .content("반납 요청이 들어왔어요. 반납 버튼을 눌러주세요!")
                 .photo_dir(deal.getPost().getPhotos().get(0).getFilePath())
                 .build();
+        alarmRepository.save(alarm);
     }
 
     private void preRequestAlarm(Deal deal, Member provider) {
@@ -84,22 +86,29 @@ public class DealService {
                 .content("조기 반납 요청이 들어왔어요. 수락 하시겠습니까?")
                 .photo_dir(deal.getPost().getPhotos().get(0).getFilePath())
                 .build();
+        alarmRepository.save(alarm);
     }
 
     private void dealComplete(Deal deal, Member user, Member provider, String alarmContent) {
         deal.setStatus(DealStatus.POST);
+        DealCompleteAlarm(deal, user, provider, alarmContent);
+    }
+
+    private void DealCompleteAlarm(Deal deal, Member user, Member provider, String alarmContent) {
         Alarm alarm1=Alarm.builder()
                 .member(user)
                 .title("거래 완료")
                 .content(alarmContent)
                 .photo_dir(deal.getPost().getPhotos().get(0).getFilePath())
                 .build();
+        alarmRepository.save(alarm1);
         Alarm alarm2=Alarm.builder()
                 .member(provider)
                 .title("거래 완료")
                 .content(alarmContent)
                 .photo_dir(deal.getPost().getPhotos().get(0).getFilePath())
                 .build();
+        alarmRepository.save(alarm2);
     }
 
     public Deal findOne(Long dealId){
@@ -128,11 +137,33 @@ public class DealService {
     @Transactional
     public void PREtoIN(){
         log.info("스케줄링 서비스 실행");
+
         LocalDate now = LocalDate.now();
         List<Deal> deals = dealRepository.findByStatus(DealStatus.PRE,now);
 
-        deals.forEach(deal -> deal.startDeal());
+        for (Deal deal : deals) {
+            deal.startDeal();
+            Post post=deal.getPost();
+
+            Alarm alarm1=Alarm.builder()
+                    .member(deal.getMember())
+                    .title("거래 시작")
+                    .content("거래가 시작되었어요.")
+                    .photo_dir(post.getPhotos().get(0).getFilePath())
+                    .build();
+            alarmRepository.save(alarm1);
+            Alarm alarm2=Alarm.builder()
+                    .member(post.getMember())
+                    .title("거래 시작")
+                    .content("거래가 시작되었어요.")
+                    .photo_dir(post.getPhotos().get(0).getFilePath())
+                    .build();
+            alarmRepository.save(alarm2);
+        }
+
         log.info("스케줄링 서비스 실행 끝");
     }
+
+
 
 }
