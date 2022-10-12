@@ -2,6 +2,8 @@ package swproject.yoohoo.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import swproject.yoohoo.domain.*;
@@ -9,6 +11,7 @@ import swproject.yoohoo.repository.DealRepository;
 import swproject.yoohoo.repository.MemberRepository;
 import swproject.yoohoo.repository.RequestRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -16,6 +19,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Slf4j
+@EnableAsync
 public class DealService {
     private final RequestRepository requestRepository;
     private final MemberRepository memberRepository;
@@ -35,6 +39,69 @@ public class DealService {
         dealRepository.save(deal);
     }
 
+    @Transactional
+    public void agree(Long DealId,Long loginId) {
+        Deal deal = dealRepository.findOne(DealId);
+        Member user=deal.getMember();
+        Member provider=deal.getPost().getMember();
+
+        String alarmContent="거래가 완료되었습니다! ("+deal.getStartDate().toString()+" - "+ LocalDate.now().toString()+")";
+
+        if(deal.getMember().getId()==loginId){//요청자가 동의
+            deal.agreeU();
+            if(deal.isReturnP()){//거래완료
+                dealComplete(deal, user, provider, alarmContent);
+            }
+            else{
+                if(deal.getReturnDate().isAfter(LocalDate.now())) preRequestAlarm(deal, provider);
+                else RequestAlarm(deal, provider);
+            }
+        }
+        else{//제공자가 동의
+            deal.agreeP();
+            if(deal.isReturnU()) dealComplete(deal,provider,user,alarmContent);
+            else{
+                if(deal.getReturnDate().isAfter(LocalDate.now())) preRequestAlarm(deal, user);
+                else RequestAlarm(deal,user);
+            }
+        }
+
+    }
+
+    private void RequestAlarm(Deal deal, Member provider) {
+        Alarm alarm=Alarm.builder()
+                .member(provider)
+                .title("반납 요청")
+                .content("반납 요청이 들어왔어요. 반납 버튼을 눌러주세요!")
+                .photo_dir(deal.getPost().getPhotos().get(0).getFilePath())
+                .build();
+    }
+
+    private void preRequestAlarm(Deal deal, Member provider) {
+        Alarm alarm=Alarm.builder()
+                .member(provider)
+                .title("조기 반납 요청")
+                .content("조기 반납 요청이 들어왔어요. 수락 하시겠습니까?")
+                .photo_dir(deal.getPost().getPhotos().get(0).getFilePath())
+                .build();
+    }
+
+    private void dealComplete(Deal deal, Member user, Member provider, String alarmContent) {
+        deal.setStatus(DealStatus.POST);
+        Alarm alarm1=Alarm.builder()
+                .member(user)
+                .title("거래 완료")
+                .content(alarmContent)
+                .photo_dir(deal.getPost().getPhotos().get(0).getFilePath())
+                .build();
+        Alarm alarm2=Alarm.builder()
+                .member(provider)
+                .title("거래 완료")
+                .content(alarmContent)
+                .photo_dir(deal.getPost().getPhotos().get(0).getFilePath())
+                .build();
+    }
+
     public Deal findOne(Long dealId){
         return dealRepository.findOne(dealId);
     }
@@ -42,19 +109,30 @@ public class DealService {
     public List<Deal> findMyPreDeal(Long memberId){
         Member member = memberRepository.findOne(memberId);
         DealStatus status=DealStatus.PRE;
-        return dealRepository.findByStatus(member,status);
+        return dealRepository.findByMemberStatus(member,status);
     }
 
     public List<Deal> findMyInDeal(Long memberId){
         Member member = memberRepository.findOne(memberId);
         DealStatus status=DealStatus.IN;
-        return dealRepository.findByStatus(member,status);
+        return dealRepository.findByMemberStatus(member,status);
     }
 
     public List<Deal> findMyPostDeal(Long memberId){
         Member member = memberRepository.findOne(memberId);
         DealStatus status=DealStatus.POST;
-        return dealRepository.findByStatus(member,status);
+        return dealRepository.findByMemberStatus(member,status);
+    }
+
+
+    @Transactional
+    public void PREtoIN(){
+        log.info("스케줄링 서비스 실행");
+        LocalDate now = LocalDate.now();
+        List<Deal> deals = dealRepository.findByStatus(DealStatus.PRE,now);
+
+        deals.forEach(deal -> deal.startDeal());
+        log.info("스케줄링 서비스 실행 끝");
     }
 
 }

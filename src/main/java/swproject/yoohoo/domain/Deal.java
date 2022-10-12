@@ -68,4 +68,19 @@ public class Deal {
         member.getDeals().add(this);
     }
 
+    //==비즈니스 로직==//
+    public void agreeU(){
+        this.returnU=true;
+    }
+
+    public void agreeP(){
+        this.returnP=true;
+    }
+
+    public void startDeal(){
+        this.setStatus(DealStatus.IN);
+    }
+
+
+
 }

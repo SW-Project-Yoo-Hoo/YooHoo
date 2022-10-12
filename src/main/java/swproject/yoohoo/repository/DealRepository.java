@@ -7,6 +7,7 @@ import swproject.yoohoo.domain.DealStatus;
 import swproject.yoohoo.domain.Member;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -24,7 +25,15 @@ public class DealRepository {
 
     public Deal findOne(Long id){return em.find(Deal.class,id);}
 
-    public List<Deal> findByStatus(Member member, DealStatus status){
+    public List<Deal> findByStatus(DealStatus status, LocalDate date){
+        return em.createQuery("select d from Deal d where d.status=:status and d.startDate >= :date",
+                        Deal.class)
+                .setParameter("status",status)
+                .setParameter("date",date)
+                .getResultList();
+    }
+
+    public List<Deal> findByMemberStatus(Member member, DealStatus status){
         return em.createQuery("select d from Deal d where (d.member=:member " +
                                 "or d.post.member=:member) " +
                                 "and d.status=:status",
