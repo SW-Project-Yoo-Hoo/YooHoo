@@ -25,7 +25,23 @@ public class DealRepository {
 
     public Deal findOne(Long id){return em.find(Deal.class,id);}
 
-    public List<Deal> findByStatus(DealStatus status, LocalDate date){
+    public List<Deal> findByStatusReturnDate(DealStatus status,LocalDate date){
+        return em.createQuery("select d from Deal d where d.status=:status and d.returnDate = :date",
+                        Deal.class)
+                .setParameter("status",status)
+                .setParameter("date",date)
+                .getResultList();
+    }
+
+    public List<Deal> findByStatusAfterReturnDate(DealStatus status,LocalDate date){
+        return em.createQuery("select d from Deal d where d.status=:status and d.returnDate < :date",
+                        Deal.class)
+                .setParameter("status",status)
+                .setParameter("date",date)
+                .getResultList();
+    }
+
+    public List<Deal> findByStatusStartDate(DealStatus status, LocalDate date){
         return em.createQuery("select d from Deal d where d.status=:status and d.startDate >= :date",
                         Deal.class)
                 .setParameter("status",status)

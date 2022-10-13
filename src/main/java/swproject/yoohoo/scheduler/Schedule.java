@@ -14,14 +14,16 @@ import swproject.yoohoo.service.DealService;
 public class Schedule {
     private final DealService dealService;
 
-//    @Scheduled(cron = "0 27 10 * * *")
-//    @Scheduled(fixedDelay = 3000)
-//    @Scheduled(cron = "0 0 0 * * *") //매일 0시에 실행
-    @Scheduled(fixedDelay = 10000)
+//    @Scheduled(cron = "0 27 10 * * *") //매일 10시 27분에 실행
+//    @Scheduled(fixedDelay = 20000) //3초마다
+    @Scheduled(cron = "0 0 0 * * *") //매일 0시에 실행
     public void scheduleDeal(){
         long now = System.currentTimeMillis() / 1000;
         log.info("schedule tasks using cron jobs - {}", now);
 
         dealService.PREtoIN();
+        dealService.ReturnAfterWeek();
+        dealService.ReturnToday();
+        dealService.ReturnAlarm();
     }
 }

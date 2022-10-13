@@ -112,17 +112,11 @@ public class MemberController {
 
     @Getter
     static class EditDTO {
-
-        private String email; //이메일
-        private String password; //비밀번호
         private String company; //회사 이름
         private String address; //회사 주소
         private String contact; //회사 연락처
         private String photo_dir; //프로필 사진 경로
-
         public EditDTO(Member member) {
-            this.email = member.getEmail();
-            this.password = member.getPassword();
             this.company = member.getCompany();
             this.address = member.getAddress();
             this.contact = member.getContact();

@@ -69,7 +69,8 @@ public class DealService {
 
     }
 
-    private void RequestAlarm(Deal deal, Member provider) {
+    @Transactional
+    public void RequestAlarm(Deal deal, Member provider) {
         Alarm alarm=Alarm.builder()
                 .member(provider)
                 .title("반납 요청")
@@ -79,7 +80,8 @@ public class DealService {
         alarmRepository.save(alarm);
     }
 
-    private void preRequestAlarm(Deal deal, Member provider) {
+    @Transactional
+    public void preRequestAlarm(Deal deal, Member provider) {
         Alarm alarm=Alarm.builder()
                 .member(provider)
                 .title("조기 반납 요청")
@@ -94,7 +96,8 @@ public class DealService {
         DealCompleteAlarm(deal, user, provider, alarmContent);
     }
 
-    private void DealCompleteAlarm(Deal deal, Member user, Member provider, String alarmContent) {
+    @Transactional
+    public void DealCompleteAlarm(Deal deal, Member user, Member provider, String alarmContent) {
         Alarm alarm1=Alarm.builder()
                 .member(user)
                 .title("거래 완료")
@@ -139,7 +142,7 @@ public class DealService {
         log.info("스케줄링 서비스 실행");
 
         LocalDate now = LocalDate.now();
-        List<Deal> deals = dealRepository.findByStatus(DealStatus.PRE,now);
+        List<Deal> deals = dealRepository.findByStatusStartDate(DealStatus.PRE,now);
 
         for (Deal deal : deals) {
             deal.startDeal();
@@ -162,6 +165,93 @@ public class DealService {
         }
 
         log.info("스케줄링 서비스 실행 끝");
+    }
+
+    @Transactional
+    public void ReturnAfterWeek(){
+
+        LocalDate afterweek=LocalDate.now().plusDays(7);
+
+        log.info("일주일 알람 시작={}",afterweek);
+        List<Deal> deals = dealRepository.findByStatusReturnDate(DealStatus.IN, afterweek);//거래 중인, 일주일 뒤가 반납날짜
+
+        String alarmcontent=afterweek.getMonth().toString()+"월"+afterweek.getDayOfMonth()+"일 반납 예정이에요. D-7 남았어요!";
+        for (Deal deal : deals) {
+            Post post=deal.getPost();
+
+            Alarm alarm1=Alarm.builder()
+                    .member(deal.getMember())
+                    .title("반납 일정")
+                    .content(alarmcontent)
+                    .photo_dir(post.getPhotos().get(0).getFilePath())
+                    .build();
+            alarmRepository.save(alarm1);
+            Alarm alarm2=Alarm.builder()
+                    .member(post.getMember())
+                    .title("반납 일정")
+                    .content(alarmcontent)
+                    .photo_dir(post.getPhotos().get(0).getFilePath())
+                    .build();
+            alarmRepository.save(alarm2);
+        }
+
+        log.info("일주일 알람 시작");
+    }
+
+    @Transactional
+    public void ReturnToday(){
+        LocalDate now=LocalDate.now();
+        log.info("오늘 반납 알람 시작={}",now);
+        List<Deal> deals = dealRepository.findByStatusReturnDate(DealStatus.IN, now);//거래 중인, 오늘이 반납날짜
+
+        String alarmcontent="반납 예정일이 되었어요. 반납 버튼을 눌러주세요!";
+        for (Deal deal : deals) {
+            Post post=deal.getPost();
+
+            Alarm alarm1=Alarm.builder()
+                    .member(deal.getMember())
+                    .title("반납 일정")
+                    .content(alarmcontent)
+                    .photo_dir(post.getPhotos().get(0).getFilePath())
+                    .build();
+            alarmRepository.save(alarm1);
+            Alarm alarm2=Alarm.builder()
+                    .member(post.getMember())
+                    .title("반납 일정")
+                    .content(alarmcontent)
+                    .photo_dir(post.getPhotos().get(0).getFilePath())
+                    .build();
+            alarmRepository.save(alarm2);
+        }
+        log.info("오늘 반납 알람 끝={}",now);
+    }
+
+    @Transactional
+    public void ReturnAlarm(){
+        LocalDate now=LocalDate.now();
+        log.info("지난 반납 알람 시작={}",now);
+        List<Deal> deals = dealRepository.findByStatusAfterReturnDate(DealStatus.IN, now);//거래 중인, 반납 날짜 지난
+
+        String alarmcontent="반납 예정일이 지났어요. 반납 버튼을 눌러주세요!";
+        for (Deal deal : deals) {
+            Post post=deal.getPost();
+
+            Alarm alarm1=Alarm.builder()
+                    .member(deal.getMember())
+                    .title("반납 일정")
+                    .content(alarmcontent)
+                    .photo_dir(post.getPhotos().get(0).getFilePath())
+                    .build();
+            alarmRepository.save(alarm1);
+            Alarm alarm2=Alarm.builder()
+                    .member(post.getMember())
+                    .title("반납 일정")
+                    .content(alarmcontent)
+                    .photo_dir(post.getPhotos().get(0).getFilePath())
+                    .build();
+            alarmRepository.save(alarm2);
+        }
+        log.info("지난 반납 알람 시작={}",now);
     }
 
 

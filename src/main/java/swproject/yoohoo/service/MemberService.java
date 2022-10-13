@@ -52,8 +52,6 @@ public class MemberService {
     public Long updateMember(Long memberid, EditForm form) throws IOException {
 
         Member member= memberRepository.findOne(memberid);
-        member.setEmail(form.getEmail());
-        member.setPassword(form.getPassword());
         member.setCompany(form.getCompany());
         member.setAddress(form.getAddress());
         member.setContact(form.getContact());

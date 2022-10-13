@@ -54,8 +54,8 @@ public class RequestController {
 
     @PostMapping("/requests/{id}")
     public ResultVO accept(@PathVariable Long id){
-        dealService.save(id); //거래 생성
         requestService.acceptRequest(id); //요청 수락
+        dealService.save(id); //거래 생성
 
         return new ResultVO(201,"거래 수락 성공",null);
     }
