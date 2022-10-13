@@ -394,7 +394,7 @@ const ShopDetail = (props) => {
                         {shopList.map(
                           (item) =>
                             item.post_id !== nowItem.post_id && (
-                              <div id={item.id} className={styles.products1}>
+                              <div key={item.id} className={styles.products1}>
                                 <Link
                                   to={`/detail/${item.post_id}`}
                                   state={{ info: item }}
