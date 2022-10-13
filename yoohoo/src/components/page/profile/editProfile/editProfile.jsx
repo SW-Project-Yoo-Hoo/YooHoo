@@ -58,11 +58,9 @@ const EditProfile = ({ changeInfo }) => {
     let imageUrlLists = [...showImages];
     let imageUrlListsOrigin = [...uploadFile];
 
-    for (let i = 0; i < imageLists.length; i++) {
-      const currentImageUrl = URL.createObjectURL(imageLists[i]);
-      imageUrlLists.push(currentImageUrl);
-      imageUrlListsOrigin.push(imageLists[i]);
-    }
+    const currentImageUrl = URL.createObjectURL(imageLists[0]);
+    imageUrlLists.push(currentImageUrl);
+    imageUrlListsOrigin.push(imageLists[0]);
 
     if (imageUrlLists.length > 1) {
       imageUrlLists = imageUrlLists.slice(1, 2);
