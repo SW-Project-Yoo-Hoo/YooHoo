@@ -64,7 +64,6 @@ const EditProfile = ({ changeInfo }) => {
       imageUrlListsOrigin.push(imageLists[i]);
     }
 
-    console.log(imageUrlListsOrigin);
     if (imageUrlLists.length > 1) {
       imageUrlLists = imageUrlLists.slice(1, 2);
     }
