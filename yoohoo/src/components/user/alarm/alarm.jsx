@@ -166,7 +166,7 @@ const Alarm = (props) => {
                         </>
                       ) : (
                         <>
-                          <div className={styles.noneDate}>
+                          <div className={styles.noneDate} key={item.id}>
                             <div>
                               <div
                                 className={

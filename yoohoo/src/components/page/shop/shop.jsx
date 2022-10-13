@@ -55,7 +55,7 @@ const Shop = (props) => {
           <div className={styles.productGroup}>
             {shopList.map((item) => (
               <Link to={`/detail/${item.post_id}`} state={{ info: item }}>
-                <div className={styles.product}>
+                <div className={styles.product} key={item}>
                   <img
                     className={styles.productImg}
                     src={
