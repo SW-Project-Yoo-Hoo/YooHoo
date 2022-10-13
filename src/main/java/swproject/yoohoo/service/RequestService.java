@@ -1,6 +1,8 @@
 package swproject.yoohoo.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import swproject.yoohoo.controller.RequestForm;
@@ -10,12 +12,15 @@ import swproject.yoohoo.repository.MemberRepository;
 import swproject.yoohoo.repository.PostRepository;
 import swproject.yoohoo.repository.RequestRepository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+@EnableAsync
+@Slf4j
 public class RequestService {
     private final RequestRepository requestRepository;
     private final MemberRepository memberRepository;
@@ -99,5 +104,21 @@ public class RequestService {
         Member member= memberRepository.findOne(memberId);
         RequestStatus status=RequestStatus.REQUEST;
         return requestRepository.findByProvider(member,status);
+    }
+
+    @Transactional
+    public void deleteOVERTIMERequest(){
+        log.info("기간지난 삭제 시작");
+        LocalDate now = LocalDate.now();
+        requestRepository.deleteByStatusStartBeforeDate(RequestStatus.REQUEST, now);//요청 중이고 시작날짜 지난 요청 삭제
+
+        log.info("기간지난 삭제 끝");
+    }
+
+    @Transactional
+    public void deleteDELETERequest(){
+        log.info("취소된 요청 삭제 시작");
+        requestRepository.deleteByStatus(RequestStatus.DELETED); //요청취소해서 DELETE인 요청 삭제
+        log.info("취소된 요청 삭제 끝");
     }
 }

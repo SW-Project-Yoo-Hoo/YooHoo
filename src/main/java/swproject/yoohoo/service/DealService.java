@@ -28,7 +28,6 @@ public class DealService {
 
     @Transactional
     public void save(Long requestId){
-
         Request request=requestRepository.findOne(requestId);
         Post post=request.getPost();
 
@@ -227,7 +226,7 @@ public class DealService {
     }
 
     @Transactional
-    public void ReturnAlarm(){
+    public void ReturnLastDay(){
         LocalDate now=LocalDate.now();
         log.info("지난 반납 알람 시작={}",now);
         List<Deal> deals = dealRepository.findByStatusAfterReturnDate(DealStatus.IN, now);//거래 중인, 반납 날짜 지난

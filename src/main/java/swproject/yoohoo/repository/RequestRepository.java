@@ -2,11 +2,10 @@ package swproject.yoohoo.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import swproject.yoohoo.domain.Member;
-import swproject.yoohoo.domain.Request;
-import swproject.yoohoo.domain.RequestStatus;
+import swproject.yoohoo.domain.*;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -44,6 +43,19 @@ public class RequestRepository {
                 .setParameter("member",member)
                 .setParameter("status",status)
                 .getResultList();
+    }
+
+    public void deleteByStatusStartBeforeDate(RequestStatus status, LocalDate date){
+        em.createQuery("delete from Request r where r.status =:status and r.startDate <:date")
+                .setParameter("status",status)
+                .setParameter("date",date)
+                .executeUpdate();
+    }
+
+    public void deleteByStatus(RequestStatus status){
+        em.createQuery("delete from Request r where r.status=:status")
+                .setParameter("status",status)
+                .executeUpdate();
     }
 
 }
