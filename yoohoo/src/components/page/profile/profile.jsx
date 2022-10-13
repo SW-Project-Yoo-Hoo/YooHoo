@@ -59,6 +59,7 @@ const Profile = (props) => {
                 process.env.PUBLIC_URL + "images/userProfileBasic.svg";
             }
           }
+
           setUserInfo(userAdd);
         })
         .catch(function (error) {
@@ -115,6 +116,12 @@ const Profile = (props) => {
   };
 
   /** ================================= */
+  /** 프로필 수정 */
+
+  useEffect(() => {
+    setEditInfoCheck(true); // 알림 지우기
+  }, [call]);
+
   /** editProfile에서 바뀐 정보 */
   const changeInfo = (value) => {
     setUserInfo(value);
@@ -218,7 +225,6 @@ const Profile = (props) => {
                   alt="회원 프로필 사진"
                 />
               )}
-
               <span className={styles.userName}>{userInfo.company}</span>
             </div>
 
