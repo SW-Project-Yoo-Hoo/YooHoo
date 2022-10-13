@@ -1,4 +1,4 @@
-@value mainGreen,highlight1, highlight3, background1,textInput,lightWhite,iconLightGrey, shadow,boldWhite,unselect from "../../../common/color.css";
+@value mainGreen, mainOrange, highlight1, highlight3, background1,textInput,lightWhite,iconLightGrey, shadow,boldWhite,unselect from "../../../common/color.css";
 @value marginLeftRight from "../../../common/size.css";
 
 .displayFlex {
@@ -231,6 +231,15 @@
   padding: 2.0833vw 2.1875vw 2.0833vw 2.1875vw;
 }
 
+.editProfileAlert {
+  font-family: "Medium";
+  font-size: 0.625vw;
+  color: mainOrange;
+  display: flex;
+  justify-content: center;
+  margin-top: 2.0833vw;
+}
+
 /* 1920px 이상  */
 @media (min-width: 1920px) {
   .backGroundIamgeHeader {
@@ -384,5 +393,10 @@
 
   .postsContentsEdit {
     padding: 43px 50px 43px 50px;
+  }
+
+  .editProfileAlert {
+    font-size: 16px;
+    margin-top: 43px;
   }
 }

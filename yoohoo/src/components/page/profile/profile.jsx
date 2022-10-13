@@ -17,6 +17,7 @@ import axios from "axios";
 
 const Profile = (props) => {
   const [userInfo, setUserInfo] = useState({});
+  const [editInfoCheck, setEditInfoCheck] = useState(true);
 
   //웹 스토리지 저장 커스텀 훅 호출
   const [call, setCall] = useLocalStorage("call", "MyPost");
@@ -106,44 +107,66 @@ const Profile = (props) => {
 
       //프로필 수정
       case "EditProfile":
-        return (
-          <EditProfile
-            changeInfo={changeInfo}
-            editProfileHandling={editProfileHandling}
-          />
-        );
+        return <EditProfile changeInfo={changeInfo} />;
 
       default:
         return <MyPost />;
     }
   };
 
+  /** ================================= */
   /** editProfile에서 바뀐 정보 */
   const changeInfo = (value) => {
     setUserInfo(value);
   };
 
+  /** editProfile -> 바뀐 정보 check */
+  function editCheck() {
+    if (
+      "companyName" in userInfo &&
+      "adress" in userInfo &&
+      "phone" in userInfo &&
+      "photo" in userInfo
+    ) {
+      if (userInfo.phone.match(/^\d{2,3}-\d{3,4}-\d{4}$/) === null) {
+        return false;
+      } else return true;
+    } else if (
+      userInfo.companyName === "" ||
+      userInfo.adress === "" ||
+      userInfo.phone === ""
+    ) {
+      return false;
+    }
+    return false;
+  }
+
   /** editProfile에서 완료 버튼 클릭 시 */
   /** 백엔드로 회원 정보 전송하기 */
   const editProfileHandling = () => {
-    const formData = new FormData();
-    formData.append("company", userInfo.companyName);
-    formData.append("address", userInfo.adress);
-    formData.append("contact", userInfo.phone);
-    formData.append("photo", userInfo.photo[0]);
+    if (editCheck() !== false) {
+      const formData = new FormData();
+      formData.append("company", userInfo.companyName);
+      formData.append("address", userInfo.adress);
+      formData.append("contact", userInfo.phone);
+      formData.append("photo", userInfo.photo[0]);
 
-    axios
-      .put("/members", formData, {
-        headers: {
-          "Contest-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => setUserInfo(res.data.data))
-      .catch((error) => console.log(error));
+      axios
+        .put("/members", formData, {
+          headers: {
+            "Contest-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => setUserInfo(res.data.data))
+        .catch((error) => console.log(error));
 
-    //내 게시물 보기로 이동하기
-    setCall("MyPost");
+      setEditInfoCheck(true); // 알림 지우기
+      setCall("MyPost"); //내 게시물 보기로 이동하기
+    } else {
+      setEditInfoCheck(false); // 알림 띄우기
+    }
   };
+  /** ================================= */
 
   //로그아웃 버튼 클릭시
   const logoutHandling = () => {
@@ -179,13 +202,22 @@ const Profile = (props) => {
           <div className={styles.userInfo}>
             {/* 사진,이름 */}
             <div className={styles.userInfoTop}>
-              <img
-                className={styles.userPhoto}
-                src={
-                  process.env.PUBLIC_URL + "productList/" + userInfo.photo_dir
-                }
-                alt="회원 프로필 사진"
-              />
+              {userInfo.photo_dir === "" ||
+              userInfo.photo_dir === "images/userProfileBasic.svg" ? (
+                <img
+                  className={styles.userPhoto}
+                  src={process.env.PUBLIC_URL + "images/userProfileBasic.svg"}
+                  alt="회원 프로필 사진"
+                />
+              ) : (
+                <img
+                  className={styles.userPhoto}
+                  src={
+                    process.env.PUBLIC_URL + "productList/" + userInfo.photo_dir
+                  }
+                  alt="회원 프로필 사진"
+                />
+              )}
 
               <span className={styles.userName}>{userInfo.company}</span>
             </div>
@@ -479,6 +511,15 @@ const Profile = (props) => {
             className={call === "EditProfile" ? styles.postsContentsEdit : ""}
           >
             {callComponent(call)}
+            <div
+              className={
+                call === "EditProfile" && editInfoCheck === false
+                  ? styles.editProfileAlert
+                  : styles.displayNone
+              }
+            >
+              모든 정보가 올바르게 입력되지 않았습니다.
+            </div>
           </div>
         </div>
       </div>
