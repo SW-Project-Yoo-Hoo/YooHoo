@@ -58,16 +58,19 @@ const EditProfile = ({ changeInfo }) => {
     let imageUrlLists = [...showImages];
     let imageUrlListsOrigin = [...uploadFile];
 
-    const currentImageUrl = URL.createObjectURL(imageLists[0]);
-    imageUrlLists.push(currentImageUrl);
-    imageUrlListsOrigin.push(imageLists[0]);
+    for (let i = 0; i < imageLists.length; i++) {
+      const currentImageUrl = URL.createObjectURL(imageLists[i]);
+      imageUrlLists.push(currentImageUrl);
+      imageUrlListsOrigin.push(imageLists[i]);
+    }
 
+    console.log(imageUrlListsOrigin);
     if (imageUrlLists.length > 1) {
       imageUrlLists = imageUrlLists.slice(1, 2);
     }
 
     setShowImages(imageUrlLists);
-    setUploadFile(imageUrlListsOrigin);
+    setUploadFile(imageUrlListsOrigin.reverse());
   };
 
   const onChangeImg = (e) => {
