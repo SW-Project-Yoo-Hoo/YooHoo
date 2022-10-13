@@ -106,15 +106,41 @@ const Profile = (props) => {
 
       //프로필 수정
       case "EditProfile":
-        return <EditProfile />;
+        return (
+          <EditProfile
+            changeInfo={changeInfo}
+            editProfileHandling={editProfileHandling}
+          />
+        );
 
       default:
         return <MyPost />;
     }
   };
 
+  /** editProfile에서 바뀐 정보 */
+  const changeInfo = (value) => {
+    setUserInfo(value);
+  };
+
+  /** editProfile에서 완료 버튼 클릭 시 */
+  /** 백엔드로 회원 정보 전송하기 */
   const editProfileHandling = () => {
-    //백엔드로 회원 정보 전송하기
+    const formData = new FormData();
+    formData.append("company", userInfo.companyName);
+    formData.append("address", userInfo.adress);
+    formData.append("contact", userInfo.phone);
+    formData.append("photo", userInfo.photo[0]);
+
+    axios
+      .put("/members", formData, {
+        headers: {
+          "Contest-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => setUserInfo(res.data.data))
+      .catch((error) => console.log(error));
+
     //내 게시물 보기로 이동하기
     setCall("MyPost");
   };
@@ -155,9 +181,12 @@ const Profile = (props) => {
             <div className={styles.userInfoTop}>
               <img
                 className={styles.userPhoto}
-                src={userInfo.photo_dir}
+                src={
+                  process.env.PUBLIC_URL + "productList/" + userInfo.photo_dir
+                }
                 alt="회원 프로필 사진"
-              ></img>
+              />
+
               <span className={styles.userName}>{userInfo.company}</span>
             </div>
 
@@ -437,7 +466,7 @@ const Profile = (props) => {
               <span className={styles.titleEdit}>프로필 수정</span>
               <span
                 className={styles.titleEditDone}
-                onClick={() => editProfileHandling()}
+                onClick={editProfileHandling}
               >
                 완료
               </span>
