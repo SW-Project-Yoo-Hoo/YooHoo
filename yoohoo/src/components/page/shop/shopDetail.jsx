@@ -362,7 +362,9 @@ const ShopDetail = (props) => {
                     <img
                       className={styles.companyImg}
                       src={
-                        REACT_PUBLIC_URL + "profileImg/" + productItem.photo_dir
+                        REACT_PUBLIC_URL +
+                        "productList/" +
+                        productItem.photo_dir
                       }
                       alt="Company"
                     />
