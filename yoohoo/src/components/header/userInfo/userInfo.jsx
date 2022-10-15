@@ -7,7 +7,9 @@ import axios from "axios";
 
 const UserInfo = (props) => {
   const [page, setPage] = useState("/login");
+  const [alarmPage, setAlarmPage] = useState("/login");
 
+  /** 마이프로필 아이콘 */
   useEffect(() => {
     const pageHandling = async () => {
       // let test = false;
@@ -30,6 +32,27 @@ const UserInfo = (props) => {
     pageHandling();
   }, []);
 
+  /** 알림 아이콘 */
+  useEffect(() => {
+    const alarmPageHandling = async () => {
+      await axios
+        .get("/isLogin")
+        .then(function (response) {
+          if (response.data.data === true) {
+            //알림 페이지 이동
+            setAlarmPage("/alarm");
+          } else {
+            //로그인 페이지 이동
+            setAlarmPage("/login");
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+    alarmPageHandling();
+  }, []);
+
   return (
     <ul className={styles.userInfo}>
       {/* searchIcon */}
@@ -39,7 +62,7 @@ const UserInfo = (props) => {
 
       {/* alarmIcon */}
       <li className={styles.liStyle}>
-        <Link to="/alarm">
+        <Link to={alarmPage}>
           <TbBell className={styles.icon} />
         </Link>
       </li>
