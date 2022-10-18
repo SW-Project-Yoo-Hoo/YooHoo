@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import styles from "./progressStatus.module.css";
 import { MdPlayCircleFilled } from "react-icons/md";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProgressStatus = (props) => {
   const [post, setPost] = useState([]);
+
+  const navigate = useNavigate();
 
   //반납,조기반납 버튼 토글 이벤트
   const onToggle = (id) => {
@@ -16,38 +18,112 @@ const ProgressStatus = (props) => {
     );
   };
 
+  //조기 반납 요청하기 -> 요청 중 이벤트
+  const onEarlyStatus = (id) => {
+    setPost(
+      post.map((post) =>
+        post.deal_id === id ? { ...post, status: "EARLY_ON" } : post
+      )
+    );
+  };
+
+  //반납 요청하기 -> 요청 중 이벤트
+  const onStatus = (id) => {
+    setPost(
+      post.map((post) =>
+        post.deal_id === id ? { ...post, status: "ON" } : post
+      )
+    );
+  };
+
   //반납, 조기반납 핸들링
   const returnButtonShow = (props) => {
-    const text = "반납";
+    //반납, 조기반납
+    let time;
+
+    //요청하기,요청중,수락하기
+    let status;
+
+    const text = props.status;
+
+    switch (props.status) {
+      case "EARLY_REQUEST":
+        time = "조기반납";
+        status = "요청하기";
+        break;
+
+      case "EARLY_ON":
+        time = "조기반납";
+        status = "요청 중";
+        break;
+
+      case "EARLY_ACCEPT":
+        time = "조기반납";
+        status = "수락하기";
+        break;
+
+      case "REQUEST":
+        time = "반납";
+        status = "요청하기";
+        break;
+
+      case "ON":
+        time = "반납";
+        status = "요청 중";
+        break;
+
+      case "ACCEPT":
+        time = "반납";
+        status = "수락하기";
+        break;
+
+      default:
+        break;
+    }
+
     const returnButton = (event) => {
       //백엔드로 반납 정보 전송
       //현재 상태가 요청 중이면 전송하지 않음
+
       event.stopPropagation();
+      if (status !== "요청 중")
+        axios
+          .patch(`/Deals/${props.deal_id}`)
+          .then(function (response) {
+            if (response.data.code === 200) {
+              //반납 관련 요청 성공
+
+              //버튼 닫기
+              onToggle(props.deal_id);
+
+              //상태 바꾸기
+              if (time === "반납") onStatus(props.deal_id);
+              else onEarlyStatus(props.deal_id);
+
+              if (status === "수락하기")
+                navigate("/profile", { state: { call: "CompletStatus" } });
+            }
+          })
+          .catch(function (error) {
+            // 오류발생시 실행
+            console.log(error);
+          });
     };
 
     return (
       <div
-        //백에서 값 받아와서 아래 적용하기
-        // className={[
-        //   styles.returnButtonShow,
-        //   props.message.text === "반납"
-        //     ? styles.returnButtonStyle
-        //     : styles.earlyReturnButton,
-        // ].join(" ")}
-
         className={[
           styles.returnButtonShow,
-          text === "반납" ? styles.returnButtonStyle : styles.earlyReturnButton,
+          time === "반납" ? styles.returnButtonStyle : styles.earlyReturnButton,
         ].join(" ")}
       >
-        {/* 조기반납 */}
+        {console.log(props)}
         <div
           className={styles.returnButtonText}
           onClick={(event) => returnButton(event)}
         >
           <span>
-            {/* {props.message.text} {props.message.state} */}
-            반납 요청하기
+            {time} {status}
           </span>
         </div>
       </div>
@@ -126,7 +202,7 @@ const ProgressStatus = (props) => {
         });
     }
     get();
-  }, []);
+  }, [post.status]);
 
   return (
     <div className={styles.container}>
