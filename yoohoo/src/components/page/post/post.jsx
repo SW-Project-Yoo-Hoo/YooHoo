@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./post.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MdCancel, MdCheck, MdPhotoCamera } from "react-icons/md";
 import axios from "axios";
 
@@ -10,6 +10,8 @@ const Post = (props) => {
   //입력 데이터 확인
   const [incorrect, setIncorrect] = useState(false);
   const [alertText, setAlertText] = useState("test");
+
+  const navigate = useNavigate();
 
   //제목, 상세내용
   const [inputs, setInputs] = useState({
@@ -101,29 +103,6 @@ const Post = (props) => {
   //대여단위
   const [dealUnit, setDealUnit] = useState("일");
 
-  const communication = () => {
-    //로그인 여부 확인
-    axios
-      .get("/isLogin")
-      .then(function (response) {
-        console.log(response);
-        //로그인 되어 있음
-        if (response.data.data === true) {
-          console.log(response);
-          enrollPost();
-        } else {
-          //로그인 안됨
-          window.location.href = "/login";
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    //게시물 상세보기로 이동
-    console.log("등록!");
-  };
-
   const enrollPost = async () => {
     //백엔드로 데이터 전송
     const formData = new FormData();
@@ -157,6 +136,18 @@ const Post = (props) => {
       //카테고리가 존재하지 않으면 빈 배열 보내기
       formData.append("categories", Array.from({ length: 1 }));
     }
+
+    const item = {
+      title: title,
+      rental_unit: dealUnit,
+      rental_price: price,
+      quantity: quantity,
+      explain: contents,
+      photos: uploadFile,
+      categories: categories,
+    };
+
+    console.log(item);
     await axios
       .post("/posts", formData, {
         headers: {
@@ -167,7 +158,13 @@ const Post = (props) => {
         console.log(response);
         if (response.data.code === 201) {
           //게시물 등록 완료 되면 상세보기로 이동하기
-          window.location.href = `/detail/${response.data.data}`;
+          item.post_id = response.data.data;
+          console.log(item);
+          // window.location.href = `/detail/${response.data.data}`;
+          navigate(`/detail/${response.data.data}`, {
+            state: { info: item },
+          });
+          //state={{ info: props }}
         } else {
           console.log(response);
           //내부오류
@@ -200,7 +197,7 @@ const Post = (props) => {
       //데이터 입력이 모두 되어 있다면
 
       setIncorrect(false);
-      communication();
+      enrollPost();
     }
   };
 
