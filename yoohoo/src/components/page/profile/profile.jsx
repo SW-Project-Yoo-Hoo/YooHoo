@@ -129,7 +129,9 @@ const Profile = (props) => {
         if (response.data.code === 200) {
           //로그아웃 성공
           //메인홈으로 이동
+
           window.location.href = "/home";
+          setCall("MyPost");
         }
         // console.log(response);
       })
