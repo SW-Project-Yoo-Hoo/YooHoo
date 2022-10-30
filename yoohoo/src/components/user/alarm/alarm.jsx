@@ -186,7 +186,7 @@ const Alarm = (props) => {
                                         className={styles.productImg}
                                         src={
                                           REACT_PUBLIC_URL +
-                                          "images/header/logo.png"
+                                          "images/logoAlarm.svg"
                                         }
                                         alt="logo"
                                       />
