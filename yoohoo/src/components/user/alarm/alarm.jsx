@@ -86,7 +86,7 @@ const Alarm = (props) => {
 
               <div className={styles.alarmList}>
                 {alarmList &&
-                  alarmList.reverse().map((item, index) => (
+                  alarmList.map((item, index) => (
                     <div className={styles.alarmItems} key={item.id}>
                       {index === 0 && (
                         <img
