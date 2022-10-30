@@ -334,7 +334,10 @@ const ShopDetail = (props) => {
                       {photoGroup &&
                         (!isPicLoaded && (photoGroup[0].show = true),
                         photoGroup.map((item, index) => (
-                          <li onClick={(event) => onClickPicture(item.id)}>
+                          <li
+                            onClick={(event) => onClickPicture(item.id)}
+                            key={index}
+                          >
                             <img
                               className={
                                 item.show ? styles.nowBtn : styles.imgBtnList
