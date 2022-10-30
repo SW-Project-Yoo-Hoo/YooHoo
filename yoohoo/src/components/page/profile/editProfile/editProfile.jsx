@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "./editProfile.module.css";
 import { MdPhotoCamera } from "react-icons/md";
 
-const EditProfile = () => {
+const EditProfile = ({ changeInfo }) => {
   const [inputs, setInputs] = useState({
     companyName: "",
     adress: "",
@@ -20,6 +20,7 @@ const EditProfile = () => {
         })
         .catch((error) => console.log(error));
     };
+
     getInfo();
   }, []);
 
@@ -27,30 +28,48 @@ const EditProfile = () => {
 
   const changeHandling = (e) => {
     const { value, name } = e.target;
+
     setInputs({
       ...inputs,
       [name]: value,
     });
   };
 
+  useEffect(() => {
+    changeInfo(inputs);
+  }, [inputs]);
+
   //이미지
   const [showImages, setShowImages] = useState([]);
+
+  //백엔드로 전송할 이미지
+  const [uploadFile, setUploadFile] = useState([]);
+
+  useEffect(() => {
+    setInputs({
+      ...inputs,
+      photo: uploadFile,
+    });
+  }, [showImages]);
 
   // 이미지 상대경로 저장
   const imageAddHandling = (e) => {
     const imageLists = e.target.files;
     let imageUrlLists = [...showImages];
+    let imageUrlListsOrigin = [...uploadFile];
 
-    // for (let i = 0; i < imageLists.length; i++) {
-    const currentImageUrl = URL.createObjectURL(imageLists[0]);
-    imageUrlLists.push(currentImageUrl);
-    // }
+    for (let i = 0; i < imageLists.length; i++) {
+      const currentImageUrl = URL.createObjectURL(imageLists[i]);
+      imageUrlLists.push(currentImageUrl);
+      imageUrlListsOrigin.push(imageLists[i]);
+    }
 
     if (imageUrlLists.length > 1) {
       imageUrlLists = imageUrlLists.slice(1, 2);
     }
 
     setShowImages(imageUrlLists);
+    setUploadFile(imageUrlListsOrigin.reverse());
   };
 
   const onChangeImg = (e) => {
@@ -68,20 +87,30 @@ const EditProfile = () => {
       <div className={styles.photo}>
         {/* 이미지 미리보기 */}
         <div className={styles.showPhoto}>
-          {/* 이미지 선택 전  */}
-          <div>{/* 사용자원래 이미지 받아오기 */}</div>
-
-          {/* 이미지 선택 후 */}
-          {showImages.map((image, id) => (
-            <div key={id}>
-              {/* 이미지 미리보기 */}
-              <img
-                className={styles.showPhoto}
-                src={image}
-                alt={`${image}-${id}`}
-              />
-            </div>
-          ))}
+          {showImages.length !== 0 ? (
+            showImages.map((image, id) => (
+              <div key={id}>
+                {/* 이미지 미리보기 */}
+                <img
+                  className={styles.showPhoto}
+                  src={image}
+                  alt={`${image}-${id}`}
+                />
+              </div>
+            ))
+          ) : inputs.photo_dir === "" ? (
+            <img
+              className={styles.showPhoto}
+              src={process.env.PUBLIC_URL + "images/userProfileBasic.svg"}
+              alt="Company"
+            />
+          ) : (
+            <img
+              className={styles.showPhoto}
+              src={process.env.PUBLIC_URL + "productList/" + inputs.photo_dir}
+              alt="Company"
+            />
+          )}
         </div>
 
         {/* 이미지 선택 */}
@@ -108,7 +137,6 @@ const EditProfile = () => {
             onChange={changeHandling}
             value={companyName}
             placeholder={inputs.company}
-            // placeholder="아이디를 입력해주세요"
             className={styles.input}
           />
         </div>
@@ -122,7 +150,6 @@ const EditProfile = () => {
             onChange={changeHandling}
             value={adress}
             placeholder={inputs.address}
-            // placeholder="아이디를 입력해주세요"
             className={styles.input}
           />
         </div>
@@ -136,7 +163,6 @@ const EditProfile = () => {
             onChange={changeHandling}
             value={phone}
             placeholder={inputs.contact}
-            // placeholder="아이디를 입력해주세요"
             className={styles.input}
           />
         </div>

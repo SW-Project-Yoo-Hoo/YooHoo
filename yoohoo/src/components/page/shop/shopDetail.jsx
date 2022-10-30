@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -60,13 +61,14 @@ const ShopDetail = (props) => {
   const location = useLocation();
   let nowItem = location.state.info;
 
-  /* 페이지 이동 시 스크롤 상단으로 */
+  /* 페이지 이동 했을 때 */
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // 스크롤 상단
     setStartDay("");
     setEndDay("");
     setCount(1);
     setPrice(0);
+    setIsPicLoaded(false);
   }, [location]);
 
   /* 백엔드에서 선택한 게시물 가져오기 */
@@ -137,40 +139,38 @@ const ShopDetail = (props) => {
   const navigate = useNavigate();
 
   const onClickTrade = () => {
-    // 로그인 안 했을 때
+    // 로그인 안 했을 때 -> 로그인 페이지로 이동
     if (loginInfo.data === false) {
       navigate("/login");
-    }
-
-    // 내 게시물에 거래하기 눌렀을 때
-
-    // 대여 기간 설정 안 했을 때
-    if (isNaN(dateCnt)) {
-      setTrade(1);
-    }
-    // 백엔드로 '거래 정보' POST
-    else {
-      const data = {
-        post_id: nowItem.post_id,
-        startDate: moment(startDate).format("YYYY-MM-DD"),
-        returnDate: moment(endDate).format("YYYY-MM-DD"),
-        total_price: price,
-        rental_quantity: count,
-      };
-      axios
-        .post("/requests", data, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          navigate("/profile", {
-            state: {
-              call: "SentStatus",
+    } else {
+      // 대여 기간 설정 안 했을 때
+      if (isNaN(dateCnt)) {
+        setTrade(1);
+      }
+      // 백엔드로 '거래 정보' POST
+      else {
+        const data = {
+          post_id: nowItem.post_id,
+          startDate: moment(startDate).format("YYYY-MM-DD"),
+          returnDate: moment(endDate).format("YYYY-MM-DD"),
+          total_price: price,
+          rental_quantity: count,
+        };
+        axios
+          .post("/requests", data, {
+            headers: {
+              "Content-Type": "application/json",
             },
-          });
-        })
-        .catch((error) => setTrade(2));
+          })
+          .then((res) => {
+            navigate("/profile", {
+              state: {
+                call: "SentStatus",
+              },
+            });
+          })
+          .catch((error) => setTrade(2));
+      }
     }
   };
 
@@ -334,7 +334,10 @@ const ShopDetail = (props) => {
                       {photoGroup &&
                         (!isPicLoaded && (photoGroup[0].show = true),
                         photoGroup.map((item, index) => (
-                          <li onClick={(event) => onClickPicture(item.id)}>
+                          <li
+                            onClick={(event) => onClickPicture(item.id)}
+                            key={index}
+                          >
                             <img
                               className={
                                 item.show ? styles.nowBtn : styles.imgBtnList
@@ -351,13 +354,25 @@ const ShopDetail = (props) => {
                     </ul>
                   </div>
                 </div>
-
                 <div className={styles.company}>
-                  <img
-                    className={styles.companyImg}
-                    src={REACT_PUBLIC_URL + "images/about/ys.svg"}
-                    alt="Company"
-                  />
+                  {productItem.photo_dir === "" ? (
+                    <img
+                      className={styles.companyImg}
+                      src={REACT_PUBLIC_URL + "images/userProfileBasic.svg"}
+                      alt="Company"
+                    />
+                  ) : (
+                    <img
+                      className={styles.companyImg}
+                      src={
+                        REACT_PUBLIC_URL +
+                        "productList/" +
+                        productItem.photo_dir
+                      }
+                      alt="Company"
+                    />
+                  )}
+
                   <div className={styles.companyInfo}>
                     <p className={styles.companyName}>{productItem.company}</p>
                     <p className={styles.companyAddress}>
@@ -365,18 +380,14 @@ const ShopDetail = (props) => {
                     </p>
                   </div>
                 </div>
-
                 <div className={styles.hr}></div>
-
                 <div>
                   <p className={styles.descriptionTitle}>물품 소개</p>
                   <div className={styles.descriptionContent}>
                     {productItem.explain}
                   </div>
                 </div>
-
                 <div className={styles.hr}></div>
-
                 <div>
                   <p className={styles.lookTitle}>살펴보기</p>
                   <LookProducts>
@@ -386,7 +397,7 @@ const ShopDetail = (props) => {
                         {shopList.map(
                           (item) =>
                             item.post_id !== nowItem.post_id && (
-                              <div id={item.id} className={styles.products1}>
+                              <div key={item.id} className={styles.products1}>
                                 <Link
                                   to={`/detail/${item.post_id}`}
                                   state={{ info: item }}
@@ -464,16 +475,11 @@ const ShopDetail = (props) => {
                   <div className={styles.period}>
                     <p className={styles.periodTitle}>대여 기간</p>
                     <div className={styles.helpImg}>
-                      <img
-                        className={styles.helpImg}
-                        src={REACT_PUBLIC_URL + "images/shopDetail/info.png"}
-                        alt="Help"
-                      />
+                      <AiOutlineExclamationCircle className={styles.helpImg} />
                       <div className={styles.helpContainer}>
                         <p className={styles.helpContent}>
                           대여 기간은 '{productItem.rental_unit}' 단위로만
-                        </p>
-                        <p className={styles.helpContent}>
+                          <br></br>
                           설정할 수 있습니다.
                         </p>
                       </div>
@@ -505,12 +511,12 @@ const ShopDetail = (props) => {
                 <div>
                   <p className={styles.countTitle}>수량</p>
                   <div className={styles.countBtns}>
-                    <button className={styles.minusBtn}>
-                      <BiMinus className={styles.btnIcon} onClick={minusBtn} />
+                    <button className={styles.minusBtn} onClick={minusBtn}>
+                      <BiMinus className={styles.btnIcon} />
                     </button>
                     <p className={styles.countNum}>{count}</p>
-                    <button className={styles.plusBtn}>
-                      <BiPlus className={styles.btnIcon} onClick={plusBtn} />
+                    <button className={styles.plusBtn} onClick={plusBtn}>
+                      <BiPlus className={styles.btnIcon} />
                     </button>
                   </div>
                 </div>
