@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./home.module.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
 import { Link } from "react-router-dom";
 import { MdOutlineTrendingFlat } from "react-icons/md";
+import axios from "axios";
 
 const Home = (props) => {
+  const [page, setPage] = useState("/login");
+
+  // 페이지 설정
+  useEffect(() => {
+    const pageHandling = async () => {
+      await axios
+        .get("/isLogin")
+        .then(function (response) {
+          //로그인 되어 있음
+          if (response.data.data === true) {
+            //프로필로 이동
+            setPage("/profile");
+          } else {
+            //로그인 페이지 이동
+            setPage("/login");
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+    pageHandling();
+  }, []);
+
   return (
     <div className={styles.home}>
       <Header />
@@ -78,7 +103,7 @@ const Home = (props) => {
                 <span className={styles.partTwoSubText}>
                   게시물 업로드, 물품 확인 및 거래를 할 수 있습니다.
                 </span>
-                <Link to="/Shop" className={styles.link}>
+                <Link to="/shop" className={styles.link}>
                   <div className={styles.linkGo}>
                     <span className={styles.partTwoButton}>Shop Now</span>
                     <MdOutlineTrendingFlat className={styles.arrowIcon} />
@@ -98,7 +123,7 @@ const Home = (props) => {
                 <span className={styles.partTwoSubText}>
                   연결된 기업들을 통해 재고 가치를 극대화하세요.
                 </span>
-                <Link to="/Post" className={styles.link}>
+                <Link to="/post" className={styles.link}>
                   <div className={styles.linkGo}>
                     <span className={styles.partTwoButton}>Post Now</span>
                     <MdOutlineTrendingFlat className={styles.arrowIcon} />
@@ -132,7 +157,7 @@ const Home = (props) => {
                 <span className={styles.partTwoSubText}>
                   모든 정보를 확인하세요.
                 </span>
-                <Link to="/Login" className={styles.link}>
+                <Link to={page} className={styles.link}>
                   <div className={styles.linkGo}>
                     <span className={styles.partTwoButton}>Profile Now</span>
                     <MdOutlineTrendingFlat className={styles.arrowIcon} />
@@ -180,9 +205,6 @@ const Home = (props) => {
           <Footer />
         </div>
       </div>
-      {/* <div className={styles.bottomContainer}>
-        <Footer />
-      </div> */}
     </div>
   );
 };

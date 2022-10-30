@@ -15,7 +15,7 @@
 
 .noPost {
   display: flex;
-  height: 13.125vw;
+  height: 13.4895vw;
   justify-content: center;
   align-items: center;
   font-family: "Regular";
@@ -54,6 +54,9 @@
   width: 1.3888vw;
   height: 1.3888vw;
   color: mainGreen;
+  background-color: white;
+  background-size: 1.3888vw 1.3888vw;
+  border-radius: 50%;
 }
 
 .postImg {
@@ -148,6 +151,7 @@
 
   .noPost {
     font-size: 16px;
+    height: 259px;
     margin-right: calc(42px - 14px); /*컨테이너 마진 왼-오*/
   }
 

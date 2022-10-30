@@ -9,7 +9,7 @@ const UserInfo = (props) => {
   const [page, setPage] = useState("/login");
   const [alarmPage, setAlarmPage] = useState("/login");
 
-  /** 마이프로필 아이콘 */
+  // 페이지 설정
   useEffect(() => {
     const pageHandling = async () => {
       // let test = false;
@@ -20,29 +20,10 @@ const UserInfo = (props) => {
           if (response.data.data === true) {
             //프로필로 이동
             setPage("/profile");
-          } else {
-            //로그인 페이지 이동
-            setPage("/login");
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    };
-    pageHandling();
-  }, []);
-
-  /** 알림 아이콘 */
-  useEffect(() => {
-    const alarmPageHandling = async () => {
-      await axios
-        .get("/isLogin")
-        .then(function (response) {
-          if (response.data.data === true) {
-            //알림 페이지 이동
             setAlarmPage("/alarm");
           } else {
             //로그인 페이지 이동
+            setPage("/login");
             setAlarmPage("/login");
           }
         })
@@ -50,7 +31,7 @@ const UserInfo = (props) => {
           console.log(error);
         });
     };
-    alarmPageHandling();
+    pageHandling();
   }, []);
 
   return (

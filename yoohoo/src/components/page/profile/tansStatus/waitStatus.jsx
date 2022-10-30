@@ -1,35 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./waitStatus.module.css";
 import moment from "moment";
 import "moment/locale/ko";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const WaitStatus = (props) => {
-  const post = [];
-
-  const postInfo1 = {
-    //테스트용 객체
-    id: "게시글 아이디1",
-    img: "/Images/test.jpeg",
-    title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    startDay: "2022.09.30",
-    endDay: "2022.10.22",
-  };
-
-  const postInfo2 = {
-    //테스트용 객체
-    id: "게시글 아이디2",
-    img: "/Images/home/earth.svg",
-    title: "testTitle이 얼마나 길어질까유쩔죠~~",
-    startDay: "2023.08.22",
-    endDay: "2024.09.22",
-  };
-
-  const getpost = () => {
-    //백엔드에서 정보 가져오기
-    //정보가 존재하면 객체 넣기
-    post.push(postInfo1);
-    post.push(postInfo2);
-  };
+  const [post, setPost] = useState([]);
 
   //디데이 계산하기
   const countDay = (props) => {
@@ -37,32 +14,29 @@ const WaitStatus = (props) => {
     const now = moment(new Date(moment().format("YYYY.MM.DD")));
 
     //디데이를 설정할 날짜
-    const dDay = moment(new Date(props.startDay));
+    const dDay = moment(new Date(props.startDate));
 
     //day 기준으로 날짜 차이 구하기
     return dDay.diff(now, "days");
   };
 
-  const pageNaviHandling = (props) => {
-    //해당 페이지 상세보기로 이동하기
-    console.log("이동하기!");
-  };
-
-  const ShowPost = (props, id) => {
+  const ShowPost = (props) => {
     return (
-      <div
-        className={styles.post}
-        onClick={() => pageNaviHandling(props)}
-        key={id}
-      >
+      <div className={styles.post} key={props.deal_id}>
         {/* 게시물 사진 */}
-        <div className={styles.postImgDay}>
-          <img className={styles.postImg} src={props.img} alt="img" />
-          {/* d-day */}
-          <div className={styles.dDay}>
-            <span>D - {countDay(props)}</span>
+        <Link to={`/detail/${props.post_id}`} state={{ info: props }}>
+          <div className={styles.postImgDay}>
+            <img
+              className={styles.postImg}
+              src={process.env.PUBLIC_URL + "productList/" + props.image}
+              alt="이미지를 찾을 수 없습니다"
+            />
+            {/* d-day */}
+            <div className={styles.dDay}>
+              <span>D - {countDay(props)}</span>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* 게시물 제목 */}
         <div>
@@ -72,30 +46,50 @@ const WaitStatus = (props) => {
         {/* 게시물 대여 날짜 */}
         <div className={[styles.dealDate, styles.dealDateMargin].join(" ")}>
           <span>시작날짜</span>
-          <span>{props.startDay}</span>
+          <span>{props.startDate}</span>
         </div>
         <div className={styles.dealDate}>
           <span>반납날짜</span>
-          <span>{props.endDay}</span>
+          <span>{props.returnDate}</span>
         </div>
       </div>
     );
   };
 
+  useEffect(() => {
+    let postAdd = [...post];
+    async function get() {
+      await axios
+        .get("/my/myPreDeals")
+        .then(function (response) {
+          if (response.data.code === 200) {
+            //데이터 받기 성공
+            let responseData = response.data.data;
+            for (const [key, value] of Object.entries(responseData)) {
+              postAdd[key] = value;
+            }
+            setPost(postAdd);
+          }
+        })
+        .catch(function (error) {
+          // 오류발생시 실행
+          console.log(error);
+        });
+    }
+    get();
+  }, []);
+
   return (
     <div className={styles.container}>
-      {getpost()}
-      {/* 게시물이 없을때 */}
-      <div className={post.length === 0 ? styles.noPost : styles.displayNone}>
-        <span>대기 중인 거래가 없습니다</span>
-      </div>
-
-      {/* 게시물이 있을때 */}
-      <div
-        className={post.length === 0 ? styles.displayNone : styles.gridWrapper}
-      >
-        {post.map((post) => ShowPost(post, post.id))}
-      </div>
+      {post.length === 0 ? (
+        <div className={styles.noPost}>
+          <span>대기 중인 거래가 없습니다</span>
+        </div>
+      ) : (
+        <div className={styles.gridWrapper}>
+          {post.map((post) => ShowPost(post))}
+        </div>
+      )}
     </div>
   );
 };
