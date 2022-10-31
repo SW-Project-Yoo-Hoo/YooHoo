@@ -31,9 +31,8 @@ public class DealController {
         }
         List<DealDTO> dtoList=deals.stream()
                 .map(m->new DealDTO(m))
+                .sorted(Comparator.comparing(DealDTO::getStartDate))
                 .collect(Collectors.toList());
-        Collections.sort(dtoList,new DateComparator());
-
 
         return new ResultVO(200,"거래 대기 조회 성공",dtoList);
     }
@@ -60,17 +59,6 @@ public class DealController {
     public ResultVO returnRequest(@PathVariable Long id, @Login Member loginMember){
         dealService.agree(id, loginMember.getId());
         return new ResultVO(200,"반납 처리 성공",null);
-    }
-
-    class DateComparator implements Comparator<DealDTO>{
-        @Override
-        public int compare(DealDTO o1, DealDTO o2) {
-            LocalDate v1=o1.getStartDate();
-            LocalDate v2=o2.getStartDate();
-            if(v1.isBefore(v2)) return -1;
-            else if(v1.isAfter(v2)) return 1;
-            else return 0;
-        }
     }
 
 

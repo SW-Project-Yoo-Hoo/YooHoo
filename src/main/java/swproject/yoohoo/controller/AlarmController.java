@@ -12,7 +12,11 @@ import swproject.yoohoo.login.Login;
 import swproject.yoohoo.service.AlarmService;
 import swproject.yoohoo.service.PostService;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,17 +27,19 @@ public class AlarmController {
     private final PostService postService;
 
     @GetMapping("/alarms")
-    public ResultVO list(@Login Member loginMember){ //미완성
+    public ResultVO list(@Login Member loginMember){
         List<Alarm> alarms=alarmService.findbyMember(loginMember);
         List<alarmDTO> alarmDTOList=alarms.stream()
                 .map(m->new alarmDTO(m))
+                .sorted(Comparator.comparing(alarmDTO :: getAlarmDate).reversed())
                 .collect(Collectors.toList());
 
         return new ResultVO(200,"알림 전체 조회 성공",alarmDTOList);
     }
 
+
     @Getter
-    public class alarmDTO{
+    public class alarmDTO {
         private String title; //제목
         private String content; //내용
         private LocalDateTime alarmDate; //생성 날짜
@@ -43,7 +49,7 @@ public class AlarmController {
             this.content = alarm.getContent();
             this.alarmDate = alarm.getAlarmDate();
             this.photo_dir=alarm.getPhoto_dir();
-
         }
+
     }
 }

@@ -53,7 +53,7 @@ public class DealService {
                 dealComplete(deal, user, provider, alarmContent);
             }
             else{
-                if(deal.getReturnDate().isAfter(LocalDate.now())) preRequestAlarm(deal, provider);
+                if(deal.getReturnDate().isAfter(LocalDate.now())) preRequestAlarm(deal, provider); //조기 반납 요청
                 else RequestAlarm(deal, provider);
             }
         }
@@ -61,7 +61,7 @@ public class DealService {
             deal.agreeP();
             if(deal.isReturnU()) dealComplete(deal,provider,user,alarmContent);
             else{
-                if(deal.getReturnDate().isAfter(LocalDate.now())) preRequestAlarm(deal, user);
+                if(deal.getReturnDate().isAfter(LocalDate.now())) preRequestAlarm(deal, user); //조기 반납 요청
                 else RequestAlarm(deal,user);
             }
         }
@@ -92,6 +92,7 @@ public class DealService {
 
     private void dealComplete(Deal deal, Member user, Member provider, String alarmContent) {
         deal.setStatus(DealStatus.POST);
+        deal.setReturnDate(LocalDate.now());
         DealCompleteAlarm(deal, user, provider, alarmContent);
     }
 
