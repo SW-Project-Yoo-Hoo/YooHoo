@@ -100,8 +100,8 @@ const Alarm = (props) => {
                       )}
 
                       {index === 0 ||
-                      (item.dateMonth === alarmList[index - 1].dateMonth &&
-                        item.dateDate !== alarmList[index - 1].dateDate) ? (
+                      item.dateMonth !== alarmList[index - 1].dateMonth ||
+                      item.dateDate !== alarmList[index - 1].dateDate ? (
                         <>
                           <div>
                             <div
