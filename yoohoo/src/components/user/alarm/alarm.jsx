@@ -86,7 +86,7 @@ const Alarm = (props) => {
 
               <div className={styles.alarmList}>
                 {alarmList &&
-                  alarmList.reverse().map((item, index) => (
+                  alarmList.map((item, index) => (
                     <div className={styles.alarmItems} key={item.id}>
                       {index === 0 && (
                         <img
@@ -100,8 +100,8 @@ const Alarm = (props) => {
                       )}
 
                       {index === 0 ||
-                      (item.dateMonth === alarmList[index - 1].dateMonth &&
-                        item.dateDate !== alarmList[index - 1].dateDate) ? (
+                      item.dateMonth !== alarmList[index - 1].dateMonth ||
+                      item.dateDate !== alarmList[index - 1].dateDate ? (
                         <>
                           <div>
                             <div
