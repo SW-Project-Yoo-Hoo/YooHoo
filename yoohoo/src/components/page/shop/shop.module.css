@@ -1,4 +1,4 @@
-@value unselect, background1, background2, highlight1, line, unselect, mainOrange from "../../../common/color.css";
+@value mainGreen, unselect, background1, background2, highlight1, line, unselect, mainOrange from "../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
@@ -44,8 +44,8 @@
 
 .title,
 .hr,
-.orderSpan,
-.subTitle {
+.subTitle,
+.recommendDiv {
   z-index: 3;
 }
 
@@ -58,21 +58,22 @@
   color: highlight1;
 }
 
-.orderDiv {
+.recommendDiv {
   position: absolute;
   right: 0;
   margin-top: 2.5vw;
   margin-right: 16.6667vw;
-  font-size: 0.8333vw;
-  color: highlight1;
-  font-family: "Regular";
-
+  font-size: 0.7639vw;
+  color: mainGreen;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-family: "Medium";
+  cursor: pointer;
 }
 
-.orderIcon {
+.recommendIcon {
   width: 1vw;
   height: 1vw;
   margin: 0 0.3167vw 0 0;
@@ -209,9 +210,9 @@
     left: 338px;
   }
 
-  .orderDiv {
+  .recommendDiv {
     position: absolute;
-    font-size: 16px;
+    font-size: 14px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -220,9 +221,9 @@
     left: 1200px;
   }
 
-  .orderIcon {
-    width: 19px;
-    height: 19px;
+  .recommendIcon {
+    width: 15px;
+    height: 15px;
     margin: 0 8px 0 0;
   }
 

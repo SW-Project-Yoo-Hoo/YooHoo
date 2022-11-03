@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../../footer/footer";
 import styles from "./shop.module.css";
-import { MdSwapVert, MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { MdChecklistRtl, MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import Header from "../../header/header";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -45,9 +45,9 @@ const Shop = (props) => {
         <div className={styles.container}>
           <div className={styles.spanGroup}>
             <span className={styles.title}>SHOP</span>
-            <div className={styles.orderDiv}>
-              <MdSwapVert className={styles.orderIcon} />
-              <span className={styles.orderSpan}>최신순</span>
+            <div className={styles.recommendDiv}>
+              <MdChecklistRtl className={styles.recommendIcon} />
+              <span className={styles.recommendSpan}>조합 추천 받기</span>
             </div>
             <div className={styles.hr}></div>
             <span className={styles.subTitle}>All Products</span>
