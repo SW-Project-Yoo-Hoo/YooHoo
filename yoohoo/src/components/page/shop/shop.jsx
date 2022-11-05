@@ -21,10 +21,10 @@ const Shop = (props) => {
   const [wishItem, setWishItem] = useState(shopList);
   // const [wishItem, setWishItem] = useState(ShopImg);
 
-  const start = new Date();
+  const nowDate = new Date();
   const [recommend, setRecommend] = useState(false);
   const [startDate, setStartDate] = useState(
-    moment(start).format("YYYY.MM.DD")
+    moment(nowDate).format("YYYY.MM.DD")
   );
   const [endDate, setEndDate] = useState("");
 
@@ -125,24 +125,26 @@ const Shop = (props) => {
 
                   <div className={styles.categories}>
                     <div className={styles.spanGroup}>
-                      <span>카테고리</span>
-                      <span>복수 선택 가능</span>
+                      <span className={styles.startTitle}>카테고리</span>
+                      <span className={styles.title2}>복수 선택 가능</span>
                     </div>
                     <div className={styles.btnGroup}>
-                      <button>책상</button>
-                      <button>의자</button>
-                      <button>팩스기</button>
-                      <button>복사기</button>
-                      <button>커피머신</button>
-                      <button>마우스</button>
-                      <button>컴퓨터</button>
-                      <button></button>
+                      <button className={styles.tlBtn}>책상</button>
+                      <button className={styles.tBtn}>의자</button>
+                      <button className={styles.tBtn}>팩스기</button>
+                      <button className={styles.trBtn}>복사기</button>
+                      <button className={styles.blBtn}>커피머신</button>
+                      <button className={styles.bBtn}>마우스</button>
+                      <button className={styles.bBtn}>컴퓨터</button>
+                      <button className={styles.brBtn}></button>
                     </div>
-                    <button>추천 받기</button>
+                    <div className={styles.getBtn}>추천 받기</div>
                   </div>
-                  <div className={styles.recommendHr}></div>
+
                   <div className={styles.recommend}>
-                    <span>가장 저렴한 게시물을 추천 받아 보세요!</span>
+                    <span className={styles.alertText}>
+                      가장 저렴한 게시물을 추천 받아 보세요!
+                    </span>
                   </div>
                 </div>
               )}

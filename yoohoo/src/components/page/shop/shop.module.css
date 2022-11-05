@@ -1,4 +1,4 @@
-@value iconLightGrey, textInput, mainGreen, lightWhite, shadow, unselect, background1, background2, highlight1, line, unselect, mainOrange from "../../../common/color.css";
+@value iconLightGrey, textInputPlace, textInput, mainGreen, lightWhite, shadow, unselect, background1, background2, highlight1, line, unselect, mainOrange from "../../../common/color.css";
 
 /* ================================= */
 /* 헤더, 배경, 푸터 CSS */
@@ -83,7 +83,6 @@
   margin-right: 16.6667vw;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
 }
 
 .recommendBtn {
@@ -107,10 +106,10 @@
   background-color: lightWhite;
   border-radius: 1.6667vw;
   box-shadow: 0 0.2083vw 0.4167vw shadow;
-  padding: 1.0417vw 2.0833vw 2.0833vw 2.0833vw;
+  padding: 1.0417vw 0 2.0833vw 0;
 
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
 }
 
 .finishBtn {
@@ -121,6 +120,7 @@
   font-family: "Medium";
   color: unselect;
   font-size: 0.8333vw;
+  margin-right: 2.0833vw;
 }
 
 .recommendHr {
@@ -138,8 +138,9 @@
   font-size: 0.8333vw;
   font-family: "Regular";
   color: highlight1;
-  margin: 0 7.6389vw 0.7639vw 0;
+  margin: 0 7.6389vw 0.7639vw 2.0833vw;
 }
+
 .endTitle {
   margin: 0 0 0.7639vw 0;
 }
@@ -147,18 +148,127 @@
 .dateDiv {
   width: 8.0556vw;
   display: flex;
+  margin: 0.7639vw 0 1.5972vw 2.0833vw;
 }
 
 .dateInput {
   width: 8.0556vw;
   height: 2.2917vw;
   margin-right: 2.7778vw;
-
+  font-family: "Regular";
+  font-size: 0.7639vw;
   background-color: lightWhite;
   border-radius: 0.6944vw;
   border: 0.0694vw solid textInput;
   color: unselect;
-  padding-left: 0.8333vw;
+  text-align: center;
+  padding: 0;
+  /* padding-left: 0.8333vw; */
+}
+
+.categories {
+  height: 10.0694vw;
+  position: relative;
+}
+
+.spanGroup {
+  width: 100%;
+  margin-bottom: 0.7639vw;
+  position: relative;
+}
+
+.title2 {
+  font-size: 0.7639vw;
+  font-family: "Regular";
+  color: mainGreen;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 2.0833vw;
+}
+
+.btnGroup {
+  width: 100%;
+  height: 5.2083vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding: 0 2.0833vw 0 2.0833vw;
+  margin-bottom: 1.3889vw;
+}
+
+.tlBtn,
+.trBtn,
+.blBtn,
+.brBtn,
+.tBtn,
+.bBtn {
+  font-size: 0.7639vw;
+  color: unselect;
+  background: lightWhite;
+  border: 0.0694vw solid textInput;
+  cursor: pointer;
+  font-family: "Regular";
+}
+
+.tBtn {
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.bBtn {
+  border-left: 0;
+}
+
+.tlBtn {
+  border-top-left-radius: 0.6944vw;
+  border-bottom: 0;
+}
+
+.trBtn {
+  border-top-right-radius: 0.6944vw;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.blBtn {
+  border-bottom-left-radius: 0.6944vw;
+}
+
+.brBtn {
+  border-bottom-right-radius: 0.6944vw;
+  border-left: 0;
+  cursor: default;
+}
+
+.getBtn {
+  background: lightWhite;
+  font-size: 0.8333vw;
+  color: mainGreen;
+  font-family: "Medium";
+  outline: 0;
+  border: 0;
+  text-align: right;
+  margin-right: 2.0833vw;
+  cursor: pointer;
+}
+
+.recommend {
+  width: 100%;
+  height: 19.3056vw;
+  margin-top: 1.25vw;
+  border-top: 1px solid #f3f4f5;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alertText {
+  position: absolute;
+  font-size: 0.8333vw;
+  font-family: "Regular";
+  color: textInputPlace;
 }
 /* ================================= */
 
