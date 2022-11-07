@@ -146,7 +146,9 @@ const Shop = (props) => {
               </div>
               {recommend && (
                 <div className={styles.contents}>
-                  <div className={styles.finishBtn}>완료</div>
+                  <div className={styles.finishBtn} onClick={onClickRecommend}>
+                    완료
+                  </div>
                   <div className={styles.recommendHr}></div>
                   <div classname={styles.dateContainer}>
                     <span className={styles.startTitle}>시작 날짜</span>
@@ -286,7 +288,7 @@ const Shop = (props) => {
                       추천 받기
                     </div>
                   </div>
-
+                  <div className={styles.recommendHr2}></div>
                   <div className={styles.recommend}>
                     {getRecommend ? (
                       <div className={styles.productInfo}>
