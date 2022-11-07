@@ -36,10 +36,14 @@ const Shop = (props) => {
   /* ============================================== */
   /* SHOP -> 조합 추천 받기 */
 
+  const [recommend, setRecommend] =
+    useState(false); /** '조합 추천 받기' 버튼 */
+  const [getRecommend, setGetRecommend] =
+    useState(false); /** '추천 받기' 버튼 */
+
   const nowDate = new Date();
-  const [recommend, setRecommend] = useState(false);
   const [startDate, setStartDate] = useState(
-    moment(nowDate).format("YYYY.MM.DD")
+    moment(nowDate).format("YYYY. MM. DD")
   );
   const [endDate, setEndDate] = useState("");
 
@@ -73,9 +77,16 @@ const Shop = (props) => {
     });
   };
 
-  /* 조합 추천 받기 버튼 */
+  /* '조합 추천 받기' 버튼 */
   const onClickRecommend = () => {
+    setGetRecommend(false);
     setRecommend((recommend) => !recommend);
+  };
+
+  /* '추천 받기' 버튼 */
+  const onClickGetRecommend = () => {
+    setGetRecommend(true);
+    // setGetRecommend((getRecommend) => !getRecommend);
   };
 
   const startDateRef = useRef();
@@ -268,13 +279,54 @@ const Shop = (props) => {
                       </button>
                       <button className={styles.brBtn}></button>
                     </div>
-                    <div className={styles.getBtn}>추천 받기</div>
+                    <div
+                      className={styles.getBtn}
+                      onClick={onClickGetRecommend}
+                    >
+                      추천 받기
+                    </div>
                   </div>
 
                   <div className={styles.recommend}>
-                    <span className={styles.alertText}>
-                      가장 저렴한 게시물을 추천 받아 보세요!
-                    </span>
+                    {getRecommend ? (
+                      <div className={styles.productInfo}>
+                        <img
+                          className={styles.recommendImg}
+                          src={
+                            process.env.PUBLIC_URL +
+                            "productList/" +
+                            "00fe7e5e-15fb-48d2-a227-1879ca79e6f0.jpg"
+                          }
+                          alt="Product"
+                        />
+
+                        <div className={styles.recommendGroup}>
+                          <span className={styles.recommendTitle}>
+                            우드앤화이트
+                          </span>
+                          <div className={styles.recommendDateGroup}>
+                            <span className={styles.recommendDateTitle}>
+                              시작 날짜
+                            </span>
+                            <span className={styles.recommendDate}>
+                              2022.08.31
+                            </span>
+                          </div>
+                          <div className={styles.recommendDateGroup}>
+                            <span className={styles.recommendDateTitle}>
+                              반납 날짜
+                            </span>
+                            <span className={styles.recommendDate}>
+                              2022.09.30
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <span className={styles.alertText}>
+                        가장 저렴한 게시물을 추천 받아 보세요!
+                      </span>
+                    )}
                   </div>
                 </div>
               )}

@@ -281,6 +281,49 @@
   font-family: "Regular";
   color: textInputPlace;
 }
+
+.productInfo {
+  width: 10.2083vw;
+  height: 13.6111vw;
+}
+
+.recommendGroup {
+  width: 10.2083vw;
+  position: relative;
+  margin-top: 0.625vw;
+  margin-left: 0.2778vw;
+}
+
+.recommendImg {
+  width: 10.2083vw;
+  height: 10.2083vw;
+  border-radius: 1.6667vw;
+  object-fit: cover;
+}
+
+.recommendTitle {
+  font-size: 0.7639vw;
+  font-family: "Regular";
+  margin-bottom: 0.2083vw;
+}
+
+.recommendDateGroup {
+  display: flex;
+  margin-left: 0.1389vw;
+  margin-bottom: 0.1389vw;
+}
+
+.recommendDateTitle,
+.recommendDate {
+  font-size: 0.625vw;
+  font-family: "Regular";
+  color: unselect;
+}
+
+.recommendDate {
+  position: absolute;
+  right: 0;
+}
 /* ================================= */
 
 .container {
