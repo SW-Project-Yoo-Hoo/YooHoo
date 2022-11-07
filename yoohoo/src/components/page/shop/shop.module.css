@@ -92,6 +92,7 @@
   font-size: 0.7639vw;
   color: mainGreen;
   font-family: "Medium";
+  cursor: pointer;
 }
 
 .recommendIcon {
@@ -107,20 +108,21 @@
   border-radius: 1.6667vw;
   box-shadow: 0 0.2083vw 0.4167vw shadow;
   padding: 1.0417vw 0 2.0833vw 0;
-
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 
 .finishBtn {
-  position: relative;
   margin: 0;
   display: flex;
-  justify-content: right;
+  /* justify-content: right; */
   font-family: "Medium";
   color: unselect;
   font-size: 0.8333vw;
-  margin-right: 2.0833vw;
+  margin-left: 19.0972vw;
+  margin-right: 2.6389vw;
+  cursor: pointer;
 }
 
 .recommendHr {
@@ -249,7 +251,8 @@
   outline: 0;
   border: 0;
   text-align: right;
-  margin-right: 2.0833vw;
+  margin-left: 17.2222vw;
+  margin-right: 2.7778vw;
   cursor: pointer;
 }
 
