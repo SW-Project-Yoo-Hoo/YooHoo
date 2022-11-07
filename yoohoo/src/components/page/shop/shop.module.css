@@ -107,7 +107,8 @@
   background-color: lightWhite;
   border-radius: 1.6667vw;
   box-shadow: 0 0.2083vw 0.4167vw shadow;
-  padding: 1.0417vw 0 2.0833vw 0;
+  /* padding: 1.0417vw 0 2.0833vw 0; */
+  padding: 1.0417vw 0 0 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -264,11 +265,15 @@
   cursor: pointer;
 }
 
-.recommend {
-  width: 100%;
-  height: 19.3056vw;
+.recommendHr2 {
   margin-top: 1.25vw;
   border-top: 1px solid #f3f4f5;
+}
+
+.recommend {
+  width: 100%;
+  height: 20.1389vw;
+  /* height: 18.0556vw; */
   position: relative;
   display: flex;
   justify-content: center;
@@ -280,11 +285,19 @@
   font-size: 0.8333vw;
   font-family: "Regular";
   color: textInputPlace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .productInfo {
   width: 10.2083vw;
-  height: 13.6111vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .recommendGroup {
