@@ -14,19 +14,12 @@ const Shop = (props) => {
   const dispatch = useDispatch();
   const shopList = useSelector((state) => state.shopListSlice);
 
-  useEffect(() => {
-    dispatch(shopListThunk());
-  }, []);
-
   const [wishItem, setWishItem] = useState(shopList);
   // const [wishItem, setWishItem] = useState(ShopImg);
 
-  const nowDate = new Date();
-  const [recommend, setRecommend] = useState(false);
-  const [startDate, setStartDate] = useState(
-    moment(nowDate).format("YYYY.MM.DD")
-  );
-  const [endDate, setEndDate] = useState("");
+  useEffect(() => {
+    dispatch(shopListThunk());
+  }, []);
 
   /* 페이지 이동 시 스크롤 상단으로 */
   useEffect(() => {
@@ -40,6 +33,47 @@ const Shop = (props) => {
     );
   }
 
+  /* ============================================== */
+  /* SHOP -> 조합 추천 받기 */
+
+  const nowDate = new Date();
+  const [recommend, setRecommend] = useState(false);
+  const [startDate, setStartDate] = useState(
+    moment(nowDate).format("YYYY.MM.DD")
+  );
+  const [endDate, setEndDate] = useState("");
+
+  // 대여 물품
+  const [stuffs, setStuffs] = useState({
+    desk: false,
+    chair: false,
+    faxMachine: false,
+    copyMachine: false,
+    coffeeMachine: false,
+    mouse: false,
+    computer: false,
+  });
+
+  const {
+    desk,
+    chair,
+    faxMachine,
+    copyMachine,
+    coffeeMachine,
+    mouse,
+    computer,
+  } = stuffs;
+
+  //대여물품 상태 업데이트
+  const changeStuffHandling = (objects, id, value) => {
+    const name = objects[id];
+    setStuffs({
+      ...stuffs,
+      [name]: !value,
+    });
+  };
+
+  /* 조합 추천 받기 버튼 */
   const onClickRecommend = () => {
     setRecommend((recommend) => !recommend);
   };
@@ -79,6 +113,7 @@ const Shop = (props) => {
       setEndDate(e.target.value);
     }
   }
+  /* ============================================== */
 
   return (
     <>
@@ -129,13 +164,108 @@ const Shop = (props) => {
                       <span className={styles.title2}>복수 선택 가능</span>
                     </div>
                     <div className={styles.btnGroup}>
-                      <button className={styles.tlBtn}>책상</button>
-                      <button className={styles.tBtn}>의자</button>
-                      <button className={styles.tBtn}>팩스기</button>
-                      <button className={styles.trBtn}>복사기</button>
-                      <button className={styles.blBtn}>커피머신</button>
-                      <button className={styles.bBtn}>마우스</button>
-                      <button className={styles.bBtn}>컴퓨터</button>
+                      <button
+                        className={styles.tlBtn}
+                        onClick={() => {
+                          changeStuffHandling(Object.keys(stuffs), 0, desk);
+                        }}
+                      >
+                        <span
+                          className={desk ? styles.select : styles.unselect}
+                        >
+                          책상
+                        </span>
+                      </button>
+                      <button
+                        className={styles.tBtn}
+                        onClick={() => {
+                          changeStuffHandling(Object.keys(stuffs), 1, chair);
+                        }}
+                      >
+                        <span
+                          className={chair ? styles.select : styles.unselect}
+                        >
+                          의자
+                        </span>
+                      </button>
+                      <button
+                        className={styles.tBtn}
+                        onClick={() => {
+                          changeStuffHandling(
+                            Object.keys(stuffs),
+                            2,
+                            faxMachine
+                          );
+                        }}
+                      >
+                        <span
+                          className={
+                            faxMachine ? styles.select : styles.unselect
+                          }
+                        >
+                          팩스기
+                        </span>
+                      </button>
+                      <button
+                        className={styles.trBtn}
+                        onClick={() => {
+                          changeStuffHandling(
+                            Object.keys(stuffs),
+                            3,
+                            copyMachine
+                          );
+                        }}
+                      >
+                        <span
+                          className={
+                            copyMachine ? styles.select : styles.unselect
+                          }
+                        >
+                          복사기
+                        </span>
+                      </button>
+                      <button
+                        className={styles.blBtn}
+                        onClick={() => {
+                          changeStuffHandling(
+                            Object.keys(stuffs),
+                            4,
+                            coffeeMachine
+                          );
+                        }}
+                      >
+                        <span
+                          className={
+                            coffeeMachine ? styles.select : styles.unselect
+                          }
+                        >
+                          커피머신
+                        </span>
+                      </button>
+                      <button
+                        className={styles.bBtn}
+                        onClick={() => {
+                          changeStuffHandling(Object.keys(stuffs), 5, mouse);
+                        }}
+                      >
+                        <span
+                          className={mouse ? styles.select : styles.unselect}
+                        >
+                          마우스
+                        </span>
+                      </button>
+                      <button
+                        className={styles.bBtn}
+                        onClick={() => {
+                          changeStuffHandling(Object.keys(stuffs), 6, computer);
+                        }}
+                      >
+                        <span
+                          className={computer ? styles.select : styles.unselect}
+                        >
+                          컴퓨터
+                        </span>
+                      </button>
                       <button className={styles.brBtn}></button>
                     </div>
                     <div className={styles.getBtn}>추천 받기</div>

@@ -243,6 +243,14 @@
   cursor: default;
 }
 
+.select {
+  color: mainGreen;
+  font-family: "Medium";
+}
+.unselect {
+  color: unselect;
+}
+
 .getBtn {
   background: lightWhite;
   font-size: 0.8333vw;
