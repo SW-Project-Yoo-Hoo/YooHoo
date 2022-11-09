@@ -77,10 +77,21 @@ const Shop = (props) => {
     });
   };
 
-  /* '조합 추천 받기' 버튼 */
+  /* '조합 추천 받기' 버튼 -> 정보 초기화*/
   const onClickRecommend = () => {
     setGetRecommend(false);
     setRecommend((recommend) => !recommend);
+    setStartDate(moment(nowDate).format("YYYY. MM. DD"));
+    setEndDate("");
+    setStuffs({
+      desk: false,
+      chair: false,
+      faxMachine: false,
+      copyMachine: false,
+      coffeeMachine: false,
+      mouse: false,
+      computer: false,
+    });
   };
 
   /* '추천 받기' 버튼 */
