@@ -139,6 +139,7 @@ const Shop = (props) => {
         <div className={styles.container}>
           <div className={styles.spanGroup}>
             <span className={styles.title}>SHOP</span>
+
             <div className={styles.recommendDiv}>
               <div className={styles.recommendBtn} onClick={onClickRecommend}>
                 <MdChecklistRtl className={styles.recommendIcon} />
@@ -172,7 +173,7 @@ const Shop = (props) => {
                   </div>
 
                   <div className={styles.categories}>
-                    <div className={styles.spanGroup}>
+                    <div className={styles.spanGroup2}>
                       <span className={styles.startTitle}>카테고리</span>
                       <span className={styles.title2}>복수 선택 가능</span>
                     </div>
