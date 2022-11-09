@@ -269,7 +269,7 @@
 
 .recommendHr2 {
   margin-top: 1.25vw;
-  border-top: 1px solid #f3f4f5;
+  border-top: 0.0694vw solid #f3f4f5;
 }
 
 .recommend {
@@ -546,10 +546,6 @@
   /* 조합 추천 받기*/
 
   .recommendDiv {
-    position: absolute;
-    right: 0;
-    display: flex;
-    flex-direction: column;
     margin: auto;
     justify-content: center;
     align-items: center;
@@ -559,13 +555,7 @@
 
   .recommendBtn {
     position: absolute;
-    display: flex;
-    justify-content: right;
-    align-items: center;
     font-size: 14px;
-    color: mainGreen;
-    font-family: "Medium";
-    cursor: pointer;
   }
 
   .recommendIcon {
@@ -577,12 +567,9 @@
   .contents {
     width: 448px;
     height: 782px;
-    background-color: lightWhite;
     border-radius: 32px;
     box-shadow: 0 3px 6px shadow;
     padding: 20px 0 0 0;
-    display: flex;
-    flex-direction: column;
     position: absolute;
     margin: auto;
     top: 20px;
@@ -590,15 +577,9 @@
   }
 
   .finishBtn {
-    margin: 0;
-    display: flex;
-    /* justify-content: right; */
-    font-family: "Medium";
-    color: unselect;
     font-size: 16px;
     margin-left: 367px;
     margin-right: 50px;
-    cursor: pointer;
   }
 
   .recommendHr {
@@ -607,15 +588,9 @@
     margin: 16px 0 40px 0;
   }
 
-  .dateContainer {
-    width: 100%;
-  }
-
   .startTitle,
   .endTitle {
     font-size: 14px;
-    font-family: "Regular";
-    color: highlight1;
     margin: 0 147px 14px 40px;
   }
 
@@ -625,7 +600,6 @@
 
   .dateDiv {
     width: 154px;
-    display: flex;
     margin: 14px 0 30px 40px;
   }
 
@@ -633,44 +607,26 @@
     width: 154px;
     height: 44px;
     margin-right: 53px;
-    font-family: "Regular";
     font-size: 14px;
-    background-color: lightWhite;
     border-radius: 13px;
     border: 1px solid textInput;
-    color: unselect;
-    text-align: center;
-    padding: 0;
-    /* padding-left: 0.8333vw; */
   }
 
   .categories {
     height: 193px;
-    position: relative;
   }
 
   .spanGroup2 {
-    width: 100%;
     margin-bottom: 14px;
-    position: relative;
   }
 
   .title2 {
     font-size: 14px;
-    font-family: "Regular";
-    color: mainGreen;
-    position: absolute;
-    right: 0;
-    bottom: 0;
     margin-right: 40px;
   }
 
   .btnGroup {
-    width: 100%;
     height: 100px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     padding: 0 40px 0 40px;
     margin-bottom: 26px;
   }
@@ -682,11 +638,7 @@
   .tBtn,
   .bBtn {
     font-size: 14px;
-    color: unselect;
-    background: lightWhite;
     border: 1px solid textInput;
-    cursor: pointer;
-    font-family: "Regular";
   }
 
   .tBtn {
@@ -716,28 +668,12 @@
   .brBtn {
     border-bottom-right-radius: 13px;
     border-left: 0;
-    cursor: default;
-  }
-
-  .select {
-    color: mainGreen;
-    font-family: "Medium";
-  }
-  .unselect {
-    color: unselect;
   }
 
   .getBtn {
-    background: lightWhite;
     font-size: 16px;
-    color: mainGreen;
-    font-family: "Medium";
-    outline: 0;
-    border: 0;
-    text-align: right;
     margin-left: 330px;
     margin-right: 40px;
-    cursor: pointer;
   }
 
   .recommendHr2 {
@@ -746,38 +682,19 @@
   }
 
   .recommend {
-    width: 100%;
     height: 387px;
-    /* height: 18.0556vw; */
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .alertText {
-    position: absolute;
     font-size: 16px;
-    font-family: "Regular";
-    color: textInputPlace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .productInfo {
     width: 196px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
   }
 
   .recommendGroup {
     width: 184px;
-    position: relative;
     margin-top: 12px;
     margin-left: 5px;
   }
@@ -786,17 +703,14 @@
     width: 196px;
     height: 196px;
     border-radius: 32px;
-    object-fit: cover;
   }
 
   .recommendTitle {
     font-size: 14px;
-    font-family: "Regular";
     margin-bottom: 4px;
   }
 
   .recommendDateGroup {
-    display: flex;
     margin-left: 2px;
     margin-bottom: 2px;
   }
@@ -804,13 +718,7 @@
   .recommendDateTitle,
   .recommendDate {
     font-size: 12px;
-    font-family: "Regular";
-    color: unselect;
   }
 
-  .recommendDate {
-    position: absolute;
-    right: 0;
-  }
   /* ================================= */
 }
