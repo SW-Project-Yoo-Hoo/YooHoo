@@ -1,4 +1,4 @@
-@value highlight1,unselect,mainGreen,iconLightGrey from "../../../../common/color.css";
+@value highlight1,unselect,mainGreen,iconLightGrey,shadow,textInput,mainOrange from "../../../../common/color.css";
 
 .displayNone {
   display: none;
@@ -91,7 +91,7 @@
 
 .returnButtonShow {
   position: absolute;
-  width: 5.2083vw;
+  width: 0.6944vw;
   background-color: white;
   z-index: 1;
   border: 1px solid iconLightGrey;
@@ -115,10 +115,119 @@
   border-top: 1px solid iconLightGrey;
 }
 
+.recommend {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20.8333vw;
+  height: 22.9166vw;
+  background-color: white;
+  z-index: 1000;
+  border-radius: 1.8055vw;
+  box-shadow: 0 0.2083vw 0.4166vw shadow;
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendTitle {
+  flex: 14.96;
+  border-bottom: 2px solid #f3f4f5;
+  font-family: "Regular";
+  color: unselect;
+  font-size: 0.9027vw;
+  padding-left: 2.0833vw;
+  display: flex;
+  align-items: center;
+}
+
+.recommendDate {
+  flex: calc(100 - 14.96 - 17.72);
+  padding: 2.0833vw 2.0833vw 1.1458vw 2.0833vw;
+}
+
+.recommendStartDate {
+  margin-bottom: 1.6666vw;
+}
+
+.warningText {
+  display: flex;
+  justify-content: center;
+  color: mainOrange;
+  font-family: "Regular";
+  font-size: 0.5555vw;
+}
+
+.label {
+  font-size: 0.9027vw;
+  color: black;
+  font-family: "Regular";
+}
+
+.input {
+  display: flex;
+  height: 2.6041vw;
+  width: 100%;
+  border: 1px solid textInput;
+  border-radius: 0.9027vw;
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: 0.6944vw;
+  padding-left: 0.8333vw;
+  font-size: 0.8333vw;
+  font-family: "Regular";
+  background: white;
+  color: unselect;
+}
+
+.input::placeholder {
+  font-family: "Regular";
+  font-size: 0.8333vw;
+}
+
+.recommendEndDate {
+  margin-bottom: 1.1458vw;
+}
+
+.recommendSubmit {
+  flex: 17.72;
+  border-top: 2px solid #f3f4f5;
+}
+
+.recommendSubmitButton {
+  width: 50%;
+  height: 100%;
+  font-family: "Medium";
+  font-size: 0.8333vw;
+  color: unselect;
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 1.8055vw;
+}
+
+.recommendDone {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 2px solid #f3f4f5;
+  color: mainGreen;
+}
+
+.recommendImage {
+  z-index: 100000;
+  border: 4px solid mainOrange;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 1024px), screen and (max-width: 1300px) {
+  .recommend {
+    height: calc(22.9166vw + 15px);
+  }
+}
+
 @media screen and (min-width: 1024px), screen and (max-width: 1440px) {
   .returnButtonShow {
-    width: 77px;
-    right: calc(-77px + 0.5555vw + 0.6944vw);
+    width: 100px;
+    right: calc(-100px + 0.5555vw + 0.6944vw);
   }
 }
 
@@ -174,10 +283,10 @@
   }
 
   .returnButtonShow {
-    width: 100px;
+    width: 132px;
     border-radius: 12px;
     top: calc(10px + 26.66px + 8px); /* 아이콘 마진 + 아이콘 높이 + 6px*/
-    right: calc(-100px + 10px + 13.33px);
+    right: calc(-132px + 10px + 13.33px);
     /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
   }
 
