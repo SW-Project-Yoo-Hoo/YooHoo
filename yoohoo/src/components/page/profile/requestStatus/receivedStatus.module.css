@@ -91,14 +91,14 @@
 
 .returnButtonShow {
   position: absolute;
-  width: 0.6944vw;
+  /* width: 6.9444vw; */
   background-color: white;
   z-index: 1;
   border: 1px solid iconLightGrey;
   border-radius: 0.4166vw;
   top: calc(0.5555vw + 1.3888vw + 0.4166vw);
   /* 아이콘 마진 + 아이콘 높이 + 6px*/
-  right: calc(-5.2083vw + 0.5555vw + 0.6944vw);
+  /* right: calc(-5.2083vw + 0.5555vw + 0.6944vw); */
   /*-버튼너비 + 아이콘 마진 + 아이콘너비/2*/
 }
 
@@ -218,16 +218,26 @@
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 1024px), screen and (max-width: 1300px) {
+@media (min-width: 1024px) {
   .recommend {
     height: calc(22.9166vw + 15px);
   }
-}
-
-@media screen and (min-width: 1024px), screen and (max-width: 1440px) {
   .returnButtonShow {
     width: 100px;
     right: calc(-100px + 0.5555vw + 0.6944vw);
+  }
+}
+
+@media (min-width: 1301px) {
+  .recommend {
+    height: 22.9166vw;
+  }
+}
+
+@media (min-width: 1440px) {
+  .returnButtonShow {
+    width: 6.9444vw;
+    right: calc(-6.9444vw + 0.5555vw + 0.6944vw);
   }
 }
 
@@ -293,5 +303,55 @@
   .returnButtonText {
     height: 48px;
     font-size: 14px;
+  }
+
+  /*/////////////////////////////////////////////////////*/
+
+  .recommend {
+    width: 401px;
+    height: 441px;
+    box-shadow: 0 3px 6px shadow;
+    border-radius: 32px;
+  }
+
+  .recommendTitle {
+    font-size: 18px;
+    padding-left: 40px;
+  }
+
+  .recommendDate {
+    padding: 40px 40px 20px 40px;
+  }
+
+  .recommendStartDate {
+    margin-bottom: 32px;
+  }
+
+  .warningText {
+    font-size: 12px;
+  }
+
+  .label {
+    font-size: 18px;
+  }
+
+  .input {
+    height: 50px;
+    margin-top: 12px;
+    padding-left: 16px;
+    font-size: 16px;
+  }
+
+  .input::placeholder {
+    font-size: 16px;
+  }
+
+  .recommendEndDate {
+    margin-bottom: 22px;
+  }
+
+  .recommendSubmitButton {
+    font-size: 16px;
+    border-radius: 32px;
   }
 }
