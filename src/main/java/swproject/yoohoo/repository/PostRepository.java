@@ -2,10 +2,12 @@ package swproject.yoohoo.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import swproject.yoohoo.domain.Category;
 import swproject.yoohoo.domain.Member;
 import swproject.yoohoo.domain.Post;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -38,5 +40,30 @@ public class PostRepository {
                 Post.class)
                 .setParameter("member",member)
                 .getResultList();
+    }
+
+    public List<Post> findByCategories(List<Category> categoryList){
+        String jpql="select p from Post p left join PostCategory pc on p=pc.post";
+        boolean isFirstCondition=true;
+
+        /*동적으로 카테고리 조건문 추가*/
+        for (Category category : categoryList) {
+            if(isFirstCondition){
+                jpql+=" where";
+                isFirstCondition=false;
+            }else{
+                jpql+=" and";
+            }
+            jpql+=" pc.category= :"+category.getId()+"category";
+        }
+        System.out.println("jpql: "+ jpql);
+
+        TypedQuery<Post> query=em.createQuery(jpql,Post.class)
+                .setMaxResults(1000); //최대 1000건
+        for (Category category : categoryList) {
+            query=query.setParameter(category.getName()+"category",category );
+        }
+
+        return query.getResultList();
     }
 }

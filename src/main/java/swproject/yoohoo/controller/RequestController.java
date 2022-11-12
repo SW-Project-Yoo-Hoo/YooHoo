@@ -60,6 +60,17 @@ public class RequestController {
         return new ResultVO(201,"거래 수락 성공",null);
     }
 
+    @PostMapping("/my/recommended_request")
+    public ResultVO recommend(@RequestBody RecRequestForm form){
+        List<Request> requests=requestService.recommendRequests(form);
+        if(requests.isEmpty()) return new ResultVO(200,"해당 조합이 없음",null);
+        
+        List<RequestIdDTO> dtoList=requests.stream()
+                .map(m->new RequestIdDTO(m))
+                .collect(Collectors.toList());
+        return new ResultVO(200,"요청 조합 추천 성공",dtoList);
+    }
+
     @Getter
     public class RequestsDTO{//거래요청 전체보기 DTO
         private Long request_id; //거래요청 id
@@ -76,6 +87,15 @@ public class RequestController {
             this.title = request.getPost().getTitle();
             this.startDate = request.getStartDate();
             this.returnDate = request.getReturnDate();
+        }
+    }
+
+    @Getter
+    public class RequestIdDTO{//요청 조합 DTO
+        private Long request_id; //요청 아이디
+
+        public RequestIdDTO(Request request) {
+            this.request_id = request.getId();
         }
     }
 

@@ -14,6 +14,9 @@ import swproject.yoohoo.repository.PhotoRepository;
 import swproject.yoohoo.repository.PostRepository;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -74,5 +77,13 @@ public class PostService {
 
     public Post findOne(Long postId){
         return postRepository.findOne(postId);
+    }
+
+    public Post recommendOne(List<Category> categories,LocalDate startDate,LocalDate endDate){
+        List<Post> list = postRepository.findByCategories(categories);
+        if(list.isEmpty()) return null;
+
+        Post post=new Post();
+        return post;
     }
 }

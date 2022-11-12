@@ -1,10 +1,13 @@
 package swproject.yoohoo.service;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import swproject.yoohoo.controller.RecRequestForm;
 import swproject.yoohoo.controller.RequestForm;
 import swproject.yoohoo.domain.*;
 import swproject.yoohoo.repository.AlarmRepository;
@@ -13,8 +16,11 @@ import swproject.yoohoo.repository.PostRepository;
 import swproject.yoohoo.repository.RequestRepository;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -86,6 +92,88 @@ public class RequestService {
         alarmRepository.save(alarm);
     }
 
+    public List<Request> recommendRequests(RecRequestForm form){
+        Post post=postRepository.findOne(form.getPost_id());
+        LocalDate startDate=form.getStartDate();
+        LocalDate endDate=form.getEndDate();
+        List<Request> list=requestRepository.findByPostPeriod(post,RequestStatus.REQUEST,startDate,endDate);
+        if(list.isEmpty()) return null;
+
+        int N=list.size();
+        int M=post.getQuantity();
+        int[][] dp=new int[N+1][M+1];
+        pii[][] pick=new pii[N+1][M+1]; //되추적 용
+        List<LocalDate> e;
+        Collections.sort(list, new Comparator<Request>() {
+            @Override
+            public int compare(Request o1, Request o2) {
+                LocalDate s1=o1.getStartDate(),s2=o2.getStartDate();
+                LocalDate e1=o1.getReturnDate(),e2=o2.getReturnDate();
+                if(e1.isEqual(e2)){
+                    return s1.compareTo(s2);//s1<s2일때 -1,바꾸지않음
+                }
+                else return e1.compareTo(e2);
+            }
+        });
+        e=list.stream().map(m->m.getReturnDate()).collect(Collectors.toList());
+
+        for(int i=0;i<list.get(0).getRental_quantity();i++){
+            dp[0][i]=0;
+            pick[0][i]=new pii(-1,-1);
+        }
+        for(int i=list.get(0).getRental_quantity();i<=M;i++){
+            dp[0][i]=list.get(0).getTotal_price();
+            pick[0][i]=new pii(0,0);
+        }
+        for(int i=1;i<N;i++){
+            int t=lowerBound(e,0,i,list.get(i).getStartDate());
+            int q=list.get(i).getRental_quantity();
+            for(int j=0;j<=M;j++){
+                if(j-q>=0){
+                    int ret2=(t>0?dp[t-1][j-q]:0)+list.get(i).getTotal_price();//(t>0? dp[t-1]:0)+m[i].가격
+                    if(dp[i][j]<ret2){//dp[i][j]=max(dp[i][j],선택O)
+                        dp[i][j]=ret2;
+                        pick[i][j]=new pii(t-1,j-q);
+                    }
+                }
+                if(dp[i][j]<dp[i-1][j]){//dp[i][j]=max(dp[i][j],선택X)
+                    dp[i][j]=dp[i-1][j];
+                    pick[i][j]=new pii(i-1,j);
+                }
+            }
+        }
+        int maxPrice=0;
+        int xx=-1, yy=N-1;
+        for(int i=0;i<=M;i++){
+            if(dp[N-1][i]>maxPrice){
+                maxPrice=i;
+                xx=i;
+            }
+        }
+
+        List<Request> comb=new ArrayList<>();//id값만 담기
+        while(yy>=0){
+            if(yy==0&&xx==0) break;
+            int ny=pick[yy][xx].f, nx=pick[yy][xx].s;
+            if(dp[yy][xx]>dp[ny][nx]){
+                comb.add(list.get(yy));
+            }
+            yy=ny;
+            xx=nx;
+        }
+        return comb;
+    }
+    @Getter @Setter
+    @RequiredArgsConstructor
+    class pii{
+        int f;
+        int s;
+        public pii(int f, int s) {
+            this.f = f;
+            this.s = s;
+        }
+    }
+
     public List<Request> findRequests(){
         return requestRepository.findAll();
     }
@@ -120,5 +208,20 @@ public class RequestService {
         log.info("취소된 요청 삭제 시작");
         requestRepository.deleteByStatus(RequestStatus.DELETED); //요청취소해서 DELETE인 요청 삭제
         log.info("취소된 요청 삭제 끝");
+    }
+
+    private static int lowerBound(List<LocalDate> data, int begin,int end,LocalDate target) {
+
+        while(begin < end) {
+            int mid = (begin + end) / 2;
+
+            if(data.get(mid).compareTo(target)>=0) {
+                end = mid;
+            }
+            else {
+                begin = mid + 1;
+            }
+        }
+        return end;
     }
 }

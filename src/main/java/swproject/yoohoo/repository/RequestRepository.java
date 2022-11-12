@@ -45,6 +45,16 @@ public class RequestRepository {
                 .getResultList();
     }
 
+    public List<Request> findByPostPeriod(Post post,RequestStatus status, LocalDate startDate,LocalDate endDate){
+        return em.createQuery("select a from Request a where (a.post=:post and a.status=:status) and a.startDate between :startDate and :endDate",
+                Request.class)
+                .setParameter("post",post)
+                .setParameter("status",status)
+                .setParameter("startDate",startDate)
+                .setParameter("endDate",endDate)
+                .getResultList();
+    }
+
     public void deleteByStatusStartBeforeDate(RequestStatus status, LocalDate date){
         em.createQuery("delete from Request r where r.status =:status and r.startDate <:date")
                 .setParameter("status",status)
