@@ -63,8 +63,10 @@ public class RequestController {
     @PostMapping("/my/recommended_request")
     public ResultVO recommend(@RequestBody RecRequestForm form){
         List<Request> requests=requestService.recommendRequests(form);
-        if(requests.isEmpty()) return new ResultVO(200,"해당 조합이 없음",null);
-        
+        if(requests==null) {
+            return new ResultVO(200,"해당 조합이 없음",null);
+        }
+
         List<RequestIdDTO> dtoList=requests.stream()
                 .map(m->new RequestIdDTO(m))
                 .collect(Collectors.toList());
