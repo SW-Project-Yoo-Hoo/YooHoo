@@ -1,8 +1,7 @@
 package swproject.yoohoo.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -71,6 +70,15 @@ public class PostController {
         return new ResultVO(200,"내 게시물 조회 성공",dtoList);
     }
 
+    @PostMapping("/my/recommended_post")
+    public ResultVO recommendPost(@RequestBody RecPostForm form){
+        System.out.println("폼: "+form);
+        Post post=postService.recommendOne(form);
+        if(post==null) return new ResultVO(200,"추천할 게시물이 없음",null);
+        PostIdDTO dto=new PostIdDTO(post);
+        return new ResultVO(200,"게시물 추천 성공",dto);
+    }
+
     @Getter
     public class PostsDTO{ //게시글 전체보기 DTO
         private Long post_id; //게시글 id
@@ -133,8 +141,18 @@ public class PostController {
         }
     }
 
-
     @Getter
+    @AllArgsConstructor
+    public class PostIdDTO{
+        private Long post_id;
+
+        public PostIdDTO(Post post) {
+            this.post_id = post.getId();
+        }
+    }
+
+
+    @Data
     public static class CategoryName{ //카테고리 DTO
         private String name; //카테고리 이름
         public CategoryName(String name) {

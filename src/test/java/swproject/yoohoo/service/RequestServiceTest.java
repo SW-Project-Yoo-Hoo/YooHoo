@@ -26,8 +26,8 @@ class RequestServiceTest {
     @Test
     void recommendRequests() {
         Post post=em.find(Post.class,33L);
-        LocalDate s=LocalDate.parse("2022-11-01", DateTimeFormatter.ISO_DATE);
-        LocalDate e=LocalDate.parse("2023-03-08", DateTimeFormatter.ISO_DATE);
+        LocalDate s=LocalDate.parse("2022-10-01", DateTimeFormatter.ISO_DATE);
+        LocalDate e=LocalDate.parse("2022-12-01", DateTimeFormatter.ISO_DATE);
 
 
 //        List<Request> recommended=requestService.recommendRequests(post,s,e);

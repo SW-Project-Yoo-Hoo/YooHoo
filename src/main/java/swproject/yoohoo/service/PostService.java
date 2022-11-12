@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import swproject.yoohoo.controller.PostController;
+import swproject.yoohoo.controller.RecPostForm;
 import swproject.yoohoo.domain.*;
 import swproject.yoohoo.fileupload.FileStore;
 import swproject.yoohoo.repository.CategoryRepository;
@@ -14,11 +15,11 @@ import swproject.yoohoo.repository.PhotoRepository;
 import swproject.yoohoo.repository.PostRepository;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 
 @Service
@@ -79,11 +80,46 @@ public class PostService {
         return postRepository.findOne(postId);
     }
 
-    public Post recommendOne(List<Category> categories,LocalDate startDate,LocalDate endDate){
-        List<Post> list = postRepository.findByCategories(categories);
+    public Post recommendOne(RecPostForm form){
+        List<PostController.CategoryName> categoryNames=form.getCategoryNames();
+        LocalDate startDate=form.getStartDate();
+        LocalDate endDate=form.getEndDate();
+        for (PostController.CategoryName categoryName : categoryNames) {
+            System.out.println("카테고리 이름: "+categoryName);
+        }
+        System.out.println("시작날짜: "+startDate);
+        System.out.println("마지막날짜: "+endDate);
+
+        int gapDays = (int)ChronoUnit.DAYS.between(startDate, endDate);
+        System.out.println("날짜 차이: "+gapDays);
+        List<Category> categories=new ArrayList<>();
+        for (PostController.CategoryName categoryName : categoryNames) {
+            Category category=categoryRepository.findOnebyName(categoryName.getName());
+            categories.add(category);
+        }
+        List<String> unitList=new ArrayList<>();
+        unitList.add("일");
+        if (gapDays%7==0) unitList.add("주");
+        if(gapDays%30==0) unitList.add("월");
+        if (gapDays%365==9) unitList.add("년");
+
+        List<Post> list = postRepository.findByCategoriesUnit(categories,unitList);
         if(list.isEmpty()) return null;
 
-        Post post=new Post();
+
+        HashMap<String,Integer> unitToDay=new HashMap<>();
+        unitToDay.put("일",1);
+        unitToDay.put("주",7);
+        unitToDay.put("월",30);
+        unitToDay.put("년",365);
+        Post post=Collections.min(list, new Comparator<Post>() {
+            @Override
+            public int compare(Post o1, Post o2) {
+                int price1=o1.getRental_price()*(gapDays/unitToDay.get(o1.getRental_unit()));
+                int price2=o2.getRental_price()*(gapDays/unitToDay.get(o2.getRental_unit()));
+                return price1-price2;
+            }
+        });
         return post;
     }
 }
