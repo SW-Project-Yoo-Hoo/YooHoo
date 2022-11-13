@@ -128,23 +128,28 @@ const Shop = (props) => {
       categoryNames: categories,
     };
 
-    axios
-      .post("/my/recommended_post", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        setGetRecommend(true);
-        if (res.data.message === "게시물 추천 성공") {
-          setPostId(res.data.data.post_id);
-          setIsRecPost(true);
-          getRecPost();
-        } else {
-          setIsRecPost(false);
-        }
-      })
-      .catch((error) => console.log(error));
+    if (startDate > endDate) {
+      setGetRecommend(true);
+      setIsRecPost(false);
+    } else {
+      axios
+        .post("/my/recommended_post", data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          setGetRecommend(true);
+          if (res.data.message === "게시물 추천 성공") {
+            setPostId(res.data.data.post_id);
+            setIsRecPost(true);
+            getRecPost();
+          } else {
+            setIsRecPost(false);
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   const startDateRef = useRef();
