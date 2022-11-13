@@ -10,6 +10,8 @@ import { shopListThunk } from "../../../store/modules/shopList";
 import { useDispatch, useSelector } from "react-redux";
 
 const Shop = (props) => {
+  const REACT_PUBLIC_URL = "http://localhost:3000/";
+
   /* Redux-Toolkit */
   const dispatch = useDispatch();
   const shopList = useSelector((state) => state.shopListSlice);
@@ -36,16 +38,23 @@ const Shop = (props) => {
   /* ============================================== */
   /* SHOP -> 조합 추천 받기 */
 
-  const [recommend, setRecommend] =
-    useState(false); /** '조합 추천 받기' 버튼 */
-  const [getRecommend, setGetRecommend] =
-    useState(false); /** '추천 받기' 버튼 */
+  /** '조합 추천 받기' 버튼 */
+  const [recommend, setRecommend] = useState(false);
+  /** '추천 받기' 버튼 */
+  const [getRecommend, setGetRecommend] = useState(false);
 
   const nowDate = new Date();
   const [startDate, setStartDate] = useState(
     moment(nowDate).format("YYYY. MM. DD")
   );
   const [endDate, setEndDate] = useState("");
+
+  /** 추천 받은 게시물 id*/
+  const [postId, setPostId] = useState("");
+  /** 추천 받은 게시물*/
+  const [recPost, setRecPost] = useState("");
+  /** 추천 받은 게시물 있는지 ? 없는지 ? */
+  const [isRecPost, setIsRecPost] = useState(false);
 
   // 대여 물품
   const [stuffs, setStuffs] = useState({
@@ -94,10 +103,48 @@ const Shop = (props) => {
     });
   };
 
+  /* 백엔드에서 추천 받은 게시물 가져오기*/
+  const getRecPost = () => {
+    axios
+      .get(`/posts/${postId}`)
+      .then((res) => {
+        setRecPost(res.data.data);
+        console.log(recPost);
+      })
+      .catch((error) => console.log(error));
+  };
+
   /* '추천 받기' 버튼 */
+  /* 백엔드에 추천 받은 정보 보내기 */
   const onClickGetRecommend = () => {
-    setGetRecommend(true);
-    // setGetRecommend((getRecommend) => !getRecommend);
+    let categories = [];
+    for (const [key, value] of Object.entries(stuffs)) {
+      if (value) categories.push(key);
+    }
+
+    const data = {
+      startDate: moment(startDate).format("YYYY-MM-DD"),
+      endDate: moment(endDate).format("YYYY-MM-DD"),
+      categoryNames: categories,
+    };
+
+    axios
+      .post("/my/recommended_post", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        setGetRecommend(true);
+        if (res.data.message === "게시물 추천 성공") {
+          setPostId(res.data.data.post_id);
+          setIsRecPost(true);
+          getRecPost();
+        } else {
+          setIsRecPost(false);
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   const startDateRef = useRef();
@@ -115,10 +162,10 @@ const Shop = (props) => {
     for (let i = 0; i < value.length && i < dateLength; i++) {
       switch (i) {
         case 4:
-          result += ".";
+          result += ". ";
           break;
         case 6:
-          result += ".";
+          result += ". ";
           break;
         default:
           break;
@@ -303,39 +350,46 @@ const Shop = (props) => {
                   <div className={styles.recommendHr2}></div>
                   <div className={styles.recommend}>
                     {getRecommend ? (
-                      <div className={styles.productInfo}>
-                        <img
-                          className={styles.recommendImg}
-                          src={
-                            process.env.PUBLIC_URL +
-                            "productList/" +
-                            "00fe7e5e-15fb-48d2-a227-1879ca79e6f0.jpg"
-                          }
-                          alt="Product"
-                        />
+                      isRecPost ? (
+                        <div className={styles.productInfo}>
+                          <img
+                            className={styles.recommendImg}
+                            src={
+                              REACT_PUBLIC_URL +
+                              "productList/" +
+                              recPost.photos[0].dir
+                            }
+                            alt="Product"
+                          />
 
-                        <div className={styles.recommendGroup}>
-                          <span className={styles.recommendTitle}>
-                            우드앤화이트
-                          </span>
-                          <div className={styles.recommendDateGroup}>
-                            <span className={styles.recommendDateTitle}>
-                              시작 날짜
+                          <div className={styles.recommendGroup}>
+                            <span className={styles.recommendTitle}>
+                              {recPost.title}
                             </span>
-                            <span className={styles.recommendDate}>
-                              2022.08.31
-                            </span>
-                          </div>
-                          <div className={styles.recommendDateGroup}>
-                            <span className={styles.recommendDateTitle}>
-                              반납 날짜
-                            </span>
-                            <span className={styles.recommendDate}>
-                              2022.09.30
-                            </span>
+                            <div className={styles.recommendDateGroup}>
+                              <span className={styles.recommendDateTitle}>
+                                시작 날짜
+                              </span>
+                              <span className={styles.recommendDate}>
+                                {startDate}
+                              </span>
+                            </div>
+                            <div className={styles.recommendDateGroup}>
+                              <span className={styles.recommendDateTitle}>
+                                반납 날짜
+                              </span>
+                              <span className={styles.recommendDate}>
+                                {endDate}
+                              </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      ) : (
+                        <span className={styles.alertText}>
+                          해당되는 게시물이 없습니다! <br />
+                          정보를 다시 확인해주세요
+                        </span>
+                      )
                     ) : (
                       <span className={styles.alertText}>
                         가장 저렴한 게시물을 추천 받아 보세요!
