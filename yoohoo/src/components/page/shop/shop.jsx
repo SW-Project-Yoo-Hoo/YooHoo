@@ -109,7 +109,6 @@ const Shop = (props) => {
       .get(`/posts/${postId}`)
       .then((res) => {
         setRecPost(res.data.data);
-        console.log(recPost);
       })
       .catch((error) => console.log(error));
   };
@@ -117,21 +116,24 @@ const Shop = (props) => {
   /* '추천 받기' 버튼 */
   /* 백엔드에 추천 받은 정보 보내기 */
   const onClickGetRecommend = () => {
-    let categories = [];
-    for (const [key, value] of Object.entries(stuffs)) {
-      if (value) categories.push(key);
-    }
+    let cmpA = new Date(startDate);
+    let cmpB = new Date(endDate);
 
-    const data = {
-      startDate: moment(startDate).format("YYYY-MM-DD"),
-      endDate: moment(endDate).format("YYYY-MM-DD"),
-      categoryNames: categories,
-    };
-
-    if (startDate > endDate) {
+    if (cmpA > cmpB) {
       setGetRecommend(true);
       setIsRecPost(false);
     } else {
+      let categories = [];
+      for (const [key, value] of Object.entries(stuffs)) {
+        if (value) categories.push(key);
+      }
+
+      const data = {
+        startDate: moment(startDate).format("YYYY-MM-DD"),
+        endDate: moment(endDate).format("YYYY-MM-DD"),
+        categoryNames: categories,
+      };
+
       axios
         .post("/my/recommended_post", data, {
           headers: {
@@ -356,39 +358,46 @@ const Shop = (props) => {
                   <div className={styles.recommend}>
                     {getRecommend ? (
                       isRecPost ? (
-                        <div className={styles.productInfo}>
-                          <img
-                            className={styles.recommendImg}
-                            src={
-                              REACT_PUBLIC_URL +
-                              "productList/" +
-                              recPost.photos[0].dir
-                            }
-                            alt="Product"
-                          />
+                        <Link
+                          to={`/detail/${postId}`}
+                          state={{ info: recPost }}
+                        >
+                          <div className={styles.productInfo}>
+                            {recPost.photos && (
+                              <img
+                                className={styles.recommendImg}
+                                src={
+                                  REACT_PUBLIC_URL +
+                                  "productList/" +
+                                  recPost.photos[0].dir
+                                }
+                                alt="Product"
+                              />
+                            )}
 
-                          <div className={styles.recommendGroup}>
-                            <span className={styles.recommendTitle}>
-                              {recPost.title}
-                            </span>
-                            <div className={styles.recommendDateGroup}>
-                              <span className={styles.recommendDateTitle}>
-                                시작 날짜
+                            <div className={styles.recommendGroup}>
+                              <span className={styles.recommendTitle}>
+                                {recPost.title}
                               </span>
-                              <span className={styles.recommendDate}>
-                                {startDate}
-                              </span>
-                            </div>
-                            <div className={styles.recommendDateGroup}>
-                              <span className={styles.recommendDateTitle}>
-                                반납 날짜
-                              </span>
-                              <span className={styles.recommendDate}>
-                                {endDate}
-                              </span>
+                              <div className={styles.recommendDateGroup}>
+                                <span className={styles.recommendDateTitle}>
+                                  시작 날짜
+                                </span>
+                                <span className={styles.recommendDate}>
+                                  {startDate}
+                                </span>
+                              </div>
+                              <div className={styles.recommendDateGroup}>
+                                <span className={styles.recommendDateTitle}>
+                                  반납 날짜
+                                </span>
+                                <span className={styles.recommendDate}>
+                                  {endDate}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </Link>
                       ) : (
                         <span className={styles.alertText}>
                           해당되는 게시물이 없습니다! <br />
