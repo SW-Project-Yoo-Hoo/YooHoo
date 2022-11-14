@@ -12,13 +12,7 @@ const ReceivedStatus = (props) => {
   const [recommendPost, setRecommendPost] = useState([]);
 
   //현재 날짜(형식 지정해주기)
-  // const now = moment(new Date(moment().format("YYYY.MM.DD")));
   const now = moment().format("YYYY.MM.DD");
-
-  //날짜 정규식
-  let regexp = new RegExp(
-    "^([12]\\d{3}.(0[1-9]|1[0-2]).(0[1-9]|[12]\\d|3[01]))$"
-  );
 
   //수락,거절 버튼 토글 이벤트
   const onToggle = (id) => {
@@ -110,29 +104,61 @@ const ReceivedStatus = (props) => {
     };
 
     //조합추천결과 게시물 상태 관리
-    const recommendResult = () => {
-      //백엔드로 정보 전송
-
-      //테스트용
-      const responseData = {
-        0: 1011,
-        1: 1009,
-      };
-
-      setRecommendPost(responseData);
-
-      setPost(
-        post.map((post) =>
-          post.request_id === props.request_id
-            ? {
-                ...post,
-                recommend: "취소",
-                recommendToggle: !post.recommendToggle,
-                toggle: !post.toggle,
-              }
-            : post
-        )
+    const recommendResult = async () => {
+      //시작날짜,반납날짜 백엔드 전송 형식 변환
+      let startDate = moment(new Date(props.recommendStartDate)).format(
+        "YYYY-MM-DD"
       );
+      let endDate = moment(new Date(props.recommendEndDate)).format(
+        "YYYY-MM-DD"
+      );
+
+      //백엔드로 정보 전송
+      await axios
+        .post("/my/recommended_request", {
+          post_id: props.post_id,
+          startDate,
+          endDate,
+        })
+        .then(function (response) {
+          if (response.data.code === 200) {
+            //데이터 받기 성공
+
+            // console.log(response);
+
+            //해당 조합이 없을때
+            if (response.data.data === null) {
+              warningToggle(props.request_id, "true");
+            } else {
+              let responseData = response.data.data;
+              let temp = [];
+
+              for (const [key, value] of Object.entries(responseData)) {
+                temp = {
+                  ...value,
+                };
+              }
+              console.log(temp);
+              setRecommendPost(temp);
+              setPost(
+                post.map((post) =>
+                  post.request_id === props.request_id
+                    ? {
+                        ...post,
+                        recommend: "취소",
+                        recommendToggle: !post.recommendToggle,
+                        toggle: !post.toggle,
+                      }
+                    : post
+                )
+              );
+            }
+          }
+        })
+        .catch(function (error) {
+          // 오류발생시 실행
+          console.log(error);
+        });
     };
 
     return (
@@ -202,11 +228,24 @@ const ReceivedStatus = (props) => {
             onClick={() => {
               //시작날짜,반납날짜 형식이 모두 맞으면
               if (
-                regexp.test(props.recommendStartDate) &&
-                regexp.test(props.recommendEndDate)
+                moment(
+                  props.recommendStartDate,
+                  "YYYY.MM.DD",
+                  true
+                ).isValid() &&
+                moment(props.recommendEndDate, "YYYY.MM.DD", true).isValid()
               ) {
-                //백엔드로 정보 전송
-                recommendResult();
+                //시작날짜와 반납날짜의 순서가 맞으면
+                if (
+                  moment(new Date(props.recommendEndDate)).isAfter(
+                    new Date(props.recommendStartDate)
+                  )
+                ) {
+                  //백엔드로 정보 전송
+                  recommendResult();
+                } else {
+                  warningToggle(props.request_id, "true");
+                }
               }
               //시작날짜,반납날짜 형식이 틀리면
               else {
