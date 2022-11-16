@@ -152,7 +152,6 @@ const Shop = (props) => {
     }
   };
 
-  console.log(showDate);
   const startDateRef = useRef();
   const endDateRef = useRef();
 

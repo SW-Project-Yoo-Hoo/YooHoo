@@ -103,7 +103,7 @@
 }
 
 .contents {
-  width: 23.3333vw;
+  width: 23.8483vw;
   height: 40.7639vw;
   background-color: lightWhite;
   border-radius: 1.6667vw;
@@ -143,7 +143,7 @@
   font-size: 0.8333vw;
   font-family: "Regular";
   color: highlight1;
-  margin: 0 7.6389vw 0.7639vw 2.0833vw;
+  margin: 0 8.1389vw 0.7639vw 2.0833vw;
 }
 
 .endTitle {
@@ -159,7 +159,7 @@
 .dateInput {
   width: 8.0556vw;
   height: 2.2917vw;
-  margin-right: 2.7778vw;
+  margin-right: 3.3778vw;
   font-family: "Regular";
   font-size: 0.7639vw;
   background-color: lightWhite;
