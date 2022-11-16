@@ -214,7 +214,7 @@ const Shop = (props) => {
                     완료
                   </div>
                   <div className={styles.recommendHr}></div>
-                  <div classname={styles.dateContainer}>
+                  <div className={styles.dateContainer}>
                     <span className={styles.startTitle}>시작 날짜</span>
                     <span className={styles.endTitle}>반납 날짜</span>
                     <div className={styles.dateDiv}>
@@ -414,8 +414,12 @@ const Shop = (props) => {
           </div>
           <div className={styles.productGroup}>
             {shopList.map((item, index) => (
-              <Link to={`/detail/${item.post_id}`} state={{ info: item }}>
-                <div className={styles.product} key={index}>
+              <Link
+                to={`/detail/${item.post_id}`}
+                state={{ info: item }}
+                key={index}
+              >
+                <div className={styles.product}>
                   <img
                     className={styles.productImg}
                     src={
