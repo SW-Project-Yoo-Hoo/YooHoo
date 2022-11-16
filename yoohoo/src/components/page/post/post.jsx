@@ -714,7 +714,7 @@ const Post = (props) => {
                     className={styles.priceInput}
                   />
                   <span className={styles.priceQuantityUnit}>
-                    원/1{dealUnit}
+                    원/{dealUnit}
                   </span>
                 </div>
               </div>

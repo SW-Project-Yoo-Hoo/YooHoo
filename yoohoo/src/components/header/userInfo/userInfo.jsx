@@ -37,9 +37,9 @@ const UserInfo = (props) => {
   return (
     <ul className={styles.userInfo}>
       {/* searchIcon */}
-      <li className={styles.liStyle}>
+      {/* <li className={styles.liStyle}>
         <MdSearch className={styles.icon} />
-      </li>
+      </li> */}
 
       {/* alarmIcon */}
       <li className={styles.liStyle}>

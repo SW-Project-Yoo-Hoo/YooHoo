@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Home = (props) => {
   const [page, setPage] = useState("/login");
+  const [pagePost, setPagePost] = useState("/login");
 
   // 페이지 설정
   useEffect(() => {
@@ -19,6 +20,7 @@ const Home = (props) => {
           if (response.data.data === true) {
             //프로필로 이동
             setPage("/profile");
+            setPagePost("/post");
           } else {
             //로그인 페이지 이동
             setPage("/login");
@@ -123,7 +125,7 @@ const Home = (props) => {
                 <span className={styles.partTwoSubText}>
                   연결된 기업들을 통해 재고 가치를 극대화하세요.
                 </span>
-                <Link to="/post" className={styles.link}>
+                <Link to={pagePost} className={styles.link}>
                   <div className={styles.linkGo}>
                     <span className={styles.partTwoButton}>Post Now</span>
                     <MdOutlineTrendingFlat className={styles.arrowIcon} />

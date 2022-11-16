@@ -15,6 +15,11 @@
   list-style-type: none;
 }
 
+.liStyle > a {
+  display: flex;
+  justify-content: center;
+}
+
 /* 그 이상 */
 @media (min-width: 1920px) {
   .icon {
