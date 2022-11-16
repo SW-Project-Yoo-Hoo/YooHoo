@@ -218,6 +218,8 @@ const Profile = (props) => {
                   src={process.env.PUBLIC_URL + "images/userProfileBasic.svg"}
                   alt="회원 프로필 사진"
                 />
+              ) : userInfo.photo_dir === undefined ? (
+                <div className={styles.userPhoto}></div>
               ) : (
                 <img
                   className={styles.userPhoto}
