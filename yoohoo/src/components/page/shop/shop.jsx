@@ -414,8 +414,12 @@ const Shop = (props) => {
           </div>
           <div className={styles.productGroup}>
             {shopList.map((item, index) => (
-              <Link to={`/detail/${item.post_id}`} state={{ info: item }}>
-                <div className={styles.product} key={index}>
+              <Link
+                to={`/detail/${item.post_id}`}
+                state={{ info: item }}
+                key={index}
+              >
+                <div className={styles.product}>
                   <img
                     className={styles.productImg}
                     src={

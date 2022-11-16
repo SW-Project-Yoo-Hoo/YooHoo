@@ -395,13 +395,13 @@ const ShopDetail = (props) => {
                       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
                         {/* 현재 게시물과 다른것들만 보여주기 */}
                         {shopList.map(
-                          (item) =>
+                          (item, index) =>
                             item.post_id !== nowItem.post_id && (
-                              <div key={item.id} className={styles.products1}>
+                              <div key={index} className={styles.products1}>
                                 <Link
                                   to={`/detail/${item.post_id}`}
                                   state={{ info: item }}
-                                  key={item.post_id}
+                                  key={index}
                                 >
                                   <button className={styles.otherProductsBtn}>
                                     <img
@@ -460,8 +460,10 @@ const ShopDetail = (props) => {
                 {/* 물품 제목, 대여 기간, 거래하기 버튼 */}
                 <p className={styles.title}>{productItem.title}</p>
                 <div className={styles.categoryGroup}>
-                  {productItem.categories.map((item) => (
-                    <div className={styles.category}>{Category(item.name)}</div>
+                  {productItem.categories.map((item, index) => (
+                    <div className={styles.category} key={index}>
+                      {Category(item.name)}
+                    </div>
                   ))}
                 </div>
                 <div className={styles.hr2}></div>
