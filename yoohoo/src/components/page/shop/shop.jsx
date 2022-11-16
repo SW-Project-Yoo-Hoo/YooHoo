@@ -47,7 +47,11 @@ const Shop = (props) => {
   const [startDate, setStartDate] = useState(
     moment(nowDate).format("YYYY. MM. DD")
   );
-  const [endDate, setEndDate] = useState("");
+  const [endDate, setEndDate] = useState(
+    moment(nowDate).format("YYYY. MM. DD")
+  );
+
+  const [showDate, setShowDate] = useState([]);
 
   /** 추천 받은 게시물 id*/
   const [postId, setPostId] = useState("");
@@ -91,7 +95,7 @@ const Shop = (props) => {
     setGetRecommend(false);
     setRecommend((recommend) => !recommend);
     setStartDate(moment(nowDate).format("YYYY. MM. DD"));
-    setEndDate("");
+    setEndDate(moment(nowDate).format("YYYY. MM. DD"));
     setStuffs({
       desk: false,
       chair: false,
@@ -101,16 +105,6 @@ const Shop = (props) => {
       mouse: false,
       computer: false,
     });
-  };
-
-  /* 백엔드에서 추천 받은 게시물 가져오기*/
-  const getRecPost = () => {
-    axios
-      .get(`/posts/${postId}`)
-      .then((res) => {
-        setRecPost(res.data.data);
-      })
-      .catch((error) => console.log(error));
   };
 
   /* '추천 받기' 버튼 */
@@ -145,7 +139,11 @@ const Shop = (props) => {
           if (res.data.message === "게시물 추천 성공") {
             setPostId(res.data.data.post_id);
             setIsRecPost(true);
-            getRecPost();
+            shopList.map(
+              (item) =>
+                item.post_id === res.data.data.post_id && setRecPost(item)
+            );
+            setShowDate({ startDate, endDate });
           } else {
             setIsRecPost(false);
           }
@@ -154,6 +152,7 @@ const Shop = (props) => {
     }
   };
 
+  console.log(showDate);
   const startDateRef = useRef();
   const endDateRef = useRef();
 
@@ -363,17 +362,15 @@ const Shop = (props) => {
                           state={{ info: recPost }}
                         >
                           <div className={styles.productInfo}>
-                            {recPost.photos && (
-                              <img
-                                className={styles.recommendImg}
-                                src={
-                                  REACT_PUBLIC_URL +
-                                  "productList/" +
-                                  recPost.photos[0].dir
-                                }
-                                alt="Product"
-                              />
-                            )}
+                            <img
+                              className={styles.recommendImg}
+                              src={
+                                REACT_PUBLIC_URL +
+                                "productList/" +
+                                recPost.image.dir
+                              }
+                              alt="Product"
+                            />
 
                             <div className={styles.recommendGroup}>
                               <span className={styles.recommendTitle}>
@@ -384,7 +381,7 @@ const Shop = (props) => {
                                   시작 날짜
                                 </span>
                                 <span className={styles.recommendDate}>
-                                  {startDate}
+                                  {showDate.startDate}
                                 </span>
                               </div>
                               <div className={styles.recommendDateGroup}>
@@ -392,7 +389,7 @@ const Shop = (props) => {
                                   반납 날짜
                                 </span>
                                 <span className={styles.recommendDate}>
-                                  {endDate}
+                                  {showDate.endDate}
                                 </span>
                               </div>
                             </div>
