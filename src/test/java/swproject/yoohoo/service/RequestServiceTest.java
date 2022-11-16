@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import swproject.yoohoo.controller.RecRequestForm;
 import swproject.yoohoo.domain.Post;
 import swproject.yoohoo.domain.Request;
 import swproject.yoohoo.repository.RequestRepository;
@@ -25,14 +26,16 @@ class RequestServiceTest {
 
     @Test
     void recommendRequests() {
-        Post post=em.find(Post.class,33L);
-        LocalDate s=LocalDate.parse("2022-10-01", DateTimeFormatter.ISO_DATE);
-        LocalDate e=LocalDate.parse("2022-12-01", DateTimeFormatter.ISO_DATE);
+        LocalDate s=LocalDate.parse("2022-11-16", DateTimeFormatter.ISO_DATE);
+        LocalDate e=LocalDate.parse("2022-11-22", DateTimeFormatter.ISO_DATE);
+        RecRequestForm form=new RecRequestForm();
+        form.setPost_id(24L);
+        form.setStartDate(s);
+        form.setEndDate(e);
 
-
-//        List<Request> recommended=requestService.recommendRequests(post,s,e);
-//        for (Request request : recommended) {
-//            System.out.println("추천: "+request);
-//        }
+        List<Request> recommended=requestService.recommendRequests(form);
+        for (Request request : recommended) {
+            System.out.println("추천: "+request.getId());
+        }
     }
 }

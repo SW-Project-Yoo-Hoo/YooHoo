@@ -22,6 +22,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.lang.Math.min;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -116,29 +118,50 @@ public class RequestService {
             }
         });
         e=list.stream().map(m->m.getReturnDate()).collect(Collectors.toList());
-
-        for(int i=0;i<list.get(0).getRental_quantity();i++){
+        int q0=list.get(0).getRental_quantity();
+        for(int i=0;i<q0;i++){
             dp[0][i]=0;
-            pick[0][i]=new pii(-1,-1);
+            pick[0][i]=new pii(-1,-1,0);
         }
-        for(int i=list.get(0).getRental_quantity();i<=M;i++){
+        for(int i=q0;i<=M;i++){
             dp[0][i]=list.get(0).getTotal_price();
-            pick[0][i]=new pii(0,0);
+            pick[0][i]=new pii(0,0,1);
         }
         for(int i=1;i<N;i++){
-            int t=lowerBound(e,0,i,list.get(i).getStartDate());
+            /*int t=lowerBound(e,0,i,list.get(i).getStartDate());*/
             int q=list.get(i).getRental_quantity();
-            for(int j=0;j<=M;j++){
-                if(j-q>=0){
-                    int ret2=(t>0?dp[t-1][j-q]:0)+list.get(i).getTotal_price();//(t>0? dp[t-1]:0)+m[i].가격
-                    if(dp[i][j]<ret2){//dp[i][j]=max(dp[i][j],선택O)
-                        dp[i][j]=ret2;
-                        pick[i][j]=new pii(t-1,j-q);
+            LocalDate si=list.get(i).getStartDate();
+            int pi=list.get(i).getTotal_price();
+            boolean isOverlap=true;
+            if(list.get(i-1).getReturnDate().compareTo(si)<0) isOverlap=false; //겹치지 않음
+            int jq=list.get(i-1).getRental_quantity();
+            for(int j=0;j<=M;j++) {
+                if (j < q) {
+          /*          dp[i][j] = 0;
+                    pick[i][j] = new pii(-1, -1);
+                } else if (j < q) {*/
+                    if (isOverlap == false) {//선택X
+                        dp[i][j] = dp[i - 1][M];
+                        pick[i][j] = new pii(i - 1, M,0);
+                    } else {
+                        dp[i][j] = dp[i - 1][j];//선택X
+                        pick[i][j] = new pii(i - 1, j,0);
                     }
-                }
-                if(dp[i][j]<dp[i-1][j]){//dp[i][j]=max(dp[i][j],선택X)
-                    dp[i][j]=dp[i-1][j];
-                    pick[i][j]=new pii(i-1,j);
+
+                } else if (j >= q) {//dp[i][j] = min(dp[i - 1][j], dp[i][j - q] + pi);
+                    if (isOverlap == false) {//선택O
+                        dp[i][j] = dp[i - 1][M] + pi;
+                        pick[i][j] = new pii(i - 1, M,1);
+                    }else{
+                        if (dp[i-1][j] < dp[i - 1][j-q]+pi) {//선택O
+                            dp[i][j] = dp[i - 1][j-q]+pi;
+                            pick[i][j] = new pii(i - 1, j-q,1);
+                        }else{
+                            dp[i][j] = dp[i - 1][j];//선택X
+                            pick[i][j] = new pii(i - 1, j,0);
+                        }
+                    }
+
                 }
             }
         }
@@ -146,16 +169,16 @@ public class RequestService {
         int xx=-1, yy=N-1;
         for(int i=0;i<=M;i++){
             if(dp[N-1][i]>maxPrice){
-                maxPrice=i;
+                maxPrice=dp[N-1][i];
                 xx=i;
             }
         }
 
         List<Request> comb=new ArrayList<>();//id값만 담기
         while(yy>=0){
-            if(yy==0&&xx==0) break;
+            if(yy==0&&xx<q0) break;
             int ny=pick[yy][xx].f, nx=pick[yy][xx].s;
-            if(dp[yy][xx]>dp[ny][nx]){
+            if(ny==-1||pick[yy][xx].o==1){
                 comb.add(list.get(yy));
             }
             yy=ny;
@@ -168,9 +191,11 @@ public class RequestService {
     class pii{
         int f;
         int s;
-        public pii(int f, int s) {
+        int o;
+        public pii(int f, int s,int o) {
             this.f = f;
             this.s = s;
+            this.o=o;
         }
     }
 
@@ -210,12 +235,12 @@ public class RequestService {
         log.info("취소된 요청 삭제 끝");
     }
 
-    private static int lowerBound(List<LocalDate> data, int begin,int end,LocalDate target) {
+    private static int upperBound(int[] data, int begin, int end, int target) {
 
         while(begin < end) {
             int mid = (begin + end) / 2;
 
-            if(data.get(mid).compareTo(target)>=0) {
+            if(data[mid]>target) {
                 end = mid;
             }
             else {

@@ -84,13 +84,8 @@ public class PostService {
         List<PostController.CategoryName> categoryNames=form.getCategoryNames();
         LocalDate startDate=form.getStartDate();
         LocalDate endDate=form.getEndDate();
-        for (PostController.CategoryName categoryName : categoryNames) {
-            System.out.println("카테고리 이름: "+categoryName);
-        }
-        System.out.println("시작날짜: "+startDate);
-        System.out.println("마지막날짜: "+endDate);
 
-        int gapDays = (int)ChronoUnit.DAYS.between(startDate, endDate);
+        int gapDays = (int)ChronoUnit.DAYS.between(startDate, endDate)+1;
         System.out.println("날짜 차이: "+gapDays);
         List<Category> categories=new ArrayList<>();
         for (PostController.CategoryName categoryName : categoryNames) {
@@ -101,7 +96,7 @@ public class PostService {
         unitList.add("일");
         if (gapDays%7==0) unitList.add("주");
         if(gapDays%30==0) unitList.add("월");
-        if (gapDays%365==9) unitList.add("년");
+        if (gapDays%365==0) unitList.add("년");
 
         List<Post> list = postRepository.findByCategoriesUnit(categories,unitList);
         if(list.isEmpty()) return null;
