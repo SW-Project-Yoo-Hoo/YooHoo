@@ -12,7 +12,10 @@ const Notice = (props) => {
         </Link>
 
         <li className={styles.item}>
-          <a href="https://github.com/SW-Project-Yoo-Hoo" target="_blank">
+          <a
+            href="https://grand-coriander-b99.notion.site/YooHoo-9e0a14cf262a4b2ab40fa80f9c916d8b"
+            target="_blank"
+          >
             Connect Us - Notion
           </a>
         </li>
