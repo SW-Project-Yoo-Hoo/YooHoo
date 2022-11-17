@@ -497,6 +497,10 @@
     left: 338px;
   }
 
+  .unselectWishIcon {
+    width: 16px;
+    height: 16px;
+  }
   /* ================================= */
 
   .container {

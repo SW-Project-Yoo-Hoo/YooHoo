@@ -253,8 +253,8 @@
 
 .unselectWishIcon,
 .selectWishIcon {
-  width: 1.1111vw;
-  height: 1.1111vw;
+  width: 0.8111vw;
+  height: 0.8111vw;
   position: absolute;
   right: 0;
   color: mainOrange;
@@ -681,6 +681,11 @@
   .wishIcon {
     width: 16px;
     height: 16px;
+  }
+
+  .unselectWishIcon {
+    width: 15px;
+    height: 15px;
   }
 
   /* ================================= */
