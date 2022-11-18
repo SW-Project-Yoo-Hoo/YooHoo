@@ -20,7 +20,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginCheckInterceptor())
                 .order(1)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/","/login","/posts/{id}","/isLogin","/css/**","/*.ico","/error");
+                .excludePathPatterns("/","/login","/posts/{id}","/isLogin","/my/recommended_post","/css/**","/*.ico","/error");
     }
 
     @Override

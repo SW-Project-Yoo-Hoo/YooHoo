@@ -35,8 +35,8 @@ class PostServiceTest {
         categories.add(new PostController.CategoryName("desk"));*/
         /*LocalDate s=LocalDate.of(2022,11,01);
         LocalDate e=LocalDate.of(2023,01,01);*/
-        LocalDate s=LocalDate.parse("2022-11-16", DateTimeFormatter.ISO_DATE);
-        LocalDate e=LocalDate.parse("2022-11-22", DateTimeFormatter.ISO_DATE);
+        LocalDate s=LocalDate.parse("2022-11-17", DateTimeFormatter.ISO_DATE);
+        LocalDate e=LocalDate.parse("2022-11-24", DateTimeFormatter.ISO_DATE);
         RecPostForm form=new RecPostForm();
         List<PostController.CategoryName> list=new ArrayList<>();
         list.add(new PostController.CategoryName("chair"));
