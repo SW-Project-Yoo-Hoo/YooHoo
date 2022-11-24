@@ -424,25 +424,9 @@ const ShopDetail = (props) => {
                                         {item.unit}
                                       </p>
                                       <div className={styles.unselectWishIcon}>
-                                        <MdFavoriteBorder />
-                                        {/* <div
-                                      className={
-                                        wishItem[item.id - 1].wish
-                                          ? styles.selectWishIcon
-                                          : styles.unselectWishIcon
-                                      }
-                                      onClick={() =>
-                                        onClickWishBtn2(
-                                          item.id,
-                                          wishItem[item.id - 1].wish
-                                        )
-                                      }
-                                    >
-                                      {wishItem[item.id - 1].wish ? (
-                                        <MdFavorite />
-                                      ) : (
-                                        <MdFavoriteBorder />
-                                      )} */}
+                                        <MdFavoriteBorder
+                                          className={styles.unselectWishIcon}
+                                        />
                                       </div>
                                     </div>
                                   </div>
