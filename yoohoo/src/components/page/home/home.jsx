@@ -80,7 +80,7 @@ const Home = (props) => {
             {/* img */}
             <img
               className={styles.partOneImage}
-              src="/Images/home/computerWoman.svg"
+              src={process.env.PUBLIC_URL + "images/home/computerWoman.svg"}
               alt="illu"
             />
           </div>
@@ -92,7 +92,9 @@ const Home = (props) => {
               {/* Img */}
               <img
                 className={styles.shopNowImg}
-                src="/Images/home/resourceVisibility.svg"
+                src={
+                  process.env.PUBLIC_URL + "images/home/resourceVisibility.svg"
+                }
                 alt="illu"
               ></img>
 
