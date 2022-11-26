@@ -104,11 +104,13 @@ const EditProfile = ({ changeInfo }) => {
               src={process.env.PUBLIC_URL + "images/userProfileBasic.svg"}
               alt="Company"
             />
+          ) : inputs.photo_dir === undefined ? (
+            <div className={styles.showPhoto}></div>
           ) : (
             <img
               className={styles.showPhoto}
               src={process.env.PUBLIC_URL + "productList/" + inputs.photo_dir}
-              alt="Company"
+              alt="회원 프로필 사진"
             />
           )}
         </div>
@@ -135,7 +137,7 @@ const EditProfile = ({ changeInfo }) => {
             type="text"
             name="companyName"
             onChange={changeHandling}
-            value={companyName}
+            value={companyName || ""}
             placeholder={inputs.company}
             className={styles.input}
           />
@@ -148,7 +150,7 @@ const EditProfile = ({ changeInfo }) => {
             type="text"
             name="adress"
             onChange={changeHandling}
-            value={adress}
+            value={adress || ""}
             placeholder={inputs.address}
             className={styles.input}
           />
@@ -161,7 +163,7 @@ const EditProfile = ({ changeInfo }) => {
             type="text"
             name="phone"
             onChange={changeHandling}
-            value={phone}
+            value={phone || ""}
             placeholder={inputs.contact}
             className={styles.input}
           />
