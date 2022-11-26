@@ -272,7 +272,7 @@ const Post = (props) => {
                   {/* 이미지 미리보기 */}
                   <img
                     className={styles.imagePickedStyle}
-                    src={image}
+                    src={process.env.PUBLIC_URL + image}
                     alt={`${image}-${id}`}
                   />
                 </div>

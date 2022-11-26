@@ -93,7 +93,7 @@ const EditProfile = ({ changeInfo }) => {
                 {/* 이미지 미리보기 */}
                 <img
                   className={styles.showPhoto}
-                  src={image}
+                  src={process.env.PUBLIC_URL + image}
                   alt={`${image}-${id}`}
                 />
               </div>
