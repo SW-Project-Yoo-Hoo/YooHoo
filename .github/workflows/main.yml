@@ -2,9 +2,11 @@ name: master
 
 on:
   push:
-    branches: [ main ]
+    branches: 
+       - main
   pull_request:
-    branches: [ main ]
+    branches:
+       - main
 
 jobs:
   build:
@@ -33,7 +35,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          aws s3 cp \
-            --recursive \
-            --region ap-northeast-2 \
-            build s3://yoohoofe/*
+          aws s3 sync ./build s3://yoohoofe
