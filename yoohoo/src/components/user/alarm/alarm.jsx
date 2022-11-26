@@ -136,7 +136,7 @@ const Alarm = (props) => {
                                       <img
                                         className={styles.productImg}
                                         src={
-                                          REACT_PUBLIC_URL +
+                                          process.env.PUBLIC_URL +
                                           "images/logoAlarm.svg"
                                         }
                                         alt="logo"
@@ -145,7 +145,7 @@ const Alarm = (props) => {
                                       <img
                                         className={styles.productImg}
                                         src={
-                                          REACT_PUBLIC_URL +
+                                          process.env.PUBLIC_URL +
                                           "productList/" +
                                           item.photo
                                         }
@@ -185,7 +185,7 @@ const Alarm = (props) => {
                                       <img
                                         className={styles.productImg}
                                         src={
-                                          REACT_PUBLIC_URL +
+                                          process.env.PUBLIC_URL +
                                           "images/logoAlarm.svg"
                                         }
                                         alt="logo"
@@ -194,7 +194,7 @@ const Alarm = (props) => {
                                       <img
                                         className={styles.productImg}
                                         src={
-                                          REACT_PUBLIC_URL +
+                                          process.env.PUBLIC_URL +
                                           "productList/" +
                                           item.photo
                                         }

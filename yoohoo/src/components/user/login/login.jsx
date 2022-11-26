@@ -88,7 +88,7 @@ const Login = (props) => {
         {/* loginImg */}
         <img
           className={styles.loginImg}
-          src="/Images/login/login.svg"
+          src={process.env.PUBLIC_URL + "images/login/login.svg"}
           alt="img"
         ></img>
 
