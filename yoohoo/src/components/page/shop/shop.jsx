@@ -364,7 +364,7 @@ const Shop = (props) => {
                             <img
                               className={styles.recommendImg}
                               src={
-                                REACT_PUBLIC_URL +
+                                process.env.PUBLIC_URL +
                                 "productList/" +
                                 recPost.image.dir
                               }

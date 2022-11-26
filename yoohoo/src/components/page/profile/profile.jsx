@@ -540,7 +540,7 @@ const Profile = (props) => {
         <div className={styles.responsive}>
           <img
             className={styles.footImg}
-            src="/Images/myPage/woman.svg"
+            src={process.env.PUBLIC_URL + "images/myPage/woman.svg"}
             alt="illu"
           />
         </div>

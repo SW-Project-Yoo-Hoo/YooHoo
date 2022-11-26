@@ -138,7 +138,7 @@ const Home = (props) => {
 
               <img
                 className={styles.postNowImg}
-                src="/Images/home/resourceShare.svg"
+                src={process.env.PUBLIC_URL + "images/home/resourceShare.svg"}
                 alt="illu"
               ></img>
             </div>
@@ -148,7 +148,7 @@ const Home = (props) => {
               {/* img */}
               <img
                 className={styles.profileNowImg}
-                src="/Images/home/profile.svg"
+                src={process.env.PUBLIC_URL + "images/home/profile.svg"}
                 alt="illu"
               ></img>
 
@@ -199,7 +199,7 @@ const Home = (props) => {
             <div className={styles.partThreeImgWrap}>
               <img
                 className={styles.partThreeImg}
-                src="/Images/home/earth.svg"
+                src={process.env.PUBLIC_URL + "images/home/earth.svg"}
                 alt="illu"
               ></img>
             </div>
