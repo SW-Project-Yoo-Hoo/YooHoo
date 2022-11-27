@@ -55,6 +55,7 @@ const Login = (props) => {
       .post("/login", data, {
         headers: {
           "Content-Type": "application/json",
+          "access-control-allow-origin": "*",
         },
       })
       .then(function (response) {
