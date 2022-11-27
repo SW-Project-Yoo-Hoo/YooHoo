@@ -57,7 +57,6 @@ const Post = (props) => {
 
     setShowImages(imageUrlLists);
     setUploadFile(imageUrlListsOrigin);
-    console.log(uploadFile);
   };
 
   // X버튼 클릭 시 이미지 삭제
@@ -270,6 +269,7 @@ const Post = (props) => {
                   </div>
 
                   {/* 이미지 미리보기 */}
+                  {console.log(image)}
                   <img
                     className={styles.imagePickedStyle}
                     src={process.env.PUBLIC_URL + image}
