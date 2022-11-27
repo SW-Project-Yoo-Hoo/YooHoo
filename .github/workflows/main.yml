@@ -31,8 +31,10 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn build
-
+        run: | 
+          yarn build
+        env:
+          CI: false
       - name: Deploy
         env:
           AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
