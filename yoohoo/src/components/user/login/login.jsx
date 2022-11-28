@@ -55,8 +55,8 @@ const Login = (props) => {
       .post("/login", data, {
         headers: {
           "Content-Type": "application/json",
-          "access-control-allow-origin": "*",
-          "access-control-allow-methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          // "access-control-allow-origin": "*",
+          // "access-control-allow-methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         },
       })
       .then(function (response) {
