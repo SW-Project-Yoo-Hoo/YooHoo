@@ -6,7 +6,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/yoohoodb
+    url: jdbc:mariadb://localhost:3307/yoohoodb
     username: root
     password: 3965
     driver-class-name: org.mariadb.jdbc.Driver
@@ -30,4 +30,4 @@ logging.level:
 
 
 
-file.dir: /C:/Users/safe1/Desktop/학교 자료/YooHoo/
+file.dir: C:\GitHub\Front-end\yoohoo\public\productList\
