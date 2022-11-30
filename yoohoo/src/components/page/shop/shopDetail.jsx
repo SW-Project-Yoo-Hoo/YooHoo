@@ -303,7 +303,8 @@ const ShopDetail = (props) => {
           <div className={styles.background}>
             <img
               className={styles.headerImg}
-              src={process.env.PUBLIC_URL + "images/headerBackground.png"}
+              src={process.env.PUBLIC_URL + "/images/headerBackground.png"}
+              // src={`${process.env.PUBLIC_URL}/images/headerBackground.png`}
               alt="Header"
             />
             <div className={styles.container}>
@@ -315,7 +316,7 @@ const ShopDetail = (props) => {
                       <img
                         className={styles.img1}
                         src={
-                          process.env.PUBLIC_URL +
+                          REACT_PUBLIC_URL +
                           "productList/" +
                           currentItem.item.dir
                         }
@@ -325,9 +326,7 @@ const ShopDetail = (props) => {
                       <img
                         className={styles.img1}
                         src={
-                          process.env.PUBLIC_URL +
-                          "productList/" +
-                          currentItem.dir
+                          REACT_PUBLIC_URL + "productList/" + currentItem.dir
                         }
                         alt="Product"
                       />
@@ -345,7 +344,7 @@ const ShopDetail = (props) => {
                                 item.show ? styles.nowBtn : styles.imgBtnList
                               }
                               src={
-                                process.env.PUBLIC_URL +
+                                REACT_PUBLIC_URL +
                                 "productList/" +
                                 item.item.dir
                               }
@@ -361,7 +360,7 @@ const ShopDetail = (props) => {
                     <img
                       className={styles.companyImg}
                       src={
-                        process.env.PUBLIC_URL + "images/userProfileBasic.svg"
+                        process.env.PUBLIC_URL + "/images/userProfileBasic.svg"
                       }
                       alt="Company"
                     />
@@ -369,7 +368,7 @@ const ShopDetail = (props) => {
                     <img
                       className={styles.companyImg}
                       src={
-                        process.env.PUBLIC_URL +
+                        REACT_PUBLIC_URL +
                         "productList/" +
                         productItem.photo_dir
                       }
@@ -411,7 +410,7 @@ const ShopDetail = (props) => {
                                     <img
                                       className={styles.otherProductsImg}
                                       src={
-                                        process.env.PUBLIC_URL +
+                                        REACT_PUBLIC_URL +
                                         "productList/" +
                                         item.image.dir
                                       }
@@ -553,7 +552,7 @@ const ShopDetail = (props) => {
               <div className={styles.footer}>
                 <img
                   className={styles.footerImg}
-                  src={process.env.PUBLIC_URL + "images/footBackground.png"}
+                  src={process.env.PUBLIC_URL + "/images/footBackground.png"}
                   alt="Footer"
                 />
                 <Footer />

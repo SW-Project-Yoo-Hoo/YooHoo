@@ -12,7 +12,7 @@ const Header = (props) => {
         <Link to="/">
           <img
             className={styles.logoStyle}
-            src={process.env.PUBLIC_URL + "images/header/logo.png"}
+            src={process.env.PUBLIC_URL + "/images/header/logo.png"}
             alt="logo"
           ></img>
         </Link>
