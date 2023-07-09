@@ -206,7 +206,7 @@ const Shop = (props) => {
             <div className={styles.recommendDiv}>
               <div className={styles.recommendBtn} onClick={onClickRecommend}>
                 <MdChecklistRtl className={styles.recommendIcon} />
-                <span className={styles.recommendSpan}>조합 추천 받기</span>
+                <span className={styles.recommendSpan}>게시물 추천 받기</span>
               </div>
               {recommend && (
                 <div className={styles.contents}>
