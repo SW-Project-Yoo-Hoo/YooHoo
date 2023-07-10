@@ -3,17 +3,44 @@
 경제적 이익과 더불어 자원 순환으로 인한 폐기물 감소와 환경 보호에 기여할 수 있는 웹 플랫폼
 
 <br>
-
-## ✨ 팀 정보
-| FrontEnd | BackEnd | Cooperation |
-| :------------: | :-------------: | :-------------: |
-| [오현주](https://github.com/OhHyeonJu0415)  | [주혜련](https://github.com/object1997428)  | [GitHub](https://github.com/SW-Project-Yoo-Hoo)
-| [유영서](https://github.com/hanb613)  |    •   | [Notion](https://grand-coriander-b99.notion.site/YooHoo-9e0a14cf262a4b2ab40fa80f9c916d8b?pvs=4)
+ 
+## ⌚ 개발 기간
+`2022.08.16 ~ 2022.11.30`
 
 <br>
 
-## ⌚ 개발 기간
-`2022.08.16 ~ 2022.11.30`
+## 💡 주요 기능 <br>
+- 회원관리
+  - 회원가입
+  - 로그인/로그아웃
+  - 회원정보 수정
+- SHOP
+  - 게시물 추천
+  - 전체 게시물 보기
+  - 상세 게시물 보기
+  - 거래 요청
+  - 살펴보기
+- POST
+  - 게시물 등록
+- 마이페이지
+  - 내 게시물 보기
+  - 거래 현황
+  - 거래 대기/거래 중/거래 완료
+  - 반납 요청하기/반납 수락하기
+  - 조기반납 요청하기/조기반납 수락하기
+  - 요청 현황
+  - 대기 요청
+  - 받은 요청
+  - 요청 조합 추천
+  - 요청 취소/거절/수락
+- 알림
+- 메인 홈
+- 어바웃어스
+- 자주묻는 질문
+
+<br>
+
+## 프로젝트 사진
 
 <br>
 
@@ -45,41 +72,16 @@
 
 <br>
 
-# 💬 ERD
+## 💬 ERD
 ![yoohooDB](https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71408968/50c6f12c-c047-4651-a068-45060916a2af)
   
 <br>
 
-# 💡 주요 기능
+## ✨ 팀 정보
+| FrontEnd | BackEnd | Cooperation |
+| :------------: | :-------------: | :-------------: |
+| [오현주](https://github.com/OhHyeonJu0415)  | [주혜련](https://github.com/object1997428)  | [GitHub](https://github.com/SW-Project-Yoo-Hoo)
+| [유영서](https://github.com/hanb613)  |    •   | [Notion](https://grand-coriander-b99.notion.site/YooHoo-9e0a14cf262a4b2ab40fa80f9c916d8b?pvs=4)
+
 <br>
-
-- 회원관리
-  - 회원가입
-  - 로그인/로그아웃
-  - 회원정보 수정
-- SHOP
-  - 게시물 추천
-  - 전체 게시물 보기
-  - 상세 게시물 보기
-  - 거래 요청
-  - 살펴보기
-- POST
-  - 게시물 등록
-- 마이페이지
-  - 내 게시물 보기
-  - 거래 현황
-  - 거래 대기/거래 중/거래 완료
-  - 반납 요청하기/반납 수락하기
-  - 조기반납 요청하기/조기반납 수락하기
-  - 요청 현황
-  - 대기 요청
-  - 받은 요청
-  - 요청 조합 추천
-  - 요청 취소/거절/수락
-- 알림
-- 메인 홈
-- 어바웃어스
-- 자주묻는 질문
-
-# 프로젝트 사진
-  
+ 
