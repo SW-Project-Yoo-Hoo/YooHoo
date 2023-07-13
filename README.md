@@ -18,39 +18,6 @@ __YooHoo__ 는 유휴자원으로 남아 있는 사무 용품을 공유하는 �
 
 
 ## 💡 주요 기능
-- 회원관리
-  - 회원가입
-  - 로그인/로그아웃
-  - 회원정보 수정
-- SHOP
-  - 게시물 추천
-  - 전체 게시물 보기
-  - 상세 게시물 보기
-  - 거래 요청
-  - 살펴보기
-- POST
-  - 게시물 등록
-  - 마이페이지
-  - 내 게시물 보기
-  - 거래 현황
-  - 거래 대기/거래 중/거래 완료
-  - 반납 요청하기/반납 수락하기
-  - 조기반납 요청하기/조기반납 수락하기
-  - 요청 현황
-  - 대기 요청
-  - 받은 요청
-  - 요청 조합 추천
-  - 요청 취소/거절/수락
-- 알림
-- 메인 홈
-- 어바웃어스
-- 자주묻는 질문
-
-
-<br/>
-
-
-## 💡 주요 기능
 
 <h3>물품 등록하기</h3>
 
@@ -83,8 +50,72 @@ __YooHoo__ 는 유휴자원으로 남아 있는 사무 용품을 공유하는 �
 
 ## :tv: 실행 화면
 
+<table>
+ <tr>
+  <th>물품 등록하기</th>
+  <th>반납하기</th>
+ </tr>
+ <tr>
+  <td><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/7ac8d7eb-2158-42bc-a495-79c269526de3"></td>
+  <td><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/c7178e6a-15df-4746-9dc9-a76a0476ba99"></td>
+ </tr>
+</table>
 
-<br>
+<br/>
+
+<table>
+ <tr>
+  <th colspan="2">거래하기</th>
+ </tr>
+ <tr>
+  <td><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/5315e7fd-9766-48f0-9cfe-b475982ca913"></td>
+  <td><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/5a2b203b-a6ff-4590-8dcd-a0d97fcb3e30"></td>
+ </tr>
+ <tr align="center">
+  <td>수요자</td>
+  <td>공급자</td>
+ </tr>
+</table>
+
+<br/>
+
+<table>
+ <tr>
+  <th colspan="2">정보 조회하기</th>
+ </tr>
+ <tr>
+  <td  colspan="2"><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/1c363d0f-a976-402d-b51d-0f96d367bf2c"></td>
+ </tr>
+ <tr align="center">
+  <td colspan="2">알람</td>
+ </tr>
+ <tr>
+  <td><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/35411298-d7d0-410a-9bcf-456bb0bd63c6"></td>
+  <td><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/5870e6ca-c85d-4530-a56b-eaeba795b757"></td>
+ </tr>
+ <tr align="center">
+  <td>회원 정보</td>
+  <td>게시물 정보</td>
+ </tr>
+</table>
+
+<br/>
+
+
+<table>
+ <tr>
+  <th colspan="2">추천받기</th>
+ </tr>
+ <tr>
+  <td><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/fcada2d1-c914-4634-9c34-b9435606a77c"></td>
+  <td><img src="https://github.com/SW-Project-Yoo-Hoo/YooHoo/assets/71424881/aec19941-848f-400a-be9f-bccb0bbfd97b"></td>
+ </tr>
+ <tr align="center">
+  <td>수요자</td>
+  <td>공급자</td>
+ </tr>
+</table>
+<br/>
 
 ## ⚙️ 사용한 기술 스택 
 ### Front
